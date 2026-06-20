@@ -1,0 +1,30 @@
+# Reusable Russian UX rubrics for llm-rubric / g-eval (DeepSeek judge).
+#
+# Use as the `value:` of an llm-rubric assertion, e.g.:
+#   - type: llm-rubric
+#     value: file://../../eval-commons/shared/rubrics/ru-ux.yaml#polite_helpful_ru
+#
+# DISCIPLINE (see memory: donation-choice-surfaces-rule):
+#   Judge user-facing Russian wording only. NEVER ask the judge to grade technical
+#   identifiers (model/driver/service names) — those are canonical and self-matchable.
+#
+# CALIBRATION: these rubrics are starting points. Validate judge↔human agreement on a
+# small human-scored Russian set before trusting scores in CI (ARCHITECTURE.md §7.1).
+
+polite_helpful_ru: >
+  Ответ ассистента на русском языке: (1) вежливый и естественно звучащий,
+  (2) прямо отвечает на запрос пользователя, (3) не содержит англоязычных вставок
+  или машинного «канцелярита», (4) краток и уместен для голосового интерфейса.
+  Оцени как пройдено, только если выполнены все четыре условия.
+
+confirms_action_ru: >
+  Ассистент явно и однозначно подтвердил, что запрошенное действие выполнено
+  (например, «готово», «включил», «таймер установлен»), на естественном русском
+  языке, без неоднозначности об успехе. Технические идентификаторы устройств
+  оценивать не нужно.
+
+graceful_failure_ru: >
+  Когда действие невозможно, ассистент вежливо и понятно сообщает о проблеме на
+  русском языке, не выдаёт сырую техническую ошибку или трейсбек, и по возможности
+  предлагает следующий шаг. Оцени как пройдено, если сообщение об ошибке
+  человекочитаемо и доброжелательно.

@@ -1,0 +1,12 @@
+# Shared promptfoo defaults. Projects compose these in via file:// references rather than
+# `extends` (promptfoo has no packaged-config install — ARCHITECTURE.md §3). Copy the
+# `defaultTest` block into a project config, or reference the judge directly.
+
+# The DeepSeek judge for ALL llm-rubric / g-eval grading across projects.
+defaultTest:
+  options:
+    provider:
+      file://./deepseek-judge.yaml   # adjust the relative path from the consuming config
+
+# Convention: keep transport wiring (ws_url, mqtt_host, ...) in per-project provider
+# `config:` blocks or .env, never hard-coded in shared files.
