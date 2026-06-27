@@ -19,7 +19,12 @@ dependencies = [
 sim = ["deepeval>=1.0"]
 # Phase 2 — UI interaction simulation
 ui = ["playwright>=1.40"]
+# Voice-fixture recorder (docs/design/fixture_recorder.md) — mic capture + conditioning
+record = ["sounddevice>=0.4", "numpy>=1.24", "soxr>=0.3"]
 dev = ["pytest>=7.0"]
+
+[project.scripts]
+eval-fixture-record = "eval_commons.record.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["eval_commons*"]
