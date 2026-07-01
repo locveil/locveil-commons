@@ -58,6 +58,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     p.add_argument("--from-yaml", help="promptfoo YAML to derive the worklist from")
     p.add_argument("--base-dir", help="dir audio paths are relative to (default: dir of --from-yaml)")
     p.add_argument("--config", help="machine-local mic config (.env with REC_* keys)")
+    p.add_argument("--language", help="record only this language's cases (default: $EVAL_LANG); resolves "
+                                      "{{env.EVAL_LANG}} in fixture paths to the language subdir")
     p.add_argument("--free", metavar="NAME", help="freeform record to <base-dir>/NAME.wav")
     p.add_argument("--seconds", type=float, help="fixed-duration capture instead of press-Enter")
     p.add_argument("--force", action="store_true", help="re-record fixtures that already exist")
@@ -83,8 +85,9 @@ def main(argv: Optional[List[str]] = None) -> int:
         p.error("need --from-yaml (or --free NAME)")
     base = args.base_dir or os.path.dirname(os.path.abspath(args.from_yaml))
 
+    language = args.language or os.environ.get("EVAL_LANG")
     try:
-        jobs = resolve_worklist(args.from_yaml)
+        jobs = resolve_worklist(args.from_yaml, language=language)
     except ValueError as exc:  # conflicting reference text across cases
         print(f"error: {exc}", file=sys.stderr)
         return 2
