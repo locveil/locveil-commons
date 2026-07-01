@@ -9,6 +9,9 @@ Speaks the wb-mqtt-voice `/ws/audio` protocol (see irene/runners/webapi_router.p
     client → TEXT  {"type":"end"}
     server → TEXT  {"type":"partial","text":..}            # 0+ times, streaming mode only
     server → TEXT  {"type":"response","text":..,"success":bool,"metadata":{..}}
+                   # metadata.audio_processing.transcribed_text holds the RECOGNIZED speech on
+                   # the batch/offline-ASR path (where no `partial`s are emitted); the WER tier
+                   # reads it so it scores ASR accuracy, not the assistant's reply.
 
 This protocol is stateful + binary, so promptfoo's built-in declarative WebSocket
 provider cannot drive it — hence this shared custom provider.
@@ -107,9 +110,14 @@ async def _run(prompt: str, config: Dict[str, Any]) -> Dict[str, Any]:
             # ignore any other control frames
 
     metadata = final.get("metadata", {}) or {}
-    # The recognized transcript is the last partial in streaming mode; backends that don't
-    # emit partials fall back to the final reply text as a best-effort transcript proxy.
-    transcript = partials[-1] if partials else final.get("text", "")
+    # Recognized transcript, in priority order:
+    #   1. metadata.audio_processing.transcribed_text — the authoritative ASR output the SUT
+    #      surfaces on the batch path (offline ASR like sherpa_onnx/vosk emits no `partial`s,
+    #      so this is the only place the *recognized speech* — not the reply — is exposed).
+    #   2. the last streaming `partial` — the recognized text when the SUT streams ASR.
+    #   3. the reply text — last-resort proxy so WER stays defined if neither is present.
+    asr_text = ((metadata.get("audio_processing") or {}).get("transcribed_text") or "").strip()
+    transcript = asr_text or (partials[-1] if partials else final.get("text", ""))
     return {
         "transcript": transcript,
         "response_text": final.get("text", ""),
