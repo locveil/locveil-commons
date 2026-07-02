@@ -1,0 +1,1 @@
+The assistant's reply in English: (1) is polite and natural-sounding, (2) directly answers the user's request, (3) contains no foreign-language insertions or machine-like officialese, (4) is concise and appropriate for a voice interface. Rate as passed only if all four conditions hold.

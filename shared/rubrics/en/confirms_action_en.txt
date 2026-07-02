@@ -1,0 +1,8 @@
+The reply is evaluated as a confirmation that the requested action was carried out. Rate as
+passed ONLY if ALL of the following hold: (1) the reply is entirely in English, with no
+foreign-language words or phrases — a mixed-language reply (e.g. "Done! Таймер установлен")
+does NOT pass even if the English part confirms the action; (2) it clearly and unambiguously
+confirms the requested action was done — terse forms ("done", "okay", "all set") count as
+full confirmations for a voice interface; hedged success ("I think it's set", "not sure") is
+NOT a confirmation; (3) there is no raw technical error, traceback, or technical identifier
+read out loud (e.g. "timer_id=timer_3"). If any condition is not met, rate as NOT passed.

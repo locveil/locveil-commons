@@ -82,7 +82,7 @@ projects stay YAML-only.
 │  shared/                                                                         │
 │    deepseek-judge.yaml     → the judge provider, defined ONCE                    │
 │    promptfooconfig.base.yaml → shared defaults projects extend via file://       │
-│    rubrics/ru-ux.yaml      → calibrated Russian UX rubrics                        │
+│    rubrics/{ru,en}/*.txt   → calibrated UX rubrics (one file per rubric)          │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -242,11 +242,15 @@ rewrite *there*.
 
 ## 8. Risks & gotchas
 
-1. **DeepSeek-as-judge on Russian is unproven (highest risk).** Sources confirm DeepSeek is
-   used as a baseline judge but establish **nothing** about Russian grading quality.
-   Mitigation (non-negotiable): maintain a small **human-scored Russian calibration set**;
-   measure judge↔human agreement before trusting scores; periodically audit with a stronger
-   model. See `shared/rubrics/ru-ux.yaml` and `examples/` for where calibration data lives.
+1. **DeepSeek-as-judge on Russian: CALIBRATED 2026-07-02.** A 20-case human-labeled set
+   (native Russian speaker; 16 confident + 4 borderline) measured against the shipped
+   rubrics through the same llm-rubric→DeepSeek path: after two disciplined rubric
+   iterations, **16/16 agreement, Cohen's κ = 1.0 in-sample** (from 81%/κ 0.625 pre-tuning),
+   0 false-accepts / 0 false-rejects, verdicts stable across repeat runs at temp 0. The set,
+   gold labels, scorer and method live in `examples/ru-ux-calibration/`. Caveat: κ is
+   in-sample (the rubric was tuned on this set) — re-measure on FRESH negatives as suites
+   grow, and re-run the set after ANY rubric edit (an earlier fix regressed a neighboring
+   criterion). English rubrics carry the same structural improvements but are uncalibrated.
 2. **No packaged-config reuse in promptfoo.** Reuse is `file://` refs into a *pinned*
    checkout, not `npm install`. Pin per project; treat provider edits as a versioned bump.
 3. **MQTT + WER + CLI + UI are the only bespoke code — by design.** Isolated here, never

@@ -1,0 +1,8 @@
+The reply is evaluated as a message that the action cannot be performed. Rate as passed ONLY
+if ALL of the following hold: (1) the reply is entirely in English, with no foreign-language
+words or phrases; (2) the tone is polite and friendly, without rudeness — brevity by itself
+is NOT a flaw: a short polite message passes; (3) there is no raw technical error, traceback,
+numeric error code (e.g. "error 502"), or bureaucratic boilerplate ("contact your system
+administrator"); (4) the problem is named clearly and human-readably; suggesting a next step
+is desirable but its absence alone is not a failure. If any condition is not met, rate as
+NOT passed.

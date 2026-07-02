@@ -1,0 +1,33 @@
+# Human gold labels for the RU UX calibration set (promptfooconfig.yaml, same ids).
+# Labeled by the project owner — a native Russian speaker — on 2026-07-02 (wb-mqtt-voice
+# TEST-16). `borderline` = the human judged the case genuinely ambiguous; those are
+# EXCLUDED from agreement/κ and reported separately (either judge verdict acceptable).
+#
+# Noteworthy divergences from naive expectations (why human labels matter):
+#   A03 «Окей.»              → PASS  (terse counts as confirmation in voice UX)
+#   A06 (ids in speech)      → FAIL  (raw technical ids are bad UX even though the rubric
+#                                     tells the judge not to *grade* identifiers)
+#   B14 (terse failure)      → PASS  (short but polite and clear is fine)
+#   B16 (bureaucratic 502)   → FAIL  (error codes + канцелярит)
+
+labels:
+  A01: pass
+  A02: borderline
+  A03: pass
+  A04: fail
+  A05: fail
+  A06: fail
+  A07: borderline
+  A08: fail
+  A09: pass
+  A10: pass
+  B11: pass
+  B12: pass
+  B13: fail
+  B14: pass
+  B15: fail
+  B16: fail
+  B17: borderline
+  B18: borderline
+  B19: fail
+  B20: pass

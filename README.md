@@ -16,7 +16,7 @@ Full rationale, component model, reuse strategy, and risks: **[ARCHITECTURE.md](
 eval_commons/providers/   ws_audio · mqtt · cli · sim_user (1.5 stub) · ui (2 stub)
 eval_commons/assertions/  wer_scorer (jiwer WER/CER)
 eval_commons/audio/       WAV → PCM16 frame helpers
-shared/                   deepseek-judge.yaml · promptfooconfig.base.yaml · rubrics/ru-ux.yaml
+shared/                   deepseek-judge.yaml · promptfooconfig.base.yaml · rubrics/{ru,en}/*.txt
 examples/                 .env.example
 ```
 
