@@ -8,7 +8,10 @@ Speaks the wb-mqtt-voice `/ws/audio` protocol (see irene/runners/webapi_router.p
     client → BINARY  raw PCM16 frames (16-bit signed, mono)
     client → TEXT  {"type":"end"}
     server → TEXT  {"type":"partial","text":..}            # 0+ times, streaming mode only
-    server → TEXT  {"type":"response","text":..,"success":bool,"metadata":{..}}
+    server → TEXT  {"type":"response","text":..,"success":bool,"error":..,"confidence":..,
+                    "intent_name":..,"timestamp":..,"metadata":{..}}
+                   # QUAL-55 canonical result shape: `intent_name` is a TOP-LEVEL key (older
+                   # SUT builds carried it under metadata.intent_name — read with fallback).
                    # metadata.audio_processing.transcribed_text holds the RECOGNIZED speech on
                    # the batch/offline-ASR path (where no `partial`s are emitted); the WER tier
                    # reads it so it scores ASR accuracy, not the assistant's reply.
@@ -121,7 +124,9 @@ async def _run(prompt: str, config: Dict[str, Any]) -> Dict[str, Any]:
     return {
         "transcript": transcript,
         "response_text": final.get("text", ""),
-        "intent_name": metadata.get("intent_name"),
+        # QUAL-55 canonical shape puts intent_name top-level; older SUT builds (QUAL-54)
+        # carried it under metadata — read both so the provider spans SUT versions.
+        "intent_name": final.get("intent_name") or metadata.get("intent_name"),
         "success": bool(final.get("success", False)),
         "partials": partials,
         "latency_ms": round((time.monotonic() - started) * 1000, 1),
