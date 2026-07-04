@@ -1,0 +1,9 @@
+{
+  "pinned_from": "wb-mqtt-bridge/contracts",
+  "bridge_commit": "59f4f466b47a4503a574909a4fd088110e60601c",
+  "bridge_version": "0.5.0",
+  "catalog_version": "7a1149c7657a2f7f",
+  "contract_patch": "v1.1 (VWB-20) + alias vocabulary (VWB-21)",
+  "pinned_date": "2026-07-05",
+  "pinned_by": "wb-mqtt-voice TEST-17"
+}

@@ -17,6 +17,7 @@ eval_commons/providers/   ws_audio · mqtt · cli · sim_user (1.5 stub) · ui (
 eval_commons/assertions/  wer_scorer (jiwer WER/CER)
 eval_commons/audio/       WAV → PCM16 frame helpers
 shared/                   deepseek-judge.yaml · promptfooconfig.base.yaml · rubrics/{ru,en}/*.txt
+contracts/                the pinned Irene↔bridge catalog contract (see contracts/README.md)
 examples/                 .env.example
 ```
 
