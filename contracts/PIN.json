@@ -1,9 +1,9 @@
 {
   "pinned_from": "wb-mqtt-bridge/contracts",
-  "bridge_commit": "59f4f466b47a4503a574909a4fd088110e60601c",
+  "bridge_commit": "ee0a71d2f581bdabea048dc3233a1133345d32d9",
   "bridge_version": "0.5.0",
-  "catalog_version": "7a1149c7657a2f7f",
-  "contract_patch": "v1.1 (VWB-20) + alias vocabulary (VWB-21)",
+  "catalog_version": "91909b54bfb4b593",
+  "contract_patch": "v1.1 (VWB-20) + aliases (VWB-21) + room-scoped group addressing (VWB-23)",
   "pinned_date": "2026-07-05",
-  "pinned_by": "wb-mqtt-voice TEST-17"
+  "pinned_by": "wb-mqtt-voice TEST-18 Slice A step 0 (re-pin; first pin was TEST-17)"
 }
