@@ -1,10 +1,10 @@
 {
   "pinned_from": "wb-mqtt-bridge/contracts",
-  "bridge_commit": "fd05d8f801a8861b19ca3210b69d2ef09bb692a9",
+  "bridge_commit": "f0f8fd1f9be0ee91c9aba7f2a60464bb942e391a",
   "bridge_head_at_pin": "f0f8fd1 (STAMP.bridge_commit lags one commit — the generator stamped during the VWB-19 session)",
   "bridge_version": "0.5.0",
-  "catalog_version": "dbfd2855dac52026",
-  "contract_patch": "v1.1 (VWB-20) + aliases (VWB-21) + room-group addressing (VWB-23) + select-form canonical routing (VWB-19, canonical_first.md §11)",
+  "catalog_version": "a17a63b0c47fdb53",
+  "contract_patch": "v1.1 (VWB-20) + aliases (VWB-21) + room-group addressing (VWB-23) + select-form canonical routing (VWB-19, canonical_first.md §11) + typed HVAC set_mode/set_fan (VWB-24)",
   "pinned_date": "2026-07-05",
-  "pinned_by": "wb-mqtt-voice QUAL-65 (input/app selection consume; prior pin was TEST-18 step 0)"
+  "pinned_by": "wb-mqtt-voice QUAL-35 Slice 2a (VWB-24 consume)"
 }

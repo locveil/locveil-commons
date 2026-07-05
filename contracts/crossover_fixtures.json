@@ -1,6 +1,6 @@
 {
   "description": "Crossover fixtures for the Irene<->bridge canonical-command contract: {utterance -> expected canonical command}. Producer half: Irene's TEST-18 suite asserts the captured command equals `expect`. Consumer half: the bridge's VWB-16 replays `expect` against its native layer. Authored by wb-mqtt-voice (TEST-18 Slice A); bound to the pinned catalog below — re-author bindings on re-pin if the guard test fails.",
-  "catalog_version": "dbfd2855dac52026",
+  "catalog_version": "a17a63b0c47fdb53",
   "expect_kinds": {
     "actuate": "device-form command: POST /devices/{device_id}/canonical {capability, action, params}",
     "room-group": "room-form command (VWB-23): POST /rooms/{room_id}/canonical {group, action, scope}; scope auto = bare noun, all = the plural/«весь» signal",
@@ -742,6 +742,45 @@
         "capability": "screen",
         "action": "aspect_16_9",
         "params": null
+      }
+    },
+    {
+      "id": "F80",
+      "tier": 1,
+      "utterance": {
+        "ru": "кондиционер на охлаждение"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bedroom_hvac",
+        "capability": "climate",
+        "action": "set_mode",
+        "params": {
+          "mode": "cool"
+        }
+      },
+      "note": "VWB-24 typed triplets: ru label «охлаждение» → canonical cool; action-aware device pick (only the HVAC has set_mode)"
+    },
+    {
+      "id": "F81",
+      "tier": 1,
+      "utterance": {
+        "ru": "вентилятор на скорость 2"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bedroom_hvac",
+        "capability": "climate",
+        "action": "set_fan",
+        "params": {
+          "fan": "speed_2"
+        }
       }
     }
   ]

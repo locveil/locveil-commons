@@ -92,8 +92,9 @@ def _validate_params(fid: str, action: dict, params: dict | None):
         assert name in specs, f"{fid}: param {name} not in the contract"
         spec = specs[name]
         if spec.get("values"):
-            wires = {v["wire"] for v in spec["values"]}
-            assert value in wires, f"{fid}: enum value {value!r} not in {sorted(wires)}"
+            # Irene sends the CANONICAL token (§5a); the bridge maps canonical → wire
+            allowed = {v["canonical"] for v in spec["values"]}
+            assert value in allowed, f"{fid}: enum value {value!r} not in {sorted(allowed)}"
         else:
             if spec.get("min") is not None:
                 assert value >= spec["min"], f"{fid}: {name}={value} below min {spec['min']}"
