@@ -13,8 +13,10 @@ Full rationale, component model, reuse strategy, and risks: **[ARCHITECTURE.md](
 ## What's here
 
 ```
-eval_commons/providers/   ws_audio · mqtt · cli · sim_user (1.5 stub) · ui (2 stub)
-eval_commons/assertions/  wer_scorer (jiwer WER/CER)
+eval_commons/providers/   ws_audio · mqtt · cli · device_command · sim_user (1.5 stub) · ui (2 stub)
+eval_commons/assertions/  wer_scorer (jiwer WER/CER) · device_command_assert (crossover-fixture compare)
+eval_commons/mock_bridge.py       stand-in wb-mqtt-bridge (serves the pinned catalog, records canonical POSTs)
+eval_commons/fixtures_to_tests.py crossover fixtures → generated promptfoo test cases
 eval_commons/audio/       WAV → PCM16 frame helpers
 shared/                   deepseek-judge.yaml · promptfooconfig.base.yaml · rubrics/{ru,en}/*.txt
 contracts/                the pinned Irene↔bridge catalog contract (see contracts/README.md)
