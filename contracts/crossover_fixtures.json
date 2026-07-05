@@ -502,6 +502,150 @@
         }
       },
       "note": "transliteration: «ютуб» → \"YouTube\" — QUAL-35 T2; red until then"
+    },
+    {
+      "id": "F60",
+      "tier": 1,
+      "utterance": {
+        "ru": "сделай телек громче"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "children_room_tv",
+        "capability": "volume",
+        "action": "up",
+        "params": null
+      }
+    },
+    {
+      "id": "F61",
+      "tier": 1,
+      "utterance": {
+        "ru": "громкость на телеке 30"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "children_room_tv",
+        "capability": "volume",
+        "action": "set",
+        "params": {
+          "level": 30
+        }
+      }
+    },
+    {
+      "id": "F62",
+      "tier": 1,
+      "utterance": {
+        "ru": "выключи звук на телеке"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "children_room_tv",
+        "capability": "volume",
+        "action": "mute_toggle",
+        "params": null
+      },
+      "note": "routing risk: «выключи» is also the power_off phrase — QUAL-64 material if red"
+    },
+    {
+      "id": "F63",
+      "tier": 1,
+      "utterance": {
+        "ru": "продолжи на эппл"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "appletv_children",
+        "capability": "playback",
+        "action": "play",
+        "params": null
+      }
+    },
+    {
+      "id": "F64",
+      "tier": 1,
+      "utterance": {
+        "ru": "включи обогрев"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bedroom_heating",
+        "capability": "climate",
+        "action": "on",
+        "params": null
+      },
+      "note": "power-verb fallback to climate (Slice 2)"
+    },
+    {
+      "id": "F65",
+      "tier": 1,
+      "utterance": {
+        "ru": "включи вытяжку"
+      },
+      "context": {
+        "room": "kitchen"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "kitchen_hood",
+        "capability": "fan",
+        "action": "set",
+        "params": {
+          "level": 2
+        }
+      },
+      "note": "power-verb fallback to fan: on → speed 2 (user decision)"
+    },
+    {
+      "id": "F66",
+      "tier": 1,
+      "utterance": {
+        "ru": "шторы наполовину"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "room-group",
+        "room_id": "living_room",
+        "group": "cover",
+        "action": "set_position",
+        "scope": "auto"
+      },
+      "note": "«наполовину» → pct 50; room form carries params{pct} (not asserted — capture omits params)"
+    },
+    {
+      "id": "F67",
+      "tier": 1,
+      "utterance": {
+        "ru": "перемотай вперёд на телеке"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "children_room_tv",
+        "capability": "playback",
+        "action": "ff",
+        "params": null
+      }
     }
   ]
 }
