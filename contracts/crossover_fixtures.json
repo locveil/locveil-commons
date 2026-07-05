@@ -8,8 +8,8 @@
     "clarify": "no command emitted: Irene asks a clarification naming the candidate devices"
   },
   "tiers": {
-    "1": "green-able with the QUAL-35 T1 donation baseline (direct RU surfaces, noun lexicon, room aliases; spoken numerals incl. compounds — BUG-23/24 fixed the corrupting pipeline stages)",
-    "2": "needs QUAL-35 T2 (transliteration-tolerant CHOICE matching, complex multi-param phrasings)"
+    "1": "green-able with the current baseline: T1 donations + transliteration-tolerant matching (QUAL-35 Slice 1: «ютуб»↔YouTube, «эппл ти ви»↔Apple TV) + compound numerals (BUG-23/24 fixed the corrupting stages)",
+    "2": "needs QUAL-35 Slice 3 (multi-param sentences, role/preposition disambiguation, free-text spans, negation, anaphora)"
   },
   "excluded_by_design": [
     "Cyrillic-spoken Latin names («ютуб», «эппл ти ви») — transliteration-tolerant matching is QUAL-35 T2; F41/F53 encode it and stay red until then",
@@ -388,7 +388,7 @@
     },
     {
       "id": "F41",
-      "tier": 2,
+      "tier": 1,
       "utterance": {
         "ru": "включи кино с эппл ти ви"
       },
@@ -408,7 +408,7 @@
     },
     {
       "id": "F42",
-      "tier": 2,
+      "tier": 1,
       "utterance": {
         "ru": "выключи кино"
       },
@@ -485,7 +485,7 @@
     },
     {
       "id": "F53",
-      "tier": 2,
+      "tier": 1,
       "utterance": {
         "ru": "запусти ютуб на телеке"
       },
