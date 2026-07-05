@@ -646,6 +646,103 @@
         "action": "ff",
         "params": null
       }
+    },
+    {
+      "id": "F70",
+      "tier": 1,
+      "utterance": {
+        "ru": "смени субтитры на медиаплеере"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "video",
+        "capability": "tracks",
+        "action": "subtitles",
+        "params": null
+      }
+    },
+    {
+      "id": "F71",
+      "tier": 1,
+      "utterance": {
+        "ru": "мы уходим"
+      },
+      "context": {},
+      "expect": {
+        "kind": "actuate",
+        "device_id": "home_mode",
+        "capability": "presence",
+        "action": "away",
+        "params": null
+      }
+    },
+    {
+      "id": "F72",
+      "tier": 1,
+      "utterance": {
+        "ru": "режим уборки"
+      },
+      "context": {},
+      "expect": {
+        "kind": "actuate",
+        "device_id": "cleaning_mode",
+        "capability": "cleaning",
+        "action": "start",
+        "params": null
+      }
+    },
+    {
+      "id": "F73",
+      "tier": 1,
+      "utterance": {
+        "ru": "уборка на 30 минут"
+      },
+      "context": {},
+      "expect": {
+        "kind": "actuate",
+        "device_id": "cleaning_mode",
+        "capability": "cleaning",
+        "action": "set_delay",
+        "params": {
+          "minutes": 30
+        }
+      }
+    },
+    {
+      "id": "F74",
+      "tier": 1,
+      "utterance": {
+        "ru": "включи сигнализацию воды"
+      },
+      "context": {},
+      "expect": {
+        "kind": "actuate",
+        "device_id": "water_supply",
+        "capability": "alarm",
+        "action": "on",
+        "params": null
+      },
+      "note": "water alarm ONLY (user decision) — heating_control's alarm and all valves are fenced"
+    },
+    {
+      "id": "F75",
+      "tier": 1,
+      "utterance": {
+        "ru": "широкий экран на апскейлере"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "upscaler",
+        "capability": "screen",
+        "action": "aspect_16_9",
+        "params": null
+      }
     }
   ]
 }
