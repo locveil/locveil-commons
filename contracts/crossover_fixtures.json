@@ -1,6 +1,6 @@
 {
   "description": "Crossover fixtures for the Irene<->bridge canonical-command contract: {utterance -> expected canonical command}. Producer half: Irene's TEST-18 suite asserts the captured command equals `expect`. Consumer half: the bridge's VWB-16 replays `expect` against its native layer. Authored by wb-mqtt-voice (TEST-18 Slice A); bound to the pinned catalog below — re-author bindings on re-pin if the guard test fails.",
-  "catalog_version": "91909b54bfb4b593",
+  "catalog_version": "dbfd2855dac52026",
   "expect_kinds": {
     "actuate": "device-form command: POST /devices/{device_id}/canonical {capability, action, params}",
     "room-group": "room-form command (VWB-23): POST /rooms/{room_id}/canonical {group, action, scope}; scope auto = bare noun, all = the plural/«весь» signal",
@@ -12,164 +12,496 @@
     "2": "needs QUAL-35 T2 (numeric slot-filling with units, transliteration-tolerant CHOICE matching)"
   },
   "excluded_by_design": [
-    "input switching — fenced until bridge VWB-19",
+    "Cyrillic-spoken Latin names («ютуб», «эппл ти ви») — transliteration-tolerant matching is QUAL-35 T2; F41/F53 encode it and stay red until then",
     "light-subset pair nouns («ночники»/«тумбочки»/«полки») — dropped from v1; return as fixtures when the bridge adds compound devices for the pairs (needs a re-pin)",
     "power-group fan-out («выключи все розетки» as a room-group) — the bridge allow-lists fan-out to light+cover only; plugs/oven are reachable by NAME (see F04/F03), never by «свет»",
     "priority rules for same-room ambiguity — v1 clarifies (F20/F21); priorities are a later-release enhancement"
   ],
   "fixtures": [
     {
-      "id": "F01", "tier": 1,
-      "utterance": {"ru": "включи телек"},
-      "context": {"room": "children_room"},
-      "expect": {"kind": "actuate", "device_id": "children_room_tv", "capability": "power", "action": "on", "params": null}
+      "id": "F01",
+      "tier": 1,
+      "utterance": {
+        "ru": "включи телек"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "children_room_tv",
+        "capability": "power",
+        "action": "on",
+        "params": null
+      }
     },
     {
-      "id": "F02", "tier": 1,
-      "utterance": {"ru": "выключи эппл"},
-      "context": {"room": "living_room"},
-      "expect": {"kind": "actuate", "device_id": "appletv_living", "capability": "power", "action": "off", "params": null},
+      "id": "F02",
+      "tier": 1,
+      "utterance": {
+        "ru": "выключи эппл"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "appletv_living",
+        "capability": "power",
+        "action": "off",
+        "params": null
+      },
       "note": "alias «эппл» matches both Apple TVs; the context room disambiguates"
     },
     {
-      "id": "F03", "tier": 1,
-      "utterance": {"ru": "включи печь"},
-      "context": {"room": "kitchen"},
-      "expect": {"kind": "actuate", "device_id": "oven_power", "capability": "power", "action": "on", "params": null},
+      "id": "F03",
+      "tier": 1,
+      "utterance": {
+        "ru": "включи печь"
+      },
+      "context": {
+        "room": "kitchen"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "oven_power",
+        "capability": "power",
+        "action": "on",
+        "params": null
+      },
       "note": "group power (not light): reachable by name, deliberately unreachable by «свет»"
     },
     {
-      "id": "F04", "tier": 1,
-      "utterance": {"ru": "выключи розетки"},
+      "id": "F04",
+      "tier": 1,
+      "utterance": {
+        "ru": "выключи розетки"
+      },
       "context": {},
-      "expect": {"kind": "actuate", "device_id": "all_plugs", "capability": "power", "action": "off", "params": null},
+      "expect": {
+        "kind": "actuate",
+        "device_id": "all_plugs",
+        "capability": "power",
+        "action": "off",
+        "params": null
+      },
       "note": "aggregates are bridge devices — one device-form command, no Irene-side fan-out"
     },
     {
-      "id": "F05", "tier": 2,
-      "utterance": {"ru": "поставь на радиаторах двадцать два градуса"},
-      "context": {"room": "bedroom"},
-      "expect": {"kind": "actuate", "device_id": "bedroom_heating", "capability": "climate", "action": "set_setpoint", "params": {"temp": 22}}
+      "id": "F05",
+      "tier": 2,
+      "utterance": {
+        "ru": "поставь на радиаторах двадцать два градуса"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bedroom_heating",
+        "capability": "climate",
+        "action": "set_setpoint",
+        "params": {
+          "temp": 22
+        }
+      }
     },
     {
-      "id": "F06", "tier": 2,
-      "utterance": {"ru": "тёплый пол на двадцать пять градусов"},
-      "context": {"room": "bathroom"},
-      "expect": {"kind": "actuate", "device_id": "bathroom_floor", "capability": "climate", "action": "set_setpoint", "params": {"temp": 25}}
+      "id": "F06",
+      "tier": 2,
+      "utterance": {
+        "ru": "тёплый пол на двадцать пять градусов"
+      },
+      "context": {
+        "room": "bathroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bathroom_floor",
+        "capability": "climate",
+        "action": "set_setpoint",
+        "params": {
+          "temp": 25
+        }
+      }
     },
     {
-      "id": "F07", "tier": 2,
-      "utterance": {"ru": "сделай яркость тридцать процентов"},
-      "context": {"room": "children_room"},
-      "expect": {"kind": "actuate", "device_id": "children_room_spots", "capability": "brightness", "action": "set", "params": {"level": 30}}
+      "id": "F07",
+      "tier": 2,
+      "utterance": {
+        "ru": "сделай яркость тридцать процентов"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "children_room_spots",
+        "capability": "brightness",
+        "action": "set",
+        "params": {
+          "level": 30
+        }
+      }
     },
     {
-      "id": "F08", "tier": 1,
-      "utterance": {"ru": "закрой тюль слева"},
-      "context": {"room": "living_room"},
-      "expect": {"kind": "actuate", "device_id": "living_room_tulle_left", "capability": "cover", "action": "close", "params": null},
+      "id": "F08",
+      "tier": 1,
+      "utterance": {
+        "ru": "закрой тюль слева"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "living_room_tulle_left",
+        "capability": "cover",
+        "action": "close",
+        "params": null
+      },
       "note": "depth doctrine: a NAMED device stays device-form even though the room has a cover group"
     },
     {
-      "id": "F10", "tier": 1,
-      "utterance": {"ru": "включи свет в детской"},
+      "id": "F10",
+      "tier": 1,
+      "utterance": {
+        "ru": "включи свет в детской"
+      },
       "context": {},
-      "expect": {"kind": "room-group", "room_id": "children_room", "group": "light", "action": "on", "scope": "auto"}
+      "expect": {
+        "kind": "room-group",
+        "room_id": "children_room",
+        "group": "light",
+        "action": "on",
+        "scope": "auto"
+      }
     },
     {
-      "id": "F11", "tier": 1,
-      "utterance": {"ru": "выключи свет"},
-      "context": {"room": "bedroom"},
-      "expect": {"kind": "room-group", "room_id": "bedroom", "group": "light", "action": "off", "scope": "auto"}
+      "id": "F11",
+      "tier": 1,
+      "utterance": {
+        "ru": "выключи свет"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "room-group",
+        "room_id": "bedroom",
+        "group": "light",
+        "action": "off",
+        "scope": "auto"
+      }
     },
     {
-      "id": "F12", "tier": 1,
-      "utterance": {"ru": "выключи весь свет в спальне"},
+      "id": "F12",
+      "tier": 1,
+      "utterance": {
+        "ru": "выключи весь свет в спальне"
+      },
       "context": {},
-      "expect": {"kind": "room-group", "room_id": "bedroom", "group": "light", "action": "off", "scope": "all"},
+      "expect": {
+        "kind": "room-group",
+        "room_id": "bedroom",
+        "group": "light",
+        "action": "off",
+        "scope": "all"
+      },
       "note": "«весь» -> scope all (force fan-out past the room default)"
     },
     {
-      "id": "F13", "tier": 1,
-      "utterance": {"ru": "включи свет в зале"},
+      "id": "F13",
+      "tier": 1,
+      "utterance": {
+        "ru": "включи свет в зале"
+      },
       "context": {},
-      "expect": {"kind": "room-group", "room_id": "living_room", "group": "light", "action": "on", "scope": "auto"},
+      "expect": {
+        "kind": "room-group",
+        "room_id": "living_room",
+        "group": "light",
+        "action": "on",
+        "scope": "auto"
+      },
       "note": "room alias «зал» -> living_room"
     },
     {
-      "id": "F14", "tier": 1,
-      "utterance": {"ru": "выключи весь свет в квартире"},
+      "id": "F14",
+      "tier": 1,
+      "utterance": {
+        "ru": "выключи весь свет в квартире"
+      },
       "context": {},
-      "expect": {"kind": "room-group", "room_id": "global", "group": "light", "action": "off", "scope": "all"},
+      "expect": {
+        "kind": "room-group",
+        "room_id": "global",
+        "group": "light",
+        "action": "off",
+        "scope": "all"
+      },
       "note": "room alias «квартира» -> global; its only light member is the all_lights master"
     },
     {
-      "id": "F15", "tier": 1,
-      "utterance": {"ru": "закрой шторы"},
-      "context": {"room": "living_room"},
-      "expect": {"kind": "room-group", "room_id": "living_room", "group": "cover", "action": "close", "scope": "auto"},
+      "id": "F15",
+      "tier": 1,
+      "utterance": {
+        "ru": "закрой шторы"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "room-group",
+        "room_id": "living_room",
+        "group": "cover",
+        "action": "close",
+        "scope": "auto"
+      },
       "note": "cover noun -> room form; no cover default in the room -> the bridge fans out"
     },
     {
-      "id": "F16", "tier": 1,
-      "utterance": {"ru": "подними жалюзи"},
-      "context": {"room": "cabinet"},
-      "expect": {"kind": "room-group", "room_id": "cabinet", "group": "cover", "action": "open", "scope": "auto"}
+      "id": "F16",
+      "tier": 1,
+      "utterance": {
+        "ru": "подними жалюзи"
+      },
+      "context": {
+        "room": "cabinet"
+      },
+      "expect": {
+        "kind": "room-group",
+        "room_id": "cabinet",
+        "group": "cover",
+        "action": "open",
+        "scope": "auto"
+      }
     },
     {
-      "id": "F20", "tier": 1,
-      "utterance": {"ru": "поставь на паузу"},
-      "context": {"room": "children_room"},
-      "expect": {"kind": "clarify", "capability": "playback", "candidates": ["children_room_tv", "appletv_children"]}
+      "id": "F20",
+      "tier": 1,
+      "utterance": {
+        "ru": "поставь на паузу"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "clarify",
+        "capability": "playback",
+        "candidates": [
+          "children_room_tv",
+          "appletv_children"
+        ]
+      }
     },
     {
-      "id": "F21", "tier": 2,
-      "utterance": {"ru": "поставь двадцать два градуса"},
-      "context": {"room": "bedroom"},
-      "expect": {"kind": "clarify", "capability": "climate", "candidates": ["bedroom_heating", "bedroom_hvac"]},
+      "id": "F21",
+      "tier": 2,
+      "utterance": {
+        "ru": "поставь двадцать два градуса"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "clarify",
+        "capability": "climate",
+        "candidates": [
+          "bedroom_heating",
+          "bedroom_hvac"
+        ]
+      },
       "note": "v1 policy: clarify; priority rules (e.g. seasonal heating-vs-cooling defaults) are a later release"
     },
     {
-      "id": "F30", "tier": 1,
-      "utterance": {"ru": "какая температура в душевой"},
+      "id": "F30",
+      "tier": 1,
+      "utterance": {
+        "ru": "какая температура в душевой"
+      },
       "context": {},
-      "expect": {"kind": "read", "device_id": "shower_sauna_sensors", "capability": "sensor", "field": "temperature"}
+      "expect": {
+        "kind": "read",
+        "device_id": "shower_sauna_sensors",
+        "capability": "sensor",
+        "field": "temperature"
+      }
     },
     {
-      "id": "F31", "tier": 1,
-      "utterance": {"ru": "какая влажность в душевой"},
+      "id": "F31",
+      "tier": 1,
+      "utterance": {
+        "ru": "какая влажность в душевой"
+      },
       "context": {},
-      "expect": {"kind": "read", "device_id": "shower_sauna_sensors", "capability": "sensor", "field": "humidity"}
+      "expect": {
+        "kind": "read",
+        "device_id": "shower_sauna_sensors",
+        "capability": "sensor",
+        "field": "humidity"
+      }
     },
     {
-      "id": "F32", "tier": 1,
-      "utterance": {"ru": "какая температура в спальне"},
+      "id": "F32",
+      "tier": 1,
+      "utterance": {
+        "ru": "какая температура в спальне"
+      },
       "context": {},
-      "expect": {"kind": "read", "any_of": [
-        {"device_id": "bedroom_hvac", "capability": "climate", "field": "room_temperature"},
-        {"device_id": "bedroom_heating", "capability": "climate", "field": "room_temperature"}
-      ]},
+      "expect": {
+        "kind": "read",
+        "any_of": [
+          {
+            "device_id": "bedroom_hvac",
+            "capability": "climate",
+            "field": "room_temperature"
+          },
+          {
+            "device_id": "bedroom_heating",
+            "capability": "climate",
+            "field": "room_temperature"
+          }
+        ]
+      },
       "note": "both climate devices report the same physical room temperature — either source is correct"
     },
     {
-      "id": "F40", "tier": 1,
-      "utterance": {"ru": "включи кино с видеокассеты"},
-      "context": {"room": "living_room"},
-      "expect": {"kind": "actuate", "device_id": "scenario_manager_living_room", "capability": "scenario", "action": "set", "params": {"value": "movie_vhs"}},
+      "id": "F40",
+      "tier": 1,
+      "utterance": {
+        "ru": "включи кино с видеокассеты"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "scenario_manager_living_room",
+        "capability": "scenario",
+        "action": "set",
+        "params": {
+          "value": "movie_vhs"
+        }
+      },
       "note": "enum CHOICE resolved via the ru label «Кино с видеокассеты» -> wire movie_vhs"
     },
     {
-      "id": "F41", "tier": 2,
-      "utterance": {"ru": "включи кино с эппл ти ви"},
-      "context": {"room": "living_room"},
-      "expect": {"kind": "actuate", "device_id": "scenario_manager_living_room", "capability": "scenario", "action": "set", "params": {"value": "movie_appletv"}},
+      "id": "F41",
+      "tier": 2,
+      "utterance": {
+        "ru": "включи кино с эппл ти ви"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "scenario_manager_living_room",
+        "capability": "scenario",
+        "action": "set",
+        "params": {
+          "value": "movie_appletv"
+        }
+      },
       "note": "transliteration-tolerant matching: «эппл ти ви» vs label «Кино с Apple TV»"
     },
     {
-      "id": "F42", "tier": 2,
-      "utterance": {"ru": "выключи кино"},
-      "context": {"room": "living_room"},
-      "expect": {"kind": "actuate", "device_id": "scenario_manager_living_room", "capability": "scenario", "action": "off", "params": null}
+      "id": "F42",
+      "tier": 2,
+      "utterance": {
+        "ru": "выключи кино"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "scenario_manager_living_room",
+        "capability": "scenario",
+        "action": "off",
+        "params": null
+      }
+    },
+    {
+      "id": "F50",
+      "tier": 1,
+      "utterance": {
+        "ru": "переключи усилитель на cd"
+      },
+      "context": {
+        "room": "living_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "mf_amplifier",
+        "capability": "input",
+        "action": "set",
+        "params": {
+          "value": "cd"
+        }
+      },
+      "note": "VWB-19 by_value select: static values triplets, validated at resolve time, zero round-trips"
+    },
+    {
+      "id": "F51",
+      "tier": 1,
+      "utterance": {
+        "ru": "переключи телек на hdmi1"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "children_room_tv",
+        "capability": "input",
+        "action": "set",
+        "params": {
+          "value": "hdmi1"
+        }
+      },
+      "note": "VWB-19 parametric select: options_from=inputs, enumerated at resolution time (ARCH-26 lazy fetch)"
+    },
+    {
+      "id": "F52",
+      "tier": 1,
+      "utterance": {
+        "ru": "запусти youtube на телеке"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "children_room_tv",
+        "capability": "apps",
+        "action": "launch",
+        "params": {
+          "app": "YouTube"
+        }
+      },
+      "note": "options_from=apps: runtime enumeration; case-insensitive match to the device-reported name"
+    },
+    {
+      "id": "F53",
+      "tier": 2,
+      "utterance": {
+        "ru": "запусти ютуб на телеке"
+      },
+      "context": {
+        "room": "children_room"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "children_room_tv",
+        "capability": "apps",
+        "action": "launch",
+        "params": {
+          "app": "YouTube"
+        }
+      },
+      "note": "transliteration: «ютуб» → \"YouTube\" — QUAL-35 T2; red until then"
     }
   ]
 }

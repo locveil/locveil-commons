@@ -31,6 +31,14 @@ from typing import Any, Dict, List, Optional
 _DEVICE_RE = re.compile(r"^/devices/([^/]+)/canonical$")
 _ROOM_RE = re.compile(r"^/rooms/([^/]+)/canonical$")
 _STATE_RE = re.compile(r"^/devices/([^/]+)/state$")
+_OPTIONS_RE = re.compile(r"^/devices/([^/]+)/options/([^/]+)$")
+
+# Deterministic stand-ins for the parametric (driver-queried) option sets — the by_value
+# sets come from the catalog itself (VWB-19 §11.2: options fall back to the table keys).
+_PARAMETRIC_OPTIONS = {
+    "inputs": ["hdmi1", "hdmi2", "av", "component"],
+    "apps": ["YouTube", "Netflix", "Кинопоиск"],
+}
 
 
 class MockBridgeState:
@@ -44,6 +52,21 @@ class MockBridgeState:
     def record(self, entry: Dict[str, Any]) -> None:
         with self.lock:
             self.captured.append(entry)
+
+    def device_options(self, device_id: str, kind: str) -> Optional[List[str]]:
+        """VWB-19: by_value selects answer their static value keys; parametric sets get
+        the deterministic stand-in list; unknown device/kind -> None (404)."""
+        device = self._devices.get(device_id)
+        if device is None:
+            return None
+        for cap in device.get("capabilities") or []:
+            for action in cap.get("actions") or []:
+                for param in action.get("params") or []:
+                    if param.get("options_from") == kind:
+                        return list(_PARAMETRIC_OPTIONS.get(kind, []))
+                    if kind == "inputs" and cap.get("name") == "input" and param.get("values"):
+                        return [v["wire"] for v in param["values"]]
+        return None
 
     def group_targets(self, room_id: str, group: str, scope: str) -> List[str]:
         """Which member(s) a room-group command lands on — mirrors the bridge's policy."""
@@ -91,6 +114,14 @@ class _Handler(BaseHTTPRequestHandler):
             self._json(200, {"device_id": device_id,
                              "state": {"temperature": 23.5, "humidity": 41.0,
                                        "room_temperature": 23.5, "setpoint": 22.0}})
+            return
+        match = _OPTIONS_RE.match(path)
+        if match:
+            options = self.state.device_options(match.group(1), match.group(2))
+            if options is None:
+                self._json(404, {"success": False, "detail": "no such option set"})
+            else:
+                self._json(200, {"success": True, "data": options})
             return
         if path == "/_captured":
             since = 0

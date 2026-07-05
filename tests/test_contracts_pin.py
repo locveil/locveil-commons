@@ -78,11 +78,18 @@ def test_aliases_are_authored(golden):
 
 
 def test_enum_labels_are_localized_ru(golden):
-    """VWB-20 G3: every enum value label set includes Russian."""
+    """VWB-20 G3: every LABELED enum value includes Russian.
+
+    VWB-19 (§11.2) added by_value input triplets with `labels: null` — deliberate:
+    wire = canonical = table key (CD/aux/usb), technical identifiers that are
+    self-matchable and never translated. Null labels are legal; a non-null label
+    set without Russian is still a contract violation."""
     seen = 0
     for _, _, _, p in all_params(golden):
         for v in p.get("values") or []:
             seen += 1
+            if v.get("labels") is None:
+                continue
             assert "ru" in v["labels"], v
     assert seen > 0  # the scenario enum must exist at all
 

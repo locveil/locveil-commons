@@ -126,3 +126,14 @@ def test_assert_read_accepts_any_of():
     assert get_assert(_envelope([{"kind": "read", "device_id": "bedroom_heating"}]),
                       ctx)["pass"] is True
     assert get_assert(_envelope([]), ctx)["pass"] is False
+
+
+def test_mock_bridge_serves_options(bridge):
+    # by_value select → the catalog's own table keys (VWB-19 §11.2 fallback)
+    data = _get(bridge, "/devices/mf_amplifier/options/inputs")
+    assert data["success"] is True and "cd" in data["data"]
+    # parametric select → the deterministic stand-in list
+    data = _get(bridge, "/devices/children_room_tv/options/inputs")
+    assert data["data"] == ["hdmi1", "hdmi2", "av", "component"]
+    data = _get(bridge, "/devices/appletv_children/options/apps")
+    assert "YouTube" in data["data"]
