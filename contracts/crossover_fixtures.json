@@ -8,8 +8,8 @@
     "clarify": "no command emitted: Irene asks a clarification naming the candidate devices"
   },
   "tiers": {
-    "1": "green-able with the QUAL-35 T1 donation baseline (direct RU surfaces, noun lexicon, room aliases)",
-    "2": "needs QUAL-35 T2 (numeric slot-filling with units, transliteration-tolerant CHOICE matching)"
+    "1": "green-able with the QUAL-35 T1 donation baseline (direct RU surfaces, noun lexicon, room aliases; spoken numerals incl. compounds — BUG-23/24 fixed the corrupting pipeline stages)",
+    "2": "needs QUAL-35 T2 (transliteration-tolerant CHOICE matching, complex multi-param phrasings)"
   },
   "excluded_by_design": [
     "Cyrillic-spoken Latin names («ютуб», «эппл ти ви») — transliteration-tolerant matching is QUAL-35 T2; F41/F53 encode it and stay red until then",
@@ -89,7 +89,7 @@
     },
     {
       "id": "F05",
-      "tier": 2,
+      "tier": 1,
       "utterance": {
         "ru": "поставь на радиаторах двадцать два градуса"
       },
@@ -108,7 +108,7 @@
     },
     {
       "id": "F06",
-      "tier": 2,
+      "tier": 1,
       "utterance": {
         "ru": "тёплый пол на двадцать пять градусов"
       },
@@ -127,7 +127,7 @@
     },
     {
       "id": "F07",
-      "tier": 2,
+      "tier": 1,
       "utterance": {
         "ru": "сделай яркость тридцать процентов"
       },
