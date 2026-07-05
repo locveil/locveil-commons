@@ -651,7 +651,7 @@
       "id": "F70",
       "tier": 1,
       "utterance": {
-        "ru": "смени субтитры на медиаплеере"
+        "ru": "переключи субтитры на медиаплеере"
       },
       "context": {
         "room": "living_room"
@@ -662,7 +662,8 @@
         "capability": "tracks",
         "action": "subtitles",
         "params": null
-      }
+      },
+      "note": "QUAL-64 regression: «переключи субтитры» must beat input_select's bare «переключи» (specificity-weighted scoring)"
     },
     {
       "id": "F71",
