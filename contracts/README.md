@@ -15,6 +15,7 @@ never writes here. The **voice side owns this copy**: it re-pins (plain file cop
 | `openapi.json` | bridge (byte-identical) | The API schema of record — `CatalogResponse`, `CatalogParam`, and the canonical action request/response shapes under `components/schemas` |
 | `STAMP.json` | bridge (byte-identical) | The bridge's own build stamp (generating commit + catalog content-hash) |
 | `PIN.json` | **this repo** | The pin record: which bridge commit/patch level the voice side coded against, and when it was pinned |
+| `crossover_fixtures.json` | **this repo** (voice-authored) | The bidirectional test fixtures: `{utterance → expected canonical command}` bound to the pinned catalog. Irene's producer tests assert the *emitted* command matches; the bridge's consumer tests (VWB-16) replay the *expected* command against its native layer |
 
 ## Guarantees (tested)
 
@@ -25,6 +26,12 @@ never writes here. The **voice side owns this copy**: it re-pins (plain file cop
 - `STAMP.json`'s catalog hash matches the golden's `version`, and `PIN.json` matches the stamp;
 - v1.1 shape assertions (aliases present, localized enum labels, units on params,
   `values`-XOR-`options_from`) — so an accidental re-pin of a pre-patch artifact fails loudly.
+
+`tests/test_crossover_fixtures.py` keeps the fixtures honest the same way: every fixture's
+expected command must bind to real catalog entities (device ids, capabilities, actions,
+param ranges/enums, rooms, semantic groups, sensor fields), and the fixtures'
+`catalog_version` must equal the pin's. After a re-pin, a failing fixture guard points at
+exactly which fixtures need re-authoring.
 
 ## Re-pinning
 
