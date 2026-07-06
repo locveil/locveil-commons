@@ -1,10 +1,10 @@
 {
   "pinned_from": "wb-mqtt-bridge/contracts",
-  "bridge_commit": "aa031d2be686fdf5eaef5d05932f833dd92fb910",
-  "bridge_head_at_pin": "aa031d2 (STAMP.bridge_commit says 241f0c8 — the generator stamps HEAD-at-generation, one commit behind as usual)",
+  "bridge_commit": "fc8eb317d7eda2c6d1a313739cb07234bc8ea146",
+  "bridge_head_at_pin": "fc8eb31 (STAMP.bridge_commit says 815738a — the generator stamps HEAD-at-generation, one commit behind as usual)",
   "bridge_version": "0.5.0",
   "catalog_version": "acc1e18beb3f204a",
-  "contract_patch": "v1.1 (VWB-20) + aliases (VWB-21) + room-group addressing (VWB-23) + select-form canonical routing (VWB-19, canonical_first.md §11) + typed HVAC set_mode/set_fan (VWB-24) + wardrobe_spots ru alias «свет» (bridge open-questions resolution 2026-07-06)",
+  "contract_patch": "v1.1 (VWB-20) + aliases (VWB-21) + room-group addressing (VWB-23) + select-form canonical routing (VWB-19, canonical_first.md §11) + typed HVAC set_mode/set_fan (VWB-24) + wardrobe_spots ru alias «свет» (bridge open-questions resolution 2026-07-06) + reports endpoints/EvidenceEnvelope (VWB-28 B-11, contract v1.4)",
   "pinned_date": "2026-07-06",
-  "pinned_by": "wb-mqtt-voice QUAL-69 (alias re-pin consume)"
+  "pinned_by": "wb-mqtt-voice QUAL-75 (v1.4 evidence-contract re-pin)"
 }
