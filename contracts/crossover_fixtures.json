@@ -1,6 +1,6 @@
 {
   "description": "Crossover fixtures for the Irene<->bridge canonical-command contract: {utterance -> expected canonical command}. Producer half: Irene's TEST-18 suite asserts the captured command equals `expect`. Consumer half: the bridge's VWB-16 replays `expect` against its native layer. Authored by wb-mqtt-voice (TEST-18 Slice A); bound to the pinned catalog below — re-author bindings on re-pin if the guard test fails.",
-  "catalog_version": "a17a63b0c47fdb53",
+  "catalog_version": "acc1e18beb3f204a",
   "expect_kinds": {
     "actuate": "device-form command: POST /devices/{device_id}/canonical {capability, action, params}",
     "room-group": "room-form command (VWB-23): POST /rooms/{room_id}/canonical {group, action, scope}; scope auto = bare noun, all = the plural/«весь» signal",
@@ -280,6 +280,22 @@
         "action": "open",
         "scope": "auto"
       }
+    },
+    {
+      "id": "F17",
+      "tier": 1,
+      "utterance": {
+        "ru": "включи свет в гардеробе"
+      },
+      "context": {},
+      "expect": {
+        "kind": "room-group",
+        "room_id": "wardrobe",
+        "group": "light",
+        "action": "on",
+        "scope": "auto"
+      },
+      "note": "catalog acc1e18b: wardrobe_spots carries the ru alias «свет» (bridge open-questions resolution) — the depth doctrine must still win: bare «свет» stays a room-group command (group check precedes device resolution), the bridge's group_default picks the spots"
     },
     {
       "id": "F20",
