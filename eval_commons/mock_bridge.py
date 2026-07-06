@@ -113,7 +113,9 @@ class _Handler(BaseHTTPRequestHandler):
             self.state.record({"kind": "read", "device_id": device_id})
             self._json(200, {"device_id": device_id,
                              "state": {"temperature": 23.5, "humidity": 41.0,
-                                       "room_temperature": 23.5, "setpoint": 22.0}})
+                                       "room_temperature": 23.5, "setpoint": 22.0,
+                                       "level": 60}})  # level: brightness %, read by the
+                             # relative-adjustment flow (F100/F101 expect 60±10)
             return
         match = _OPTIONS_RE.match(path)
         if match:
