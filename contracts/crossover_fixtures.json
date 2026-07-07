@@ -1,6 +1,6 @@
 {
   "description": "Crossover fixtures for the Irene<->bridge canonical-command contract: {utterance -> expected canonical command}. Producer half: Irene's TEST-18 suite asserts the captured command equals `expect`. Consumer half: the bridge's VWB-16 replays `expect` against its native layer. Authored by wb-mqtt-voice (TEST-18 Slice A); bound to the pinned catalog below — re-author bindings on re-pin if the guard test fails.",
-  "catalog_version": "acc1e18beb3f204a",
+  "catalog_version": "8159b4b0068d1c63",
   "expect_kinds": {
     "actuate": "device-form command: POST /devices/{device_id}/canonical {capability, action, params}",
     "room-group": "room-form command (VWB-23): POST /rooms/{room_id}/canonical {group, action, scope}; scope auto = bare noun, all = the plural/«весь» signal",

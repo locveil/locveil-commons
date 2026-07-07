@@ -1,5 +1,5 @@
 {
-  "version": "acc1e18beb3f204a",
+  "version": "8159b4b0068d1c63",
   "rooms": [
     {
       "id": "bathroom",
@@ -6483,6 +6483,10 @@
             {
               "name": "next",
               "params": null
+            },
+            {
+              "name": "previous",
+              "params": null
             }
           ],
           "fields": null,
@@ -6674,11 +6678,7 @@
           "name": "power",
           "actions": [
             {
-              "name": "on",
-              "params": null
-            },
-            {
-              "name": "off",
+              "name": "toggle",
               "params": null
             }
           ],
