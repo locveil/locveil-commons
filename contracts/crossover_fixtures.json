@@ -1,11 +1,11 @@
 {
   "description": "Crossover fixtures for the Irene<->bridge canonical-command contract: {utterance -> expected canonical command}. Producer half: Irene's TEST-18 suite asserts the captured command equals `expect`. Consumer half: the bridge's VWB-16 replays `expect` against its native layer. Authored by wb-mqtt-voice (TEST-18 Slice A); bound to the pinned catalog below — re-author bindings on re-pin if the guard test fails.",
-  "catalog_version": "16eee0f2f7832995",
+  "catalog_version": "5622ba7a1a78102a",
   "expect_kinds": {
     "actuate": "device-form command: POST /devices/{device_id}/canonical {capability, action, params}",
     "room-group": "room-form command (VWB-23): POST /rooms/{room_id}/canonical {group, action, scope}; scope auto = bare noun, all = the plural/«весь» signal",
     "read": "state read (ARCH-8 PR-5): GET /devices/{device_id}/state -> capability.field; `any_of` lists equally-correct targets",
-    "clarify": "no command emitted: Irene asks a clarification naming the candidate devices"
+    "clarify": "no command emitted: Irene asks a clarification naming the candidate devices; `capability` (string or list) = every candidate carries at least one of these, proving the ambiguity is genuine (a list since DRV-28: the same user goal can bind different capabilities per device — set-temperature is climate.set_setpoint on a floor, temperature.set on an AC)"
   },
   "tiers": {
     "1": "green-able with the current baseline: T1 donations + transliteration-tolerant matching (QUAL-35 Slice 1: «ютуб»↔YouTube, «эппл ти ви»↔Apple TV) + compound numerals (BUG-23/24 fixed the corrupting stages)",
@@ -326,10 +326,13 @@
       },
       "expect": {
         "kind": "clarify",
-        "capability": "climate",
         "candidates": [
           "bedroom_heating",
           "bedroom_hvac"
+        ],
+        "capability": [
+          "climate",
+          "temperature"
         ]
       },
       "note": "v1 policy: clarify; priority rules (e.g. seasonal heating-vs-cooling defaults) are a later release"
@@ -374,7 +377,7 @@
         "any_of": [
           {
             "device_id": "bedroom_hvac",
-            "capability": "climate",
+            "capability": "temperature",
             "field": "room_temperature"
           },
           {
@@ -777,10 +780,10 @@
       "expect": {
         "kind": "actuate",
         "device_id": "bedroom_hvac",
-        "capability": "climate",
-        "action": "set_mode",
+        "capability": "mode",
+        "action": "set",
         "params": {
-          "mode": "cool"
+          "value": "cool"
         }
       },
       "note": "VWB-24 typed triplets: ru label «охлаждение» → canonical cool; action-aware device pick (only the HVAC has set_mode)"
@@ -797,10 +800,10 @@
       "expect": {
         "kind": "actuate",
         "device_id": "bedroom_hvac",
-        "capability": "climate",
-        "action": "set_fan",
+        "capability": "fan",
+        "action": "set",
         "params": {
-          "fan": "speed_2"
+          "value": "speed_2"
         }
       }
     },
@@ -926,10 +929,10 @@
       "expect": {
         "kind": "actuate",
         "device_id": "bedroom_hvac",
-        "capability": "climate",
-        "action": "set_setpoint",
+        "capability": "temperature",
+        "action": "set",
         "params": {
-          "temp": 22
+          "value": 22
         }
       },
       "note": "Slice 3: was red (greedy «кондиционер на» routed to hvac_mode at conf 1.00) — FIXED by mode-worded hvac phrases; «градуса» wins setpoint again; tier 1 since 2026-07-06"

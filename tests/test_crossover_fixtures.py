@@ -168,10 +168,14 @@ def test_clarify_fixtures_bind(fixtures_doc, devices):
             continue
         fid = f["id"]
         assert len(e["candidates"]) >= 2, f"{fid}: a clarification needs >=2 candidates"
+        wanted = e["capability"] if isinstance(e["capability"], list) else [e["capability"]]
         for dev_id in e["candidates"]:
             assert dev_id in devices, f"{fid}: unknown candidate {dev_id}"
-            assert _capability(devices[dev_id], e["capability"]), (
-                f"{fid}: candidate {dev_id} lacks capability {e['capability']} — "
+            # string or list: every candidate must carry at least one of the named capabilities —
+            # since DRV-28 one user goal can bind different capabilities per device (set-temperature
+            # is climate.set_setpoint on a floor, temperature.set on an AC)
+            assert any(_capability(devices[dev_id], c) for c in wanted), (
+                f"{fid}: candidate {dev_id} lacks all of {wanted} — "
                 "the ambiguity would not arise"
             )
         # the clarification must be genuine: all candidates in one room
