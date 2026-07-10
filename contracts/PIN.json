@@ -1,10 +1,10 @@
 {
   "pinned_from": "wb-mqtt-bridge/contracts",
-  "bridge_commit": "eef4e8ccdcd7ea277b60173f7ab43faf1f617d73",
-  "bridge_head_at_pin": "89095f9 (bridge repo HEAD at pin time; bridge_commit above mirrors STAMP.bridge_commit)",
-  "bridge_version": "0.5.0",
+  "bridge_commit": "e9653859ac44132bca4695156fd616fd57f99fff",
+  "bridge_head_at_pin": "46584f0 (bridge repo HEAD at pin time; bridge_commit above mirrors STAMP.bridge_commit)",
+  "bridge_version": "0.6.0",
   "catalog_version": "5622ba7a1a78102a",
-  "contract_patch": "v1.1 (VWB-20) + aliases (VWB-21) + room-group addressing (VWB-23) + select-form canonical routing (VWB-19, canonical_first.md §11) + typed HVAC set_mode/set_fan (VWB-24) + wardrobe_spots ru alias «свет» (bridge open-questions resolution 2026-07-06) + reports endpoints/EvidenceEnvelope (VWB-28 B-11, contract v1.4) + rack-verified catalog fixes (auralic previous action, zappiti power toggle — bridge 1025768/4ee9ebc) + desync-repair surface (DRV-5: CanonicalActionResponse.skipped_reason + reserved force param; SCN-11: /scenario/{id}/reconcile_preview + /scenario/{id}/force_reconcile — bridge ab7eb6c/43c504c) + top-level state.<field> projection, `mirrored` retired (DRV-23/DRV-25) + readable canonical `power` on the 39 relay-switch devices (DRV-25) + MitsubishiHvac six-capability ACs (DRV-28: power/mode/fan/vane/widevane/temperature.set{value}; climate stays on heating_loop only) + numeric HVAC wire tables (DRV-26)",
+  "contract_patch": "v1.1 (VWB-20) + aliases (VWB-21) + room-group addressing (VWB-23) + select-form canonical routing (VWB-19, canonical_first.md §11) + typed HVAC set_mode/set_fan (VWB-24) + wardrobe_spots ru alias «свет» (bridge open-questions resolution 2026-07-06) + reports endpoints/EvidenceEnvelope (VWB-28 B-11, contract v1.4) + rack-verified catalog fixes (auralic previous action, zappiti power toggle — bridge 1025768/4ee9ebc) + desync-repair surface (DRV-5: CanonicalActionResponse.skipped_reason + reserved force param; SCN-11: /scenario/{id}/reconcile_preview + /scenario/{id}/force_reconcile — bridge ab7eb6c/43c504c) + top-level state.<field> projection, `mirrored` retired (DRV-23/DRV-25) + readable canonical `power` on the 39 relay-switch devices (DRV-25) + MitsubishiHvac six-capability ACs (DRV-28: power/mode/fan/vane/widevane/temperature.set{value}; climate stays on heating_loop only) + numeric HVAC wire tables (DRV-26) + bridge v0.6.0 release cut (version-only openapi delta; golden byte-identical, catalog version unchanged)",
   "pinned_date": "2026-07-10",
-  "pinned_by": "wb-mqtt-voice QUAL-81 (DRV-28 HVAC contract + golden re-pin)"
+  "pinned_by": "wb-mqtt-voice TEST-21 (bridge v0.6.0 release re-pin)"
 }
