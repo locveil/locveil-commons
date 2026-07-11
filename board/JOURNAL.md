@@ -1,5 +1,19 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-13 CLOSED: the discipline is live in all three repos
+
+Both delegations executed same-day and wrote back (voice **BUILD-30**, bridge **OPS-22**);
+commons-side deliverable was already done, so the entry moves to `BOARD_DONE.md` — the
+first close performed *under* the discipline it created, gated by its own pre-commit hook.
+Full arc: decided as HK-1 in the first live council, executed commons-side (scope-guard +
+BOARD split + CI/hooks, `scope-v1`), consumed by both products — whose first real rotation
+caught a v1 `--rotate journal` bug (archives written character-per-line; scratch tests
+missed it), fixed commons-side as **scope-v2** with both consumers re-pinning. Regime 2
+worked exactly as designed under a concurrent two-session collision: one fix in commons,
+consumed by re-pin, no forked copies. All three repos now run the union checker green with
+committed hooks + `ledger-guard` CI; both product journals rotated under their watermarks;
+voice's DONE ledger rotated with all archived IDs resolvable.
+
 ## 2026-07-11 — PROD-13 voice delegation consumed (BUILD-30) — both delegations now written back
 
 The voice session pulled the PROD-13 delegation, verified it per its
