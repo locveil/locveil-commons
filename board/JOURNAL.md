@@ -1,5 +1,22 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-14 + PROD-6 CLOSED: the inbox story lands end to end
+
+Bridge's delegation verified and ACCEPTED in full (VWB-35 re-point with the schema-default
+drop + fail-fast validator + regen chain, VWB-36 lens re-review — including an honest
+ID re-serial when the pre-named VWB-30 turned out consumed, VWB-37 protocol pin +
+conformance 5/5, spool trivially drained — verified: no spool dir was ever created).
+Voice's was accepted earlier today after one bounce round (ARCH-46: the §5/§7 lift-out).
+With commons-side deliverables done and all delegation IDs written back, both entries
+moved to `BOARD_DONE.md`. All three protocol writers are now pin-validated against
+`report-protocol-v1`; the full loop is live and smoke-proven (ticket #3). Residuals, all
+non-blocking: org base-permissions check (owner), ticket #3 close via `/inbox` (owner),
+and one recorded flag — bridge's `openapi.json` changed, so the voice-side contracts pin
+is one rev stale, riding the normal re-pin cadence (PROD-7 / BUILD-24). The verification
+pattern itself (claim → check against the council agreement → bounce precise asks →
+re-verify) got its first full exercise today and both product sessions closed the loop
+same-day. Next council candidate, owner-flagged twice today: PROD-4 (ops spec).
+
 ## 2026-07-11 — ARCH-46 verification: four items accepted, the doc restructure bounced
 
 First bounce-back in the board's life. Owner asked commons to verify voice's
