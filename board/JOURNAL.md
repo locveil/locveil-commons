@@ -1,5 +1,18 @@
 # Board journal — newest on top
 
+## 2026-07-11 — Council/HK reconciliation: the tooling catches up with its own convention
+
+Owner asked whether the HK-N rules actually exist as written invariants. Finding: the
+filing rule existed (`ledger-discipline.md` §5 + board conventions, landed at HK-1) but
+the council tooling predated it — `SKILL.md`'s id-assignment heuristic (count `## HK-`
+journal headings) was broken (journal headings are dated; it always returns 0 and would
+have re-assigned HK-1 for HK-2 — the session worked around it silently), and
+`process/council.md` never stated the filing rule. Fixed: SKILL.md + council.md now derive
+the next `HK-N` from the board ledgers (`BOARD.md` + `BOARD_DONE.md`, the set scope-guard
+enforces) and state born-decided → `BOARD_DONE.md` filing; commons CLAUDE.md gains the
+`hk-ids-from-the-board` invariant (commons-local prose, NOT in the shared blocks — product
+repos never assign HK ids).
+
 ## 2026-07-11 — PROD-5 CLOSED: bridge delegation consumed (OPS-16) — all three repos harmonized
 
 The bridge session pulled the PROD-5 delegation (pre-assigned OPS-16, flagged REDEFINE),

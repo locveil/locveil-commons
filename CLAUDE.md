@@ -23,6 +23,10 @@ privacy-first, Russian-first voice-controlled smart home. Decision record:
   moderated discussion — per-repo keeper subagents argue their repo's interests on a dossier
   artifact, the owner decides via the page's Copy-delta paste-back. Convention (normative):
   `process/council.md`. Decisions land exactly as terminal decisions would — on the board.
+  **`hk-ids-from-the-board`:** a non-PROD-seeded topic gets the next free `HK-N` counted
+  from the board ledgers (`**HK-N**` declarations in `BOARD.md` + `BOARD_DONE.md` — never
+  journal headings or dossier files); HK entries are born-decided and file directly into
+  `BOARD_DONE.md` (deferred → parks in `BOARD.md`). `ledger-discipline.md` §5.
 
 ## Layout & ownership regimes (D-2/D-3)
 

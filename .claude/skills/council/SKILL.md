@@ -22,9 +22,12 @@ Parse the argument:
   input block from the template, tell the owner to type the topic there → Copy → paste, and
   END THE TURN. The pasted `topic-input` becomes the brief; continue at step 2.
 
-Assign a topic id: the PROD id when seeded from one, else `HK-<n>` (next free `HK-` number —
-grep this skill's past dossier files under the session scratchpad is unreliable; use the
-count of `## HK-` entries in `board/JOURNAL.md` + 1).
+Assign a topic id: the PROD id when seeded from one, else `HK-<n>` — the next free `HK-`
+number from the **board ledgers** (the authoritative set scope-guard enforces):
+`grep -ohE '\*\*HK-[0-9]+' board/BOARD.md board/BOARD_DONE.md`. Never derive it from
+journal headings (they are dated, not HK-prefixed) or from dossier files. On landing, the
+HK entry files directly into `BOARD_DONE.md` (born-decided; deferred topics park in
+`BOARD.md`) — `process/ledger-discipline.md` §5.
 
 ## 2. Keeper round
 

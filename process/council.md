@@ -30,6 +30,14 @@ round); the owner answers through an on-page form.
    dossier's seed form). Product-repo task ids are not resolved in v1 — promote the topic
    to a PROD entry, or paste its text. A seeded entry is reconciled against repo reality by
    the keepers before anyone argues from it.
+   **Topic ids (HK-1 amendment):** a topic not seeded from a PROD entry gets the next free
+   `HK-N`, determined from the **board ledgers** — the `**HK-N**` declarations across
+   `board/BOARD.md` + `board/BOARD_DONE.md` (never from journal headings or dossier files;
+   scope-guard enforces uniqueness over exactly this set). **Filing** follows
+   `ledger-discipline.md` §5: HK topics are born-decided — the entry files directly into
+   `BOARD_DONE.md` when the council lands; a deferred council parks it in the active board.
+   A council that lands its outcome under an existing/new PROD entry still files its HK
+   entry (pointing at that PROD id) — the HK ledger is the council's own record.
 5. **Keepers are partisan, read-only lenses.** They write no files anywhere, they cite
    `file:line`, they argue their own repo's invariants and interests only. The coordinator
    contributes the commons/process lens and the synthesis; conflicts are surfaced, not
