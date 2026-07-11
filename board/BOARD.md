@@ -120,7 +120,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         pattern); (4) protocol consumption (after `report-protocol-v1`): pin the core,
         one conformance test on the collector's emitted labels/prefix/path, restructure
         `locveil-voice/docs/design/problem_reports.md` shared sections into pointers to
-        `process/problem-reports.md` (no ARCH-30 status flip). Voice ID: _pending_.
+        `process/problem-reports.md` (no ARCH-30 status flip). Voice ID: **ARCH-46**
+        (intake 2026-07-11; narrowed — the slug sweep + the `[reports]`-in-profile find
+        were already done by voice BUILD-31 before this write-back).
       - **Delegation → locveil-bridge**: (1) VWB-29-shaped re-point — slug sweep
         (SKILL.md ×5, invariant command, INSTALL.md, design-doc operative refs), make
         `reports.repo` explicit in `system.json` and DROP the slug schema default (HK-3
