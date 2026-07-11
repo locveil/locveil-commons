@@ -1,5 +1,33 @@
 # Board journal — newest on top
 
+## 2026-07-11 — HK-3 decided: the inbox story (PROD-14 filed, PROD-6 rescoped, report-protocol-v1)
+
+Third council, first MULTI-ROUND one (two owner rounds; keepers continued via session
+messages with context intact). Topic: move `wb-user-reports` → `locveil/locveil-reports`,
+consequences for the GitHub-resident triage Claude, PAT survival, and the twin `/inbox`
+skills. Sharpest findings: **the cross-repo triage PAT is presumed dead since the
+2026-07-11 code-repo org move** (fine-grained under `droman42`; fine-grained PATs are
+resource-owner-scoped; last triage ran 2026-07-06) — re-mint required regardless of the
+move; both device PATs die AT the move; both collectors verifiably fail safe (durable
+spool + retry) so the window loses nothing but must stay short; the GitHub Claude has no
+CLAUDE.md by design (workflow prompt + lens files ARE its brain) and those were stale.
+**Phase 0 executed mid-council** (`wb-user-reports@15d788b`): 16 stale
+`droman42/wb-mqtt-*` refs → `locveil/locveil-*` + live label descriptions; ticket #2
+verified closed-complete (round-1 misread corrected). Round 2 (owner: "smells like a new
+contract — which form, who owns the truth"): keepers converged unanimously — **commons
+owns**; voice ceded ARCH-30-era ownership explicitly ("nobody serves the inbox"); bridge
+declined ownership and vetoed the ungoverned reports repo. Form: two-part truth — tiny
+machine core `process/report-protocol/report-protocol.json` (labels, lenses, typed state
+machine + ping_pong_max, prefixes, bundle path, handover schema, slug registry), tagged
+**`report-protocol-v1`**, pinned + test-validated by all three writers (reports bootstrap
+GENERATES labels from it); judgment/policy stays prose in `process/problem-reports.md`
+(PROD-6's scope, rescoped to own both + tagging authority). No `contract-vN` regime-1
+ceremony (cadence: 3 changes ever) and no SKILL.md pinned block in v1. Owner's final
+extension check ("feature requests through the same channel") PASSED and shaped v1:
+ticket TYPE is a first-class core dimension. Skills stay per-repo (genuine dialect).
+Landed: spec + core + tag, PROD-14 (phase-1 owner checklist + both delegations),
+PROD-6 rescope, HK-3 → BOARD_DONE, this entry.
+
 ## 2026-07-11 — Council/HK reconciliation: the tooling catches up with its own convention
 
 Owner asked whether the HK-N rules actually exist as written invariants. Finding: the

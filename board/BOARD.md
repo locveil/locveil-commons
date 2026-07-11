@@ -35,9 +35,20 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       rotation, 127.0.0.1 healthchecks, start-period > fleet boot) + a conformance checklist.
       Shared *scripts* only at the third consumer (rule of three). Delegates on completion:
       voice BUILD-18 (narrowed) + bridge OPS-15.
-- [ ] **PROD-6 — Problem-report policy spec** (D-12) in `process/`: envelope, redaction
-      regex, rate limits, retention, labels — one normative spec consumed by both collectors
-      and the private `wb-user-reports`. Spec-level unification only.
+- [>] **PROD-6 — Problem-report spec + report-protocol machine core** (D-12; RESCOPED by
+      council HK-3, 2026-07-11 — was "spec-level unification only"). Commons owns the shared
+      inbox truth (voice ceded the ARCH-30-era de-facto ownership; the reports repo is the
+      first CONSUMER, never the owner). Two-part form per the owner's contract instinct:
+      the wire-visible surface as a small versioned machine core —
+      `process/report-protocol/report-protocol.json`, tags **`report-protocol-vN`**, ticket
+      TYPE as a first-class dimension (extension-proofed for feature-requests-as-v2) —
+      pinned + test-validated by voice, bridge, AND the reports repo (its bootstrap
+      generates labels from the pin); judgment/policy stays prose in
+      `process/problem-reports.md` (retention, leak fence, redaction boundary, choreography
+      semantics, lens co-ownership governance). No SKILL.md pinned block in v1 (HK-3 q4:
+      the core catches the observed drift class). Commons-side executed 2026-07-11
+      (spec + core authored, `report-protocol-v1` tagged). Consumption delegations ride the
+      PROD-14 delegation record (one intake per repo); PROD-6 closes with them.
 - [ ] **PROD-7 — Contract tagging + scripted re-pin** (D-11): bridge tags `contract-vN`
       releases with artifacts (bridge VWB-29, filed at intake); voice gets `make repin
       CONTRACT=vN` + staleness gate (voice BUILD-24). Commons side: none beyond this entry —
@@ -60,3 +71,51 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 - [ ] **PROD-11 — FUTURE design: Home Assistant in parallel to Wirenboard** (D-4's stress
       test): if the canonical DeviceCommand contract survives HA unchanged, voice gets zero
       tasks; if voice needs changes, the contract leaked WB-specifics. Waits until wanted.
+- [>] **PROD-14 — locveil-reports: org move + credential cutover + re-points** (council
+      HK-3, decided 2026-07-11 over two rounds — positions in `JOURNAL.md`; spec home:
+      PROD-6). Decision: transfer `droman42/wb-user-reports` → **`locveil/locveil-reports`**
+      (private, non-negotiably) as a sequenced slug-and-credential sweep — no redirect
+      reliance anywhere (both collectors POST; a 301 is not reliably replayed; both spool
+      durably so the window loses nothing but must stay short). Council finding: the
+      cross-repo triage PAT is fine-grained under `droman42` and **presumed dead since the
+      2026-07-11 code-repo org move** (last triage 2026-07-06) — re-mint regardless.
+      **Phase 0 — DONE 2026-07-11** (`wb-user-reports@15d788b`): all 16 stale
+      `droman42/wb-mqtt-*` refs in triage.yml/lens files/README/bootstrap.sh →
+      `locveil/locveil-*`; live lens-label descriptions updated. (Ticket #2 verified
+      closed-complete; `fix-pr-open` is its terminal outcome label by design.)
+      **Phase 1 — OWNER checklist (gate: do the org checks FIRST — the GHCR lesson):**
+      (1) org settings: allow fine-grained PAT access; members' base repo permission =
+      none (bundle privacy boundary becomes the org's policy); Actions allowlist covers
+      `anthropics/claude-code-action`; (2) re-mint `REPORTS_CROSS_REPO_TOKEN` NOW:
+      fine-grained, resource owner `locveil`, repos `locveil-voice`+`locveil-bridge`,
+      Contents+PR write → update the repo secret; (3) transfer + rename the repo to
+      `locveil/locveil-reports`; (4) Claude GitHub App: configure on the org to cover the
+      transferred private repo + both code repos; (5) mint the device PAT: fine-grained,
+      owner `locveil`, repo `locveil-reports` only, Issues+Contents write → WB7
+      `/mnt/data/locveil-voice-config/.env` (`IRENE_REPORTS_TOKEN`) + voice runtime
+      `[reports].repo = "locveil/locveil-reports"`, and
+      `/mnt/data/locveil-bridge-config/.env` (`WB_REPORTS_TOKEN`) + bridge `system.json`
+      explicit `reports.repo`; restart both; (6) smoke test end-to-end: file a report from
+      a device → spool/deliver → triage runs → fix-PR lands on a `locveil/*` repo; verify
+      both spools drained. **Phase 2 — delegations** (pull, verify per
+      `task-start-reconciliation`, file local IDs, write back):
+      - **Delegation → locveil-voice**: (1) slug sweep — inbox `SKILL.md` (4 sites),
+        `problem-report-inbox` invariant (2 sites), `config-master.toml` example,
+        design-doc operative refs (BUILD-14 ledger text reconciles at its own intake);
+        (2) drift fixes: adopt the ping-pong guard + bridge's affirmative post-merge ledger
+        wording; (3) `lens-voice.md` co-ownership re-review in the reports repo (VWB-26
+        pattern); (4) protocol consumption (after `report-protocol-v1`): pin the core,
+        one conformance test on the collector's emitted labels/prefix/path, restructure
+        `locveil-voice/docs/design/problem_reports.md` shared sections into pointers to
+        `process/problem-reports.md` (no ARCH-30 status flip). Voice ID: _pending_.
+      - **Delegation → locveil-bridge**: (1) VWB-29-shaped re-point — slug sweep
+        (SKILL.md ×5, invariant command, INSTALL.md, design-doc operative refs), make
+        `reports.repo` explicit in `system.json` and DROP the slug schema default (HK-3
+        q4 round 1) → openapi regen + `contracts/` pin bump + UI regen + voice re-pin
+        chain; spool-drain verification post-cutover; (2) `lens-bridge.md` co-ownership
+        re-review (VWB-30 as pre-named); (3) protocol consumption: pin the core, one
+        conformance test over `service.py:210/216`, retire the hardcodes into
+        pin-validated form. Bridge IDs: _pending_.
+      - **Reports-repo consumption** (no ledger there; executed commons-side post-transfer):
+        `bootstrap.sh` generates labels from the pinned core + trivial CI compare; README
+        pointer flips from voice's design doc to `process/problem-reports.md`.
