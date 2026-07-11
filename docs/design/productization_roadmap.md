@@ -8,6 +8,15 @@ path to the desired end state: cross-repo design sessions running FROM this repo
 restructuring lands (voice BUILD-21), this file seeds `board/` and the decision record migrates
 here; until then this repo remains plain eval-commons and nothing else changes.**
 
+**EXECUTED 2026-07-11 — kept as a dated record; repo names inside the body are as written
+at the time.** The name lock superseded §2's recommendation: the owner chose the invented
+word **Locveil** (no niche collision at all) — `locveil.com`/`.ru` registered, GitHub org
+`locveil` claimed, `.eu` pending, `.io` dropped (`docs/design/locveil_domain_registration.md`).
+Phase-1 steps 1–4 are done: repos renamed (`locveil-commons` / `locveil-voice` /
+`locveil-bridge`), the D-2 restructure landed, §3's seed backlog transplanted to
+`board/BOARD.md` (PROD-1..11), the decision record migrated to
+`docs/design/productization.md`. Live status now lives on the board, not here.
+
 ---
 
 ## 1. What was decided (session summary, 2026-07-08)

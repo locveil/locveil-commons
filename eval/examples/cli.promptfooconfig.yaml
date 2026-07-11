@@ -1,0 +1,57 @@
+# Worked example: testing argparse console scripts with the shared cli_provider.
+# Copy into a consuming project's eval/ and adjust cwd + argv. PURE YAML, no project code.
+#
+#   promptfoo eval -c examples/cli.promptfooconfig.yaml
+#
+# Paths below assume the locveil-commons / locveil-voice / locveil-bridge sibling layout
+# (ARCHITECTURE.md §3). Adjust the relative `file://` and `cwd` to your checkout.
+
+description: CLI smoke tests for the sibling projects' console scripts
+
+tests:
+  # 1. Exit-code contract: a valid config validates clean (exit 0).
+  - description: irene-config-validate accepts a minimal config
+    provider:
+      id: file://../eval_commons/providers/cli_provider.py
+      config:
+        cwd: ../../../locveil-voice
+        argv: ["irene-config-validate", "--config-file", "configs/minimal.toml", "--ci-mode"]
+        return_mode: exit_code
+    assert:
+      - type: equals
+        value: "0"
+
+  # 2. JSON output is well-formed and carries the expected fields.
+  - description: irene-build-analyze --json lists profiles as valid JSON
+    provider:
+      id: file://../eval_commons/providers/cli_provider.py
+      config:
+        cwd: ../../../locveil-voice
+        argv: ["irene-build-analyze", "--list-profiles", "--json"]
+        return_mode: json
+    assert:
+      - type: is-json
+
+  # 3. Pure-function CLI: deterministic stdout, no services or hardware needed.
+  - description: broadlink-cli converts hex to pulse durations
+    provider:
+      id: file://../eval_commons/providers/cli_provider.py
+      config:
+        cwd: ../../../locveil-bridge/backend
+        argv: ["broadlink-cli", "--convert", "26000f4e0000", "--durations"]
+        return_mode: stdout
+    assert:
+      - type: regex
+        value: "\\d+"
+
+  # 4. Failure contract: a bad invocation exits non-zero with a useful stderr message.
+  - description: irene-config-validate rejects a missing file (exit 2, error on stderr)
+    provider:
+      id: file://../eval_commons/providers/cli_provider.py
+      config:
+        cwd: ../../../locveil-voice
+        argv: ["irene-config-validate", "--config-file", "does-not-exist.toml"]
+        return_mode: full
+    assert:
+      - type: javascript
+        value: "JSON.parse(output).exit_code !== 0"

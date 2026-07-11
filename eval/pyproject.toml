@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "locveil-eval"
+version = "0.1.0"
+description = "Shared, declarative (YAML-first) test/eval providers reused across projects"
+requires-python = ">=3.10"
+dependencies = [
+    "jiwer>=3.0",          # WER/CER scoring
+    "websockets>=12.0",    # streaming ASR WebSocket provider
+    "paho-mqtt>=1.6",      # MQTT provider
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+# Phase 1.5 — agent-as-human multi-turn simulation
+sim = ["deepeval>=1.0"]
+# Phase 2 — UI interaction simulation
+ui = ["playwright>=1.40"]
+# Voice-fixture recorder (docs/design/fixture_recorder.md) — mic capture + conditioning
+record = ["sounddevice>=0.4", "numpy>=1.24", "soxr>=0.3"]
+dev = ["pytest>=7.0", "jsonschema>=4.0"]
+
+[project.scripts]
+eval-fixture-record = "eval_commons.record.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["eval_commons*"]

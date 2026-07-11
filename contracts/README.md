@@ -1,9 +1,9 @@
 # The Irene ↔ bridge contract pin (consumer copy)
 
-A **pinned, one-way-inward copy** of the `wb-mqtt-bridge` contract artifacts — the shared
-boundary both repos test against without the other running (`wb-mqtt-voice`
+A **pinned, one-way-inward copy** of the `locveil-bridge` contract artifacts — the shared
+boundary both repos test against without the other running (`locveil-voice`
 `docs/design/mqtt_integration.md` §14). The bridge is the *generator and source of truth*;
-it commits its reference artifacts in **its own** repo (`wb-mqtt-bridge/contracts/`) and
+it commits its reference artifacts in **its own** repo (`locveil-bridge/contracts/`) and
 never writes here. The **voice side owns this copy**: it re-pins (plain file copy + updated
 `PIN.json`) whenever it starts coding against a newer bridge build.
 
@@ -36,7 +36,7 @@ exactly which fixtures need re-authoring.
 ## Re-pinning
 
 ```bash
-cp ../wb-mqtt-bridge/contracts/{catalog.golden.json,openapi.json,STAMP.json} contracts/
+cp ../locveil-bridge/contracts/{catalog.golden.json,openapi.json,STAMP.json} contracts/
 # update PIN.json (bridge commit, catalog version, date), then:
 pytest tests/test_contracts_pin.py
 ```

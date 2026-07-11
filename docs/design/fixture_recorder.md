@@ -1,10 +1,10 @@
 # Design — voice-fixture recorder (`eval-fixture-record`)
 
 **Status:** DESIGN AGREED · 2026-06-27 (the §14 decisions are signed off; implementation pending — see §13) ·
-**Lands in:** eval-commons (shared) · **Drives:** the WS-audio system suites of every consuming project
-(first: wb-mqtt-voice, then wb-mqtt-bridge).
+**Lands in:** locveil-commons (shared) · **Drives:** the WS-audio system suites of every consuming project
+(first: locveil-voice, then locveil-bridge).
 
-> eval-commons has no ledger/journal process yet, so this document is **self-contained**: it carries the motivation,
+> locveil-commons has no ledger/journal process yet, so this document is **self-contained**: it carries the motivation,
 > the decisions *and their rationale*, the interface, the scope boundary, the risks, and an explicit implementation
 > worklist (§13) that stands in for ledger tasks until one exists.
 
@@ -23,15 +23,15 @@ This is a **dev tool**, run locally by a human with a microphone; it never runs 
 
 ## 1. Where it lives — and why not in a consumer (decision record)
 
-**Decision: the recorder lives in eval-commons; it implements its own microphone handling and does *not* reuse any
+**Decision: the recorder lives in locveil-commons; it implements its own microphone handling and does *not* reuse any
 consumer project's audio code.**
 
-The dependency direction settles it. eval-commons is the **lower, shared layer** — both wb-mqtt-voice and
-wb-mqtt-bridge depend *on* it (`uv pip install -e ../../eval-commons`). If the recorder imported a consumer's mic stack
-(e.g. `irene`'s audio input), that edge would point **back up at a consumer**, and since wb-mqtt-voice already depends
-on eval-commons it would be a literal **dependency cycle**. Three consequences, any one disqualifying:
+The dependency direction settles it. locveil-commons is the **lower, shared layer** — both locveil-voice and
+locveil-bridge depend *on* it (`uv pip install -e ../../locveil-commons`). If the recorder imported a consumer's mic stack
+(e.g. `irene`'s audio input), that edge would point **back up at a consumer**, and since locveil-voice already depends
+on locveil-commons it would be a literal **dependency cycle**. Three consequences, any one disqualifying:
 
-- **Reusability dies.** eval-commons must stay project-agnostic; coupling it to `irene` means wb-mqtt-bridge (no
+- **Reusability dies.** locveil-commons must stay project-agnostic; coupling it to `irene` means locveil-bridge (no
   `irene`) can't record fixtures — the shared tool would serve only one of its two consumers.
 - **Wrong concern.** A consumer's mic input is *runtime* (VAD, wake-word, streaming into the live ASR pipeline). The
   recorder is *capture-to-disk*. They overlap only at "read PCM from a device"; sharing drags a heavyweight,
@@ -46,10 +46,10 @@ The clean split that keeps it honest — **logic here, data in the consumer**:
 
 | Concern | Home |
 |---|---|
-| Capture, format-conditioning, worklist resolution, interactive loop (the *logic*) | eval-commons |
+| Capture, format-conditioning, worklist resolution, interactive loop (the *logic*) | locveil-commons |
 | Which mic / gain / capture rate on *this* machine (the *data*) | consumer's git-ignored `eval/profiles/recording.env`, passed *in* |
 
-eval-commons never hard-codes a consumer path; the consumer hands it the config + a fixtures dir + the YAML to read.
+locveil-commons never hard-codes a consumer path; the consumer hands it the config + a fixtures dir + the YAML to read.
 
 ## 2. Requirements
 
@@ -67,7 +67,7 @@ eval-commons never hard-codes a consumer path; the consumer hands it the config 
 
 **Non-functional**
 - Project-agnostic (works for voice and bridge unchanged).
-- The microphone dependency is **opt-in** (an extra), so core eval-commons installs stay lean.
+- The microphone dependency is **opt-in** (an extra), so core locveil-commons installs stay lean.
 - Zero dependency on any consumer's code (§1).
 
 ## 3. Component model
@@ -89,7 +89,7 @@ eval_commons/
 ```
 
 **Entry point.** A console script `eval-fixture-record` (new `[project.scripts]`), so it resolves in the consumer's
-venv once eval-commons is installed there. Mic deps are an optional extra (§8); the script prints an actionable error
+venv once locveil-commons is installed there. Mic deps are an optional extra (§8); the script prints an actionable error
 if they're absent rather than failing on import.
 
 ## 4. CLI contract
@@ -143,7 +143,7 @@ REC_COUNTDOWN_S=1                 # beep/countdown before recording starts
 REC_GAIN_DB=0                     # optional post-gain
 ```
 
-The Makefile sources this and passes values via env/flags; eval-commons reads them, never a consumer path.
+The Makefile sources this and passes values via env/flags; locveil-commons reads them, never a consumer path.
 `--devices` exists precisely to populate `REC_INPUT_DEVICE`.
 
 ## 7. Capture mechanics & format conditioning
@@ -169,7 +169,7 @@ The Makefile sources this and passes values via env/flags; eval-commons reads th
   ```
 - **Resampling (decided, §14):** **native-16 kHz capture first**; resample only when the device can't deliver 16 k,
   via **`soxr`** (small, high-quality). No always-on resample path.
-- Core eval-commons deps are **unchanged**; recording is `pip install -e '../../eval-commons[record]'` in the
+- Core locveil-commons deps are **unchanged**; recording is `pip install -e '../../locveil-commons[record]'` in the
   consumer venv. The script degrades with a clear message if the extra isn't installed.
 
 ## 9. Consumer integration
@@ -217,7 +217,7 @@ validation · device discovery · machine-local mic config · safe-by-default (m
 ## 12. Testing the tool
 
 The mic + interactive loop can't be unit-tested, so the design factors the **pure** parts to be testable (under
-eval-commons' `dev` extra / pytest):
+locveil-commons' `dev` extra / pytest):
 - `worklist.py` — key extraction, dedup, the same-fixture-conflicting-reference error, missing-on-disk detection.
 - `audio.conform_to_pcm16` / `write_pcm16_wav` — feed synthetic frames at various rates/channels, assert the output
   passes `wav_to_pcm16_frames` (downmix correctness, resample to exactly 16 k, sampwidth=2).
@@ -226,14 +226,14 @@ eval-commons' `dev` extra / pytest):
 
 ## 13. Implementation worklist (stands in for ledger tasks)
 
-eval-commons has no ledger yet, so the follow-up tasks are listed here explicitly; lift them into a ledger if/when one
+locveil-commons has no ledger yet, so the follow-up tasks are listed here explicitly; lift them into a ledger if/when one
 exists (see §15):
 
 - **W1 — audio:** ✅ `conform_to_pcm16` + `write_pcm16_wav` in `eval_commons/audio/conform.py` (5 unit tests; output
   validated against `wav_to_pcm16_frames`). *(Placed in `audio/conform.py`, not `__init__`, so the core audio module
   stays stdlib/numpy-free for the streaming providers.)*
 - **W2 — worklist:** ✅ `record/worklist.py` YAML resolver (5 unit tests; dedup + conflict guard verified against the
-  real wb-mqtt-voice config via `--list`).
+  real locveil-voice config via `--list`).
 - **W3 — capture:** ✅ `record/capture.py` (sounddevice capture + `query_devices`; `--devices` smoke-verified). Mic
   loop is manual-only by nature.
 - **W4 — session:** ✅ `record/session.py` interactive controller (prompt/countdown/record/playback/keep-redo-skip).
@@ -241,9 +241,9 @@ exists (see §15):
 - **W5 — CLI + packaging:** ✅ `record/cli.py`, `[project.scripts] eval-fixture-record`, `[record]` extra. `--list` /
   `--devices` / conflict-exit-2 / happy-exit-0 verified. *(README section still TODO.)* *(`--base-dir` replaces the
   design's `--fixtures-dir`: audio paths already carry the `fixtures/` prefix, so the base is the YAML's dir.)*
-- **W6 — consumer wiring (wb-mqtt-voice first):** ⬜ `make record` + `recording.env.example`; add `reference` to the
+- **W6 — consumer wiring (locveil-voice first):** ⬜ `make record` + `recording.env.example`; add `reference` to the
   judge case(s) (§5 — `--list` confirms `light_unreachable` has none); repoint `fixtures/README.md` at `make record`.
-  Lands in the **wb-mqtt-voice repo → needs a ledger task there.** Then mirror for wb-mqtt-bridge.
+  Lands in the **locveil-voice repo → needs a ledger task there.** Then mirror for locveil-bridge.
 - **W7 — (deferred):** ⬜ `--verify` against a live SUT.
 
 ## 14. Decisions (agreed 2026-06-27)
@@ -254,12 +254,12 @@ exists (see §15):
 3. **Mic config format** — **`.env`**, consistent with `profiles/*.env`. See §6.
 4. **`--verify` (ASR self-check)** — **deferred** (needs a running SUT); v1 ships without it. See §10/W7.
 
-## 15. Note: eval-commons has no process scaffolding (left open, by decision)
+## 15. Note: locveil-commons has no process scaffolding (left open, by decision)
 
 This repo currently has an **empty `CLAUDE.md`** and no ledger/journal — which is why this doc is exhaustive and
-carries its own worklist. eval-commons will **likely adopt a slightly different process** than the sibling projects,
+carries its own worklist. locveil-commons will **likely adopt a slightly different process** than the sibling projects,
 so that question is **deliberately left open for now** (maintainer's call, 2026-06-27); the invariants are **not** being
 ported yet. Until a process exists, treat §13 as the task list and record completion in commit messages. (When the time
-comes, the wb-mqtt-voice → bridge handoff brief at `../wb-mqtt-bridge/INVARIANTS_HANDOFF.md` is a starting point, to be
-adapted to whatever shape eval-commons settles on.)
+comes, the locveil-voice → bridge handoff brief at `../locveil-bridge/INVARIANTS_HANDOFF.md` is a starting point, to be
+adapted to whatever shape locveil-commons settles on.)
 ```

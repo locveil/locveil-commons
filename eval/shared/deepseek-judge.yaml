@@ -1,0 +1,18 @@
+# Shared LLM-as-judge provider — defined ONCE, referenced by every UX assertion.
+#
+# DeepSeek is OpenAI-compatible, so promptfoo's openai:chat:* provider drives it with
+# only a base-URL + key swap. Reference from a project config as:
+#
+#   defaultTest:
+#     options:
+#       provider: file://../../locveil-commons/eval/shared/deepseek-judge.yaml
+#
+# Requires env: DEEPSEEK_API_KEY
+#
+# ⚠ Russian grading quality is UNVERIFIED — calibrate against human-scored examples
+#   before trusting scores (ARCHITECTURE.md §7.1).
+id: openai:chat:deepseek-chat
+config:
+  apiBaseUrl: https://api.deepseek.com/v1
+  apiKeyEnvar: DEEPSEEK_API_KEY
+  temperature: 0

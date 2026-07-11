@@ -1,0 +1,88 @@
+# RU UX judge calibration (locveil-voice TEST-16, ARCHITECTURE.md §7.1).
+#
+# 20 canned assistant replies, each graded by the SAME llm-rubric → DeepSeek path the live
+# suites use, against the SHIPPED shared rubrics (file:// refs — so this calibrates what
+# production actually runs). Human gold labels (a Russian speaker, 2026-07-02) live in
+# gold_labels.yaml; score.py joins this eval's JSON output with them and reports raw
+# agreement + Cohen's κ over the confident labels (borderlines reported separately).
+#
+# Run:  DEEPSEEK_API_KEY=... promptfoo eval -c promptfooconfig.yaml -o out.json --no-cache
+#       python3 score.py out.json
+
+description: "RU UX judge calibration — human-labeled set vs DeepSeek (co-equal rubrics)"
+
+prompts:
+  - "{{reply}}"
+
+providers:
+  - echo
+
+defaultTest:
+  options:
+    provider:
+      file://../../shared/deepseek-judge.yaml
+
+tests:
+  # ── confirms_action_ru ────────────────────────────────────────────────────────
+  - description: "A01"
+    vars: { reply: "Готово, таймер на десять минут установлен." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+  - description: "A02"
+    vars: { reply: "Таймер установлен. Позову вас через десять минут!" }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+  - description: "A03"
+    vars: { reply: "Окей." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+  - description: "A04"
+    vars: { reply: "Готово! Timer set for 10 minutes." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+  - description: "A05"
+    vars: { reply: "Кажется, таймер установлен, но я не уверена." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+  - description: "A06"
+    vars: { reply: "Таймер установлен (timer_id=timer_3, duration_seconds=600)." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+  - description: "A07"
+    vars: { reply: "Свет включён, хозяин, как прикажете-с." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+  - description: "A08"
+    vars: { reply: "Выполнено: RuntimeError не возникло, действие завершилось со статусом success=True." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+  - description: "A09"
+    vars: { reply: "Включила свет на кухне." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+  - description: "A10"
+    vars: { reply: "Сделала. Что-нибудь ещё?" }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/confirms_action_ru.txt" }]
+
+  # ── graceful_failure_ru ───────────────────────────────────────────────────────
+  - description: "B11"
+    vars: { reply: "Не получилось включить свет в гараже — устройство не отвечает. Проверьте, подключено ли оно, и попробуйте ещё раз." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
+  - description: "B12"
+    vars: { reply: "Свет в гараже сейчас недоступен. Попробую позже или проверьте выключатель." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
+  - description: "B13"
+    vars: { reply: "Ошибка: ConnectionRefusedError(111) при обращении к устройству garage_light_1." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
+  - description: "B14"
+    vars: { reply: "Не могу. Это устройство не работает." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
+  - description: "B15"
+    vars: { reply: "Sorry, the garage light is unreachable right now." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
+  - description: "B16"
+    vars: { reply: "Не удалось выполнить запрос, произошла внутренняя ошибка сервиса, код 502, обратитесь к администратору системы." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
+  - description: "B17"
+    vars: { reply: "Свет в гараже не отвечает, увы. Может, выбило автомат? Стоит проверить щиток." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
+  - description: "B18"
+    vars: { reply: "Ну не работает у тебя гараж, что я сделаю." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
+  - description: "B19"
+    vars: { reply: "К сожалению, не вышло: гаражный светильник не в сети. Failed after 3 retries." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
+  - description: "B20"
+    vars: { reply: "Не удалось связаться с устройством. Пожалуйста, попробуйте ещё раз через минуту." }
+    assert: [{ type: llm-rubric, value: "file://../../shared/rubrics/ru/graceful_failure_ru.txt" }]
