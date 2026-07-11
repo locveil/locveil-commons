@@ -132,7 +132,10 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         shared vocabulary, the two-sources-of-truth pattern `process/problem-reports.md`
         §1 forbids. NOT accepted: replace §5 + §7 bodies with pointers to the commons spec
         (+ the core pin) as agreed in HK-3 round 2; voice-side content stays. ARCH-46
-        remains open voice-side until the lift-out lands. **Lift-out landed same-day**
+        remains open voice-side until the lift-out lands.
+        **Bounce RESOLVED 2026-07-11** (`locveil-voice@49c868a`, verified by commons):
+        §5/§7 bodies are pointers to the spec + pin, voice-side content intact, zero
+        spec-grade vocabulary residue. Voice delegation fully accepted. **Lift-out landed same-day**
         (voice `49c868a`): §5/§7 bodies → pointers + voice-side remainder (D-11 rationale,
         outcome-3a note); stale §7.3/§7.4 cross-refs re-pointed incl. `report_bundle.py`.
       - **Delegation → locveil-bridge**: (1) VWB-29-shaped re-point — slug sweep
