@@ -91,8 +91,12 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       `report-protocol.pin.json`, `bootstrap.sh` generates labels from the pin,
       `protocol-check` CI green (compares live labels weekly + on push), README pointer
       flipped to `process/problem-reports.md`, post-transfer self-references swept.
-      Remaining: (1) org policy checks, (4) Claude App on the org covering the private
-      repo, (5) device PAT + WB7 `.env`×2 + config slugs + restarts, (6) smoke test.
+      **Phase 1 COMPLETE 2026-07-11** (journal): App installed + verified live (plumbing
+      run on #2), device PATs everywhere, end-to-end smoke GREEN (ticket #3: sent →
+      protocol-correct filing → triage → needs-owner). Residual: org base-permissions
+      check (owner); voice delegation gains two finds — `[reports]` enabled in the
+      canonical WB7 profile config + stale `wb7.env` port (6000→8080); owner closes #3
+      via `/inbox`. Remaining board action: the two delegations below.
       (1) org settings: allow fine-grained PAT access; members' base repo permission =
       none (bundle privacy boundary becomes the org's policy); Actions allowlist covers
       `anthropics/claude-code-action`; (2) re-mint `REPORTS_CROSS_REPO_TOKEN` NOW:

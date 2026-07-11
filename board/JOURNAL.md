@@ -1,5 +1,26 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-14 phase 1 COMPLETE: end-to-end smoke green on the renamed pipeline
+
+Owner finished the credential cutover (device PATs everywhere incl. the controller, Claude
+App installed on the org — the claude.ai "organization settings" plan message was a red
+herring; the GitHub-side install verified). Plumbing check first: an owner comment on
+closed ticket #2 → triage ran SUCCESS (both codebases check out at `locveil/*`,
+CROSS_REPO_TOKEN present) and the follow-up bot event was correctly skipped (§7.5).
+Then the real smoke through the controller (REST `/execute/command`, two turns,
+`room_alias=kitchen` — bare web sessions don't share the capture window): «сообщи о
+проблеме» → «Опишите проблему…» → test description → `report_status: sent` (direct
+delivery, no spool) → ticket #3 filed protocol-correct (`[voice]` prefix, labels per the
+pin) → triage flipped `new`→`needs-owner`, confirmed delivery + bundle + report-id,
+recommended close. Event fan-out note: filing with 3 labels spawns 4 workflow runs; the
+concurrency group collapsed them to ONE executed run (3 cancelled unstarted, bot-comment
+follow-ups skipped) — by design, cosmetically quietable in the delegation tail. Voice-side
+finds for the delegation: voice Claude fixed a systemic config issue live (owner: to be
+addressed together later); `[reports]` must land enabled in the canonical WB7 profile
+config (hand-edit dies at next `update.sh` rsync); `eval/profiles/targets/wb7.env` port
+6000 is stale (live API is :8080). Remaining on PROD-14: org base-permissions check
+(owner), the voice + bridge delegations, owner close of ticket #3 via `/inbox`.
+
 ## 2026-07-11 — PROD-14 phase 1 mostly executed: the repo IS locveil/locveil-reports
 
 Owner re-minted the cross-repo PAT under the org (secret updated — the triage fix-PR path
