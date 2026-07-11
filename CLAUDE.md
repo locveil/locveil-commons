@@ -27,6 +27,11 @@ privacy-first, Russian-first voice-controlled smart home. Decision record:
 ## Layout & ownership regimes (D-2/D-3)
 
 `board/` + `process/` + `site/` = regime 3 (commons owns process/product artifacts).
+**Ledger discipline (HK-1/PROD-13, normative `process/ledger-discipline.md`):** `BOARD.md`
+is the active ledger, completed entries MOVE to `BOARD_DONE.md`; scope-guard
+(`packages/scope-guard/`, config `.scope-guard.toml`) enforces it — pre-commit hook
+(`hooks/`, `core.hooksPath`) + `ledger-guard` CI, both `--check`-only; rotation only via
+explicit `--rotate` in its own commit. Products vendor the script at `scope-vX` tags.
 `eval/` + `packages/` = regime 2 (commons owns shared code; products pin versions; rule of
 two for new extractions). `contracts/` = regime 1 (product-owned generated artifacts;
 commons holds only pins). Packages version independently via prefixed tags — `eval-vX`,

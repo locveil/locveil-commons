@@ -17,8 +17,16 @@ required-task-tags in v1 but to be revisited in a future release-numbering/sprin
 housekeeping round; **HK-N becomes a tracked board prefix** — council topics are
 born-decided and file directly into `BOARD_DONE.md`. Rename question (brief point 5):
 dropped — naming is config. Landed: `process/ledger-discipline.md` (normative), PROD-13
-on the board with voice+bridge delegations, this entry; execution follows in-session
-(scope-guard tool, BOARD_DONE split, commons config/CI/hooks, `scope-v1` tag).
+on the board with voice+bridge delegations, this entry. Executed same session:
+`packages/scope-guard/` (union tool, `locveil-scope-guard`, tag `scope-v1`), the
+BOARD/BOARD_DONE split (PROD-1/2/3/12 + HK-1 moved), commons `.scope-guard.toml` +
+`ledger-guard` CI + committed pre-commit hook (`hooks/`). Verification: commons green;
+bridge green (+ true overdue-journal warning); voice run surfaced **two true pre-existing
+findings its own checker could not see** — the DONE I18N section is unsorted (the old
+`[A-Z]+` ordering regex never matches `I18N`) and RELEASE_PLAN_DONE.md exceeds the
+4000-line hard ceiling — both folded into the voice delegation. Rotation verified on
+scratch copies: bridge journal 1625→698 lines (whole days, pointer updated), voice DONE
+4273→1930 with all 125 archived IDs still resolvable (zero false orphans).
 
 ## 2026-07-11 — PROD-12: the council built (skill + keepers + dossier + convention)
 

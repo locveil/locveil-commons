@@ -1,0 +1,28 @@
+# locveil-commons scope-guard config (HK-1/PROD-13; convention: process/ledger-discipline.md)
+
+[ledger]
+active = "board/BOARD.md"
+done = "board/BOARD_DONE.md"
+archive_dir = "board/archive/ledger"
+prefixes = ["PROD", "HK"]
+open_statuses = [" ", ">"]
+require_sections = false                 # flat board; IDs ascend per prefix
+high_water = 3000
+low_water = 2000
+hard_ceiling = 4000
+
+[evidence]
+dirs = ["docs/design"]
+link_scan = true
+
+[journal]
+active = "board/JOURNAL.md"
+archive_dir = "board/archive/journal"
+high_water = 1500
+low_water = 1000
+hard_ceiling = 2000
+completion_crosscheck = true
+archive_pointer = true
+
+[board]
+delegation_writeback = true
