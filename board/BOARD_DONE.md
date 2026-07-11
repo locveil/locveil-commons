@@ -194,18 +194,6 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
         `task-start-reconciliation`, file a local ID, write it back here. Bridge ID:
         OPS-22 (consumed 2026-07-11; the rotation step caught the v1 `--rotate` bug →
         fixed here as scope-v2).
-- [x] **HK-3 — The inbox story: locveil-reports move + report-protocol contract** (third
-      council topic; bare seed, decided 2026-07-11 over TWO owner rounds — the first
-      multi-round council). Outcomes filed as **PROD-14** (the move + credential cutover +
-      re-points; phase 0 executed in-session) and **PROD-6 rescoped** (commons-owned
-      two-part truth: `report-protocol-vN` machine core + prose spec — the owner's
-      "smells like a contract" instinct, confirmed by both keepers, who converged
-      unanimously on commons ownership; voice ceded the ARCH-30-era de-facto ownership).
-      Round-2 extension check ("feature requests through the same channel") passed: ticket
-      TYPE is a first-class core dimension; a future type is a vN bump, not a redesign.
-      Council craft note: the round-1 "conflict" between keepers dissolved on inspection
-      (voice opposed prose parameterization, not the block; bridge demoted its own block
-      to optional once the machine core existed).
 - [x] **PROD-14 — locveil-reports: org move + credential cutover + re-points** (council
       HK-3, decided 2026-07-11 over two rounds — positions in `JOURNAL.md`; spec home:
       PROD-6). Decision: transfer `droman42/wb-user-reports` → **`locveil/locveil-reports`**
@@ -295,3 +283,15 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       - **Reports-repo consumption** (no ledger there; executed commons-side post-transfer):
         `bootstrap.sh` generates labels from the pinned core + trivial CI compare; README
         pointer flips from voice's design doc to `process/problem-reports.md`.
+- [x] **HK-3 — The inbox story: locveil-reports move + report-protocol contract** (third
+      council topic; bare seed, decided 2026-07-11 over TWO owner rounds — the first
+      multi-round council). Outcomes filed as **PROD-14** (the move + credential cutover +
+      re-points; phase 0 executed in-session) and **PROD-6 rescoped** (commons-owned
+      two-part truth: `report-protocol-vN` machine core + prose spec — the owner's
+      "smells like a contract" instinct, confirmed by both keepers, who converged
+      unanimously on commons ownership; voice ceded the ARCH-30-era de-facto ownership).
+      Round-2 extension check ("feature requests through the same channel") passed: ticket
+      TYPE is a first-class core dimension; a future type is a vN bump, not a redesign.
+      Council craft note: the round-1 "conflict" between keepers dissolved on inspection
+      (voice opposed prose parameterization, not the block; bridge demoted its own block
+      to optional once the machine core existed).
