@@ -10,11 +10,14 @@ Consumers do **not** track this directory live. Vendor `scope_guard.py` at a tag
 version (the version stamp is in the file) next to your own `.scope-guard.toml`:
 
 ```
-git -C ../locveil-commons show scope-v1:packages/scope-guard/scope_guard.py > scripts/scope_guard.py
+git -C ../locveil-commons show scope-v2:packages/scope-guard/scope_guard.py > scripts/scope_guard.py
 ```
 
 Behavior changes happen here, never in a consumer's copy; consumers move by re-pinning.
 Starter configs verified green against each repo's tree on 2026-07-11: `examples/`.
+Current tag: **scope-v2** (1.0.1) — fixes v1's `--rotate journal` writing archives
+character-per-line (caught by the first real rotation, bridge OPS-22; do not pin scope-v1
+if you will rotate) and adds the explicit `--check` flag.
 
 ## Run
 

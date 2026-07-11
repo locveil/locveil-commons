@@ -1,5 +1,24 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-13 bridge delegation consumed (OPS-22); scope-v2 tagged (rotation bugfix)
+
+The bridge session pulled the PROD-13 delegation, verified it per its
+`task-start-reconciliation`, filed it as **OPS-22**, and executed the cutover (vendored
+tool + `.scope-guard.toml`, `check_scope.py` retired, `ledger-guard` CI re-pointed,
+committed pre-commit hook live, invariant text updated). The first real `--rotate journal`
+run then caught a v1 defect: **archives were written character-per-line** (in
+`rotate_journal`, the section body was double-indexed after unpacking — `s[1]` on the
+already-unpacked day-lines list — so `"\n".join` iterated a string; the kept-sections
+rewrite had the same bug, silently truncating the journal). No history lost — the journal
+is git-tracked and was restored. Fixed here (2-line fix), validated against a copy of the
+bridge tree with a line-by-line Counter diff (1625 → 989 kept + 635 archived + pointer,
+zero lines missing), tagged **scope-v2** (1.0.1). Also made the docs honest: v1's
+README/spec said hooks run `--check` but no such flag existed (the bare invocation was the
+check) — v2 adds the explicit `--check` flag (mutually exclusive with `--rotate`). Both
+PROD-13 delegations re-pointed at scope-v2; **voice must pin scope-v2, not v1** — its
+overdue journal rotation (1510 lines) would have hit the same bug. Bridge ID written back;
+voice ID still pending.
+
 ## 2026-07-11 — HK-1 decided: ledger/journal discipline harmonized (files PROD-13)
 
 First live council session (PROD-12's shakedown) — bare seed, topic typed into the round-0

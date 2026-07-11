@@ -80,7 +80,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       (config), board rule pack. File renames: dropped — naming is per-repo config
       (owner q6). Normative spec: `process/ledger-discipline.md`. Commons-side execution
       immediate (owner q1 amendment). Delegation record:
-      - **Delegation → locveil-voice**: consume scope-guard at the pinned tag `scope-v1` —
+      - **Delegation → locveil-voice**: consume scope-guard at the pinned tag `scope-v2`
+        (was `scope-v1`; re-tagged after the bridge consumption caught a `--rotate journal`
+        bug — v1 wrote archives character-per-line. Everything below holds at v2.) —
         (1) vendor `packages/scope-guard/scope_guard.py` + author `.scope-guard.toml`
         (start from `packages/scope-guard/examples/voice.scope-guard.toml`, verified
         against the voice tree 2026-07-11 — parity with the local checker PLUS two TRUE
@@ -98,7 +100,7 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         (`[release]`/`[deferred]`). Cutover proof: vendored tool green before deleting the
         local script. Verify per `task-start-reconciliation`, file a local ID, write it
         back here. Voice ID: _pending_.
-      - **Delegation → locveil-bridge**: same shape at tag `scope-v1` — (1) vendor the
+      - **Delegation → locveil-bridge**: same shape at tag `scope-v2` — (1) vendor the
         script + author `.scope-guard.toml` (start from
         `packages/scope-guard/examples/bridge.scope-guard.toml`, verified green against
         the bridge tree 2026-07-11; aliases + tombstones stay ON); (2) retire
@@ -110,4 +112,5 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         `process/ledger-discipline.md` §2 and run the overdue journal rotation
         (1625 > ~1500) via `--rotate`. Cutover proof as above. Verify per
         `task-start-reconciliation`, file a local ID, write it back here. Bridge ID:
-        _pending_.
+        OPS-22 (consumed 2026-07-11; the rotation step caught the v1 `--rotate` bug →
+        fixed here as scope-v2).
