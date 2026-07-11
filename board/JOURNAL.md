@@ -21,8 +21,14 @@ sides (`config-master-file` / `config-master-tree`); commons authors
 Deferred by owner: the session-start **inbox story** — "much bigger, the next HK
 exercise". Landed: `process/claude-md.md` (normative), PROD-5 → `[>]` with delegations
 (voice BUILD-23 narrowed, bridge OPS-16 redefined — its text referenced the deleted
-`check_scope.py`), HK-2 filed to `BOARD_DONE.md`, this entry. Execution follows
-in-session.
+`check_scope.py`), HK-2 filed to `BOARD_DONE.md`, this entry. Executed same session
+(`1786f91`, tag `scope-v3`): `process/claude-blocks/` (both digest sources),
+`process/new-repo-template/` (CLAUDE.md skeleton + starter config + hook + CI template +
+ledger/journal shapes), scope-guard 1.1.0 with the `[claude]` hash rule +
+`--hash-blocks`, commons' own adoption (blocks + config + CI filters + the overdue
+`process/README.md` fix), CI convention in `ledger-discipline.md` §4. Verified: green on
+commons; tampered block and missing markers both fail correctly. PROD-5 stays `[>]` until
+BUILD-23/OPS-16 confirm consumption.
 
 ## 2026-07-11 — PROD-13 CLOSED: the discipline is live in all three repos
 
