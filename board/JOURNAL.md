@@ -1,5 +1,16 @@
 # Board journal — newest on top
 
+## 2026-07-11 — Controller cutover CONFIRMED: the deployment is fully Locveil
+
+Owner made the 9 new GHCR packages public (org policy initially blocked Public — fixed via
+org Settings → Packages → allow public package creation) and ran both
+`ops/migrate-to-locveil.sh` scripts on the WB7 successfully. The controller now runs
+`locveil-voice`, `locveil-bridge`, `locveil-bridge-ui` from `/mnt/data/locveil-*-config`
+under `locveil-{voice,bridge}.service` — zero `wb-mqtt` naming left anywhere in the product
+estate (repos, images, containers, units, runtime trees, package names). The re-pointing arc
+(PROD-2 + its BUILD-29/OPS-21 residue) is fully closed. Next natural board item: the
+single-compose-with-startup-order design (voice BUILD-28's cross-repo intent).
+
 ## 2026-07-11 — Deployment-identity rename executed repo-side (voice BUILD-29 + bridge OPS-21)
 
 Owner decision: complete the re-pointing down to the metal — the controller must run new
