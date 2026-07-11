@@ -1,5 +1,20 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-4 council convened and CANCELLED at round 1, no decision
+
+Owner cancelled before answering the form — the round surfaced that the entry's purpose
+(codify the hand-converged per-repo ops pattern) is not the owner's actual concern:
+**deployment coordination** ("deployment and startup of the images is not coordinated is
+a mess" — BUILD-28 territory, owned by no PROD entry) and a **bigger topic on contracts
+in general** still forming. The PROD-4 entry stands untouched, `[ ]`, as if the council
+had not convened. Session notes worth keeping: both keepers produced full ops inventories
+and found the entry stale in 5+ places (units require more than the entry claims;
+start-period is dialect not constant; `.env` lives in the runtime tree; both pre-named
+delegation intakes worded around retired mechanisms; several proven patterns omitted);
+voice identified the smoke's "systemic config issue" as BUILD-31's root cause — no gate
+forces config-master→deployment-profiles reconciliation — and that follow-up is **still
+filed nowhere**. To be continued when the owner's contracts framing is ready.
+
 ## 2026-07-11 — PROD-14 + PROD-6 CLOSED: the inbox story lands end to end
 
 Bridge's delegation verified and ACCEPTED in full (VWB-35 re-point with the schema-default
