@@ -19,6 +19,11 @@ stable ID `PROD-N`, referenced in commit messages (`PROD-3: …`).
   delegations have local IDs written back.
 - Statuses: `[ ]` open · `[>]` in progress · `[x]` done. Session notes go to
   `JOURNAL.md` (newest on top), not here.
+- **Ledger discipline (HK-1 / PROD-13, normative: `process/ledger-discipline.md`):** this
+  board is the active ledger; completed entries MOVE to `BOARD_DONE.md` in the same change
+  as their journal entry. Council topics carry the `HK-N` prefix; being born-decided they
+  file directly into `BOARD_DONE.md` (a deferred council parks its HK entry here). Guarded
+  by scope-guard (`packages/scope-guard/`, config `.scope-guard.toml`).
 
 ## Ledger
 
@@ -125,3 +130,46 @@ stable ID `PROD-N`, referenced in commit messages (`PROD-3: …`).
       `.claude/skills/council/dossier-template.html`, the two keeper agents,
       `process/council.md` (+ satellite-keeper when that repo exists). First live topic will
       shake it down.
+- [>] **PROD-13 — Ledger & journal discipline harmonization + scope-guard** (HK-1, the
+      first council topic, decided 2026-07-11 — positions/synthesis in `JOURNAL.md`).
+      Decision: every repo adopts the ledger triad (active+DONE split, rotating journal,
+      record-at-completion), the DONE ledger also rotates with a hard ID-resolution
+      guarantee (archived declarations stay in the checker's known-ID set), and the two
+      `check_scope.py` scripts are superseded by ONE commons-owned tool — **the UNION of
+      both rule sets** (neither repo's was a superset), config-driven per repo, at
+      `packages/scope-guard/` (distribution `locveil-scope-guard`, tag `scope-vX`,
+      stdlib-only single file each consumer VENDORS at a pinned tag). Enforcement:
+      pre-commit hook (`core.hooksPath`) + path-gated `ledger-guard` CI job; rotation only
+      via explicit `--rotate` (its own commit; hooks/CI never mutate; CI warns at
+      high-water, fails at hard ceiling). v1 extra rules: journal+DONE watermarks,
+      archive-pointer integrity, completion-journal cross-check, required-task-tags
+      (config), board rule pack. File renames: dropped — naming is per-repo config
+      (owner q6). Normative spec: `process/ledger-discipline.md`. Commons-side execution
+      immediate (owner q1 amendment). Delegation record:
+      - **Delegation → locveil-voice**: consume scope-guard at the pinned tag `scope-v1` —
+        (1) vendor `packages/scope-guard/scope_guard.py` + author `.scope-guard.toml`
+        (start from `packages/scope-guard/examples/voice.scope-guard.toml`, verified green
+        against the voice tree 2026-07-11); (2) retire `scripts/check_scope.py` and
+        re-point the `ledger-guard` job + `ledger` paths-filter in
+        `.github/workflows/ci.yml`; (3) install the committed-hooks mechanism (`hooks/`
+        + `core.hooksPath`) running `--check` pre-commit; (4) update invariant text
+        (`single-task-ledger`, `one-active-journal` in CLAUDE.md; RELEASE_PLAN.md gate
+        wording) in the SAME change as the cutover; (5) adopt DONE-ledger rotation
+        (RELEASE_PLAN_DONE.md is at ~4.3k lines) and run the overdue journal rotation
+        (1510 > ~1500 high-water) via `--rotate`; (6) keep the required-task-tags rule ON
+        (`[release]`/`[deferred]`). Cutover proof: vendored tool green before deleting the
+        local script. Verify per `task-start-reconciliation`, file a local ID, write it
+        back here. Voice ID: _pending_.
+      - **Delegation → locveil-bridge**: same shape at tag `scope-v1` — (1) vendor the
+        script + author `.scope-guard.toml` (start from
+        `packages/scope-guard/examples/bridge.scope-guard.toml`, verified green against
+        the bridge tree 2026-07-11; aliases + tombstones stay ON); (2) retire
+        `scripts/check_scope.py`, re-point `ledger-guard` + paths-filter in
+        `.github/workflows/build-arm.yml`; (3) committed-hooks mechanism, `--check`
+        pre-commit (work-on-main: the hook is the only pre-CI gate); (4) update
+        `single-task-ledger`/`one-active-journal` invariant text in the same change;
+        (5) define the DONE-rotation rule (new for bridge) per
+        `process/ledger-discipline.md` §2 and run the overdue journal rotation
+        (1625 > ~1500) via `--rotate`. Cutover proof as above. Verify per
+        `task-start-reconciliation`, file a local ID, write it back here. Bridge ID:
+        _pending_.

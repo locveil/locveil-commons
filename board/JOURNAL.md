@@ -1,5 +1,25 @@
 # Board journal — newest on top
 
+## 2026-07-11 — HK-1 decided: ledger/journal discipline harmonized (files PROD-13)
+
+First live council session (PROD-12's shakedown) — bare seed, topic typed into the round-0
+dossier, decided in one keeper round + one owner round. Topic: harmonize ledger/journal
+discipline across the repos and migrate `check_scope.py` to commons. Keeper reconciliation
+corrected the brief: **neither script is a superset** (bridge adds DUPLICATE/MISPLACED/
+ALIAS/tombstones; voice has UNINDEXED-review + evidence-index `[x]` semantics — and the
+triad itself originated in voice, DOC-12), voice CI-gates its checker just like bridge,
+pre-commit hooks exist nowhere, bridge's DONE doesn't rotate, and **both journals sit over
+their own ~1500-line high-water today** (voice 1510, bridge 1625) — manual rotation
+demonstrably drifts. Both keepers: support-with-conditions; conditions unanimous (union
+rule set, per-repo config, pinned consumption, check-vs-rotate split, archived-ID
+resolution). Owner accepted all recommendations; amendments: PROD-13 executes immediately;
+required-task-tags in v1 but to be revisited in a future release-numbering/sprints
+housekeeping round; **HK-N becomes a tracked board prefix** — council topics are
+born-decided and file directly into `BOARD_DONE.md`. Rename question (brief point 5):
+dropped — naming is config. Landed: `process/ledger-discipline.md` (normative), PROD-13
+on the board with voice+bridge delegations, this entry; execution follows in-session
+(scope-guard tool, BOARD_DONE split, commons config/CI/hooks, `scope-v1` tag).
+
 ## 2026-07-11 — PROD-12: the council built (skill + keepers + dossier + convention)
 
 Owner-designed over three analysis rounds, filed and built same day. Deliverables:
