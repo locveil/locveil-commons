@@ -128,7 +128,10 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         chain; spool-drain verification post-cutover; (2) `lens-bridge.md` co-ownership
         re-review (VWB-30 as pre-named); (3) protocol consumption: pin the core, one
         conformance test over `service.py:210/216`, retire the hardcodes into
-        pin-validated form. Bridge IDs: _pending_.
+        pin-validated form. Bridge IDs: **VWB-35** (re-point) / **VWB-36** (lens re-review —
+        the pre-named VWB-30 was stale at intake: that serial was consumed 2026-07-09 by the
+        bridge's REL-5 remediation; re-serialed per assigned-once) / **VWB-37** (protocol
+        consumption). Written back at intake 2026-07-11.
       - **Reports-repo consumption** (no ledger there; executed commons-side post-transfer):
         `bootstrap.sh` generates labels from the pinned core + trivial CI compare; README
         pointer flips from voice's design doc to `process/problem-reports.md`.
