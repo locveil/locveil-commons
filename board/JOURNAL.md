@@ -1,5 +1,21 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-14 phase 1 mostly executed: the repo IS locveil/locveil-reports
+
+Owner re-minted the cross-repo PAT under the org (secret updated — the triage fix-PR path
+is live again after five dead days) and green-lit the transfer; the commons session
+executed it via the API (transfer + rename in one call). Verified surviving: both Actions
+secrets, issues, labels; local remote re-pointed (no venv to brick — the PROD-2 trap
+doesn't apply here). The reports-repo protocol consumption followed immediately
+(`locveil-reports@676091f`+`ef0b3d4`): `report-protocol.pin.json` vendored at
+`report-protocol-v1`, `bootstrap.sh` now GENERATES labels from the pin, new
+`protocol-check` CI compares live labels to the pin (first run failed honestly — the
+default workflow token lacked `issues: read`; fixed, now green), README pointer flipped
+from voice's design doc to `process/problem-reports.md`, post-transfer self-references
+swept. Remaining owner steps: org policy checks, Claude App coverage of the private repo,
+device PAT + WB7 `.env`×2 + config slugs, end-to-end smoke. Product delegations (voice,
+bridge) still await intake.
+
 ## 2026-07-11 — HK-3 decided: the inbox story (PROD-14 filed, PROD-6 rescoped, report-protocol-v1)
 
 Third council, first MULTI-ROUND one (two owner rounds; keepers continued via session

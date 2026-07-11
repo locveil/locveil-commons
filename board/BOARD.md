@@ -83,7 +83,16 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       `droman42/wb-mqtt-*` refs in triage.yml/lens files/README/bootstrap.sh →
       `locveil/locveil-*`; live lens-label descriptions updated. (Ticket #2 verified
       closed-complete; `fix-pr-open` is its terminal outcome label by design.)
-      **Phase 1 — OWNER checklist (gate: do the org checks FIRST — the GHCR lesson):**
+      **Phase 1 — OWNER checklist (gate: do the org checks FIRST — the GHCR lesson).**
+      Progress 2026-07-11: (2) cross-repo PAT re-minted under the org + secret updated
+      (owner); (3) transfer+rename EXECUTED — the repo is `locveil/locveil-reports`
+      (private; secrets/issues/labels survived; local remote re-pointed). Reports-repo
+      protocol consumption also DONE (`locveil-reports@676091f`+`ef0b3d4`): core pinned as
+      `report-protocol.pin.json`, `bootstrap.sh` generates labels from the pin,
+      `protocol-check` CI green (compares live labels weekly + on push), README pointer
+      flipped to `process/problem-reports.md`, post-transfer self-references swept.
+      Remaining: (1) org policy checks, (4) Claude App on the org covering the private
+      repo, (5) device PAT + WB7 `.env`×2 + config slugs + restarts, (6) smoke test.
       (1) org settings: allow fine-grained PAT access; members' base repo permission =
       none (bundle privacy boundary becomes the org's policy); Actions allowlist covers
       `anthropics/claude-code-action`; (2) re-mint `REPORTS_CROSS_REPO_TOKEN` NOW:
