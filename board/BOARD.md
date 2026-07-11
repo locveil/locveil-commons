@@ -123,6 +123,16 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         `process/problem-reports.md` (no ARCH-30 status flip). Voice ID: **ARCH-46**
         (intake 2026-07-11; narrowed — the slug sweep + the `[reports]`-in-profile find
         were already done by voice BUILD-31 before this write-back).
+        **Verification (commons, 2026-07-11) — one item BOUNCED (owner decision):**
+        items 1–3 + the smoke finds verified done (lens re-review `1ca251e` is a genuine
+        VWB-26-pattern pass — found and fixed a real stale claim; conformance test 11/11;
+        sweep clean; all seven profiles carry `[reports]`). Item 4's doc restructure was
+        delivered as annotate-and-defer: a commons-ownership header was added but §5 (the
+        envelope) and §7 (triage choreography) remain IN FULL — two complete copies of the
+        shared vocabulary, the two-sources-of-truth pattern `process/problem-reports.md`
+        §1 forbids. NOT accepted: replace §5 + §7 bodies with pointers to the commons spec
+        (+ the core pin) as agreed in HK-3 round 2; voice-side content stays. ARCH-46
+        remains open voice-side until the lift-out lands.
       - **Delegation → locveil-bridge**: (1) VWB-29-shaped re-point — slug sweep
         (SKILL.md ×5, invariant command, INSTALL.md, design-doc operative refs), make
         `reports.repo` explicit in `system.json` and DROP the slug schema default (HK-3

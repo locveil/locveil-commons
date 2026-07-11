@@ -1,5 +1,21 @@
 # Board journal — newest on top
 
+## 2026-07-11 — ARCH-46 verification: four items accepted, the doc restructure bounced
+
+First bounce-back in the board's life. Owner asked commons to verify voice's
+completion claim against the HK-3 agreements, lens ownership specifically. Verified DONE:
+the `lens-voice.md` co-ownership re-review (`locveil-reports@1ca251e`) is a genuine
+VWB-26-pattern pass — every repo claim checked, one real stale claim found and fixed (the
+eval-commons catalog-comparison step, reworded to something the triage checkout can
+actually do); slug sweep clean; ping-pong guard + affirmative wording in the skill;
+`wb7.env` at :8080; pin + conformance test 11/11; all seven canonical profiles carry
+`[reports]` (BUILD-31). BOUNCED (owner decision): the ARCH-30 doc restructure — delivered
+as a commons-ownership header over an intact body, leaving §5 (envelope) and §7 (triage
+choreography) as full second copies of the shared vocabulary, which `problem-reports.md`
+§1 forbids. The bounce text is committed in the PROD-14 entry per board-as-outbox;
+ARCH-46 stays open voice-side until §5/§7 become pointers. Bridge delegation still in
+progress.
+
 ## 2026-07-11 — PROD-14 phase 1 COMPLETE: end-to-end smoke green on the renamed pipeline
 
 Owner finished the credential cutover (device PATs everywhere incl. the controller, Claude
