@@ -29,13 +29,19 @@ stable ID `PROD-N`, referenced in commit messages (`PROD-3: …`).
       Discipline: never publish a bare `locveil` package — always `locveil-*`.
       **Residual (owner):** `locveil.eu` pending REG.RU ID verification →
       `docs/design/locveil_domain_registration.md` tracks it.
-- [>] **PROD-2 — Rename + restructure + consumer re-points** (D-2/D-3; executes voice
-      BUILD-21). DONE: GitHub repos renamed under org `locveil` + local dirs + remotes
-      (owner, 2026-07-11); D-2 restructure landed 2026-07-11 (eval framework → `eval/` with
-      history, distribution renamed `locveil-eval`, import package stays `eval_commons`;
-      `board/` `process/` `packages/` `site/` created; name sweep of repo-owned files —
-      pinned contract artifacts untouched, they pick up new names at the next re-pin).
-      OPEN until both re-point delegations have IDs written back:
+- [x] **PROD-2 — Rename + restructure + consumer re-points** (D-2/D-3; executes voice
+      BUILD-21). CLOSED 2026-07-11: GitHub repos renamed under org `locveil` + local dirs +
+      remotes (owner); D-2 restructure landed (eval framework → `eval/` with history,
+      distribution renamed `locveil-eval`, import package stays `eval_commons`; `board/`
+      `process/` `packages/` `site/` created; name sweep of repo-owned files — pinned
+      contract artifacts untouched, they pick up new names at the next re-pin). Both
+      delegations carry local IDs: voice **BUILD-21** (executed `locveil-voice@d0c0755`),
+      bridge **OPS-20** (executed `locveil-bridge@bd256d8` — the first completed
+      board-as-outbox round-trip). Residue lives in the product ledgers: voice BUILD-29 +
+      bridge OPS-21 (the coordinated deployment-identity rename — image basenames,
+      container/unit names, controller paths; both owner-gated), and one operational note:
+      **each repo needs one CI publish before its next controller `update.sh`** (pull refs
+      now say `ghcr.io/locveil/*`). Delegation record:
       - **Delegation → locveil-voice** (BUILD-21 tail, existing voice ID): (1) re-point
         `eval/` refs — `file://` paths now `../../locveil-commons/eval/...`, `pip install -e
         ../locveil-commons/eval`, eval/README + CLAUDE.md Testing section (these BROKE when
@@ -58,7 +64,8 @@ stable ID `PROD-N`, referenced in commit messages (`PROD-3: …`).
         rebuild it (`uv sync`) before trusting any gate; (6) keep live deployment identifiers
         (container names, systemd units, controller paths, image basenames) — the voice side
         filed that as its own task (BUILD-29); mirror it. Verify per
-        `task-start-reconciliation`, file a local ID, write it back here. Bridge ID: ______.
+        `task-start-reconciliation`, file a local ID, write it back here. Bridge ID:
+        **OPS-20** (written back 2026-07-11).
 - [x] **PROD-3 — Board bootstrap** (D-4/D-5). This file + `JOURNAL.md`, commons CLAUDE.md
       with the session discipline (cross-repo sessions run from here, sibling context
       loading, placement rule, outbox mechanics, per-package tag scheme), decision record

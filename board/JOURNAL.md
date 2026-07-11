@@ -1,5 +1,16 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-2 CLOSED: bridge re-point executed (`locveil-bridge@bd256d8`, OPS-20)
+
+The first board-as-outbox round-trip completed exactly as D-5 designed it: the bridge session
+pulled the PROD-2 delegation, verified it per its `task-start-reconciliation` (the `.venv`
+shebang warning proved out verbatim), filed it as **OPS-20**, executed (eval re-point green —
+cli 4/4, backend suite 698 post venv-rebuild; sweep; container user; GHCR refs), and wrote
+the ID back. PROD-2 is `[x]`; the uncommitted-sibling-filing mechanism is now fully retired.
+Standing residue: the coordinated deployment-identity rename (voice BUILD-29 + bridge OPS-21,
+owner-gated, likely one joint session with the BUILD-28 single-compose design), and each repo
+needs one CI publish before its next controller `update.sh`.
+
 ## 2026-07-11 — PROD-2: voice re-point delegation EXECUTED (`locveil-voice@d0c0755`)
 
 The voice BUILD-21 tail landed: eval refs re-pointed to `../../locveil-commons/eval` (gates
