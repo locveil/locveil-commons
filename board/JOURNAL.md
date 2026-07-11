@@ -1,5 +1,29 @@
 # Board journal — newest on top
 
+## 2026-07-11 — HK-2 decided: CLAUDE.md harmonization (executes PROD-5)
+
+Second council session, bare seed, one keeper round + one owner round. Topic: where shared
+rules live, how product Claudes access them, how they learn the board process, how new
+repos get seeded. Keepers' unanimous finding: **the topic IS the parked PROD-5 — execute
+it, don't re-design it.** Root cause of the owner's "sessions search for the board
+process" complaint found and named: neither product CLAUDE.md mentions the board AT ALL,
+and both still teach the retired pre-board uncommitted-intake mechanism inside
+`cross-repo-source-of-truth`; bridge's preamble also still claims invariant sovereignty
+that `ledger-discipline.md` took over at HK-1. Both keepers independently converged on the
+same mechanism: **pinned digest blocks between markers + pointers** (bare pointer fails
+offline enforcement — hooks/CI/cloud-triage run without siblings; full prose fails the
+token budget), enforced by a `claudemd` hash rule in scope-guard (one tool, one hook, one
+pin — `scope-v3`), with the hard criterion that adoption must NOT grow a product CLAUDE.md
+(each currently duplicates 20–55 lines of ledger mechanics that come out). Owner accepted
+all recommendations: single scope-vX pin; `config-master-canonical` renames apart both
+sides (`config-master-file` / `config-master-tree`); commons authors
+`process/new-repo-template/` and voice BUILD-22 instantiates it; immediate execution.
+Deferred by owner: the session-start **inbox story** — "much bigger, the next HK
+exercise". Landed: `process/claude-md.md` (normative), PROD-5 → `[>]` with delegations
+(voice BUILD-23 narrowed, bridge OPS-16 redefined — its text referenced the deleted
+`check_scope.py`), HK-2 filed to `BOARD_DONE.md`, this entry. Execution follows
+in-session.
+
 ## 2026-07-11 — PROD-13 CLOSED: the discipline is live in all three repos
 
 Both delegations executed same-day and wrote back (voice **BUILD-30**, bridge **OPS-22**);

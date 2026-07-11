@@ -81,6 +81,15 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       sets, not "bridge's because strictest"; both product journals were over their own
       high-water at decision time. Also established THIS convention: `HK-N` is a tracked
       board prefix; council topics are born-decided and file directly into this DONE ledger.
+- [x] **HK-2 — Cross-repo CLAUDE.md harmonization** (second council topic; bare seed,
+      decided 2026-07-11 in one keeper round + one owner round). Decision and execution
+      filed under the pre-existing **PROD-5** (the keepers' unanimous finding: the topic IS
+      PROD-5 — execute it, don't re-design it); normative convention:
+      `process/claude-md.md`. Keeper round found the root cause of the owner's "sessions
+      search for board process" complaint: neither product CLAUDE.md mentioned the board at
+      all, and both still taught the retired pre-board uncommitted-intake mechanism.
+      Owner amendments: none to the proposal; the session-start **inbox story** was
+      explicitly deferred as "much bigger — the next HK exercise".
 - [x] **PROD-13 — Ledger & journal discipline harmonization + scope-guard** (HK-1, the
       first council topic, decided 2026-07-11 — positions/synthesis in `JOURNAL.md`).
       Decision: every repo adopts the ledger triad (active+DONE split, rotating journal,
