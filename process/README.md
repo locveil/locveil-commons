@@ -12,11 +12,12 @@ Here now:
   blocks between `locveil:begin/end` markers, the `claudemd` guard rule, ownership
   boundary, slug rename map, new-repo seeding. Block sources: [`claude-blocks/`](claude-blocks/);
   template: [`new-repo-template/`](new-repo-template/).
+- **[`problem-reports.md`](problem-reports.md)** — the inbox story (HK-3/PROD-6/PROD-14):
+  choreography semantics, leak fence, retention/privacy policy, consumption rules, lens
+  co-ownership. Machine core: [`report-protocol/report-protocol.json`](report-protocol/report-protocol.json)
+  (tags `report-protocol-vN`; pinned + test-validated by voice, bridge, and locveil-reports).
 
 Pending, until the owning PROD tasks land (see `../board/BOARD.md`):
 
 - **Normative ops spec** + per-repo conformance checklist — PROD-4 (delegates voice
   BUILD-18-narrowed, bridge OPS-15).
-- **Problem-report policy spec** (envelope, redaction, rate limits, retention, labels) —
-  PROD-6; consumed by both collectors and the private `wb-user-reports`. Owner note: the
-  wider "inbox story" is earmarked as the next HK council topic.
