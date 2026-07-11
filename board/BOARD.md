@@ -106,3 +106,22 @@ stable ID `PROD-N`, referenced in commit messages (`PROD-3: …`).
 - [ ] **PROD-11 — FUTURE design: Home Assistant in parallel to Wirenboard** (D-4's stress
       test): if the canonical DeviceCommand contract survives HA unchanged, voice gets zero
       tasks; if voice needs changes, the contract leaked WB-specifics. Waits until wanted.
+- [x] **PROD-12 — The council: structured cross-repo discussions (skill + keepers + dossier)**
+      (filed + built 2026-07-11, owner-designed over three analysis rounds). A `/council`
+      skill in this repo runs a housekeeping/design topic as a moderated discussion: commons
+      Claude coordinates, per-repo **keeper subagents** (`.claude/agents/{voice,bridge}-keeper.md`,
+      read-only lenses loaded with their repo's CLAUDE.md/ledger/journal) argue their repo's
+      interests, the owner decides. The discussion renders on a **dossier artifact** (private
+      web page, one per topic, updated in place each round) carrying an on-page form whose
+      **Copy button serializes only the fields the owner changed** into a `council-reply`
+      paste-block — the terminal paste is the sole return channel (artifact CSP blocks
+      network by design). Ground rules, committed as `process/council.md`: decisions are
+      treated EXACTLY as if reached in the terminal — accepted outcomes land as PROD
+      entries/`process/` specs with board-as-outbox delegations, `board/JOURNAL.md`
+      summarizes, the dossier is an ephemeral view and never a record; one channel per round;
+      seeding = `PROD-N` (this board only, initially) | free text | bare (topic typed into
+      the dossier form); keepers reconcile a seeded entry against reality before arguing;
+      keepers never write files. Deliverables: `.claude/skills/council/SKILL.md`,
+      `.claude/skills/council/dossier-template.html`, the two keeper agents,
+      `process/council.md` (+ satellite-keeper when that repo exists). First live topic will
+      shake it down.

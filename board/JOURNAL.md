@@ -1,5 +1,19 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-12: the council built (skill + keepers + dossier + convention)
+
+Owner-designed over three analysis rounds, filed and built same day. Deliverables:
+`.claude/skills/council/SKILL.md` (the procedure: seed → parallel keeper round →
+synthesis → dossier publish → paste-back delta → iterate → land on the board),
+`.claude/skills/council/dossier-template.html` (theme-aware page with the decision form,
+dirty-field delta serializer, localStorage drafts, clipboard Copy with fallback),
+`.claude/agents/{voice,bridge}-keeper.md` (read-only partisan lenses that load their repo's
+CLAUDE.md/ledger/journal and reconcile seeded claims before arguing), and
+`process/council.md` (the normative convention: terminal-equivalence of decisions,
+paste-is-the-channel, one-channel-per-round, PROD-only seeding v1, `council-reply` format
+v1). CLAUDE.md and process/README gained pointers. Not yet exercised live — the first real
+topic shakes it down; the satellite keeper joins when BUILD-22 creates that repo.
+
 ## 2026-07-11 — Controller cutover CONFIRMED: the deployment is fully Locveil
 
 Owner made the 9 new GHCR packages public (org policy initially blocked Public — fixed via

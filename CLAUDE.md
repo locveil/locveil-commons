@@ -19,6 +19,10 @@ privacy-first, Russian-first voice-controlled smart home. Decision record:
   its board entry; the receiving repo pulls it, verifies per its own
   `task-start-reconciliation`, files a local ID, and writes the ID back. The board lists
   delegated IDs but **never asserts their status** — per-repo ledgers own status.
+- **The council (`/council`, PROD-12):** cross-repo topics with real stakes run as a
+  moderated discussion — per-repo keeper subagents argue their repo's interests on a dossier
+  artifact, the owner decides via the page's Copy-delta paste-back. Convention (normative):
+  `process/council.md`. Decisions land exactly as terminal decisions would — on the board.
 
 ## Layout & ownership regimes (D-2/D-3)
 

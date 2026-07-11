@@ -1,0 +1,186 @@
+<!-- Locveil council dossier TEMPLATE (PROD-12).
+     The /council skill fills {{PLACEHOLDERS}} and replicates the marked blocks.
+     Published via the Artifact tool: content only (no doctype/html/head/body),
+     same file path per topic across rounds => same URL. Favicon: 🏛️ (keep stable).
+     EVERY interactive field: unique name= + class="cf". The script serializes ONLY
+     fields whose value differs from the value baked into this HTML (the proposal),
+     so the paste-block is exactly the owner's delta for this round. -->
+<title>Council {{TOPIC_ID}} — {{TOPIC_TITLE}}</title>
+<style>
+  :root { --bg:#ffffff; --fg:#1a1a1a; --muted:#6b6b6b; --card:#f6f6f4; --line:#dcdcd7;
+          --accent:#0b6e4f; --warn:#a05a00; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141414; --fg:#e8e8e4; --muted:#9a9a94; --card:#1f1f1e; --line:#33332f;
+            --accent:#5fbf9a; --warn:#e0a04a; }
+  }
+  :root[data-theme="dark"]  { --bg:#141414; --fg:#e8e8e4; --muted:#9a9a94; --card:#1f1f1e;
+                              --line:#33332f; --accent:#5fbf9a; --warn:#e0a04a; }
+  :root[data-theme="light"] { --bg:#ffffff; --fg:#1a1a1a; --muted:#6b6b6b; --card:#f6f6f4;
+                              --line:#dcdcd7; --accent:#0b6e4f; --warn:#a05a00; }
+  body { background:var(--bg); color:var(--fg);
+         font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;
+         max-width:64rem; margin:0 auto; padding:1.5rem 1rem 6rem; }
+  h1 { font-size:1.45rem; margin:.2rem 0 .3rem; }
+  h2 { font-size:1.05rem; text-transform:uppercase; letter-spacing:.06em;
+       color:var(--muted); margin:2rem 0 .6rem; }
+  .meta { color:var(--muted); font-size:.9rem; }
+  .chip { display:inline-block; padding:.1rem .55rem; border-radius:999px;
+          border:1px solid var(--line); font-size:.8rem; margin-left:.4rem; }
+  .chip.open    { border-color:var(--accent); color:var(--accent); }
+  .chip.decided { border-color:var(--muted);  color:var(--muted); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding: .9rem 1.1rem; margin:.6rem 0; overflow-x:auto; }
+  .keepers { display:grid; grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));
+             gap:.7rem; }
+  .keeper h3 { margin:.1rem 0 .4rem; font-size:1rem; }
+  .keeper .pos { font-weight:600; }
+  .pos.support{color:var(--accent)} .pos.oppose{color:var(--warn)}
+  .conflict { border-left:3px solid var(--warn); padding-left:.8rem; }
+  fieldset { border:1px solid var(--line); border-radius:10px; margin:.8rem 0;
+             padding:.7rem 1rem; }
+  legend { font-weight:600; padding:0 .4rem; }
+  label { display:block; margin:.3rem 0; cursor:pointer; }
+  .hint { color:var(--muted); font-size:.85rem; margin:.15rem 0 .4rem; }
+  textarea, input[type=text] { width:100%; box-sizing:border-box; background:var(--bg);
+        color:var(--fg); border:1px solid var(--line); border-radius:8px;
+        padding:.5rem .6rem; font:inherit; }
+  textarea { min-height:4.5rem; resize:vertical; }
+  .copybar { position:fixed; bottom:0; left:0; right:0; background:var(--card);
+             border-top:1px solid var(--line); padding:.6rem 1rem; text-align:center; }
+  .copybar button { font:inherit; font-weight:600; padding:.55rem 1.4rem;
+             border-radius:8px; border:1px solid var(--accent); background:var(--accent);
+             color:var(--bg); cursor:pointer; }
+  .copybar .note { color:var(--muted); font-size:.85rem; margin-left:.8rem; }
+  pre { white-space:pre-wrap; }
+</style>
+
+<header>
+  <div class="meta">Locveil council · dossier · round {{ROUND}}
+    <span class="chip {{STATUS_CLASS}}">{{STATUS}}</span></div>
+  <h1>{{TOPIC_ID}} — {{TOPIC_TITLE}}</h1>
+  <div class="meta">seed: {{SEED_KIND}} · opened {{DATE}} · decisions land on
+    <code>board/BOARD.md</code>; this page is a view, not a record</div>
+</header>
+
+<h2>Topic brief</h2>
+<div class="card">{{TOPIC_BRIEF_HTML}}</div>
+
+<!-- BARE-SEED BLOCK: include only when /council was started without a topic;
+     remove in later rounds. -->
+<fieldset>
+  <legend>Your topic</legend>
+  <p class="hint">Type the topic, press Copy below, paste into the terminal.</p>
+  <textarea class="cf" name="topic-input" placeholder="What should the council discuss?"></textarea>
+</fieldset>
+<!-- /BARE-SEED BLOCK -->
+
+<h2>Keeper positions</h2>
+<div class="keepers">
+  <!-- KEEPER BLOCK (one per keeper, coordinator included as "commons") -->
+  <div class="card keeper">
+    <h3>{{KEEPER_NAME}}</h3>
+    <div class="pos {{POSITION_CLASS}}">{{POSITION}}</div>
+    {{ARGUMENTS_CONCERNS_IMPACT_QUESTIONS_HTML}}
+  </div>
+  <!-- /KEEPER BLOCK -->
+</div>
+
+<h2>Coordinator synthesis &amp; proposal</h2>
+<div class="card">{{SYNTHESIS_HTML}}</div>
+<!-- CONFLICT BLOCK: repeat per open conflict; omit when none -->
+<div class="card conflict"><strong>Conflict:</strong> {{CONFLICT_HTML}}</div>
+<!-- /CONFLICT BLOCK -->
+
+<h2>Round {{ROUND}} — your call</h2>
+<!-- QUESTION BLOCK (single-select): replicate per decision point; name=q<N> -->
+<fieldset>
+  <legend>{{QUESTION_TEXT}}</legend>
+  <label><input class="cf" type="radio" name="q1" value="accept" checked> Accept as proposed</label>
+  <label><input class="cf" type="radio" name="q1" value="amend"> Accept with amendments (say what below)</label>
+  <label><input class="cf" type="radio" name="q1" value="back-to-keepers"> Send back to the keepers with my comment</label>
+  <label><input class="cf" type="radio" name="q1" value="defer"> Defer / park the topic</label>
+  <textarea class="cf" name="q1-comment" placeholder="Comment / amendment for q1 (optional)"></textarea>
+</fieldset>
+<!-- /QUESTION BLOCK -->
+<!-- MULTI BLOCK (multi-select): checkboxes share a name; serialized as a list -->
+<!--
+<fieldset>
+  <legend>{{QUESTION_TEXT}}</legend>
+  <label><input class="cf" type="checkbox" name="q2" value="option-a"> Option A</label>
+  <label><input class="cf" type="checkbox" name="q2" value="option-b" checked> Option B</label>
+</fieldset>
+-->
+<!-- /MULTI BLOCK -->
+<fieldset>
+  <legend>Anything else</legend>
+  <textarea class="cf" name="general-comment" placeholder="New points, corrections, additional topics…"></textarea>
+</fieldset>
+
+<div class="copybar">
+  <button id="copy-delta" type="button">Copy my changes</button>
+  <span class="note">copies only what you changed this round → paste into the terminal</span>
+</div>
+
+<script>
+(function () {
+  var TOPIC = "{{TOPIC_ID}}", ROUND = "{{ROUND}}";
+  var LS = "council:" + TOPIC + ":" + ROUND + ":";
+  var fields = Array.prototype.slice.call(document.querySelectorAll(".cf"));
+
+  function groupState(name) {           // radios: value | ""; checkboxes: sorted list
+    var els = fields.filter(function (f) { return f.name === name; });
+    if (els[0].type === "radio")
+      { var c = els.filter(function (f) { return f.checked; }); return c.length ? c[0].value : ""; }
+    if (els[0].type === "checkbox")
+      return els.filter(function (f) { return f.checked; }).map(function (f) { return f.value; }).sort().join(",");
+    return els[0].value;
+  }
+  var names = [];
+  fields.forEach(function (f) { if (names.indexOf(f.name) < 0) names.push(f.name); });
+
+  // Baseline = the proposal as baked into this HTML (before draft restore).
+  var baseline = {};
+  names.forEach(function (n) { baseline[n] = groupState(n); });
+
+  // Restore drafts (same topic+round only), then autosave on input.
+  names.forEach(function (n) {
+    var saved = null;
+    try { saved = localStorage.getItem(LS + n); } catch (e) {}
+    if (saved === null) return;
+    fields.filter(function (f) { return f.name === n; }).forEach(function (f) {
+      if (f.type === "radio")         f.checked = (f.value === saved);
+      else if (f.type === "checkbox") f.checked = saved.split(",").indexOf(f.value) >= 0;
+      else                            f.value = saved;
+    });
+  });
+  fields.forEach(function (f) {
+    f.addEventListener("input", function () {
+      try { localStorage.setItem(LS + f.name, groupState(f.name)); } catch (e) {}
+    });
+  });
+
+  function needsQuoting(v) { return /[\n":]|^\s|\s$/.test(v); }
+  function buildDelta() {
+    var lines = ["council-reply " + TOPIC + " round-" + ROUND];
+    names.forEach(function (n) {
+      var v = groupState(n);
+      if (v === baseline[n]) return;                       // delta only
+      lines.push(n + ": " + (needsQuoting(v) ? JSON.stringify(v) : (v === "" ? '""' : v)));
+    });
+    if (lines.length === 1) lines.push("(no-changes)");
+    return lines.join("\n");
+  }
+
+  document.getElementById("copy-delta").addEventListener("click", function () {
+    var text = buildDelta(), btn = this;
+    function ok()   { btn.textContent = "Copied ✓ — paste into the terminal"; setTimeout(function () { btn.textContent = "Copy my changes"; }, 2500); }
+    function fall() { var t = document.createElement("textarea"); t.value = text;
+                      document.body.appendChild(t); t.select();
+                      try { document.execCommand("copy"); ok(); } catch (e) { alert(text); }
+                      document.body.removeChild(t); }
+    if (navigator.clipboard && navigator.clipboard.writeText)
+      navigator.clipboard.writeText(text).then(ok, fall);
+    else fall();
+  });
+})();
+</script>

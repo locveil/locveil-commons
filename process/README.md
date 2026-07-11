@@ -1,6 +1,12 @@
 # process/ — normative process & product specs (ownership regime 3: commons owns)
 
-Empty by design until the owning PROD tasks land (see `../board/BOARD.md`):
+Here now:
+
+- **[`council.md`](council.md)** — the cross-repo council convention (PROD-12): moderated
+  discussions with per-repo keeper subagents on a dossier artifact; ground rules + the
+  `council-reply` paste-block format. Executable half: `.claude/skills/council/`.
+
+Pending, until the owning PROD tasks land (see `../board/BOARD.md`):
 
 - **Normative ops spec** + per-repo conformance checklist — PROD-4 (delegates voice
   BUILD-18-narrowed, bridge OPS-15).
