@@ -99,7 +99,10 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         (1510 > ~1500 high-water) via `--rotate`; (6) keep the required-task-tags rule ON
         (`[release]`/`[deferred]`). Cutover proof: vendored tool green before deleting the
         local script. Verify per `task-start-reconciliation`, file a local ID, write it
-        back here. Voice ID: _pending_.
+        back here. Voice ID: BUILD-30 (consumed 2026-07-11 at scope-v2; both advertised
+        pre-existing findings confirmed real and fixed; voice's rotation attempt hit the
+        same v1 `--rotate` bug concurrently with the bridge — corrupted first-pass
+        commits rebuilt, nothing had been pushed).
       - **Delegation → locveil-bridge**: same shape at tag `scope-v2` — (1) vendor the
         script + author `.scope-guard.toml` (start from
         `packages/scope-guard/examples/bridge.scope-guard.toml`, verified green against

@@ -1,5 +1,22 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-13 voice delegation consumed (BUILD-30) — both delegations now written back
+
+The voice session pulled the PROD-13 delegation, verified it per its
+`task-start-reconciliation` (both advertised pre-existing findings confirmed real: the
+unsorted DONE I18N section and the DONE ledger over the 4000-line ceiling), filed it as
+**BUILD-30**, and executed the full cutover (vendored tool + `.scope-guard.toml`,
+`check_scope.py` retired, `ledger-guard` CI re-pointed, committed pre-commit hook live,
+invariant text + gate wording updated, DONE-ledger rotation adopted, journal 1510→708 and
+DONE 4273→1930 rotated losslessly). Voice's first rotation attempt hit the same v1
+`--rotate journal` bug **concurrently** with the bridge (its corrupted first-pass commits
+were rebuilt; nothing had been pushed) — the sessions collided mid-fix on this repo, and
+the bridge's scope-v2 landed first; voice re-pinned to it. Regime 2 held: one fix,
+commons-side, consumed by re-pin on both sides. With both local IDs written back,
+PROD-13's remaining board action is closing the entry (commons-side deliverable already
+done) — left to the commons session that owns the entry, since it was active in this
+working copy at the time.
+
 ## 2026-07-11 — PROD-13 bridge delegation consumed (OPS-22); scope-v2 tagged (rotation bugfix)
 
 The bridge session pulled the PROD-13 delegation, verified it per its
