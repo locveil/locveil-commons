@@ -26,3 +26,12 @@ archive_pointer = true
 
 [board]
 delegation_writeback = true
+
+[claude]
+file = "CLAUDE.md"
+[[claude.blocks]]
+name = "shared-invariants"
+sha256 = "8e295e7009a43ece59693cdf7876189c145d29694291ca2c07bbc88e8dddb214"
+[[claude.blocks]]
+name = "cross-repo-board"
+sha256 = "61769abd18b82a60c2024d419f90196a01856c8dd3b0db815c3480b033e9629d"

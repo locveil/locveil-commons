@@ -71,3 +71,38 @@ lives here** — behavior changes happen in this repo, not in the consumers. Dis
 - promptfoo env references are `{{env.VAR}}`, not `${VAR}`.
 - Tests parameterize over TARGET (local vs the WB7 controller) and CONFIG via the consumers'
   profile env files — never bake an endpoint or config into execution logic here.
+
+## Shared blocks (pinned — `process/claude-md.md`; edit the sources in `process/claude-blocks/`, then re-pin)
+
+<!-- locveil:begin shared-invariants scope-v3 -->
+**Locveil shared process invariants** — digest; normative source: `../locveil-commons/process/`
+(`ledger-discipline.md`, `claude-md.md`). On disagreement the process files win. Never edit
+this block in place — edit in commons, then re-pin (`process/claude-md.md` §3).
+
+- **ledger triad** — active ledger + DONE ledger + one rotating journal; completion MOVES
+  the entry to DONE and journals it in the same change; rotation only via an explicit
+  `scope_guard.py --rotate` in its own commit; watermarks + mechanics:
+  `process/ledger-discipline.md`.
+- **every-task-in-the-ledger** — no work without a ledger ID; a doc finding becomes scope
+  only when a ledger task declares it.
+- **task-start-reconciliation** — before executing any task, verify its claims against repo
+  reality; narrow or redefine at intake rather than executing stale text.
+- **design-then-implement** — non-trivial changes get a reviewed design doc before code.
+- **review-then-remediate** — review findings become ledger tasks before they get fixed.
+- **Enforcement** — vendored `scope_guard.py` at a pinned `scope-vX` tag + committed
+  pre-commit hook + path-gated `ledger-guard` CI job; hooks and CI run `--check` only.
+<!-- locveil:end shared-invariants -->
+
+<!-- locveil:begin cross-repo-board scope-v3 -->
+**Locveil cross-repo: the board.** The repos are SIBLINGS on disk — `../locveil-commons`
+(umbrella: board, `process/`, shared packages), `../locveil-voice`, `../locveil-bridge`.
+Cross-repo initiatives live at `../locveil-commons/board/BOARD.md` (`PROD-N`; council
+topics `HK-N`; completed entries in `BOARD_DONE.md`). Delegations arrive as board-as-outbox
+text committed inside a PROD entry: pull it, verify per `task-start-reconciliation`, file
+it under a LOCAL task ID, execute locally, then write that ID back into the board entry.
+The board never asserts a delegated task's status — this repo's ledger owns it. Direct
+operational filings between product repos (bug reports, contract requests) stay
+repo-to-repo and don't need the board. Cross-repo design sessions and the council run FROM
+locveil-commons (convention: `../locveil-commons/process/council.md`); decisions land on
+the board, never in chat.
+<!-- locveil:end cross-repo-board -->

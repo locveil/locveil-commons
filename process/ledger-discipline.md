@@ -64,6 +64,10 @@ Every repo keeps:
 - **CI**: a path-gated `ledger-guard` job (docs/ledger paths + the vendored script + config)
   runs `--check`. Over journal/DONE **high-water → warning**; over **hard ceiling → fail**.
   All other rule violations fail.
+- **CI convention (HK-2):** the job is named exactly `ledger-guard`; path filters cover the
+  ledger/journal/docs paths, `CLAUDE.md` (the pinned blocks), the vendored
+  `scope_guard.py`, `.scope-guard.toml`, and the workflow file itself. Template:
+  `process/new-repo-template/ledger-guard.yml` — new repos copy, never reinvent.
 - Cutover proof (per repo, before deleting its local checker): the vendored scope-guard
   runs green against the repo's current tree.
 

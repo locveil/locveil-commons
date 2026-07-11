@@ -6,6 +6,8 @@ on:
     paths:
       - "board/**"
       - "docs/design/**"
+      - "CLAUDE.md"
+      - "process/claude-blocks/**"
       - "packages/scope-guard/**"
       - ".scope-guard.toml"
       - ".github/workflows/ledger-guard.yml"
@@ -13,6 +15,8 @@ on:
     paths:
       - "board/**"
       - "docs/design/**"
+      - "CLAUDE.md"
+      - "process/claude-blocks/**"
       - "packages/scope-guard/**"
       - ".scope-guard.toml"
       - ".github/workflows/ledger-guard.yml"
