@@ -1,5 +1,18 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-5 voice delegation consumed (BUILD-23) — voice on scope-v3
+
+The voice session pulled the PROD-5 delegation and executed it as **BUILD-23** (the
+pre-assigned ID), narrowed at intake exactly as the delegation specified (drift-guard-script
+wording dead; scope-guard's `claudemd` rule is the guard). Voice CLAUDE.md now carries both
+pinned blocks at `scope-v3` (byte-identical, tamper-tested red/green), net-shrank 165→160
+lines (the six long-form shared invariants out, voice dialect condensed to one
+`ledger-dialect` bullet), re-pinned the tool to 1.1.0, rewrote the retired pre-board intake
+bullet, renamed `config-master-canonical`→`config-master-file` (legend row added), added
+`CLAUDE.md` to the CI `ledger` filter, and recorded the BUILD-22 template dependency.
+Pushed; the voice `ledger-guard` CI validates the blocks remotely. PROD-5 now waits only on
+bridge OPS-16 to confirm.
+
 ## 2026-07-11 — HK-2 decided: CLAUDE.md harmonization (executes PROD-5)
 
 Second council session, bare seed, one keeper round + one owner round. Topic: where shared
