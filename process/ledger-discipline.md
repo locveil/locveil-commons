@@ -75,7 +75,10 @@ Every repo keeps:
 
 - The board ledger is `board/BOARD.md` (active) + `board/BOARD_DONE.md` (completed
   entries moved on close). Prefixes: `PROD` (cross-repo initiatives) and `HK`
-  (housekeeping/council topics).
+  (housekeeping/council topics). **Entries live under per-prefix sections**
+  (`## PROD — …`, `## HK — …`), sorted-insert within — the same shape as the product
+  ledgers; a flat interleaved list is not acceptable (owner finding 2026-07-11; commons
+  config runs `require_sections` + `sections_required_for_all` accordingly).
 - **HK-N**: a council topic gets an HK id at seed time (unless seeded from a PROD entry),
   is journaled, and — being born-decided — its entry is filed **directly into
   `BOARD_DONE.md`** when the council lands. A deferred council parks the HK entry in the

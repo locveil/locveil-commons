@@ -29,6 +29,8 @@ stable ID `PROD-N`, referenced in commit messages (`PROD-3: …`).
 
 Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-discipline.md`).
 
+## PROD — cross-repo initiatives
+
 - [ ] **PROD-4 — Normative ops spec** (D-12) in `process/`: the converged pattern (sdcard
       clone update-time-only, `/mnt/data/<name>-config`, repo-owns-config rsync, `.env`
       secrets, systemd oneshot `RequiresMountsFor=/mnt/data` ONLY, GHCR pull-not-build, log

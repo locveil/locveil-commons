@@ -4,7 +4,7 @@ Completed `PROD-N` / `HK-N` entries, MOVED here from `BOARD.md` on close (same c
 the journal entry — `process/ledger-discipline.md`). Frozen history: entries are never
 re-edited; delegated IDs listed inside them are pointers, never status assertions.
 
-## Ledger
+## PROD — cross-repo initiatives
 
 - [x] **PROD-1 — Name lock + registrations** (D-1). Sweep run 2026-07-08 under "Domovoy"
       (`docs/design/productization_roadmap.md` §2); owner superseded with the invented word
@@ -125,22 +125,6 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       `.claude/skills/council/dossier-template.html`, the two keeper agents,
       `process/council.md` (+ satellite-keeper when that repo exists). First live topic
       shook it down: HK-1.
-- [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;
-      bare seed, decided 2026-07-11 in one keeper round + one owner round). Decision and
-      execution filed as **PROD-13** (delegations there); normative convention:
-      `process/ledger-discipline.md`. The keeper round corrected the brief — union of rule
-      sets, not "bridge's because strictest"; both product journals were over their own
-      high-water at decision time. Also established THIS convention: `HK-N` is a tracked
-      board prefix; council topics are born-decided and file directly into this DONE ledger.
-- [x] **HK-2 — Cross-repo CLAUDE.md harmonization** (second council topic; bare seed,
-      decided 2026-07-11 in one keeper round + one owner round). Decision and execution
-      filed under the pre-existing **PROD-5** (the keepers' unanimous finding: the topic IS
-      PROD-5 — execute it, don't re-design it); normative convention:
-      `process/claude-md.md`. Keeper round found the root cause of the owner's "sessions
-      search for board process" complaint: neither product CLAUDE.md mentioned the board at
-      all, and both still taught the retired pre-board uncommitted-intake mechanism.
-      Owner amendments: none to the proposal; the session-start **inbox story** was
-      explicitly deferred as "much bigger — the next HK exercise".
 - [x] **PROD-13 — Ledger & journal discipline harmonization + scope-guard** (HK-1, the
       first council topic, decided 2026-07-11 — positions/synthesis in `JOURNAL.md`).
       Decision: every repo adopts the ledger triad (active+DONE split, rotating journal,
@@ -283,6 +267,25 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       - **Reports-repo consumption** (no ledger there; executed commons-side post-transfer):
         `bootstrap.sh` generates labels from the pinned core + trivial CI compare; README
         pointer flips from voice's design doc to `process/problem-reports.md`.
+
+## HK — council topics
+
+- [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;
+      bare seed, decided 2026-07-11 in one keeper round + one owner round). Decision and
+      execution filed as **PROD-13** (delegations there); normative convention:
+      `process/ledger-discipline.md`. The keeper round corrected the brief — union of rule
+      sets, not "bridge's because strictest"; both product journals were over their own
+      high-water at decision time. Also established THIS convention: `HK-N` is a tracked
+      board prefix; council topics are born-decided and file directly into this DONE ledger.
+- [x] **HK-2 — Cross-repo CLAUDE.md harmonization** (second council topic; bare seed,
+      decided 2026-07-11 in one keeper round + one owner round). Decision and execution
+      filed under the pre-existing **PROD-5** (the keepers' unanimous finding: the topic IS
+      PROD-5 — execute it, don't re-design it); normative convention:
+      `process/claude-md.md`. Keeper round found the root cause of the owner's "sessions
+      search for board process" complaint: neither product CLAUDE.md mentioned the board at
+      all, and both still taught the retired pre-board uncommitted-intake mechanism.
+      Owner amendments: none to the proposal; the session-start **inbox story** was
+      explicitly deferred as "much bigger — the next HK exercise".
 - [x] **HK-3 — The inbox story: locveil-reports move + report-protocol contract** (third
       council topic; bare seed, decided 2026-07-11 over TWO owner rounds — the first
       multi-round council). Outcomes filed as **PROD-14** (the move + credential cutover +
