@@ -1,5 +1,21 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-5 CLOSED: bridge delegation consumed (OPS-16) — all three repos harmonized
+
+The bridge session pulled the PROD-5 delegation (pre-assigned OPS-16, flagged REDEFINE),
+verified it per its `task-start-reconciliation` — all three staleness counts confirmed real
+(deleted `check_scope.py` reference, dead separate-drift-guard-script plan, the superseded
+split-in-two rename) — got owner approval for the redefine, and executed the full adoption:
+both blocks inserted byte-identical at `scope-v3` (hashes match this repo's pins; tamper
+test fails correctly with CLAUDE-BLOCK drift), CLAUDE.md net-shrank 175 → 164 lines (~55
+duplicated mechanics lines out; shared invariants kept as dialect-only bullets), the false
+sovereignty preamble + retired uncommitted-intake clause rewritten (commons acknowledged as
+co-owned ground), `config-master-canonical` → `config-master-tree`, `[claude]` live in its
+`.scope-guard.toml`, `CLAUDE.md` added to its CI ledger filter. With voice BUILD-23
+confirmed earlier today, **both consumptions are in — PROD-5 closes** (entry moved to
+`BOARD_DONE.md` in this change). All three repos now carry the same pinned blocks at one
+tag; the "sessions search for the board process" gap HK-2 named is shut.
+
 ## 2026-07-11 — PROD-5 voice delegation consumed (BUILD-23) — voice on scope-v3
 
 The voice session pulled the PROD-5 delegation and executed it as **BUILD-23** (the

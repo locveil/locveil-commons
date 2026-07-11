@@ -55,6 +55,43 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       loading, placement rule, outbox mechanics, per-package tag scheme), decision record
       migrated from voice (`docs/design/productization.md`), seed backlog transplanted from
       `productization_roadmap.md` §3 → this ledger. Done 2026-07-11.
+- [x] **PROD-5 — Shared CLAUDE.md invariant blocks + drift guard** (D-12; decided by
+      council HK-2, 2026-07-11 — positions/synthesis in `JOURNAL.md`; normative:
+      `process/claude-md.md`). Decision: commons `process/` is the single normative source
+      for shared process rules; each repo carries **pinned digest blocks** between
+      `locveil:begin/end` markers (digests + pointers, dialect-free, byte-identical;
+      repo-local LAW stays outside and repo-owned), versioned with the existing `scope-vX`
+      tags (single pin) and enforced by a `claudemd` hash rule in scope-guard from
+      `scope-v3` — fully local, no sibling checkout in hooks/CI. Hard criterion: adoption
+      must NOT grow a product CLAUDE.md (the duplicated ledger mechanics come out).
+      `config-master-canonical` renames apart BOTH sides (voice `config-master-file`,
+      bridge `config-master-tree`). Satellite seeding: commons authors
+      `process/new-repo-template/`; voice BUILD-22 instantiates it (guard + hooks live from
+      day one). v1 blocks: `shared-invariants` + `cross-repo-board` (the board digest fixes
+      the "sessions search for board process" gap; includes the repos-are-siblings line and
+      the council pointer). CI job-naming convention added to `ledger-discipline.md` §4.
+      Commons-side executed 2026-07-11 (blocks, template, spec, scope-v3, own adoption).
+      Closed 2026-07-11: both consumptions confirmed same day (journal entries).
+      Delegation record:
+      - **Delegation → locveil-voice** (pre-assigned voice ID BUILD-23 — narrow at intake
+        per `task-start-reconciliation`; the "separate drift-guard script" wording is dead,
+        scope-guard won): (1) insert both blocks from `process/claude-blocks/` between
+        markers; delete the long-form ledger/rotation prose they replace (net line count
+        must not grow); (2) re-pin scope-guard at `scope-v3` + add the `[claude]` section
+        to `.scope-guard.toml` (`--hash-blocks` prints the hashes); (3) rewrite the stale
+        pre-board bullet in `cross-repo-source-of-truth` (board-as-outbox vs direct
+        operational filings); (4) rename `config-master-canonical` → `config-master-file`
+        + legend row (frozen archives untouched); (5) BUILD-22 gains the dependency:
+        instantiate `process/new-repo-template/`, never freehand. Voice ID: BUILD-23
+        (consumed 2026-07-11).
+      - **Delegation → locveil-bridge** (pre-assigned bridge ID OPS-16 — REDEFINE at
+        intake: its ledger text references `check_scope.py`, deleted in OPS-22): (1) same
+        block insertion + long-form dedup (~55 duplicated triad lines come out; net line
+        count must not grow); (2) re-pin at `scope-v3` + `[claude]` config; (3) rewrite the
+        false sovereignty preamble (CLAUDE.md:6-9) and the retired uncommitted-intake
+        clause; (4) rename `config-master-canonical` → `config-master-tree` (4 references;
+        frozen archive untouched). Bridge ID: OPS-16 (consumed 2026-07-11, redefined at
+        intake with owner approval).
 - [x] **PROD-12 — The council: structured cross-repo discussions (skill + keepers + dossier)**
       (filed + built 2026-07-11, owner-designed over three analysis rounds). A `/council`
       skill in this repo runs a housekeeping/design topic as a moderated discussion: commons
