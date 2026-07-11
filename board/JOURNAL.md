@@ -1,5 +1,20 @@
 # Board journal — newest on top
 
+## 2026-07-11 — Deployment-identity rename executed repo-side (voice BUILD-29 + bridge OPS-21)
+
+Owner decision: complete the re-pointing down to the metal — the controller must run new
+images with zero `wb-mqtt` leftovers, including the `/mnt/data/mqtt-*-config` runtime trees →
+`locveil-*-config`. Both repos executed the coordinated rename in one session
+(`locveil-voice@0aca2f7`, `locveil-bridge@bba68c9`): images (`locveil-voice-*`,
+`locveil-voice-ui`, `locveil-bridge`, `locveil-bridge-ui` — UI name = owner pick), containers,
+systemd units (`locveil-{voice,bridge}.service`), runtime trees, clone paths, INSTALL flows;
+bridge also renamed its Python distribution (`locveil-bridge`, import package kept); voice
+regenerated its API contract chain (description strings; config-ui gates green). Each repo
+ships a one-time `ops/migrate-to-locveil.sh` for the controller cutover (runtime tree moves
+with state/models/.env intact). Sequencing: CI publishes dispatched (runs watched); owner then
+flips the new GHCR packages PUBLIC and runs the two migration scripts on the WB7. Voice also
+surfaced a pre-existing order-dependent test flake → voice BUG-42.
+
 ## 2026-07-11 — PROD-2 CLOSED: bridge re-point executed (`locveil-bridge@bd256d8`, OPS-20)
 
 The first board-as-outbox round-trip completed exactly as D-5 designed it: the bridge session
