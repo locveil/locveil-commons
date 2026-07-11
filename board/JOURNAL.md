@@ -1,5 +1,18 @@
 # Board journal — newest on top
 
+## 2026-07-11 — PROD-2: voice re-point delegation EXECUTED (`locveil-voice@d0c0755`)
+
+The voice BUILD-21 tail landed: eval refs re-pointed to `../../locveil-commons/eval` (gates
+green from the new paths — cli 5/5, device tier-1 48/48), operative name sweep, `domovoy` →
+`locveil` container user, GHCR pull refs → `ghcr.io/locveil/*`, productization pointer swap;
+BUILD-21 closed in the voice ledger, residual deployment-identity rename filed there as
+BUILD-29. Two operational notes: (a) the owner must run one voice CI publish before the next
+controller `update.sh` (compose now pulls `ghcr.io/locveil/*`, which doesn't exist until the
+first org-side publish); (b) the local dir rename bricks a repo's `.venv` (absolute
+console-script shebangs) — the voice venv was rebuilt with `uv sync --all-extras`; the bridge
+delegation now carries the same warning for `backend/.venv`. PROD-2 remains `[>]` until the
+bridge writes its local ID back.
+
 ## 2026-07-11 — BUILD-21 commons bootstrap (PROD-2 restructure + PROD-3 board)
 
 Owner had completed the rename chain (GitHub org `locveil`, repos `locveil-commons` /

@@ -53,7 +53,11 @@ stable ID `PROD-N`, referenced in commit messages (`PROD-3: …`).
         the dir rename); (2) sibling-name sweep in docs (history untouched); (3) `domovoy`
         container user → `locveil` in `backend/Dockerfile` + `ui/Dockerfile` (Alpine
         `adduser`) + comment refs in `ops/update.sh` and `ui/nginx.conf.template` (rebuild +
-        redeploy); (4) GHCR cutover to `ghcr.io/locveil/*`. Verify per
+        redeploy); (4) GHCR cutover to `ghcr.io/locveil/*`; (5) WARNING from the voice
+        execution: the dir rename bricks `backend/.venv` (absolute console-script shebangs) —
+        rebuild it (`uv sync`) before trusting any gate; (6) keep live deployment identifiers
+        (container names, systemd units, controller paths, image basenames) — the voice side
+        filed that as its own task (BUILD-29); mirror it. Verify per
         `task-start-reconciliation`, file a local ID, write it back here. Bridge ID: ______.
 - [x] **PROD-3 — Board bootstrap** (D-4/D-5). This file + `JOURNAL.md`, commons CLAUDE.md
       with the session discipline (cross-repo sessions run from here, sibling context
