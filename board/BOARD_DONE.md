@@ -298,3 +298,22 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       Council craft note: the round-1 "conflict" between keepers dissolved on inspection
       (voice opposed prose parameterization, not the block; bridge demoted its own block
       to optional once the machine core existed).
+- [x] **HK-4 — locveil-satellite bootstrap** (fourth council topic; bare seed, decided
+      2026-07-12 over FOUR owner rounds — the longest council yet). Decision and execution
+      filed as **PROD-15** (delegations there). Round arc: round 1 reconciled the brief
+      against both repos — stale claim caught (the voice `ESP32/` review was already DONE
+      and verdicted DELETE 2026-07-08), half-story caught (bridge's HVAC modules are
+      shipped ESP8266 drivers, not movable ESP32 estate — the movable set is exactly
+      voice ARCH-23 + bridge DRV-7), and the owner's duplication claim verified with a
+      twist (the fresh general bridge doc is newer but WEAKER than the bench-confirmed
+      build docs — merge claim-by-claim, never newest-wins). Round 2: wake pack =
+      flash-time pin of voice's unmodified artifact; rooms = provisioning-time NVS (voice
+      pushback accepted with the NVS-default-seed compromise); the two-layer "convention
+      down, descriptors up" contract. Round 3 absorbed three owner pushbacks: NEW
+      **EspManagedDevice** driver class (WB-passthrough ruled out by the owner), fully
+      design-time contract (latency conceded static, no runtime negotiation, one retained
+      firmware-version topic kept as tripwire), per-device firmware apps (FR-1
+      single-image retired — the GPIO14 double-booking proved the owner's bench point).
+      Round 4 (coordinator-only, no keeper cost): toolchain — pcbparts / Serena-SKiDL /
+      Espressif MCPs day one; skidl-skills and the PlatformIO commitment deliberately NOT
+      installed at bootstrap — both mandatory satellite design tasks (DES-2/DES-3).

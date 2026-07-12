@@ -108,6 +108,17 @@ homes, cross-repo idea discipline, work/release coordination, and delivery harmo
   review/archive docs (`docs/review/esp32_wakeword_review.md`, `docs/archive/*`). The
   satellite repo **pins** the WS protocol by version, exactly as voice pins the bridge catalog.
 
+  > **D-6 AMENDED 2026-07-12 (council HK-4 → board PROD-15).** The nginx Plane-B
+  > provisioning glue **MOVES to the satellite repo** after all — with the tethers cut in
+  > the same change (pinned template copy for voice's TLS e2e test, `ops/INSTALL.md`
+  > pointer update, explicit WB7 ops handover) and ARCH-44 exporting with it. The rest of
+  > the STAYS list is **reconfirmed**: the WS protocol doc, `irene/satellite/` + the Python
+  > runner, the client registry, frozen reviews/archives. The `ESP32/` DELETE verdict is
+  > reconfirmed. Repo name is `locveil-satellite` (post-PROD-2 naming; "domovoy-satellite"
+  > above is the pre-rename name). Firmware amendment: the old FR-1 single-image design is
+  > retired — per-device apps over shared in-repo components (D-7 confirmed in the same
+  > decision).
+
 - **D-7 — Common firmware/PCB pieces across future satellite variants live WITHIN
   domovoy-satellite** — they graduate to commons only if a second firmware-consuming repo ever
   exists (rule of two, D-8).

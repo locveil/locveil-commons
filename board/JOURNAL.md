@@ -1,5 +1,31 @@
 # Board journal — newest on top
 
+## 2026-07-12 — HK-4 DECIDED: locveil-satellite bootstrap (four rounds) → PROD-15
+
+The satellite repo gets its bootstrap decision — D-6/D-7 executed with dated amendments,
+the first four-round council, and the first with a coordinator-only round. Both keepers
+opened support-with-conditions and earned their keep in round 1: voice flagged that
+brief item 3 was already-decided ground (QUAL-19 review done, DELETE verdict recorded),
+bridge flagged the ESP8266 half-story (HVAC drivers are shipped bridge code, not movable
+estate) and inverted the owner's doc-freshness assumption (the new general doc downgrades
+bench-CONFIRMED facts to VERIFY — harmonize claim-by-claim). Net movable set: two voice
+tasks + one bridge task + two folders. Owner pushbacks drove real design: round 2's
+"build-time wake word" resolved as flash-time partition pin of voice's unmodified pack
+(voice's own D-12 line held); rooms stayed provisioning-time (registry authoritative)
+with a build-seed compromise; round 3 replaced WB-passthrough with a new descriptor-native
+**EspManagedDevice** driver, went fully design-time on the contract (latency static — the
+DRV-29 window was always firmware constants), and retired FR-1's single image after the
+GPIO14 double-booking vindicated the owner's bench knowledge. Round 4 triaged the owner's
+browser-researched toolchain: adopt the knowledge-side MCPs day one, defer BOTH execution
+commitments (skidl-skills, PlatformIO) to mandatory satellite design tasks — the
+PIO-platform-vs-latest-IDF tension is a fact-check (DES-3), not a blind bet. Landed:
+PROD-15 (board umbrella + voice/bridge delegations + satellite born backlog DES-1..4,
+OPS-1..2), D-6 amendment in `docs/design/productization.md` (nginx Plane B moves,
+tether-cuts named; rest of the STAYS list reconfirmed), HK-4 → `BOARD_DONE.md`,
+satellite-keeper agent authored. Council craft: the cancelled PROD-4 round's keeper
+inventories fed straight into round 1 as promised; keeper cost was skipped in round 4
+where no cross-repo stakes existed.
+
 ## 2026-07-11 — PROD-4 council convened and CANCELLED at round 1, no decision
 
 Owner cancelled before answering the form — the round surfaced that the entry's purpose
