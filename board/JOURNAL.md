@@ -1,5 +1,26 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-16 satellite delegation VERIFIED (3/3) → PROD-16 CLOSED
+
+The last write-back, verified: satellite's pins were **born stamped** — the parallel
+voice session had tagged `ws-protocol-v1`/`wake-pack-v1` before the satellite pulled, so
+the interim commit-pin step collapsed; both pins are strict, COMPLETE, and byte-identical
+at their tags (checked against the tag contents directly). Conformance pointers honestly
+respect the phase gates (FW conformance lands with FW-1 after DES-3 — no consuming code
+exists yet, exactly the keeper's HK-5 condition). Bonus deliverables beyond the
+delegation: satellite stood up its own **`esp32-site-v1`** owned surface (STAMP + tag
+over the Plane-B template voice pinned pre-tag — voice's PIN fills version/tag at its
+next re-pin), and its DES-4 intake caught that `device-integration-v1`'s tagged STAMP is
+pre-convention (the core fix was post-tag) — the `v1.1` request routes repo-to-repo at
+descriptor authoring, correctly. Guard byte-identical, 0 warnings, hook + path-gated CI;
+stale README line fixed; OPS-1 amended with hash-at-publish. Write-back: OPS-3 + DES-4/
+OPS-1 amendments (satellite `fcc6989`). **With all four delegations verified and every
+write-back in, PROD-16 moved to `BOARD_DONE.md`** — decided, delegated, executed across
+four repos, verified, and closed in ONE day. The org runs one contract convention:
+eight family tags live, contract-guard everywhere, conformance in every CI. Recorded
+residuals: crossover-fixtures strict PIN (next fixtures task), device-integration v1.1
+(repo-to-repo), STAMP `artifacts` list + completeness rule (contract-guard v1.1).
+
 ## 2026-07-12 — PROD-16 voice follow-up (BUILD-34) VERIFIED and accepted (4/4)
 
 The completeness ruling's first instance, verified: voice's `contracts/pins/catalog/`
