@@ -626,3 +626,28 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       scope-guard 1.2.0 @ scope-v5 (docs-verdict presence rule; shared-invariants
       block gains the invariant) + template seeds. docs: none — process/board
       artifacts only (the convention itself; first verdict line under its own rule).
+- [x] **HK-7 — Open-task triage: what deserves a PROD umbrella** (seventh council
+      topic; bare seed, decided 2026-07-12 in one keeper round + one owner round; voice +
+      bridge keepers — satellite excused, 7 fresh tasks). The sweep: **63 open tasks
+      inventoried complete** (voice 26, bridge 37; all post-release `[deferred]`, zero
+      open `[release]` anywhere). Result: 5 already ride PRODs correctly (ARCH-42/43 +
+      CORE-7/OPS-14 on PROD-8; BUILD-18 + OPS-15 on PROD-4), **~51 stay repo-local**
+      (both keepers argued against board inflation — every umbrella costs intake,
+      write-backs, and contract-cut ceremony), 7 formed four clusters. Owner rulings:
+      **PROD-4 REFRAMED in place** to deployment coordination + ops conformance
+      (absorbs BUILD-28 whose board-seed trigger misfired 2026-07-11; ARCH-45 readiness
+      contract as named dependency; master→profiles convention dialect-aware; CORE-8
+      secrets posture joins); **PROD-18** filed (catalog contract evolution: VWB-33 +
+      VWB-34 + voice QUAL-82 seat; one arc, one cut, one re-pin); **PROD-19** filed
+      (intake consolidation on locveil-reports; BUILD-14 + bridge twin at intake);
+      **PROD-20** filed as a LIGHT visibility entry (satellite first-light chain,
+      HW-GATED — owner chose visibility over repo-to-repo silence, the round's one
+      flip); PROD-10 gained the OPS-13/UI-8 toolchain-sequencing note; BUILD-13 (Pi
+      python-satellite image) STAYS voice-published (the python satellite is a voice
+      deployment mode, HK-4 lineage). Side findings handed to repo sessions: voice
+      TEST-20/BUG-42 are two open tasks about the same flaky test with contradictory
+      evidence (merge); bridge UI-8 subsumed by OPS-13 (tombstone) + two stale-wording
+      re-anchors; OPS-19's mirror-policy generalization waits for rule-of-two. Voice
+      files the master→profiles gate mechanism regardless — BUILD-31's lesson finally
+      has a home. docs: none — board/ledger artifacts only; no manifest node describes
+      individual board entries.

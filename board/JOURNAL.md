@@ -1,5 +1,25 @@
 # Board journal — newest on top
 
+## 2026-07-12 — HK-7 DECIDED: the open-task triage → PROD-4 reframed, PROD-18/19/20 filed
+
+The board finally metabolized the pre-board backlog. Two keepers swept 63 open tasks
+complete (voice 26, bridge 37) and the strongest finding was restraint: ~51 stay
+repo-local, 5 already ride correctly, and the entire cross-repo residue fits in one
+reframe and three entries. The reconciliation catches were the story — BUILD-28's board
+seed had silently misfired ("seeded when BUILD-21 lands"; it landed, nothing happened);
+VWB-33/VWB-34 have been asking for the board by name since before it existed; BUILD-14's
+claimed bridge twin turned out not to exist; the master→profiles gate was STILL filed
+nowhere (voice now files it regardless); and voice carries two open tasks about the same
+flaky test with contradictory measurements. Owner rulings: PROD-4 reframed in place to
+deployment coordination (readiness contract as named dependency — health-gated compose
+over a lying /health would be fiction; CORE-8 secrets posture joins, the committed
+broker password's rotation is a near-term op); PROD-18 with the one-cut-one-re-pin
+binding condition; PROD-19 small; PROD-20 as the round's one flip — the owner chose
+board visibility for the satellite first-light burst over repo-to-repo silence
+(HW-GATED, no timing asserted). BUILD-13 stays voice-published. PROD-10 gained its
+sequencing note. Product sessions pull the reframed/new delegations at their leisure —
+nothing here is release-gated. docs: none — board/ledger artifacts only.
+
 ## 2026-07-12 — PROD-17 CLOSED: all three delegations verified; commons executes its own piece
 
 The docs convention went org-wide in one afternoon. Verified: **voice** (DOC-11/12,

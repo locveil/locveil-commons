@@ -31,12 +31,33 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 
 ## PROD — cross-repo initiatives
 
-- [ ] **PROD-4 — Normative ops spec** (D-12) in `process/`: the converged pattern (sdcard
-      clone update-time-only, `/mnt/data/<name>-config`, repo-owns-config rsync, `.env`
-      secrets, systemd oneshot `RequiresMountsFor=/mnt/data` ONLY, GHCR pull-not-build, log
-      rotation, 127.0.0.1 healthchecks, start-period > fleet boot) + a conformance checklist.
-      Shared *scripts* only at the third consumer (rule of three). Delegates on completion:
-      voice BUILD-18 (narrowed) + bridge OPS-15.
+- [ ] **PROD-4 — Deployment coordination + ops conformance** (REFRAMED by council HK-7,
+      2026-07-12 — was "Normative ops spec", D-12; the spec stays the deliverable, the
+      scope now owns the deployment-coordination pain the owner called "a mess"). Scope:
+      (1) ONE compose story with real startup order across the three WB7 containers —
+      voice **BUILD-28**, whose own "seeded when BUILD-21 lands" trigger is finally
+      discharged here; (2) the normative spec in `process/` codifying the converged
+      pattern (sdcard clone update-time-only, `/mnt/data/<name>-config`, repo-owns-config
+      sync, `.env` secrets, systemd oneshot, GHCR pull-not-build, log rotation, local
+      healthchecks) + a conformance checklist — RECONCILING the stale claims the
+      cancelled 2026-07-11 council round inventoried (units require more than the old
+      text listed; start-period is dialect not constant; `.env` lives in the runtime
+      tree); (3) the **readiness contract** as a named dependency: health-gated ordering
+      requires voice ARCH-45 (`/health` reports healthy during ~90s model warmup today) —
+      the contract (what compose waits on, per container) is decided HERE, the
+      `/health`/`/ready` implementations stay repo-owned; (4) the
+      **config-master→deployment-profiles reconciliation convention** (BUILD-31's
+      still-unfiled lesson), dialect-aware — voice's TOML master/profiles need the gate,
+      bridge's `config-master-tree` is canonical as-is and needs none; (5) **secrets
+      posture joins** (HK-7 q3): bridge **CORE-8** (committed broker password is in git
+      history — rotation is a near-term op) and voice confirms its own exposure class at
+      intake. Shared *scripts* only at the third consumer (rule of three). Delegations:
+      voice — BUILD-18 (narrowed conformance pass, stands), BUILD-28 (re-point at intake
+      to this entry), ARCH-45 dependency noted in its design, NEW local task for the
+      master→profiles gate mechanism (voice files it regardless of this entry's pace;
+      write the ID back). Voice write-back — lead ID: **BUILD-18** + BUILD-28 (+ gate
+      task ID pending). Bridge — OPS-15 (stands), CORE-8 (joins: secrets posture +
+      the rotation op). Bridge write-back — lead ID: **OPS-15** + CORE-8.
 - [ ] **PROD-8 — core-py bootstrap + first two extractions** (D-8): `packages/core-py`
       skeleton (own pyproject, `core-py-vX` tags), then the two designs — dynamic code
       loader (voice ARCH-42; voice consumer #1, bridge #2 via CORE-7) and logging scheme
@@ -50,7 +71,41 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 - [ ] **PROD-10 — ui-kit package + stylebook** (D-8/D-9, next release): `packages/ui-kit`
       npm package consumed by both config UIs (`../locveil-voice/config-ui`,
       `../locveil-bridge/ui`); component boundaries keep one-shell-with-plugins reachable —
-      no plugin framework before two real plugins exist.
+      no plugin framework before two real plugins exist. **Sequencing note (HK-7):**
+      bridge OPS-13 (eslint-9/vite-6 toolchain pass, absorbing UI-8) must not run twice —
+      if ui-kit lands first it imposes its own toolchain; coordinate the order at
+      whichever activates first.
 - [ ] **PROD-11 — FUTURE design: Home Assistant in parallel to Wirenboard** (D-4's stress
       test): if the canonical DeviceCommand contract survives HA unchanged, voice gets zero
       tasks; if voice needs changes, the contract leaked WB-specifics. Waits until wanted.
+- [ ] **PROD-18 — Catalog contract evolution, round 1** (HK-7 cluster B — the two
+      designs that self-declared board-bound before the board existed). Members: bridge
+      **VWB-33** (language-data contribution convention — catalog nouns/aliases vs voice
+      donation verbs; convention prose may land in commons `process/`; binds voice's
+      donation schema, a config-ui surface) + **VWB-34** (confirmation-timing published
+      in the contract; the tier-3 async-job pattern is a real API redesign touching
+      voice + UI). Voice seat/first consumer: **QUAL-82** (AC louver control, gated on
+      VWB-33). **Binding condition (bridge):** one design arc, ONE batched golden/openapi
+      cut, ONE voice re-pin — never two. Delegations: bridge — VWB-33 + VWB-34 intake
+      reconciliation (their pre-board "once the board lands" wording converts to this
+      entry's reference). Bridge write-back — lead ID: **VWB-33** + VWB-34. Voice —
+      QUAL-82 gains the PROD-18 gate reference. Voice ID: **QUAL-82**.
+- [ ] **PROD-19 — Intake consolidation: one door, locveil-reports** (HK-7 cluster C):
+      retire the last pre-board public-issue intake channel; all problem/feature intake
+      flows through the locveil-reports pipeline (`report-protocol-v1`). Delegations:
+      voice — **BUILD-14**, RECONCILE at intake (the uncommitted-filing mechanism is
+      retired; `wb-user-reports` is now `locveil/locveil-reports`). Voice ID:
+      **BUILD-14**. Bridge — file the twin AT intake (HK-7 finding: BUILD-14's "the
+      bridge repo has the same question" claim had no bridge task behind it). Bridge
+      ID: (write back).
+- [ ] **PROD-20 — Satellite first-light chain (visibility entry, HW-GATED)** (HK-7 q6,
+      owner ruling: light PROD). The coupled multi-repo burst that fires when the
+      satellite's first conforming descriptor reaches the bridge: satellite descriptor
+      (DES-4 lineage) → bridge **DRV-37** (EspManagedDevice implementation, BLOCKED on
+      it) → **VWB-39** (descriptor-pin conformance test) → the first deck vocabulary
+      contract cut (golden bump) → ONE voice re-pin → config-ui panel. No new local IDs
+      now — the members exist and per-deck tasks stay unfiled until first light BY
+      DESIGN; the chain executes repo-to-repo per convention; this entry exists so the
+      burst lands SEEN, not as a surprise. Closes when the first chain completes
+      end-to-end and the re-pin is verified. IDs on record: bridge DRV-37 + VWB-39;
+      satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
