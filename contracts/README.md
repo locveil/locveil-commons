@@ -11,6 +11,8 @@ READMEs. Layout is the uniform org shape: `contracts/<name>/` owned,
 |---|---|---|
 | [`report-protocol`](report-protocol/README.md) | `report-protocol/` (machine core; prose spec: `../process/problem-reports.md`) | `report-protocol/STAMP.json` + tag `report-protocol-v1` |
 
+| [`docs-manifest`](docs-manifest/README.md) — INTERNAL: the user-facing docs tree, machine-readable (artifact `docs/manifest.json`) | `docs-manifest/STAMP.json` + `docs-manifest-v1`; coherence: `eval/tests/test_docs_manifest.py` |
+
 Cross-references (owned process contracts on the **block-pin lane**, not relocated —
 `../process/contracts.md` §1):
 

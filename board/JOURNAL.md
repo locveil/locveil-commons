@@ -1,5 +1,28 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-17 CLOSED: all three delegations verified; commons executes its own piece
+
+The docs convention went org-wide in one afternoon. Verified: **voice** (DOC-11/12,
+BUILD-35) — the :6000 quartet and the WS example are gone (the two remaining grep hits
+were `sample_rate: 16000`), QUICKSTART's post-split mislabel fixed, manifest + 8/8
+coherence test, dialect updated with `ops/INSTALL.md` in scope, guard v5 byte-identical
+(voice chose the stricter `docs_verdict_since = 2026-07-12`); **bridge** (DOC-13/14/15,
+OPS-24) — ADRs dissolved and archived with banners, the 0006 dependency policy lives in
+CONTRIBUTING with OPS-19 re-pointed, NINE diagrams verified (four beyond the flagged
+five), and the OpenAPI description scrub was correctly treated as a contract cut:
+**catalog-v1.6** tagged; **satellite** (OPS-4, all three items) — a 7-node manifest with
+3 pending-gate slots naming their gates ("FW-1 first light", "first board reaches
+bench-verified"), its first CONTRIBUTING.md, the provisioning README stripped of
+tracking refs and the `.pio` line. **First live catch by the HK-5 staleness gate:**
+voice's `repin-check` reports both catalog pins trailing v1.6 — exactly the designed
+release-time lane; the next `make repin CONTRACT=catalog` clears both copies in one run.
+Commons then executed its own piece: `docs/manifest.json` (4 nodes) +
+`contracts/docs-manifest/` @ docs-manifest-v1 + registry row + CONTRIBUTING.md +
+`eval/tests/test_docs_manifest.py` — whose first two runs FAILED on commons itself
+(schema rejected `$comment`; contract-guard demanded the registry row): the machinery
+biting its author twice before passing 46/46. PROD-17 moved to DONE with its verdict
+line. docs: contributing, contracts-registry.
+
 ## 2026-07-12 — HK-6 DECIDED: user-facing docs convention + the docs manifest → PROD-17
 
 Two rounds, three keepers, and the owner's mid-council invention became the centerpiece.

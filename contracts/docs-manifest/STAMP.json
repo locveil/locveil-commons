@@ -1,0 +1,11 @@
+{
+  "contract": "docs-manifest",
+  "version": "1",
+  "tag": "docs-manifest-v1",
+  "date": "2026-07-12",
+  "owner_repo": "locveil-commons",
+  "artifact": "docs/manifest.json",
+  "schema": "process/user-docs/manifest.schema.json",
+  "coherence_test": "eval/tests/test_docs_manifest.py",
+  "note": "Repo-internal contract (HK-6, process/user-docs.md §4): the STAMP versions the manifest CONVENTION surface, not each node edit — bump only on a schema-visible reshape. Node edits ride their causing tasks; the coherence test keeps manifest and tree bijective."
+}

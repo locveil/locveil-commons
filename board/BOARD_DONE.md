@@ -462,6 +462,83 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       descriptor authoring); STAMP `artifacts` list + guard completeness rule =
       contract-guard v1.1 at the next natural bump.
 
+- [x] **PROD-17 — User-facing docs: the org convention + the docs manifest** (decided by
+      council **HK-6**, 2026-07-12, two rounds, all three keepers — arc in
+      `BOARD_DONE.md` HK-6; **normative: `process/user-docs.md`** + machine schema
+      `process/user-docs/manifest.schema.json`). Decision digest: scope taxonomy with
+      audience column (operator docs IN scope; ADR class ABOLISHED — dissolve/archive);
+      style conventions from the exemplar corpora (no tracking language incl.
+      schema/OpenAPI descriptions; Graphviz .dot+render pairs; status banners audited;
+      EN docs, RU product surface quoted — no Russian docs today); the hardened rule:
+      **docs-verdict line in every completion entry** (`docs: <node-ids>` /
+      `docs: none — <why>`), caused-vs-discovered split, release-cut + phase-gate manifest
+      reviews, docs-review tasks fileable any time and a COMMONS-filed one fans out to
+      all repos via board-as-outbox; the **docs manifest** as repo-internal contract
+      (`docs/manifest.json` + `contracts/docs-manifest/` STAMP @ docs-manifest-v1; small
+      repo-owned surface→glob vocabulary; pending-gate slots; derives_from;
+      canonical{invariant,stamp,guard} carve-out; per-repo coherence test on the
+      drift-guard pattern — promotion to shared tooling at rule-of-two); node policy:
+      additions ride the causing task (the failing test IS the policy), floor gates
+      coverage loss only — **floor applies where the capability exists** (owner round-2),
+      removals by tombstone/filed supersession; **CONTRIBUTING.md required per repo,
+      inside the manifest** (audience: contributor). Commons-side deliverables — spec +
+      schema + **scope-guard 1.2.0 `scope-v5`** (docs-verdict presence rule +
+      re-pinned shared-invariants block with the new invariant) + template seeds
+      (skeleton manifest, CONTRIBUTING stub, verdict config key) EXECUTED 2026-07-12;
+      commons' own manifest + CONTRIBUTING.md EXECUTED 2026-07-12 (docs/manifest.json +
+      contracts/docs-manifest/ @ docs-manifest-v1 + eval/tests/test_docs_manifest.py,
+      registry row; eval suite 46/46). Org README: folded into PROD-9 (no artifact now). Delegation record:
+      - **Delegation → locveil-voice**: (1) DOC-shaped task — live stale fixes: the
+        `build-docker.md` port-6000 quartet + `websocket-api.md` :6000 example line, one
+        pointer sentence in `guides/satellite.md` to the satellite provisioning runbook,
+        verify the voice-trigger HF link, fix the `QUICKSTART.md` "ESP32 satellite
+        controllers (WB7/WB8)" mislabel; (2) author `docs/manifest.json` +
+        `contracts/docs-manifest/` + the coherence test; CONTRIBUTING.md gains the
+        contracts-registry + eval links and its manifest node; (3) rule-dialect update
+        (CLAUDE.md invariant points at the manifest; `ops/INSTALL.md` enters scope);
+        (4) re-pin scope-guard @ `scope-v5` (block + `docs_verdict_since` config).
+        Voice write-back — lead ID: **DOC-11 (live stale fixes), DOC-12 (manifest + coherence test +
+        CONTRIBUTING), BUILD-35 (dialect + scope-v5 re-pin)** — all `[release]` (filed
+        2026-07-12, voice `51ce922`; status lives in the voice ledger).
+      - **Delegation → locveil-bridge**: (1) DOC staleness pass — CONTRIBUTING.md
+        pre-VWB-29 contract paths, the OpenAPI field-description design-doc refs
+        (config-ui-stays-functional: regen openapi + UI types same change), the 5
+        REL-4-unverified diagrams; (2) manifest + coherence test + dialect update;
+        (3) **ADR dissolution, one task**: 0006 → CONTRIBUTING dependency-policy section
+        + OPS-19 re-point; 0001–0005 verify-and-archive with supersession banners;
+        (4) re-pin scope-guard @ `scope-v5`. Bridge write-back — lead ID: **DOC-14 (staleness pass),
+        DOC-13 (manifest + coherence test + dialect), DOC-15 (ADR dissolution),
+        OPS-24 (scope-v5 re-pin)** (filed 2026-07-12, bridge `ee1dca3`; status lives
+        in the bridge ledger).
+      - **Delegation → locveil-satellite**: (1) OPS-shaped task — author the manifest
+        (pending-gate nodes for FW-gated docs naming their gates; derives_from onto
+        `docs/devices/`; phase-crossing reviews) + create CONTRIBUTING.md (phase
+        process, pin discipline, leaf-truth corpus rule, per-phase toolchain map);
+        (2) the provisioning-README user-grade pass (strip tracking refs; replace the
+        `.pio` publish line with an execution-layer-neutral note deferring to DES-3);
+        (3) re-pin scope-guard @ `scope-v5`. Satellite ID: **OPS-4 (all three items,
+        filed + executed same session — manifest born `docs-manifest-v1` with the
+        FW/PCB-gated classes as pending-gate nodes naming their gates and the
+        canonical-reference floor slot staffed by PROD-16's `esp32-site` surface;
+        `docs_verdict_since` set 2026-07-13, the day after the re-pin: same-day
+        completions predate the rule and DONE is frozen history). Upstream nit for the
+        commons manifest follow-up: the template skeleton's `$comment` key fails the
+        schema's own `additionalProperties: false` — drop the key or admit it in the
+        schema** (filed 2026-07-12, satellite `547878f`; status lives in the satellite
+        ledger).
+      **CLOSED 2026-07-12, same day as decided.** All three delegations executed and
+      commons-verified (voice DOC-11/DOC-12/BUILD-35 — :6000 fixes confirmed gone,
+      manifest test 8/8, guard v5 byte-identical; bridge DOC-13/14/15 + OPS-24 — ADRs
+      dissolved and archived, 0006 policy in CONTRIBUTING with OPS-19 re-pointed,
+      9 diagrams verified, manifest test 8/8, and the description scrub cut
+      **catalog-v1.6** correctly as a contract bump; satellite OPS-4 — 7-node manifest
+      with 3 honest pending-gate slots, first CONTRIBUTING.md, provisioning README
+      user-grade, guard v5). First live catch by the HK-5 staleness gate: voice's
+      `repin-check` correctly reports both catalog pins trailing v1.6 — rides the
+      normal re-pin cadence, description-only delta. All four repos now run manifest +
+      verdict discipline. docs: contributing, contracts-registry — created/extended by
+      the commons execution; readme untouched (no behavior it describes changed).
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;
