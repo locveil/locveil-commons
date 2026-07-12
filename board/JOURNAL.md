@@ -1,5 +1,17 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-15 CLOSED — the satellite repo is real; cross-repo-board block @ scope-v4
+
+The fastest board arc yet: decided (HK-4), delegated, executed on all three sides, and
+closed in one day. Close condition: commons deliverables shipped with the decision; voice
+wrote back BUILD-22 + ARCH-47; bridge wrote back DRV-34/35/36 + VWB-38/39; the satellite
+born backlog is filed under local IDs in the new repo's own ledger. With a fourth sibling
+on disk, the `cross-repo-board` shared block was amended to name `../locveil-satellite`:
+source edit in `process/claude-blocks/`, tagged **scope-v4**, hashes re-pinned same day in
+all four CLAUDE.mds (commons, voice, bridge, satellite); the new-repo-template examples
+bumped to the new tag. `shared-invariants` is content-unchanged (its markers keep their
+scope-v3 provenance).
+
 ## 2026-07-12 — PROD-15 voice delegation consumed — voice IDs written back
 
 Voice pulled the delegation same-day, reconciled it (org repo confirmed created — owner
