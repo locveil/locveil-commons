@@ -1,5 +1,17 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-16 follow-up delegation to voice: the local COMPLETE catalog pin
+
+Owner decision closing the pin-placement discussion: voice adds a local catalog pin —
+COMPLETE per the same-day ruling (full `catalog-v1.5` artifact set, never a usage
+subset), maintained by the same `repin.py` run that stamps the commons crossover pin
+(one command, both copies, same tag — divergence impossible by construction), plus a
+fast named conformance test in voice's normal CI binding its emitted-command shapes to
+the pinned schemas. Division of labor now explicit: the commons pin remains the shared
+crossover copy both product suites bind to (release-cadence deep gate); the voice pin
+is the hermetic push-time stub (the protobuf property the owner asked for). Delegation
+committed in the PROD-16 entry; voice files a local ID and writes it back.
+
 ## 2026-07-12 — PROD-16 ruling: pins are always COMPLETE (the IDL principle)
 
 Owner ruling from the post-verification discussion of voice's catalog consumption,

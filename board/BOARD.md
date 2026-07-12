@@ -107,6 +107,23 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         (rescoped), BUILD-32 (pins-shape restructure + eval re-point, [release]),
         BUILD-33 (vendor contract-guard v1, [release]), BUILD-26 (annotated)** (filed
         2026-07-12, voice `23ee00a`; status lives in the voice ledger).
+      - **Delegation → locveil-voice (follow-up, owner decision 2026-07-12 — the
+        completeness ruling's first instance):** add the **local COMPLETE catalog pin**,
+        closing voice's push-time schema-conformance gap (the corner its own keeper
+        flagged in HK-5). (1) `contracts/pins/catalog/` in voice holding the owner's
+        FULL tagged artifact set at `catalog-v1.5` — `catalog.golden.json`,
+        `openapi.json`, `STAMP.json`, byte-identical (`process/contracts.md` §2: a pin
+        is always complete; usage never shapes it) + strict `PIN.json` (`files` hashes,
+        conformance pointer). (2) Extend `scripts/repin.py` so
+        `make repin CONTRACT=catalog` updates BOTH copies — the commons crossover pin
+        and this local pin — in ONE run at the same tag (they must never diverge);
+        `make repin-check` covers both. (3) NEW named conformance test in voice's
+        NORMAL CI suite (hermetic, push-time): binds voice's emitted-command/client
+        shapes to the pinned `CatalogResponse`/action schemas — the crossover suite in
+        commons stays the release-cadence deep gate, this is the fast local stub check.
+        (4) Registry README: the commons cross-reference note adjusts (local pin now
+        exists; the commons copy remains the shared crossover pin). contract-guard
+        picks the new pin up with zero changes. Voice ID: (write back).
       - **Delegation → locveil-satellite**: (1) OPS-3-shaped task — restructure to the
         pins shape, upgrade the WS commit-pin to an artifact-copy pin with PIN.json NOW
         (stamped pin when `ws-protocol-v1` lands), vendor contract-guard, wire the CI
