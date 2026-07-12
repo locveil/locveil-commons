@@ -107,4 +107,13 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         process, pin discipline, leaf-truth corpus rule, per-phase toolchain map);
         (2) the provisioning-README user-grade pass (strip tracking refs; replace the
         `.pio` publish line with an execution-layer-neutral note deferring to DES-3);
-        (3) re-pin scope-guard @ `scope-v5`. Satellite ID: (write back).
+        (3) re-pin scope-guard @ `scope-v5`. Satellite ID: **OPS-4 (all three items,
+        filed + executed same session — manifest born `docs-manifest-v1` with the
+        FW/PCB-gated classes as pending-gate nodes naming their gates and the
+        canonical-reference floor slot staffed by PROD-16's `esp32-site` surface;
+        `docs_verdict_since` set 2026-07-13, the day after the re-pin: same-day
+        completions predate the rule and DONE is frozen history). Upstream nit for the
+        commons manifest follow-up: the template skeleton's `$comment` key fails the
+        schema's own `additionalProperties: false` — drop the key or admit it in the
+        schema** (filed 2026-07-12, satellite `547878f`; status lives in the satellite
+        ledger).
