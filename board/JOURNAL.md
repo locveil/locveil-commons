@@ -1,5 +1,28 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-16 voice delegation VERIFIED and accepted (5/5); PROD-7 closed as absorbed
+
+Voice's five tasks verified against the convention, all clean. **ARCH-47**: tag
+`ws-protocol-v1` + `contracts/ws-protocol/` STAMP (version + doc pointer + code-constant
+pointer — no doc hash, as conditioned); the doc opens with "Protocol version: 1";
+`WS_PROTOCOL_VERSION = "1"` in `irene/core/ws_protocol.py` feeds both the satellite link's
+`register` and the server ack; the version-triple test exists and passes; `register` now
+reports `protocol_version` + `firmware_version` + `wake_pack_version`. **Wake pack**:
+exemplary sidecar stamp over the UNMODIFIED HF pack — per-file URL + sha256, with bump
+semantics written down (add word = minor; replace published file = major, flashed hashes
+stop verifying). **BUILD-24**: `scripts/repin.py` + `make repin`/`repin-check`; the first
+scripted re-pin ran same-day INTO commons — catalog pin now strict (files hashes, family
+tag) and the PROD-14-era openapi staleness is CLEARED (byte-identical again; commons
+guard down to 1 by-design warning). **BUILD-32/33**: voice `contracts/` on the uniform
+shape (pins: report-protocol, esp32-site; registry cross-references the commons-held
+catalog/fixtures pins with rationale); guard byte-identical @ contract-guard-v1, hook +
+path-gated CI, 0 warnings. **BUILD-26**: `ui-openapi` stamped as a repo-internal
+generated contract — the STAMP versions the convention surface, not each regen; drift
+guard in CI. Conformance tests run live: 16/16. **PROD-7 closed as absorbed by
+PROD-16** — its entire scope (bridge tagging, voice scripted re-pin + staleness gate)
+delivered under the rescoped VWB-29/BUILD-24; family tags superseded the old
+`contract-vN` naming. Remaining on PROD-16: the satellite delegation.
+
 ## 2026-07-12 — PROD-16 bridge delegation VERIFIED and accepted in full (4/4, no bounce)
 
 Commons verification of the bridge claim against the HK-5 convention, item by item.

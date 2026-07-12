@@ -37,11 +37,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       rotation, 127.0.0.1 healthchecks, start-period > fleet boot) + a conformance checklist.
       Shared *scripts* only at the third consumer (rule of three). Delegates on completion:
       voice BUILD-18 (narrowed) + bridge OPS-15.
-- [ ] **PROD-7 — Contract tagging + scripted re-pin** (D-11): bridge tags `contract-vN`
-      releases with artifacts (bridge VWB-29, filed at intake); voice gets `make repin
-      CONTRACT=vN` + staleness gate (voice BUILD-24). Commons side: none beyond this entry —
-      write local IDs back when the sessions pick them up. Bridge ID: VWB-29 (intake filed
-      2026-07-08, uncommitted-mechanism last use). Voice ID: BUILD-24.
 - [ ] **PROD-8 — core-py bootstrap + first two extractions** (D-8): `packages/core-py`
       skeleton (own pyproject, `core-py-vX` tags), then the two designs — dynamic code
       loader (voice ARCH-42; voice consumer #1, bridge #2 via CORE-7) and logging scheme

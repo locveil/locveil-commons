@@ -106,7 +106,17 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       the core catches the observed drift class). Commons-side executed 2026-07-11
       (spec + core authored, `report-protocol-v1` tagged). Consumption delegations ride the
       PROD-14 delegation record (one intake per repo); PROD-6 closes with them.
-- [x] **PROD-12 — The council: structured cross-repo discussions (skill + keepers + dossier)**
+- [x] **PROD-7 — Contract tagging + scripted re-pin** (D-11). CLOSED 2026-07-12 as
+      **absorbed and executed by PROD-16** (the HK-5 contract convention generalized this
+      entry's whole scope): bridge tagging landed as family-named tags per
+      `process/contracts.md` §3 — first cut `catalog-v1.5` (VWB-29, rescoped at PROD-16
+      intake; the original `contract-vN` naming was superseded by family tags); voice's
+      scripted re-pin + staleness gate landed as BUILD-24 (`scripts/repin.py`,
+      `make repin CONTRACT=… [TAG=…]`, `make repin-check` release-time gate — first
+      scripted re-pin executed same day, upgrading the commons catalog pin to the strict
+      PIN.json shape and clearing the recorded openapi staleness). Both pre-named IDs
+      (VWB-29, BUILD-24) delivered under their PROD-16 rescopes; nothing of this entry's
+      scope remains undelivered.
       (filed + built 2026-07-11, owner-designed over three analysis rounds). A `/council`
       skill in this repo runs a housekeeping/design topic as a moderated discussion: commons
       Claude coordinates, per-repo **keeper subagents** (`.claude/agents/{voice,bridge}-keeper.md`,
