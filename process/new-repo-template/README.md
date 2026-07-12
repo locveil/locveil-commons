@@ -12,7 +12,7 @@ Discipline is seeded, not retrofitted.
    (naming is config), keep the shapes.
 3. Vendor the guard at the current tag and copy the config + hook:
    ```
-   git -C ../locveil-commons show scope-v3:packages/scope-guard/scope_guard.py > scripts/scope_guard.py
+   git -C ../locveil-commons show scope-v4:packages/scope-guard/scope_guard.py > scripts/scope_guard.py
    cp scope-guard.toml ../<new-repo>/.scope-guard.toml     # then edit paths/prefixes
    cp hooks/pre-commit ../<new-repo>/hooks/pre-commit && chmod +x
    git config core.hooksPath hooks
