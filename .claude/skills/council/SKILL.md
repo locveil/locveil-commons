@@ -31,8 +31,9 @@ HK entry files directly into `BOARD_DONE.md` (born-decided; deferred topics park
 
 ## 2. Keeper round
 
-Spawn the keeper agents **in parallel** (Agent tool; `subagent_type: voice-keeper` and
-`bridge-keeper`; add `satellite-keeper` when that repo exists). Each gets: the topic id, the
+Spawn the keeper agents **in parallel** (Agent tool; `subagent_type: voice-keeper`,
+`bridge-keeper`, and `satellite-keeper` when the topic touches the satellite repo —
+coordinator's call, cost discipline applies). Each gets: the topic id, the
 brief verbatim, the seed provenance (which PROD entry, if any), and any owner comments so
 far. Keepers are read-only lenses; they return the structured POSITION block their agent
 definition mandates. If the brief was seeded from a PROD entry, keepers reconcile it against

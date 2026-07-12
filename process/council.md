@@ -2,8 +2,9 @@
 
 **Status: ADOPTED 2026-07-11 (owner-designed over three analysis rounds in the commons
 session; built same day). Executable half: `.claude/skills/council/` (SKILL.md + dossier
-template); keeper lenses: `.claude/agents/{voice,bridge}-keeper.md` (+ satellite when that
-repo exists).**
+template); keeper lenses: `.claude/agents/{voice,bridge,satellite}-keeper.md` (satellite
+keeper active since 2026-07-12, PROD-15; spawned when the topic touches its repo —
+coordinator's call).**
 
 A council is a moderated cross-repo discussion run FROM this repo (D-4): the commons session
 coordinates, per-repo **keepers** (read-only subagents loaded with their repo's CLAUDE.md,

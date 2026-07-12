@@ -2,7 +2,8 @@
 
 The **Locveil umbrella repo** — the neutral, co-owned ground between the product repos
 `../locveil-voice` (Irene, the voice assistant), `../locveil-bridge` (the smart-home
-bridge), and `locveil-satellite` (pending, BUILD-22). The joint product: a fully local,
+bridge), and `../locveil-satellite` (ESP32 hardware satellites; live since 2026-07-12,
+PROD-15). The joint product: a fully local,
 privacy-first, Russian-first voice-controlled smart home. Decision record:
 `docs/design/productization.md` (D-1..D-12); initiative ledger: `board/BOARD.md`.
 
