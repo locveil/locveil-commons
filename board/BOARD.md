@@ -88,7 +88,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         contracts-registry + eval links and its manifest node; (3) rule-dialect update
         (CLAUDE.md invariant points at the manifest; `ops/INSTALL.md` enters scope);
         (4) re-pin scope-guard @ `scope-v5` (block + `docs_verdict_since` config).
-        Voice ID: (write back).
+        Voice IDs: **DOC-11 (live stale fixes), DOC-12 (manifest + coherence test +
+        CONTRIBUTING), BUILD-35 (dialect + scope-v5 re-pin)** — all `[release]` (filed
+        2026-07-12, voice `51ce922`; status lives in the voice ledger).
       - **Delegation → locveil-bridge**: (1) DOC staleness pass — CONTRIBUTING.md
         pre-VWB-29 contract paths, the OpenAPI field-description design-doc refs
         (config-ui-stays-functional: regen openapi + UI types same change), the 5
