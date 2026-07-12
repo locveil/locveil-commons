@@ -1,5 +1,26 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-16 bridge delegation VERIFIED and accepted in full (4/4, no bounce)
+
+Commons verification of the bridge claim against the HK-5 convention, item by item.
+**VWB-29** (the owner-side cut): `contracts/catalog/` layout ✓, STAMP carries the full
+core + build extras ✓, tag `catalog-v1.5` sits on the cut commit ✓, `CONTRACT_VERSION`
+constant lives in `presentation/api/catalog.py` and feeds both the stamp writer and the
+drift-guard test ✓, registry README direction-labeled ✓, catalog README changelog KEPT
+and continued with an honest v1.5 note ("changed no contract surface — it is the
+convention cut") ✓. **VWB-40** (pin relocation): went STRICT immediately — full PIN.json
+with `files` hashes, conformance pointer, and a lineage-honest `pinned_by` ("bytes
+unchanged, tag-verified at both") ✓; the reports-repo lens was re-taught the new path in
+`locveil-reports@ce1db63` ✓. **VWB-41**: committed `example.descriptor.json` +
+schema-validation test — the model layout's own gap closed ✓. **OPS-23**: vendored
+`contract_guard.py` byte-identical to `contract-guard-v1`, hook + path-gated CI, runs
+**green with 0 warnings** (first repo to hit zero) ✓. Conformance suite run live:
+18/18 across the three contract test files. One pre-existing divergence re-confirmed,
+not new: the commons catalog pin's `openapi.json` is one rev stale (the VWB-35
+schema-default drop, flagged at PROD-14 close) — rides BUILD-24 as recorded. Golden is
+byte-identical, so the voice re-pin stays ordinary. Remaining on PROD-16: voice and
+satellite delegations.
+
 ## 2026-07-12 — PROD-16 commons execution COMPLETE: contract-guard v1 + the restructure
 
 Same-session follow-through on the HK-5 decision. Landed: **contract-guard 1.0.0**
