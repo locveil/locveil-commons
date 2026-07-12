@@ -48,6 +48,13 @@ contracts/
   everything regardless of where bytes live.
 - A pin is **always an artifact copy** — never a bare commit reference (nothing to hash,
   nothing CI can gate on).
+- A pin is **always COMPLETE** (owner ruling 2026-07-12): the owner's full tagged
+  artifact set, byte-identical — the IDL principle: you take the whole interface
+  definition; what the consumer *uses* is its own business and never shapes the pin.
+  There is no subset/"sub-pin" concept; the `PIN.json` `files` map enumerates the
+  complete set, not a selection. (Machine check, forward requirement: from each
+  contract's next bump its STAMP.json enumerates the artifact set in an `artifacts`
+  list, so contract-guard can verify pin completeness — a contract-guard v1.1 rule.)
 - `PIN.json` fields: `{contract, version, tag, owner_repo, owner_commit, pinned_by,
   pin_date, files: {<path>: <sha256>}, conformance: <pointer to the local test>}`.
 - **STAMP.json core** (owner-side): `{contract, version, tag, date, owner_repo}` +

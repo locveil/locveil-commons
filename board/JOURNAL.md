@@ -1,5 +1,21 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-16 ruling: pins are always COMPLETE (the IDL principle)
+
+Owner ruling from the post-verification discussion of voice's catalog consumption,
+landed in `process/contracts.md` §2: a pin is the owner's FULL tagged artifact set,
+byte-identical — like a protobuf/IDL definition, you take the whole interface; what the
+consumer uses never shapes the pin. This retracts the coordinator's "subset pin via the
+files map" reading before it reached any tree — audit confirms every existing pin
+(catalog ×1, report-protocol ×2, crossover-fixtures, esp32-site) already carries its
+owner's complete set. Forward requirement recorded: from each contract's next bump the
+owner STAMP enumerates its `artifacts` list, making completeness machine-checkable
+(contract-guard v1.1 rule, not built yet). Noted, self-healing: the report-protocol
+STAMP sidecar postdates the v1 tag, so pins carrying it hold one file the literal tag
+lacks — aligns at v2. Still OPEN (owner has not decided): whether voice adds a local
+COMPLETE catalog pin + in-repo conformance test to close its push-time schema gap, or
+accepts release-cadence conformance via the crossover suite + repin-check.
+
 ## 2026-07-12 — PROD-16 voice delegation VERIFIED and accepted (5/5); PROD-7 closed as absorbed
 
 Voice's five tasks verified against the convention, all clean. **ARCH-47**: tag
