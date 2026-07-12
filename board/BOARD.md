@@ -105,7 +105,8 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         (5) export-close ARCH-23 with pointer; (6) NEW ARCH task: WS-protocol version
         stamp + wake-pack pin surface + `register` version-reporting fields
         (registry/config-ui staleness flag rides it or files separately). Voice IDs:
-        (write back).
+        **BUILD-22** (redefined at intake 2026-07-12, items 1–5) + **ARCH-47** (item 6;
+        staleness-flag decision deferred to its task start).
       - **Delegation → locveil-bridge**: (1) export task — annotate the superseded
         ESP32ManagedDevice text (`locveil-bridge/docs/action_plan.md` §5.1 area), fix the
         back-pointers, hand the `ESP32/` tree to the satellite import, DELETE it + retire

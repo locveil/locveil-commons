@@ -1,5 +1,14 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-15 voice delegation consumed — voice IDs written back
+
+Voice pulled the delegation same-day, reconciled it (org repo confirmed created — owner
+action done; the two reversals vs its frozen BUILD-22 text caught and recorded: nginx tree
+moves, ARCH-23/ARCH-44 export-close), and filed locally: **BUILD-22** redefined in place
+(items 1–5) + new **ARCH-47** (item 6 — the WS version-stamp / wake-pack pin / `register`
+version-reporting surface). IDs written back into the entry. Bridge IDs still pending;
+the entry stays open until they land and the delegated work needs no commons-side action.
+
 ## 2026-07-12 — HK-4 DECIDED: locveil-satellite bootstrap (four rounds) → PROD-15
 
 The satellite repo gets its bootstrap decision — D-6/D-7 executed with dated amendments,
