@@ -108,7 +108,10 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         restructure); (3) NEW small task: restructure voice `contracts/`
         to the pins shape (immediate per q3); (4) BUILD-26 cites the convention (internal
         openapi drift guard + STAMP, same mechanics in-repo); (5) vendor contract-guard
-        when tagged. Voice IDs: (write back).
+        when tagged. Voice IDs: **ARCH-47 (ungated + rescoped in place), BUILD-24
+        (rescoped), BUILD-32 (pins-shape restructure + eval re-point, [release]),
+        BUILD-33 (vendor contract-guard v1, [release]), BUILD-26 (annotated)** (filed
+        2026-07-12, voice `23ee00a`; status lives in the voice ledger).
       - **Delegation → locveil-satellite**: (1) OPS-3-shaped task — restructure to the
         pins shape, upgrade the WS commit-pin to an artifact-copy pin with PIN.json NOW
         (stamped pin when `ws-protocol-v1` lands), vendor contract-guard, wire the CI
