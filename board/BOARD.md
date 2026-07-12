@@ -119,7 +119,11 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         pattern); (5) amend `locveil-bridge/docs/design/productization_bridge.md` §85-87
         generator note with the two-layer shape (dated, HK-4). Per-deck cutover tasks
         stay UNFILED until first-light (HW-GATED, satellite-triggered). Bridge IDs:
-        (write back).
+        **DRV-34** (items 1a+5, folded — the supersession annotations) + **DRV-35**
+        (item 1b — ESP32/ delete + DRV-7 retirement, blocked on satellite import
+        confirmation) + **VWB-38** (item 2) + **DRV-36** (item 3) + **VWB-39** (item 4)
+        (pulled + verified at intake 2026-07-12; per-deck cutover tasks left unfiled
+        per this entry).
       - **Satellite born backlog** (its first session files these as local IDs; listed as
         seed only, status never asserted here): DES-1 harmonize the bridge ESP32 doc
         corpus claim-by-claim (build docs = leaf truth; REQUIREMENTS truth pass; pin-map
