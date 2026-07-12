@@ -97,7 +97,10 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         REL-4-unverified diagrams; (2) manifest + coherence test + dialect update;
         (3) **ADR dissolution, one task**: 0006 → CONTRIBUTING dependency-policy section
         + OPS-19 re-point; 0001–0005 verify-and-archive with supersession banners;
-        (4) re-pin scope-guard @ `scope-v5`. Bridge ID: (write back).
+        (4) re-pin scope-guard @ `scope-v5`. Bridge IDs: **DOC-14 (staleness pass),
+        DOC-13 (manifest + coherence test + dialect), DOC-15 (ADR dissolution),
+        OPS-24 (scope-v5 re-pin)** (filed 2026-07-12, bridge `ee1dca3`; status lives
+        in the bridge ledger).
       - **Delegation → locveil-satellite**: (1) OPS-shaped task — author the manifest
         (pending-gate nodes for FW-gated docs naming their gates; derives_from onto
         `docs/devices/`; phase-crossing reviews) + create CONTRIBUTING.md (phase
