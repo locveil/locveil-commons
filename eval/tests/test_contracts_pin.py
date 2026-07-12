@@ -1,6 +1,7 @@
 """The Irene↔bridge contract pin is internally consistent and post-v1.1 (locveil-voice TEST-17).
 
-The pin is a one-way-inward copy of the bridge's committed artifacts (contracts/README.md).
+The pin is a one-way-inward copy of the bridge's committed artifacts
+(contracts/pins/catalog/README.md).
 These tests make it *load-bearing*: the golden must validate against the pinned openapi's
 own CatalogResponse schema, the stamps must agree, and the v1.1 shape guarantees the voice
 resolver codes against (aliases, localized enum labels, units, values-XOR-options_from)
@@ -14,7 +15,7 @@ import pytest
 
 jsonschema = pytest.importorskip("jsonschema")
 
-CONTRACTS = Path(__file__).resolve().parents[2] / "contracts"
+CONTRACTS = Path(__file__).resolve().parents[2] / "contracts" / "pins" / "catalog"
 
 
 @pytest.fixture(scope="module")

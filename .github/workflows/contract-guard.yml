@@ -1,0 +1,23 @@
+# contract-guard CI (HK-5/PROD-16; convention: process/contracts.md §4) — layer-1
+# coherence only, --check only. Path-gated like ledger-guard.
+name: contract-guard
+
+on:
+  push:
+    paths:
+      - "contracts/**"
+      - "packages/contract-guard/**"
+      - ".github/workflows/contract-guard.yml"
+  pull_request:
+    paths:
+      - "contracts/**"
+      - "packages/contract-guard/**"
+      - ".github/workflows/contract-guard.yml"
+
+jobs:
+  contract-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: contract-guard --check
+        run: python3 packages/contract-guard/contract_guard.py --check

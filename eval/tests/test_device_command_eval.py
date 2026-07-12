@@ -12,12 +12,14 @@ from eval_commons.assertions.device_command_assert import get_assert
 from eval_commons.fixtures_to_tests import generate
 from eval_commons.mock_bridge import serve
 
-CONTRACTS = Path(__file__).resolve().parents[2] / "contracts"
+PINS = Path(__file__).resolve().parents[2] / "contracts" / "pins"
+CATALOG_PIN = PINS / "catalog"
+FIXTURES_PIN = PINS / "crossover-fixtures"
 
 
 @pytest.fixture(scope="module")
 def bridge():
-    server = serve(CONTRACTS / "catalog.golden.json", port=0)  # ephemeral port
+    server = serve(CATALOG_PIN / "catalog.golden.json", port=0)  # ephemeral port
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     base = f"http://127.0.0.1:{server.server_address[1]}"
@@ -39,7 +41,7 @@ def _post(base, path, payload):
 
 def test_mock_bridge_serves_the_pinned_catalog(bridge):
     catalog = _get(bridge, "/system/catalog")
-    pin = json.loads((CONTRACTS / "PIN.json").read_text())
+    pin = json.loads((CATALOG_PIN / "PIN.json").read_text())
     assert catalog["version"] == pin["catalog_version"]
 
 
@@ -74,8 +76,8 @@ def test_mock_bridge_auto_scope_uses_group_default(bridge):
 
 
 def test_generator_covers_every_fixture():
-    doc = json.loads((CONTRACTS / "crossover_fixtures.json").read_text())
-    tests = yaml.safe_load(generate(CONTRACTS / "crossover_fixtures.json"))
+    doc = json.loads((FIXTURES_PIN / "crossover_fixtures.json").read_text())
+    tests = yaml.safe_load(generate(FIXTURES_PIN / "crossover_fixtures.json"))
     assert len(tests) == len(doc["fixtures"])
     by_id = {t["metadata"]["fixture"]: t for t in tests}
     f10 = by_id["F10"]

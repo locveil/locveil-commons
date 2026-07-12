@@ -1,4 +1,4 @@
-"""Guards for contracts/crossover_fixtures.json (TEST-18 Slice A).
+"""Guards for contracts/pins/crossover-fixtures/crossover_fixtures.json (TEST-18 Slice A).
 
 Every fixture's `expect` must bind to entities that actually exist in the pinned
 golden catalog — device ids, capabilities, actions, params (with ranges/enums),
@@ -11,7 +11,9 @@ from pathlib import Path
 
 import pytest
 
-CONTRACTS = Path(__file__).resolve().parents[2] / "contracts"
+PINS = Path(__file__).resolve().parents[2] / "contracts" / "pins"
+CATALOG_PIN = PINS / "catalog"
+FIXTURES_PIN = PINS / "crossover-fixtures"
 
 FANOUT_ALLOW_LIST = {"light", "cover"}  # canonical_first.md §10 (VWB-23)
 SCOPES = {"auto", "all", "one"}
@@ -19,12 +21,12 @@ SCOPES = {"auto", "all", "one"}
 
 @pytest.fixture(scope="module")
 def catalog():
-    return json.loads((CONTRACTS / "catalog.golden.json").read_text())
+    return json.loads((CATALOG_PIN / "catalog.golden.json").read_text())
 
 
 @pytest.fixture(scope="module")
 def fixtures_doc():
-    return json.loads((CONTRACTS / "crossover_fixtures.json").read_text())
+    return json.loads((FIXTURES_PIN / "crossover_fixtures.json").read_text())
 
 
 @pytest.fixture(scope="module")
@@ -52,7 +54,7 @@ def _action(cap: dict, name: str) -> dict | None:
 
 
 def test_pin_agreement(fixtures_doc):
-    pin = json.loads((CONTRACTS / "PIN.json").read_text())
+    pin = json.loads((CATALOG_PIN / "PIN.json").read_text())
     assert fixtures_doc["catalog_version"] == pin["catalog_version"], (
         "fixtures were authored against a different catalog than the pin — "
         "re-author bindings after the re-pin"

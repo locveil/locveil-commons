@@ -5,7 +5,7 @@ test var for the shared assertion, and `metadata` carries fixture id / tier / ki
 can filter (`--filter-metadata tier=1`, `--filter-metadata kind=actuate`). The fixture file
 stays the single source of truth — cases are GENERATED, never hand-edited.
 
-Usage:  python -m eval_commons.fixtures_to_tests contracts/crossover_fixtures.json > tests.yaml
+Usage:  python -m eval_commons.fixtures_to_tests contracts/pins/crossover-fixtures/crossover_fixtures.json > tests.yaml
 """
 
 from __future__ import annotations

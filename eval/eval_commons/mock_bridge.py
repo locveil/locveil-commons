@@ -3,7 +3,7 @@
 A tiny stdlib HTTP server that stands in for the real bridge during producer contract runs:
 
 - ``GET /system/catalog``            → serves the PINNED golden catalog (the shared world both
-                                       sides resolve against — `contracts/catalog.golden.json`);
+                                       sides resolve against — `contracts/pins/catalog/catalog.golden.json`);
 - ``POST /devices/{id}/canonical``   → records the command, answers the §5b success echo;
 - ``POST /rooms/{id}/canonical``     → records the room-group command (VWB-23), answers a
                                        plausible per-member aggregate built from the catalog's
@@ -15,7 +15,7 @@ A tiny stdlib HTTP server that stands in for the real bridge during producer con
                                        vocabulary (kind: actuate | room-group | read);
 - ``POST /_reset``                   → clears the capture log.
 
-Run:  python -m eval_commons.mock_bridge --catalog contracts/catalog.golden.json --port 8010
+Run:  python -m eval_commons.mock_bridge --catalog contracts/pins/catalog/catalog.golden.json --port 8010
 """
 
 from __future__ import annotations

@@ -19,7 +19,7 @@ eval_commons/mock_bridge.py       stand-in locveil-bridge (serves the pinned cat
 eval_commons/fixtures_to_tests.py crossover fixtures → generated promptfoo test cases
 eval_commons/audio/       WAV → PCM16 frame helpers
 shared/                   deepseek-judge.yaml · promptfooconfig.base.yaml · rubrics/{ru,en}/*.txt
-contracts/                the pinned Irene↔bridge catalog contract (see contracts/README.md)
+contracts/                the contract registry; catalog + fixtures pins under contracts/pins/ (see contracts/README.md)
 examples/                 .env.example
 ```
 

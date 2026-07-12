@@ -38,10 +38,15 @@ is the active ledger, completed entries MOVE to `BOARD_DONE.md`; scope-guard
 (`hooks/`, `core.hooksPath`) + `ledger-guard` CI, both `--check`-only; rotation only via
 explicit `--rotate` in its own commit. Products vendor the script at `scope-vX` tags.
 `eval/` + `packages/` = regime 2 (commons owns shared code; products pin versions; rule of
-two for new extractions). `contracts/` = regime 1 (product-owned generated artifacts;
-commons holds only pins). Packages version independently via prefixed tags — `eval-vX`,
-`core-py-vX`, `ui-kit-vX` — each with its own `pyproject.toml`/`package.json`. **Never
-publish a bare `locveil` package — always `locveil-*`.**
+two for new extractions). `contracts/` follows the org contract convention
+(HK-5/PROD-16, normative `process/contracts.md`): `contracts/<name>/` = owned surfaces
+(here: `report-protocol/`), `contracts/pins/<name>/` = consumed pins (regime 1 —
+product-owned artifacts, commons holds only the pins), `contracts/README.md` = the
+direction-labeled registry; layer-1 guard `packages/contract-guard/` (tags
+`contract-guard-vN`, vendored by consumers like scope-guard). Packages version
+independently via prefixed tags — `eval-vX`, `core-py-vX`, `ui-kit-vX` — each with its
+own `pyproject.toml`/`package.json`. **Never publish a bare `locveil` package — always
+`locveil-*`.**
 
 ## Source-of-truth rules
 
@@ -52,13 +57,14 @@ publish a bare `locveil` package — always `locveil-*`.**
   `wants_trace`, default `false`), this repo needs no change unless a test wants the new
   capability. Never reverse-engineer the protocol from server code or from this repo's own
   providers; read the document.
-- **`contracts/` is a one-way inward pin owned by locveil-voice** (its re-pin tasks stamp
-  `PIN.json`): a version-stamped copy of `../locveil-bridge`'s committed contract artifacts
-  (catalog golden, STAMP, openapi) plus the co-owned `crossover_fixtures.json`. Never
-  hand-edit the pin contents (`catalog.golden.json`, `openapi.json`, `STAMP.json`,
-  `PIN.json`, `crossover_fixtures.json`) and never treat them as a source — they move via
-  voice re-pin / fixture tasks; old repo names inside them are expected until the next
-  re-pin. `contracts/README.md` is this repo's own documentation.
+- **`contracts/pins/catalog/` is a one-way inward pin owned by locveil-voice** (its re-pin
+  tasks stamp `PIN.json`): a version-stamped copy of `../locveil-bridge`'s committed
+  contract artifacts (catalog golden, STAMP, openapi). `contracts/pins/crossover-fixtures/`
+  is the co-owned fixtures pin. Never hand-edit any pin contents and never treat them as a
+  source — they move via voice re-pin / fixture tasks; old repo names inside them are
+  expected until the next re-pin. Owned surface `contracts/report-protocol/` moves ONLY by
+  protocol-bump tasks (tag + STAMP together). The registry `contracts/README.md` and the
+  per-contract READMEs are this repo's own documentation.
 
 ## The eval framework (`eval/`)
 

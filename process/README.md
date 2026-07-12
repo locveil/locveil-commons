@@ -14,8 +14,12 @@ Here now:
   template: [`new-repo-template/`](new-repo-template/).
 - **[`problem-reports.md`](problem-reports.md)** — the inbox story (HK-3/PROD-6/PROD-14):
   choreography semantics, leak fence, retention/privacy policy, consumption rules, lens
-  co-ownership. Machine core: [`report-protocol/report-protocol.json`](report-protocol/report-protocol.json)
+  co-ownership. Machine core: [`../contracts/report-protocol/`](../contracts/report-protocol/README.md)
   (tags `report-protocol-vN`; pinned + test-validated by voice, bridge, and locveil-reports).
+- **[`contracts.md`](contracts.md)** — the general contract convention (HK-5/PROD-16):
+  contract classes, the uniform `contracts/` layout (owned + `pins/` + registry README),
+  STAMP/PIN cores, family tags, two-layer enforcement (contract-guard + conformance
+  tests), staleness rules. Tool: `../packages/contract-guard/`.
 
 Pending, until the owning PROD tasks land (see `../board/BOARD.md`):
 

@@ -76,11 +76,15 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       formats; repo-internal generated contracts (voice BUILD-26) reuse the same
       mechanics. First catalog tag: **`catalog-v1.5`** (lineage continues; README
       changelog STAYS as narrative — STAMP + tag are the machine-readable authority).
-      Commons-side deliverables: the spec (landed
-      2026-07-12), then contract-guard v1 + commons restructure (`contracts/pins/*`,
-      `report-protocol` → `contracts/report-protocol/` + STAMP sidecar, tag v1 untouched)
-      + eval re-point (3 hardcoded paths) + registry README. Execution order:
-      `process/contracts.md` §6. Delegation record:
+      Commons-side deliverables — ALL EXECUTED 2026-07-12: the spec; **contract-guard
+      v1** (`packages/contract-guard/contract_guard.py`, tag `contract-guard-v1`, wired
+      into `hooks/pre-commit` + path-gated `contract-guard` CI job); commons restructure
+      (`contracts/pins/{catalog,crossover-fixtures}/`, `report-protocol` →
+      `contracts/report-protocol/` + STAMP sidecar + per-contract READMEs, tag v1
+      untouched); registry README; eval re-point (4 test/module path sets — a 4th
+      consumer, `test_device_command_eval.py`, found and fixed; suite 40/40 green);
+      guard green with 3 by-design legacy warnings (strict PINs arrive at next re-pins).
+      Execution order: `process/contracts.md` §6. Delegation record:
       - **Delegation → locveil-bridge**: (1) VWB-29 RESCOPED — the owner-side cut:
         catalog → `contracts/catalog/`, code-level `CONTRACT_VERSION` constant, STAMP
         core fields, tag `catalog-v1.5`, registry README (changelog kept, continued);
@@ -95,7 +99,11 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         + `register` version fields, tag `ws-protocol-v1`; wake-pack sidecar stamp
         (`wake-pack-v1`, content hashes — third-party manifest never forked);
         (2) BUILD-24 born against the final bridge layout (generalized `make repin`,
-        staleness at release time); (3) NEW small task: restructure voice `contracts/`
+        staleness at release time; NOTE: the commons restructure moved the pin to
+        `contracts/pins/catalog/` — voice's `eval/Makefile` +
+        `device.promptfooconfig.yaml` reference the OLD
+        `../../locveil-commons/contracts/` paths, re-point them with this task or the
+        restructure); (3) NEW small task: restructure voice `contracts/`
         to the pins shape (immediate per q3); (4) BUILD-26 cites the convention (internal
         openapi drift guard + STAMP, same mechanics in-repo); (5) vendor contract-guard
         when tagged. Voice IDs: (write back).

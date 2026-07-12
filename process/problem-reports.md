@@ -9,7 +9,7 @@ design and defer to this spec for everything shared.
 
 ## 1. The two-part truth (what lives where)
 
-- **Machine core — [`report-protocol/report-protocol.json`](report-protocol/report-protocol.json):**
+- **Machine core — [`contracts/report-protocol/report-protocol.json`](../contracts/report-protocol/report-protocol.json)** (home since PROD-16; STAMP + per-contract README alongside)**:**
   the wire-visible surface only — slug registry, labels {name, color, description}, lens
   enum, ticket types with per-type title prefixes / envelope required-fields / state
   buckets + transitions, `ping_pong_max`, bundle path template, handover-comment header +

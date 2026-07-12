@@ -2,7 +2,7 @@
 
 Compares the provider's envelope (`{"captured": [...], "reply": {...}}`) against the
 crossover fixture's `expect` (passed as the test var `expect`, verbatim from
-`contracts/crossover_fixtures.json`):
+`contracts/pins/crossover-fixtures/crossover_fixtures.json`):
 
 - actuate / room-group : exactly ONE command captured, dict-equal to `expect` minus `kind`-
                          irrelevant keys (the capture is already fixture-shaped);

@@ -1,5 +1,26 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-16 commons execution COMPLETE: contract-guard v1 + the restructure
+
+Same-session follow-through on the HK-5 decision. Landed: **contract-guard 1.0.0**
+(`packages/contract-guard/contract_guard.py`, stdlib-only, --check only; layout/registry/
+STAMP-core/PIN-core/sha256/version-consistency checks; legacy pins degrade to warnings
+until their next re-pin) tagged **`contract-guard-v1`**, wired into `hooks/pre-commit`
+(after scope-guard) and a new path-gated `contract-guard` CI job. Commons `contracts/`
+restructured to the uniform shape: catalog pin → `contracts/pins/catalog/` (regime-1
+semantics preserved, per-pin README), fixtures → `contracts/pins/crossover-fixtures/`,
+and commons' own **report-protocol machine core moved home** to
+`contracts/report-protocol/` with its STAMP sidecar (tag `report-protocol-v1` untouched;
+consumers hold verbatim copies — zero consumer impact). Registry README rewritten as the
+direction-labeled index; CLAUDE.md regime text updated. Eval re-point turned out to be
+FOUR path sets, not three — reconnaissance had missed `test_device_command_eval.py`;
+found by running the suite, fixed, **40/40 green**. contract-guard runs green with
+exactly 3 by-design warnings (catalog PIN legacy until BUILD-24; fixtures PIN pending
+its next fixtures task). One cross-repo find written into the voice delegation: voice's
+`eval/Makefile` + `device.promptfooconfig.yaml` reference the old commons contracts
+paths — re-point rides BUILD-24 or the voice restructure task. Bridge/voice/satellite
+delegations now unblocked to pull.
+
 ## 2026-07-12 — HK-5 DECIDED: the contract convention → PROD-16 (`process/contracts.md`)
 
 The first parked seed convened, the first three-keeper council (satellite-keeper's debut —
