@@ -403,3 +403,20 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       Round 4 (coordinator-only, no keeper cost): toolchain — pcbparts / Serena-SKiDL /
       Espressif MCPs day one; skidl-skills and the PlatformIO commitment deliberately NOT
       installed at bootstrap — both mandatory satellite design tasks (DES-2/DES-3).
+- [x] **HK-5 — contracts in general** (fifth council topic; the first parked seed
+      convened, and the first with all THREE product keepers — satellite-keeper's debut,
+      which stale-flagged its own repo's README). Decided 2026-07-12 in ONE keeper round +
+      one owner round; decision and execution filed as **PROD-16** (delegations there);
+      normative convention: `process/contracts.md`. Round arc: reconnaissance corrected
+      the brief — catalog is **v1.4 not "1.5"** (no version field, no tags anywhere; the
+      prose `contract_patch` accumulator in the voice pin is the symptom), "PROD-7 in
+      flight" overstated (VWB-29 + BUILD-24 both unbuilt — making the coordinated cut
+      near-free), and commons self-flagged the same disease (`report-protocol.json`
+      carries no in-artifact version). Keepers converged unanimously on two-layer
+      enforcement (thin coherence checker + per-repo conformance tests; semantics never
+      in the shared tool) and on prose-contracts-as-block-pins; satellite's
+      new-tool-not-scope-guard argument beat voice's mild extension preference. Owner
+      rulings: uniform layout ENFORCED IMMEDIATELY (bridge's grandfathering objection
+      overruled); `catalog-v1.5` — README changelog stays as narrative, STAMP + tag
+      become the machine-readable version authority (owner mid-landing correction);
+      staleness never a push gate (voice's hard condition confirmed).

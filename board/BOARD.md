@@ -59,18 +59,49 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 - [ ] **PROD-11 — FUTURE design: Home Assistant in parallel to Wirenboard** (D-4's stress
       test): if the canonical DeviceCommand contract survives HA unchanged, voice gets zero
       tasks; if voice needs changes, the contract leaked WB-specifics. Waits until wanted.
-
-## HK — council topics (parked seeds; born-decided topics go straight to `BOARD_DONE.md`)
-
-- [ ] **HK-5 — contracts in general** (parked seed, 2026-07-12, owner — convene when
-      wanted). The versioned cross-repo contract surfaces have multiplied and each grew its
-      own dialect: the bridge catalog/canonical-command contract (PROD-7 `contract-vN`
-      tagging + scripted re-pin, in flight), commons `report-protocol-vN`, bridge
-      `device-integration-v1`, the `scope-vN` process kit, and voice's two satellite-facing
-      surfaces that have **no version story yet** (WS wire protocol, wake-word pack).
-      Council scope: one general convention — tagging + STAMP artifacts, re-pin mechanics
-      and staleness gates, version-reporting surfaces, who owns which direction. Known
-      riders: voice **ARCH-47** (WS version stamp + wake-pack pin surface + `register`
-      version-reporting — owner decision 2026-07-12: executes WITH this council, not
-      standalone; the satellite's interim commit-pin holds until then) and likely the
-      generalization of PROD-7's `make repin` pattern.
+- [ ] **PROD-16 — The contract convention + the coordinated cut** (decided by council
+      **HK-5**, 2026-07-12, one round with all THREE product keepers — arc in
+      `BOARD_DONE.md` HK-5; **normative: `process/contracts.md`**). Decision: one org-wide
+      convention — contract classes; uniform layout **enforced immediately** (owner q3:
+      `contracts/<name>/` owned + `contracts/pins/<name>/` consumed + registry README
+      indexing both, direction-labeled; no grandfathering); STAMP core
+      `{contract, version, tag, date, owner_repo}`; family-named tags, **no prose
+      history** (STAMP + tag are the only version authority from first tag on); two-layer
+      enforcement — new vendored **`contract_guard.py`** (coherence-only; commons regime
+      2, `packages/contract-guard/`, tags `contract-guard-vN`; scope-guard stays
+      ledger-only) + mandatory per-repo conformance tests and day-one owner-side guards;
+      staleness via runtime version-reporting + release-time re-pin flows, NEVER
+      cross-repo push gates; prose contracts = block-pin style canonized; per-instance
+      config inputs (bridge descriptors) are NOT pins; sidecar stamps for third-party
+      formats; repo-internal generated contracts (voice BUILD-26) reuse the same
+      mechanics. First catalog tag: **`catalog-v1.5`** (lineage continues; README
+      changelog STAYS as narrative — STAMP + tag are the machine-readable authority).
+      Commons-side deliverables: the spec (landed
+      2026-07-12), then contract-guard v1 + commons restructure (`contracts/pins/*`,
+      `report-protocol` → `contracts/report-protocol/` + STAMP sidecar, tag v1 untouched)
+      + eval re-point (3 hardcoded paths) + registry README. Execution order:
+      `process/contracts.md` §6. Delegation record:
+      - **Delegation → locveil-bridge**: (1) VWB-29 RESCOPED — the owner-side cut:
+        catalog → `contracts/catalog/`, code-level `CONTRACT_VERSION` constant, STAMP
+        core fields, tag `catalog-v1.5`, registry README (changelog kept, continued);
+        (2) relocate consumed pins NOW per q3 (report-protocol pin →
+        `contracts/pins/report-protocol/` + test paths + the reports-repo lens teaching
+        note); (3) NEW small task: device-integration owner-side guard (committed
+        schema-validating example fixture + CI check) closing the model's own gap,
+        pre-VWB-39; (4) vendor contract-guard when tagged. Bridge IDs: (write back).
+      - **Delegation → locveil-voice**: (1) ARCH-47 UNGATED and rescoped as the
+        convention's first voice instance — `contracts/ws-protocol/` STAMP + doc-header
+        "Protocol version" line + served code constant + version-triple conformance test
+        + `register` version fields, tag `ws-protocol-v1`; wake-pack sidecar stamp
+        (`wake-pack-v1`, content hashes — third-party manifest never forked);
+        (2) BUILD-24 born against the final bridge layout (generalized `make repin`,
+        staleness at release time); (3) NEW small task: restructure voice `contracts/`
+        to the pins shape (immediate per q3); (4) BUILD-26 cites the convention (internal
+        openapi drift guard + STAMP, same mechanics in-repo); (5) vendor contract-guard
+        when tagged. Voice IDs: (write back).
+      - **Delegation → locveil-satellite**: (1) OPS-3-shaped task — restructure to the
+        pins shape, upgrade the WS commit-pin to an artifact-copy pin with PIN.json NOW
+        (stamped pin when `ws-protocol-v1` lands), vendor contract-guard, wire the CI
+        job, fix the stale `contracts/README.md` status line; (2) DES-4 mirrors
+        device-integration per this shape; (3) OPS-1 gains the wake-pack
+        hash-at-publish requirement. Satellite IDs: (write back).

@@ -1,5 +1,29 @@
 # Board journal — newest on top
 
+## 2026-07-12 — HK-5 DECIDED: the contract convention → PROD-16 (`process/contracts.md`)
+
+The first parked seed convened, the first three-keeper council (satellite-keeper's debut —
+it stale-flagged its own repo's README on arrival). One keeper round sufficed: the
+inventories agreed on the diagnosis before the argument started. Corrections to the brief:
+catalog is v1.4 not "1.5" (no version field, no `contract-vN` tags exist; voice's
+15-clause prose `contract_patch` accumulator is the symptom), "PROD-7 in flight" was
+optimistic (VWB-29 + BUILD-24 both unbuilt — which turned the redo into a near-free
+coordinated cut), and commons self-flagged: `report-protocol.json` carries no in-artifact
+version either. Unanimous core: two-layer enforcement — a thin vendored coherence checker
+(`contract_guard.py`, commons regime 2, `contract-guard-vN`; scope-guard stays
+ledger-only — satellite's decoupling argument beat voice's mild extension preference)
+plus per-repo conformance tests, with owner-side guards mandatory from day one (the
+bridge's own model layout, device-integration, lacked one — honest self-audit). Owner
+rulings: uniform layout enforced IMMEDIATELY (`contracts/<name>/` owned +
+`contracts/pins/<name>/` consumed + direction-labeled registry README; bridge's
+grandfathering plea overruled); first tag `catalog-v1.5` — and a mid-landing correction
+worth recording: README changelogs STAY as narrative, the STAMP + tag are the
+machine-readable authority ("the stamp defines, the changelog narrates"); staleness never
+a push gate (runtime version-reporting + release-time re-pin only). ARCH-47 ungated.
+Landed: `process/contracts.md` (normative), PROD-16 with three delegations + the
+commons execution list (contract-guard v1, commons restructure, eval re-point,
+report-protocol STAMP), HK-5 moved from parked to DONE.
+
 ## 2026-07-12 — HK-5 parked: contracts-in-general council (owner seed)
 
 Owner decision from the PROD-15 aftermath: voice ARCH-47 (the WS version stamp / wake-pack
