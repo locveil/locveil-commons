@@ -15,14 +15,13 @@ the files and stamp `PIN.json`. Never hand-edit any file in this folder.
 
 Guards (layer 2): `eval/tests/test_contracts_pin.py` — golden validates against the
 pinned openapi's `CatalogResponse`, STAMP hash matches the golden's `version`, PIN
-matches the stamp, contract shape assertions. Layer 1: contract-guard (legacy `PIN.json`
-until the next re-pin — BUILD-24 upgrades it to the strict shape with the `files` hash
-map and `catalog-vN` tag reference).
+matches the stamp, contract shape assertions. Layer 1: contract-guard (strict `PIN.json`
+since the `catalog-v1.5` re-pin — `files` sha256 map + family tag, BUILD-24).
 
-Re-pin (until BUILD-24's `make repin` lands):
+Re-pin (scripted, BUILD-24 — from `../locveil-voice/eval`):
 
 ```bash
-cp ../locveil-bridge/contracts/catalog/{catalog.golden.json,openapi.json,STAMP.json} contracts/pins/catalog/
-# update PIN.json (contract, version, tag, owner_commit, files sha256s, pin_date), then:
-cd eval && uv run --with pytest --with jsonschema pytest tests/test_contracts_pin.py -q
+make repin CONTRACT=catalog          # newest bridge catalog-vN tag (or TAG=catalog-v1.6)
+make repin-check                     # release-time staleness gate across all pins
+cd ../../locveil-commons/eval && uv run --with pytest --with jsonschema pytest tests/test_contracts_pin.py -q
 ```
