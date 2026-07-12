@@ -1,5 +1,19 @@
 # Board journal — newest on top
 
+## 2026-07-12 — PROD-16 voice follow-up (BUILD-34) VERIFIED and accepted (4/4)
+
+The completeness ruling's first instance, verified: voice's `contracts/pins/catalog/`
+holds the FULL `catalog-v1.5` set, all three artifacts byte-identical to the bridge's
+tagged copies; strict PIN.json pointing at the new conformance test. `repin.py` now
+carries both targets — one `make repin CONTRACT=catalog` stamps the local pin AND the
+commons crossover pin at the same tag (divergence impossible by construction).
+`test_catalog_contract_conformance.py` (5/5 live) binds `parse_catalog` and the emitted
+`CanonicalActionRequest`/`RoomCanonicalRequest` wire bodies to the pinned schemas in
+voice's normal CI — the push-time gap the voice keeper flagged in HK-5 is closed; the
+commons crossover suite stays the release-cadence deep gate. Registry states the
+division of labor; contract-guard on voice: 0 warnings. Write-back: BUILD-34
+(voice `a51f709`). PROD-16 now waits only on the satellite delegation (in progress).
+
 ## 2026-07-12 — PROD-16 follow-up delegation to voice: the local COMPLETE catalog pin
 
 Owner decision closing the pin-placement discussion: voice adds a local catalog pin —
