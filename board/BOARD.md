@@ -130,4 +130,12 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         (stamped pin when `ws-protocol-v1` lands), vendor contract-guard, wire the CI
         job, fix the stale `contracts/README.md` status line; (2) DES-4 mirrors
         device-integration per this shape; (3) OPS-1 gains the wake-pack
-        hash-at-publish requirement. Satellite IDs: (write back).
+        hash-at-publish requirement. Satellite IDs: **OPS-3 (new, filed + executed same
+        session — the pins were born STAMPED: `ws-protocol-v1`/`wake-pack-v1` had already
+        tagged by pull time, so the interim unstamped step collapsed; reconciliation also
+        stood up the satellite's own `esp32-site` owned surface, tag `esp32-site-v1` —
+        voice's pre-tag pin can fill version/tag at its next re-pin), DES-4 (amended in
+        place: pins-shape mirror; intake note — the `device-integration-v1` tag carries
+        the pre-convention STAMP, core fix post-tag with no bump, `v1.1` request goes
+        repo-to-repo at authoring), OPS-1 (amended in place: wake-pack hash-at-publish)**
+        (filed 2026-07-12, satellite `fcc6989`; status lives in the satellite ledger).
