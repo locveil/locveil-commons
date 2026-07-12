@@ -1,5 +1,14 @@
 # Board journal — newest on top
 
+## 2026-07-12 — HK-5 parked: contracts-in-general council (owner seed)
+
+Owner decision from the PROD-15 aftermath: voice ARCH-47 (the WS version stamp / wake-pack
+pin surface) is NOT executed standalone — it rides the next council round, which will take
+on the contract surfaces in general (five dialects and counting; seed text in the new
+BOARD.md `## HK` parked-seeds section). Voice annotated ARCH-47 as gated the same day. This
+is the first parked HK seed, exercising the "deferred council parks its entry here"
+convention.
+
 ## 2026-07-12 — PROD-15 CLOSED — the satellite repo is real; cross-repo-board block @ scope-v4
 
 The fastest board arc yet: decided (HK-4), delegated, executed on all three sides, and
