@@ -92,7 +92,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         `contracts/pins/report-protocol/` + test paths + the reports-repo lens teaching
         note); (3) NEW small task: device-integration owner-side guard (committed
         schema-validating example fixture + CI check) closing the model's own gap,
-        pre-VWB-39; (4) vendor contract-guard when tagged. Bridge IDs: (write back).
+        pre-VWB-39; (4) vendor contract-guard when tagged. Bridge IDs: **VWB-29
+        (rescoped in place), VWB-40, VWB-41, OPS-23** (filed 2026-07-12, bridge
+        `17734d8`; status lives in the bridge ledger).
       - **Delegation → locveil-voice**: (1) ARCH-47 UNGATED and rescoped as the
         convention's first voice instance — `contracts/ws-protocol/` STAMP + doc-header
         "Protocol version" line + served code constant + version-triple conformance test
