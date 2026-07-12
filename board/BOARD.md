@@ -123,7 +123,8 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         commons stays the release-cadence deep gate, this is the fast local stub check.
         (4) Registry README: the commons cross-reference note adjusts (local pin now
         exists; the commons copy remains the shared crossover pin). contract-guard
-        picks the new pin up with zero changes. Voice ID: (write back).
+        picks the new pin up with zero changes. Voice ID: **BUILD-34** (filed +
+        completed 2026-07-12, voice `a51f709`; status lives in the voice ledger).
       - **Delegation → locveil-satellite**: (1) OPS-3-shaped task — restructure to the
         pins shape, upgrade the WS commit-pin to an artifact-copy pin with PIN.json NOW
         (stamped pin when `ws-protocol-v1` lands), vendor contract-guard, wire the CI
