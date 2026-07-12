@@ -11,6 +11,7 @@ sections_required_for_all = true
 high_water = 3000
 low_water = 2000
 hard_ceiling = 4000
+docs_verdict_since = "2026-07-13"   # HK-6: completions from this date need a docs: verdict (2026-07-12 entries predate the rule, frozen)
 
 [evidence]
 dirs = ["docs/design"]
@@ -32,7 +33,7 @@ delegation_writeback = true
 file = "CLAUDE.md"
 [[claude.blocks]]
 name = "shared-invariants"
-sha256 = "8e295e7009a43ece59693cdf7876189c145d29694291ca2c07bbc88e8dddb214"
+sha256 = "71d1c3bb3a6de0626a4c9ab8709f2e31166c866cede31c345fc93a58e4345218"
 [[claude.blocks]]
 name = "cross-repo-board"
 sha256 = "0f5e8f63b55c752ddfd542e112f06dd1a6d615c38f1b6f1d57dbeaee7dbdb86a"

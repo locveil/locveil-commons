@@ -1,0 +1,13 @@
+{
+  "$comment": "Skeleton docs manifest (HK-6; schema: locveil-commons process/user-docs/manifest.schema.json). Fill at bootstrap: STAMP + README go to contracts/docs-manifest/ (docs-manifest-v1); wire the coherence test into the normal suite.",
+  "repo": "{{REPO}}",
+  "roots": ["README.md", "docs/guides", "docs/architecture", "CONTRIBUTING.md"],
+  "surfaces": {},
+  "nodes": [
+    { "id": "readme", "path": "README.md", "class": "front-door",
+      "audience": ["operator", "tester", "contributor"], "status": "banner",
+      "note": "status banner states honestly what is built vs pending" },
+    { "id": "contributing", "path": "CONTRIBUTING.md", "class": "contributor",
+      "audience": ["contributor"], "status": "banner" }
+  ]
+}

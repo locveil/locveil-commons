@@ -528,3 +528,24 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       overruled); `catalog-v1.5` — README changelog stays as narrative, STAMP + tag
       become the machine-readable version authority (owner mid-landing correction);
       staleness never a push gate (voice's hard condition confirmed).
+- [x] **HK-6 — User-facing documentation harmonization** (sixth council topic; bare
+      seed, decided 2026-07-12 over TWO owner rounds, all three product keepers).
+      Decision and execution filed as **PROD-17** (delegations there); normative:
+      `process/user-docs.md` + `process/user-docs/manifest.schema.json`. Round arc:
+      round 1 audited both exemplar corpora and root-caused the rule failure —
+      the only LAW with zero mechanical enforcement and no artifact slot for the
+      verdict (live exhibits: voice's port-6000 quartet missed twice; bridge's REL-4
+      fixing 11 of ~22 docs at the gate; the satellite's provisioning README
+      contradicting its own DES-3) — plus the template bug (the rule never reached
+      the satellite). Owner rulings round 1: ADRs INTERNAL (dissolve/archive), org
+      README folds into PROD-9, no Russian docs today, operator docs in scope,
+      verdict in the DONE entry. Round 2 engineered the owner's docs-manifest idea
+      into a repo-internal contract (pending-gate slots, surface→glob suspect sets,
+      derives_from, CONTRIBUTING-in-the-manifest — proven by bridge's CONTRIBUTING
+      drifting stale in under 24 hours outside the old rule's scope); the node
+      policy became a failing test instead of an approval. Owner rulings round 2:
+      floor only where the capability exists; docs-review tasks fileable any time,
+      a commons-filed one fans out to all repos. Landed same day: spec + schema +
+      scope-guard 1.2.0 @ scope-v5 (docs-verdict presence rule; shared-invariants
+      block gains the invariant) + template seeds. docs: none — process/board
+      artifacts only (the convention itself; first verdict line under its own rule).

@@ -1,5 +1,32 @@
 # Board journal — newest on top
 
+## 2026-07-12 — HK-6 DECIDED: user-facing docs convention + the docs manifest → PROD-17
+
+Two rounds, three keepers, and the owner's mid-council invention became the centerpiece.
+Round 1 root-caused the docs-rule failure with unanimous precision: the only LAW with
+zero mechanical enforcement and no artifact slot recording the verdict — live exhibits on
+every side (voice's port-6000 quartet, missed by a commit that claimed to fix it;
+bridge's REL-4 fixing 11 of ~22 docs at the release gate; the satellite's provisioning
+README hardcoding the PlatformIO path its own DES-3 defers) — plus the template bug: the
+rule never reached the satellite at all. Round 2 engineered the owner's docs-manifest
+idea into machinery: a repo-internal contract (`docs/manifest.json` + STAMP @
+docs-manifest-v1) whose coherence test makes the node policy a FAILING TEST instead of an
+approval; pending-gate slots let the hardware repo sign the same floor without fiction;
+surface→glob maps turn a diff into candidate nodes at completion time (the
+false-positive machine relocated to where a false positive costs one dismissal clause);
+`docs: none` became falsifiable; CONTRIBUTING.md moved INSIDE the manifest after
+bridge's own drifted stale in under 24 hours outside the old rule's scope. Owner
+rulings: ADRs abolished (one bridge dissolution task — 0006 is the only load-bearing
+one), org README folds into PROD-9, no Russian docs today, operator docs in scope, floor
+only where the capability exists, docs-review tasks fileable any time with commons-filed
+ones fanning out org-wide. Landed same day: `process/user-docs.md` +
+`manifest.schema.json`, **scope-guard 1.2.0 tagged `scope-v5`** (docs-verdict presence
+rule, functional-tested; shared-invariants block gains the invariant, commons re-pinned
+with `docs_verdict_since = 2026-07-13`), template seeds (skeleton manifest, CONTRIBUTING
+stub, config key), HK-6 → DONE carrying the first verdict line written under its own
+rule, PROD-17 with three delegations. Commons' own manifest + CONTRIBUTING remain
+commons follow-up work under PROD-17.
+
 ## 2026-07-12 — PROD-16 satellite delegation VERIFIED (3/3) → PROD-16 CLOSED
 
 The last write-back, verified: satellite's pins were **born stamped** — the parallel

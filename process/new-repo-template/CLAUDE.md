@@ -17,7 +17,7 @@ watermarks — is the shared discipline below; mechanics live in
 
 ## Shared blocks (pinned — `process/claude-md.md`; edit in commons, then re-pin)
 
-<!-- locveil:begin shared-invariants scope-v4 -->
+<!-- locveil:begin shared-invariants scope-v5 -->
 {{PASTE process/claude-blocks/shared-invariants.md VERBATIM, then hash into .scope-guard.toml}}
 <!-- locveil:end shared-invariants -->
 

@@ -12,6 +12,8 @@ high_water = 3000
 low_water = 2000
 hard_ceiling = 4000
 
+docs_verdict_since = ""            # set to the repo's birth date — completions need a docs: verdict (process/user-docs.md §3)
+
 [evidence]
 dirs = ["docs/design", "docs/review"]
 link_scan = true
