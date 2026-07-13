@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "locveil-contract-guard"
-version = "1.0.0"
+version = "1.1.0"
 description = "Locveil contract-coherence guard (HK-5/PROD-16) — layout, STAMP/PIN shape, local hashes; stdlib-only, --check only"
 requires-python = ">=3.11"
 license = "MIT"

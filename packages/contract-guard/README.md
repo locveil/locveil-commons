@@ -7,7 +7,10 @@ Layer-1 contract enforcement for every Locveil repo — the coherence half of
 `pins/<name>/` consumed, README registry mentions every folder), STAMP.json core fields
 and `tag == "<contract>-v<version>"`, PIN.json core fields, and sha256 of local pinned
 copies against the PIN's `files` map. Legacy pins (no `files` map / no PIN.json yet)
-degrade to warnings until their next re-pin.
+degrade to warnings until their next re-pin. Since v1.1 (`contract-guard-v2`, PROD-22 —
+a bridge-caught false green): an owned STAMP naming a git tag that doesn't exist FAILS
+(`TAG-MISSING`) — the tag is created in the same change as the STAMP bump; remote-push
+verification stays out of scope.
 
 **What it never checks:** semantics (per-repo conformance tests, §4 layer 2) and
 anything cross-repo (pin==tag bytes is the re-pin flow's job).

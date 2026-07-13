@@ -207,4 +207,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       No council needed — mechanical enforcement, no new convention. **Delegations:** bridge — an OPS
       task to re-vendor `contract-guard-v2` (sha-verify against the tag) + re-run the hook/CI (bridge
       write-back: pending); voice — same on its next re-pin cycle (voice ID: pending). Commons-side
-      deliverable: the guard change + the `contract-guard-v2` tag.
+      deliverable: EXECUTED 2026-07-13 — `contract_guard.py` 1.1.0 (`TAG-MISSING` fail
+      on owned STAMPs, `TAG-UNCHECKED` warning outside git; functional-tested both ways;
+      commons run green — its own tags resolve), tagged **`contract-guard-v2`**.

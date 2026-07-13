@@ -1,5 +1,26 @@
 # Board journal — newest on top
 
+## 2026-07-13 — PROD-21 bridge share VERIFIED (Opus execution); PROD-22 filed by bridge and EXECUTED
+
+The first Opus-executed delegation, verified against the HK-8 checklists: **CORE-10** —
+`src/locveil_bridge/` renamed, ZERO living `wb_mqtt_bridge` refs in code/toml, scripts
+`locveil-catalog`/`locveil-openapi` live with `wb-api` retired, import-linter 6/6 under
+the new name, catalog-v1.7 STAMP + UI types + contract openapi all carrying the new
+module names; **CORE-11** — `config/` at repo root (update.sh rsyncs `../config`),
+`docker/Dockerfile.{backend,ui}`; **OPS-26** — executed same cycle,
+`driver_name="locveil-bridge"` live. Unit suite 625/625; both guards green. One cosmetic
+fleck accepted, not bounced: 3 inert `sys.path.insert` lines survive in tests (one WAS
+on the checklist; all point at a directory with no importable package — zero effect;
+bridge cleans opportunistically). **The round's real prize: bridge caught a FALSE GREEN
+in commons' own tool and filed PROD-22** — the catalog-v1.7 STAMP passed contract-guard
+while the tag it named didn't exist (owner created it manually). Commons executed
+same-day: contract-guard 1.1.0 adds `TAG-MISSING` (owned STAMP's tag must resolve as a
+local git tag object; remote push out of scope), functional-tested, tagged
+**`contract-guard-v2`**. Bridge + voice re-vendor on their write-backs. Model note for
+the record: Opus handled the mechanical delegation cleanly — the checklist+guard
+machinery did exactly the job it was built for. Voice's BUILD-36 still in flight.
+docs: none — tool README updated (not a manifest node); board/ledger otherwise.
+
 ## 2026-07-13 — HK-8 DECIDED: Python layout & naming convention → PROD-21
 
 Three rounds, and the measurement discipline paid for itself twice. Round 1's asymmetric
