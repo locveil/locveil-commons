@@ -181,7 +181,11 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         Bridge ID: **CORE-10 DONE 2026-07-13** (rename `wb_mqtt_bridge`→`locveil_bridge`
         + scripts `locveil-openapi`/`locveil-catalog`, `wb-api` retired + `catalog-v1.7`
         minor cut, golden byte-identical — voice re-pin covers v1.6+v1.7; wire `meta/driver`
-        deliberately preserved for OPS-26) + **CORE-11** (config→root + Dockerfiles→root)
-        + **OPS-26** (owner-gated `meta/driver` cutover) — the latter two filed, not started.
-        All three in `locveil-bridge` `docs/action_plan{,_DONE}.md`; reconciled at intake
-        (bridge already src-layout, so no layout move owed — delegation confirmed correct).
+        deliberately preserved for OPS-26) + **CORE-11 DONE 2026-07-13** (config
+        `backend/config/`→root `config/`, singular per §1 + Dockerfiles→`docker/` with
+        root context, both images build-verified locally; two commits, NO contract cut,
+        golden byte-identical; reconciliation surfaced the LG cert-path/CWD coupling → the
+        offline catalog build + regen now run from the repo root = the deployment root, as
+        the container does from `/app`) + **OPS-26** (owner-gated `meta/driver` cutover) —
+        the last one filed, not started. All in `locveil-bridge` `docs/action_plan{,_DONE}.md`;
+        reconciled at intake (bridge already src-layout, so no layout move owed).
