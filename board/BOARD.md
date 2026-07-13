@@ -179,6 +179,25 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         `python-layout.md` §3; keep deliberately or file the follow-up, voice's call.
         Everything else verified CLEAN: layout, zero irene imports, 175 pyproject refs,
         script aliases, config/ singular, catalog re-pin v1.5→v1.7 already executed..
+        **BOUNCE RESOLVED — voice BUILD-36 @ b95f3b9 (2026-07-13):** both asks done.
+        (1) 8 `discovery_paths` lines flipped to `locveil_voice.intents.handlers`. BUT the
+        requested tripwire proof CONTRADICTS the "boot-breaking" severity: `discovery_paths`
+        is a VESTIGIAL config field — `IntentHandlerManager.initialize`
+        (`backend/src/locveil_voice/intents/manager.py:97`) discovers from the HARDCODED
+        namespace `"locveil_voice.intents.handlers"` and never reads `config["discovery_paths"]`
+        (nor `auto_discover`). Proof (one profile, embedded-armv7, the stale value in place):
+        all 8 enabled handlers resolve, missing=none, the `ValueError` tripwire does NOT fire;
+        the x86_64 image `/health` was already healthy before any fix. Flipped anyway to keep
+        the config honest — but the field is dead-for-discovery; **voice flags it for removal
+        as a separate cleanup** (models.py Field + intent_component plumbing + build_analyzer
+        skip-list + 8 configs). No test can catch a stale value BECAUSE the value is unused.
+        (2) Stale env/run refs swept across all 8 configs + `config-example.md`: `IRENE_*`→
+        `LOCVEIL_VOICE_*` incl. the config-master `LOCVEIL_VOICE_<SECTION>__<KEY>` override
+        examples (the live override syntax), header-comment run commands → the split-layout
+        model. Owner confirms the WB7 container sets only the ONE token env key, so the cutover's
+        hand-edited `.env` step is exactly `ops/cutover-env-locveil-voice.sh`'s scope. Runtime
+        `irene.toml` filename kept per §3 (voice's deliberate call). Verified: config-validate +
+        build-analyzer all profiles green; config-integrity tests pass.
       - **Delegation → locveil-bridge**: (1) **CORE-10** (~1 day) — rename
         `wb_mqtt_bridge`→`locveil_bridge` (imports+strings+entry points+import-linter
         contract refs+device-state-mapping+CI ref+docs), scripts `wb-catalog`→
