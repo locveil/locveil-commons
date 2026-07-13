@@ -161,7 +161,8 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         hand-edited secrets `.env` key + update.sh) + smoke; (7) all 6 images rebuilt +
         boot-verified (BUILD-11 bar); docs sweep via the manifest suspect-set. Execute
         in the current quiet-ledger window (closes at ARCH-49/next release push).
-        Voice ID: (write back).
+        Voice ID: **BUILD-36** (filed 2026-07-13; keeper checklist reconciled to repo
+        at intake — counts verified ✓).
       - **Delegation → locveil-bridge**: (1) **CORE-10** (~1 day) — rename
         `wb_mqtt_bridge`→`locveil_bridge` (imports+strings+entry points+import-linter
         contract refs+device-state-mapping+CI ref+docs), scripts `wb-catalog`→
