@@ -1,5 +1,24 @@
 # Board journal — newest on top
 
+## 2026-07-13 — asyncwebostv + pymotivaxmc2 moved into the locveil org (owner libraries)
+
+Org housekeeping, owner-decided after a CI analysis: the two owner-authored PyPI
+libraries the bridge depends on (`asyncwebostv==0.4.0`, `pymotivaxmc2==0.7.0`, exact
+PyPI pins — consumption unchanged by design) transferred `droman42/*` → `locveil/*`.
+Sequence per the runbook: PyPI trusted publishers for the `locveil` identities added
+BEFORE transfer (both workflows publish via OIDC trusted publishing — no tokens, no
+secrets to migrate; the old `droman42` publisher entries get removed after each
+library's first successful org-side release), org Actions policy verified by owner,
+transfers executed, local remotes re-pointed, living old-owner references fixed in the
+same pass (archives/CHANGELOG untouched — history stays; the `droman42/py-dev-gates`
+composite-action refs deliberately untouched: it is public, callable cross-owner, and
+its own move is EXPLICITLY DEFERRED by owner decision). Post-transfer CI validated
+live: asyncwebostv's org-side run green, pymotivaxmc2's in progress at journal time.
+Libraries stay lightweight — org membership does NOT mean the Locveil process kit;
+they keep their own lifecycle. Residual: the first `v*` release of each validates the
+new trusted-publisher binding end-to-end. docs: none — sibling-library op, no commons
+manifest node describes it.
+
 ## 2026-07-13 — PROD-10 amended: the design-phase shape (sketch-to-stylebook pipeline)
 
 Out-of-council owner discussion, recorded onto the entry: the owner is not a UI
