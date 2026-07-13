@@ -186,6 +186,10 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         root context, both images build-verified locally; two commits, NO contract cut,
         golden byte-identical; reconciliation surfaced the LG cert-path/CWD coupling → the
         offline catalog build + regen now run from the repo root = the deployment root, as
-        the container does from `/app`) + **OPS-26** (owner-gated `meta/driver` cutover) —
-        the last one filed, not started. All in `locveil-bridge` `docs/action_plan{,_DONE}.md`;
-        reconciled at intake (bridge already src-layout, so no layout move owed).
+        the container does from `/app`) + **OPS-26 DONE 2026-07-13** (owner-gate lifted;
+        `meta/driver` value `wb_mqtt_bridge`→`locveil-bridge`, the two default literals flipped,
+        republish-in-place — no broker migration, no persisted-state coupling; live topic flips
+        on the next WB7 image deploy, separately revertible). **The entire PROD-21 bridge share
+        is consumed** (CORE-10 + CORE-11 + OPS-26 all DONE). All in `locveil-bridge`
+        `docs/action_plan{,_DONE}.md`; reconciled at intake (bridge already src-layout, so no
+        layout move owed). Bridge owes voice ONE re-pin covering catalog v1.6+v1.7.
