@@ -23,3 +23,7 @@ Discipline is seeded, not retrofitted.
    chosen file names (convention: `ledger-discipline.md` §4).
 6. First commit must pass the hook. If it doesn't, the instantiation is wrong — fix it,
    don't bypass.
+
+Python components follow `process/python-layout.md` from birth:
+`<component>/src/<locveil_pkg>/` + `<component>/tests/`, config tree `config/` at
+repo root, Dockerfiles in root `docker/` with root build context.

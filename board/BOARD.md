@@ -132,3 +132,49 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       burst lands SEEN, not as a surprise. Closes when the first chain completes
       end-to-end and the re-pin is verified. IDs on record: bridge DRV-37 + VWB-39;
       satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
+- [ ] **PROD-21 — Python backend layout & naming: the org convention + both migrations**
+      (decided by council **HK-8**, 2026-07-13, three measured rounds — arc in
+      `BOARD_DONE.md` HK-8; **normative: `process/python-layout.md`**, which satisfies
+      design-then-implement for the tasks below). Decision digest: layout org-wide =
+      `<component>/src/<pkg>/` + `<component>/tests/` (outside the package); product
+      data at repo root — config tree named `config/` SINGULAR org-wide (matches the WB7
+      runtime trees); Dockerfiles in root `docker/` with root build context (file axis =
+      dialect: voice per-arch justified by ML profiles, bridge per-component justified by
+      OPS-11's arch-identical finding); UNIFORM import rename for product backends —
+      `irene`→`locveil_voice`, `wb_mqtt_bridge`→`locveil_bridge`; shared-library
+      namespaces keep truthful neutral names (`eval_commons` STAYS — owner ruling on the
+      principled rule, no exception); single-file vendored guards exempt; persona
+      "Irene" stays in all user-visible strings; wire/deployed identifiers never ride
+      layout tasks. Commons-side: the spec (landed 2026-07-13) + template line +
+      CONTRIBUTING/process-README pointers. Delegation record:
+      - **Delegation → locveil-voice**: **BUILD-36**, ONE tree churn (~4.5–5 days,
+        keeper checklist of 2026-07-13 is the reconciliation baseline): (1) layout —
+        `irene/` → `backend/src/`, pyproject/lock/type-configs into `backend/`;
+        configs/assets/ops/docker/docs/contracts/eval stay at root; 3 known
+        `__file__`-relative fixes; (2) tests — 142 files → `backend/tests/`;
+        (3) uniform rename `irene`→`locveil_voice` + dist → `locveil-voice` (+11
+        self-ref extras), 13 entry-point groups, 8 config-master/profile lines,
+        config-ui type regen; (4) `configs/` → `config/` (q2 ruling) incl. the
+        `config-master-file` invariant text; (5) eval venv wiring → `backend/.venv`;
+        (6) env family `IRENE_*`→`LOCVEIL_VOICE_*` + scripts `locveil-voice-*` with
+        `irene-*` aliases for one release; scripted WB7 cutover (compose keys + the ONE
+        hand-edited secrets `.env` key + update.sh) + smoke; (7) all 6 images rebuilt +
+        boot-verified (BUILD-11 bar); docs sweep via the manifest suspect-set. Execute
+        in the current quiet-ledger window (closes at ARCH-49/next release push).
+        Voice ID: (write back).
+      - **Delegation → locveil-bridge**: (1) **CORE-10** (~1 day) — rename
+        `wb_mqtt_bridge`→`locveil_bridge` (imports+strings+entry points+import-linter
+        contract refs+device-state-mapping+CI ref+docs), scripts `wb-catalog`→
+        `locveil-catalog`, `wb-openapi`→`locveil-openapi`, retire `wb-api`; the
+        deliberate **catalog-v1.7** minor cut (STAMP bump + UI type regen per
+        config-ui-stays-functional); delete the 4 inert test `sys.path` shims;
+        (2) **CORE-11** (~½ day, separate commits) — `backend/config/` → root
+        `config/` (loader/CLI defaults, ~15 test paths, update.sh rsync line, CI
+        filter, `config-master-tree` invariant text, one DRV-36 design-doc path line;
+        NO contract cut) + Dockerfiles → `docker/Dockerfile.{backend,ui}` root
+        context (4 CI lines, dockerignore merge; runtime assets stay with ui/);
+        (3) **OPS-26** (owner-gated) — `meta/driver` cutover `wb_mqtt_bridge`→
+        `locveil-bridge`, riding the same deploy cycle, separately revertible
+        (retained qos=1 republish-in-place: no broker migration; visible effect = one
+        string in the WB UI). One voice re-pin after CORE-10 covers catalog v1.6+v1.7.
+        Bridge ID: (write back).

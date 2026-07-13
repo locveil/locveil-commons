@@ -21,6 +21,10 @@ Here now:
   STAMP/PIN cores, family tags, two-layer enforcement (contract-guard + conformance
   tests), staleness rules. Tool: `../packages/contract-guard/`.
 
+- **[`python-layout.md`](python-layout.md)** — Python backend layout & naming (HK-8):
+  component/src layout, tests outside the package, config/ + docker/ at repo root,
+  locveil_* import rule with the shared-library carve-out, migration principles.
+
 Pending, until the owning PROD tasks land (see `../board/BOARD.md`):
 
 - **Normative ops spec** + per-repo conformance checklist — PROD-4 (delegates voice

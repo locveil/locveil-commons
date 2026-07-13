@@ -26,6 +26,9 @@ mostly *process and shared machinery*; product code belongs in the product repos
   the scope of record; style + rule: [`process/user-docs.md`](process/user-docs.md).
 - **The council** — cross-repo decisions with real stakes:
   [`process/council.md`](process/council.md).
+- **Python layout & naming** — src-layout, config/docker at root, locveil_* backend
+  imports: [`process/python-layout.md`](process/python-layout.md) (binds product repos
+  and new packages; the eval framework and single-file guards are ruled exempt).
 
 ## Dev setup & gates
 

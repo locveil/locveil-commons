@@ -651,3 +651,28 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       files the master→profiles gate mechanism regardless — BUILD-31's lesson finally
       has a home. docs: none — board/ledger artifacts only; no manifest node describes
       individual board entries.
+- [x] **HK-8 — Python backend source-root convention** (eighth council topic; bare
+      seed, decided 2026-07-13 over THREE rounds, voice + bridge keepers; satellite
+      pre-scoped by the owner as consumer-at-most). Decision and execution filed as
+      **PROD-21**; normative: `process/python-layout.md`. Round arc: round 1 found the
+      owner right TWICE about different layers — voice's layout wrong/name right,
+      bridge's layout right/name wrong — and proposed an asymmetric cure; the owner
+      overruled with "voice is multi-component too" (correct — config-ui is a peer of
+      bridge's ui/) and "if we rename at all, we rename everything", plus the
+      human-interpretable-blast-radius format mandate. Round 2's honest re-pricing
+      COLLAPSED voice's round-1 minefield (no external plugins exist; the deployed
+      config is derived and regenerates via update.sh; the durable-actions alarm was
+      wrong — prod state is a bind mount): voice withdrew opposition and signed uniform
+      (~4.5–5-day one-churn BUILD-36 vs bridge's ~1-day CORE-10 with the deliberate
+      catalog-v1.7 cut). Round 3 folded in two owner additions — the bridge config tree
+      ruled PRODUCT DATA and leveled to root, Dockerfiles consolidated to root docker/
+      (both CORE-11; the OPS-11 arch-identical finding settled per-component file
+      naming) — and ruled eval_commons STAYS under the principled rule (product
+      backends = locveil_*; shared libraries = truthful neutral names; the org's own
+      PROD-2 dist/import precedent). Also settled: config/ SINGULAR org-wide; scripts
+      locveil-catalog/locveil-openapi with wb-api retired; irene-* aliases one release;
+      vendored guards exempt; persona in user-visible strings; OPS-26 wire cutover
+      owner-gated on the same deploy cycle. Council craft note: a mid-round addition
+      queued to a running keeper stranded silently — re-engage after the notification,
+      never mid-flight. docs: contributing — the process-kit pointer row; plus the new
+      spec itself and the template/process-README rows.

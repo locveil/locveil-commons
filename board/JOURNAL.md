@@ -1,5 +1,28 @@
 # Board journal — newest on top
 
+## 2026-07-13 — HK-8 DECIDED: Python layout & naming convention → PROD-21
+
+Three rounds, and the measurement discipline paid for itself twice. Round 1's asymmetric
+proposal (move voice's layout, rename only bridge) died against two owner corrections —
+voice IS multi-component, and "if we rename at all, we rename everything" — plus a format
+mandate that reshaped keeper output for good: human-interpretable blast radius tables.
+Round 2 vindicated the mandate: forced to re-price its "minefield" under deployment
+reality, the voice keeper found its own three alarms hollow (zero external plugins; the
+deployed config is DERIVED — update.sh overwrites it from the repo; prod state on a bind
+mount, not ~/.cache) and withdrew opposition — uniform rename signed at an honest
+~4.5–5-day one-churn price. Round 3 leveled the bridge config tree to root (conceded:
+"the asymmetry was historical, not principled" — ~3 hours, no contract cut) and
+consolidated its Dockerfiles to root docker/ (per-component files RIGHT for bridge by
+OPS-11's arch-identical finding, per-arch RIGHT for voice by its ML profiles — location
+mandated, file axis dialect); eval_commons stays under the principled rule the owner
+ratified. End state: voice and bridge become structurally identical
+(backend/src/locveil_*/ + backend/tests/ + UI peer + product data at root incl. config/
+singular + docker/), satellite and core-py inherit via the template. Landed:
+process/python-layout.md, PROD-21 (voice BUILD-36; bridge CORE-10/CORE-11/OPS-26, all
+with keeper checklists as reconciliation baselines), template/CONTRIBUTING/process-README
+pointers, HK-8 → DONE. Craft note recorded: never queue additions to a mid-flight
+keeper — the message stranded silently; re-engage on notification. docs: contributing.
+
 ## 2026-07-13 — asyncwebostv + pymotivaxmc2 moved into the locveil org (owner libraries)
 
 Org housekeeping, owner-decided after a CI analysis: the two owner-authored PyPI
