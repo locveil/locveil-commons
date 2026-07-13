@@ -1,5 +1,19 @@
 # Board journal — newest on top
 
+## 2026-07-13 — BUILD-36 verification: BOUNCED on the 8 discovery_paths lines
+
+Second bounce in the board's life, and it validates the model-choice reasoning: the
+Opus-executed BUILD-36 is clean on everything the machinery can see (layout, zero
+`irene` imports, 175 pyproject refs, aliases, `config/` singular, docs sweep, even the
+opportunistic v1.7 catalog re-pin) — and missed exactly the string-as-data class the
+keeper flagged as the hard part: all 8 config files still say
+`discovery_paths = ["irene.intents.handlers"]` against renamed `locveil_voice.*` groups
+(boot finds no intent handlers), plus stale `IRENE_*` env comments sitting precisely
+where the operator reads during the cutover's one hand-edited step. No test can catch
+either; only boot verification (still running when verified) or a reader. Bounce text
+committed in PROD-21 with two precise asks + one tripwire-proof request; the runtime
+`irene.toml` filename noted as legal deployment identity. docs: none — board only.
+
 ## 2026-07-13 — PROD-21 bridge share VERIFIED (Opus execution); PROD-22 filed by bridge and EXECUTED
 
 The first Opus-executed delegation, verified against the HK-8 checklists: **CORE-10** —

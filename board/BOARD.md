@@ -162,7 +162,23 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         boot-verified (BUILD-11 bar); docs sweep via the manifest suspect-set. Execute
         in the current quiet-ledger window (closes at ARCH-49/next release push).
         Voice ID: **BUILD-36** (filed 2026-07-13; keeper checklist reconciled to repo
-        at intake — counts verified ✓).
+        at intake — counts verified ✓)
+        **BOUNCE (commons verification 2026-07-13, before the WB7 cutover):** two
+        precise asks. (1) HARD, boot-breaking: all EIGHT config files (master, example,
+        6 profiles) still say `discovery_paths = ["irene.intents.handlers"]` while the
+        entry-point groups are renamed `locveil_voice.*` — intent discovery finds
+        nothing; flip the 8 lines (checklist item 3's "8 config lines" — this was it;
+        no other dotted `irene.*` values exist in the tree, swept). (2) SOFT but
+        cutover-critical: config-file comments + `config-example.md` still teach
+        `IRENE_REPORTS_TOKEN`/`IRENE_ASSETS_ROOT` while the code family is
+        `LOCVEIL_VOICE_*` — the operator reads exactly these during the hand-edited
+        secrets step; sweep them. Then run the boot verification and CONFIRM the
+        fail-fast tripwire actually fires on (1) before the fix (one profile, one boot —
+        the tripwire claim deserves its proof). Noted, not bounced: the runtime config
+        FILENAME stays `irene.toml` in compose — legal as deployment identity per
+        `python-layout.md` §3; keep deliberately or file the follow-up, voice's call.
+        Everything else verified CLEAN: layout, zero irene imports, 175 pyproject refs,
+        script aliases, config/ singular, catalog re-pin v1.5→v1.7 already executed..
       - **Delegation → locveil-bridge**: (1) **CORE-10** (~1 day) — rename
         `wb_mqtt_bridge`→`locveil_bridge` (imports+strings+entry points+import-linter
         contract refs+device-state-mapping+CI ref+docs), scripts `wb-catalog`→
