@@ -646,6 +646,12 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       cutover) is voice-ledger status per the board's own rule. First Opus-executed
       delegations: clean on everything mechanical, missed exactly one string-as-data
       item — the bounce loop caught it pre-cutover, as designed.
+      **Voice write-back 2026-07-13:** BUILD-36 formally closed in the voice ledger @ `c0067e7`
+      (owner-closed; the WB7 tail — 6-image rebuild/deploy + boot-verify + `ops/cutover-env-locveil-voice.sh`
+      + smoke — deferred to the owner's install, any controller breakage a fresh BUG). The "plumbed but
+      DEAD" finding is filed as voice **ARCH-50** (release review: every hardcoding / declared-but-unhonored
+      config that violates the entry-points dynamic build-and-loading contract; seed = the handler manager's
+      hardcoded namespace vs `discovery_paths`).
       docs: none — board/ledger artifacts only.
 
 
