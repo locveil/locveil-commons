@@ -75,6 +75,29 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       bridge OPS-13 (eslint-9/vite-6 toolchain pass, absorbing UI-8) must not run twice —
       if ui-kit lands first it imposes its own toolchain; coordinate the order at
       whichever activates first.
+      **Design-phase shape (owner discussion 2026-07-12; premise: the owner is not a UI
+      professional and expresses intent by sketch and plain words — the proven precedent
+      is `locveil-bridge/docs/design/ui/remote.png`, the paper scan that became
+      `RemoteControlLayout.tsx`; sketches carry zoning/hierarchy fully, the stylebook
+      supplies what they can't: color, type, spacing, radii, states):**
+      three stages when this activates —
+      (1) **Extraction**: reverse-engineer the IMPLICIT design system from what the owner
+      already approved — the two shipped UIs + the remote scan — into a draft token
+      inventory + a divergence list (where the two UIs quietly disagree);
+      (2) **Style council — preference elicitation by RENDERED A/B, never by terms**: the
+      dossier mechanism repurposed — pages show rendered variants (density, radius, type
+      pairs, contrast, light/dark) side by side; the owner clicks preferences +
+      free-words comments (RU/EN both fine); each click becomes a token. 2–3 rounds;
+      no design vocabulary required from the owner, ever;
+      (3) **Codification**: tokens file → the stylebook (prose + rendered examples; a
+      docs-manifest node per HK-6) → ui-kit components built ON the tokens → a
+      **`ui-style` skill** in commons as the executable half (the council/scope-guard
+      pattern: every future UI session loads the stylebook instead of reading about it),
+      versioned with the package (`ui-kit-vX`). Tooling prep at activation: install the
+      `frontend-design` skill (anthropics/skills) for the professional-realization side;
+      `skill-creator` to author `ui-style`; Storybook as the kit's living workbench.
+      Standing rule: owner sketches remain first-class input — a zoning sketch + the
+      token system IS a professional spec.
 - [ ] **PROD-11 — FUTURE design: Home Assistant in parallel to Wirenboard** (D-4's stress
       test): if the canonical DeviceCommand contract survives HA unchanged, voice gets zero
       tasks; if voice needs changes, the contract leaked WB-specifics. Waits until wanted.

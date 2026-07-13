@@ -1,5 +1,20 @@
 # Board journal — newest on top
 
+## 2026-07-13 — PROD-10 amended: the design-phase shape (sketch-to-stylebook pipeline)
+
+Out-of-council owner discussion, recorded onto the entry: the owner is not a UI
+professional and expresses intent by sketch and plain words — and the record shows that
+works (the bridge remote UI was built from a scanned paper drawing,
+`docs/design/ui/remote.png` → `RemoteControlLayout.tsx`; the sketch carried zoning and
+hierarchy completely). PROD-10's design phase is therefore shaped as: (1) extraction —
+reverse-engineer the implicit token system from the two shipped UIs + the scan;
+(2) a style council eliciting preferences via RENDERED A/B dossier pages (clicks become
+tokens; no design vocabulary required from the owner); (3) codification — tokens →
+stylebook (manifest node) → ui-kit on the tokens → a `ui-style` skill as the executable
+half, versioned with the package. Tooling prep noted: frontend-design + skill-creator
+skills, Storybook as workbench. Standing rule recorded: owner sketches are first-class
+input. docs: none — board entry amendment only.
+
 ## 2026-07-12 — HK-7 DECIDED: the open-task triage → PROD-4 reframed, PROD-18/19/20 filed
 
 The board finally metabolized the pre-board backlog. Two keepers swept 63 open tasks
