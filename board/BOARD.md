@@ -177,4 +177,7 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
         `locveil-bridge`, riding the same deploy cycle, separately revertible
         (retained qos=1 republish-in-place: no broker migration; visible effect = one
         string in the WB UI). One voice re-pin after CORE-10 covers catalog v1.6+v1.7.
-        Bridge ID: (write back).
+        Bridge ID: **CORE-10** (rename + `catalog-v1.7`) + **CORE-11** (config→root +
+        Dockerfiles→root) + **OPS-26** (owner-gated `meta/driver` cutover) — filed in
+        `locveil-bridge` `docs/action_plan.md` 2026-07-13; reconciled (bridge already
+        src-layout, so no layout move owed — delegation confirmed correct). Not started.
