@@ -539,6 +539,116 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       verdict discipline. docs: contributing, contracts-registry — created/extended by
       the commons execution; readme untouched (no behavior it describes changed).
 
+- [x] **PROD-21 — Python backend layout & naming: the org convention + both migrations**
+      (decided by council **HK-8**, 2026-07-13, three measured rounds — arc in
+      `BOARD_DONE.md` HK-8; **normative: `process/python-layout.md`**, which satisfies
+      design-then-implement for the tasks below). Decision digest: layout org-wide =
+      `<component>/src/<pkg>/` + `<component>/tests/` (outside the package); product
+      data at repo root — config tree named `config/` SINGULAR org-wide (matches the WB7
+      runtime trees); Dockerfiles in root `docker/` with root build context (file axis =
+      dialect: voice per-arch justified by ML profiles, bridge per-component justified by
+      OPS-11's arch-identical finding); UNIFORM import rename for product backends —
+      `irene`→`locveil_voice`, `wb_mqtt_bridge`→`locveil_bridge`; shared-library
+      namespaces keep truthful neutral names (`eval_commons` STAYS — owner ruling on the
+      principled rule, no exception); single-file vendored guards exempt; persona
+      "Irene" stays in all user-visible strings; wire/deployed identifiers never ride
+      layout tasks. Commons-side: the spec (landed 2026-07-13) + template line +
+      CONTRIBUTING/process-README pointers. Delegation record:
+      - **Delegation → locveil-voice**: **BUILD-36**, ONE tree churn (~4.5–5 days,
+        keeper checklist of 2026-07-13 is the reconciliation baseline): (1) layout —
+        `irene/` → `backend/src/`, pyproject/lock/type-configs into `backend/`;
+        configs/assets/ops/docker/docs/contracts/eval stay at root; 3 known
+        `__file__`-relative fixes; (2) tests — 142 files → `backend/tests/`;
+        (3) uniform rename `irene`→`locveil_voice` + dist → `locveil-voice` (+11
+        self-ref extras), 13 entry-point groups, 8 config-master/profile lines,
+        config-ui type regen; (4) `configs/` → `config/` (q2 ruling) incl. the
+        `config-master-file` invariant text; (5) eval venv wiring → `backend/.venv`;
+        (6) env family `IRENE_*`→`LOCVEIL_VOICE_*` + scripts `locveil-voice-*` with
+        `irene-*` aliases for one release; scripted WB7 cutover (compose keys + the ONE
+        hand-edited secrets `.env` key + update.sh) + smoke; (7) all 6 images rebuilt +
+        boot-verified (BUILD-11 bar); docs sweep via the manifest suspect-set. Execute
+        in the current quiet-ledger window (closes at ARCH-49/next release push).
+        Voice ID: **BUILD-36** (filed 2026-07-13; keeper checklist reconciled to repo
+        at intake — counts verified ✓)
+        **BOUNCE (commons verification 2026-07-13, before the WB7 cutover):** two
+        precise asks. (1) HARD, boot-breaking: all EIGHT config files (master, example,
+        6 profiles) still say `discovery_paths = ["irene.intents.handlers"]` while the
+        entry-point groups are renamed `locveil_voice.*` — intent discovery finds
+        nothing; flip the 8 lines (checklist item 3's "8 config lines" — this was it;
+        no other dotted `irene.*` values exist in the tree, swept). (2) SOFT but
+        cutover-critical: config-file comments + `config-example.md` still teach
+        `IRENE_REPORTS_TOKEN`/`IRENE_ASSETS_ROOT` while the code family is
+        `LOCVEIL_VOICE_*` — the operator reads exactly these during the hand-edited
+        secrets step; sweep them. Then run the boot verification and CONFIRM the
+        fail-fast tripwire actually fires on (1) before the fix (one profile, one boot —
+        the tripwire claim deserves its proof). Noted, not bounced: the runtime config
+        FILENAME stays `irene.toml` in compose — legal as deployment identity per
+        `python-layout.md` §3; keep deliberately or file the follow-up, voice's call.
+        Everything else verified CLEAN: layout, zero irene imports, 175 pyproject refs,
+        script aliases, config/ singular, catalog re-pin v1.5→v1.7 already executed..
+        **BOUNCE RESOLVED — voice BUILD-36 @ b95f3b9 (2026-07-13):** both asks done.
+        (1) 8 `discovery_paths` lines flipped to `locveil_voice.intents.handlers`. BUT the
+        requested tripwire proof CONTRADICTS the "boot-breaking" severity: `discovery_paths`
+        is a VESTIGIAL config field — `IntentHandlerManager.initialize`
+        (`backend/src/locveil_voice/intents/manager.py:97`) discovers from the HARDCODED
+        namespace `"locveil_voice.intents.handlers"` and never reads `config["discovery_paths"]`
+        (nor `auto_discover`). Proof (one profile, embedded-armv7, the stale value in place):
+        all 8 enabled handlers resolve, missing=none, the `ValueError` tripwire does NOT fire;
+        the x86_64 image `/health` was already healthy before any fix. Flipped anyway to keep
+        the config honest — but the field is dead-for-discovery; **voice flags it for removal
+        as a separate cleanup** (models.py Field + intent_component plumbing + build_analyzer
+        skip-list + 8 configs). No test can catch a stale value BECAUSE the value is unused.
+        (2) Stale env/run refs swept across all 8 configs + `config-example.md`: `IRENE_*`→
+        `LOCVEIL_VOICE_*` incl. the config-master `LOCVEIL_VOICE_<SECTION>__<KEY>` override
+        examples (the live override syntax), header-comment run commands → the split-layout
+        model. Owner confirms the WB7 container sets only the ONE token env key, so the cutover's
+        hand-edited `.env` step is exactly `ops/cutover-env-locveil-voice.sh`'s scope. Runtime
+        `irene.toml` filename kept per §3 (voice's deliberate call). Verified: config-validate +
+        build-analyzer all profiles green; config-integrity tests pass.
+      - **Delegation → locveil-bridge**: (1) **CORE-10** (~1 day) — rename
+        `wb_mqtt_bridge`→`locveil_bridge` (imports+strings+entry points+import-linter
+        contract refs+device-state-mapping+CI ref+docs), scripts `wb-catalog`→
+        `locveil-catalog`, `wb-openapi`→`locveil-openapi`, retire `wb-api`; the
+        deliberate **catalog-v1.7** minor cut (STAMP bump + UI type regen per
+        config-ui-stays-functional); delete the 4 inert test `sys.path` shims;
+        (2) **CORE-11** (~½ day, separate commits) — `backend/config/` → root
+        `config/` (loader/CLI defaults, ~15 test paths, update.sh rsync line, CI
+        filter, `config-master-tree` invariant text, one DRV-36 design-doc path line;
+        NO contract cut) + Dockerfiles → `docker/Dockerfile.{backend,ui}` root
+        context (4 CI lines, dockerignore merge; runtime assets stay with ui/);
+        (3) **OPS-26** (owner-gated) — `meta/driver` cutover `wb_mqtt_bridge`→
+        `locveil-bridge`, riding the same deploy cycle, separately revertible
+        (retained qos=1 republish-in-place: no broker migration; visible effect = one
+        string in the WB UI). One voice re-pin after CORE-10 covers catalog v1.6+v1.7.
+        Bridge ID: **CORE-10 DONE 2026-07-13** (rename `wb_mqtt_bridge`→`locveil_bridge`
+        + scripts `locveil-openapi`/`locveil-catalog`, `wb-api` retired + `catalog-v1.7`
+        minor cut, golden byte-identical — voice re-pin covers v1.6+v1.7; wire `meta/driver`
+        deliberately preserved for OPS-26) + **CORE-11 DONE 2026-07-13** (config
+        `backend/config/`→root `config/`, singular per §1 + Dockerfiles→`docker/` with
+        root context, both images build-verified locally; two commits, NO contract cut,
+        golden byte-identical; reconciliation surfaced the LG cert-path/CWD coupling → the
+        offline catalog build + regen now run from the repo root = the deployment root, as
+        the container does from `/app`) + **OPS-26 DONE 2026-07-13** (owner-gate lifted;
+        `meta/driver` value `wb_mqtt_bridge`→`locveil-bridge`, the two default literals flipped,
+        republish-in-place — no broker migration, no persisted-state coupling; live topic flips
+        on the next WB7 image deploy, separately revertible). **The entire PROD-21 bridge share
+        is consumed** (CORE-10 + CORE-11 + OPS-26 all DONE). All in `locveil-bridge`
+        `docs/action_plan{,_DONE}.md`; reconciled at intake (bridge already src-layout, so no
+        layout move owed). Bridge owes voice ONE re-pin covering catalog v1.6+v1.7.
+      **CLOSED 2026-07-13.** Both delegations executed and commons-verified: bridge
+      CORE-10/CORE-11/OPS-26 accepted with one cosmetic fleck (3 inert sys.path lines,
+      opportunistic cleanup); voice BUILD-36 accepted after ONE bounce round — the 8
+      discovery_paths lines + the stale IRENE_* env comments — whose demanded tripwire
+      proof also corrected the bounce's own severity call (the field is plumbed but DEAD
+      for discovery; flipped for honesty, removal flagged voice-side). Both repos now
+      run `backend/src/locveil_*` + root `config/` + root `docker/`; catalog re-pinned
+      @ v1.7 both copies; remaining BUILD-36 tail (arm images + the scripted WB7
+      cutover) is voice-ledger status per the board's own rule. First Opus-executed
+      delegations: clean on everything mechanical, missed exactly one string-as-data
+      item — the bounce loop caught it pre-cutover, as designed.
+      docs: none — board/ledger artifacts only.
+
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;

@@ -1,5 +1,22 @@
 # Board journal — newest on top
 
+## 2026-07-13 — PROD-21 CLOSED: both HK-8 migrations verified; the bounce loop worked both ways
+
+Voice's bounce fixes verified: 8/8 discovery_paths flipped, zero IRENE_* left in the
+config tree, the env-override syntax examples now teach the live LOCVEIL_VOICE_ form.
+The demanded tripwire proof delivered more than asked: it DISPROVED the bounce's own
+"boot-breaking" severity — IntentHandlerManager discovers from a hardcoded namespace
+and never reads config discovery_paths; the field is plumbed but dead (all 8 handlers
+resolved against the stale value, x86_64 boot healthy). Flipped anyway for config
+honesty; dead-field removal flagged voice-side as a separate call. So the verification
+loop corrected the executor AND the verifier in one round — the record stays honest in
+both directions. PROD-21 closed with both repos structurally identical
+(backend/src/locveil_* + root config/ + root docker/), catalog at v1.7 in both pin
+copies, contract-guard-v2 pending consumer re-vendors (PROD-22). BUILD-36's tail (arm
+images, scripted WB7 cutover) rides the voice ledger. Also noted: voice filed ARCH-49 —
+the quiet-ledger window HK-8 executed inside is closing exactly on schedule.
+docs: none — board only.
+
 ## 2026-07-13 — BUILD-36 verification: BOUNCED on the 8 discovery_paths lines
 
 Second bounce in the board's life, and it validates the model-choice reasoning: the
