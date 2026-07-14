@@ -1,5 +1,35 @@
 # Board journal — newest on top
 
+## 2026-07-14 — PROD-24 shell council DECIDED: the Workbench wireframe + plug-in contract
+
+Tenth council, two rounds, all three keepers, seeded from the PROD-24 entry plus the
+owner's hand-drawn wireframe. The sketch survived intact: shell chrome (logo · one tab
+per plugin · Material BugReport problem-button) + sidebar of the active plugin's pages +
+content area; repo = plugin; React 18 SPA in commons `packages/workbench`. Round 1
+produced the classification table (voice config-ui → workbench with voice's operations
+column empty by design; bridge `ui` + appliance pages stay operations, the three setup
+pages → workbench; landing page = third class) and three conflicts. Round 2's headline:
+the owner OVERRULED the CLI-only reading of satellite D-17 — cert CLI functionality must
+be replicated in the UI — and the satellite keeper absorbed it without breaking the
+privilege boundary: one controller-side privileged broker, CLI and page as peer clients,
+D-17 second amendment via an expanded DES-5 (which also inherits the workstation
+operator-credential design and the ansible-rework OPS earmark). The three keepers then
+converged independently on ONE write model: staged proposals via controller APIs +
+explicit human promotion to the canonical repo (bridge), ownership classes separating
+repo-owned from device-owned targets (voice), narrow-verb broker for privileged ops
+(satellite) — landed as the DEV-PHASE convention with the owner's explicit ruling that
+the final design defers to a further productization step; the convention's home is
+PROD-4 item (4), whose "bridge needs none" claim this council falsified (amended in
+place). Reporter pipeline deferred out of v1 (button stays; PROD-19 owns the fallback).
+Bonus reality from the keepers: voice's desktop satellite runs the exact same CSR flow
+and becomes the provisioning page's test target; config-ui's destiny is 6 pages (Overview
++ own top bar retire into chrome, a per-plugin status slot preserves health visibility).
+Delegations committed in the entry: satellite DES-5 expansion, voice satellite-config
+endpoint design + adoption-task growth, bridge UI-17 growth + planned-docs DOC follow-up.
+Remaining commons deliverable: the deploy-split design doc (sprint-01 row) codifying it
+all. docs: none — board/journal artifacts only; the design doc (with its manifest node)
+is the follow-on deliverable.
+
 ## 2026-07-14 — sprint-01 PLANNED: first run of the /sprint machinery (PROD-23)
 
 Three rounds on one page URL: scoping (round 0), two selection rounds. All three keepers
