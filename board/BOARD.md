@@ -212,7 +212,10 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       privileged path, two clients), the full verb vocabulary, the workstation
       operator-credential design (client cert from the home CA vs a separate secret),
       and an **OPS earmark** for the ansible-deploy rework (owner: not this sprint).
-      Satellite ID: (write back).
+      Satellite ID: **DES-5** (expanded in place) + **OPS-6** (ansible earmark)
+      (written back 2026-07-14 at intake; reconciled clean — CLI verbs, D-17's
+      "config-ui may call the same scripts later" hook, and the ansible target all
+      verified; today's CLI `revoke` = the board's `reject-pending`).
       voice — (a) satellite-local config endpoint design (`design-then-implement`,
       dev-phase shape; new attack surface → PROD-4 auth posture applies); (b) the
       declared sprint-02 config-ui adoption task grows the 6-page cut (Overview + Header
