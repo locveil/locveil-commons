@@ -1,5 +1,29 @@
 # Board journal — newest on top
 
+## 2026-07-14 — sprint-01 PLANNED: first run of the /sprint machinery (PROD-23)
+
+Three rounds on one page URL: scoping (round 0), two selection rounds. All three keepers
+ran in contributor mode with fresh dependency closures — the round found PROD-10 had
+ZERO intake anywhere (no voice or bridge task mentioned ui-kit; the owner's
+controller-vs-workstation split was unfiled everywhere). Theme: ui-kit package +
+stylebook (PROD-10) + first-sprint calibration; 12 sessions, 30% reserve, 0 bench slots,
+no exclusions → usable 7.4, selected 7.3. Landed `board/sprints/sprint-01.md`. Decisions:
+OPS-13 runs first and ui-kit targets eslint-9/vite-6 (HK-7 must-not-run-twice honored);
+CORE-8 rides with PROD-4 (sprint-02 council candidate); UI class naming decided —
+**operations / workbench**, the workstation shell is the **Locveil Workbench**. The
+owner's round-1 comment (wireframe + how repos plug panels into the shell) was new
+scope, not implicit: filed as **PROD-24** (deploy-split design doc + shell council;
+PROD-10 ④'s component boundaries consume its output; must reconcile satellite D-17's
+CLI-not-page ruling). Round-1 raw pick ran 9.0/7.4 — rebalanced by declaring voice
+ui-kit adoption + UI-16 cross-sprint (travel together into sprint-02 riding ui-kit-v1)
+and trimming the style council to 2 budgeted rounds. Keeper side-finds recorded in the
+sprint file for pull-at-intake: voice ci.yml guard-version prose + BUILD-14 old repo
+name; bridge UI-8 fold, OPS-14/CORE-7 stale BUILD-21 gates, unrecorded post-OPS-26
+redeploy (close-deploy slot verifies); satellite DES-4 v1.1-tag wrinkle + the sprints.md
+§6 post-DES-3 vacuity note. First calibration sample for §8's realized table comes at
+close. docs: none — planning artifacts only (board ledger + sprint file; no user-facing
+docs surface changed).
+
 ## 2026-07-14 — PROD-23 CLOSED: /sprint skill built, both HK-9 side-finds executed
 
 Closed the same day it was filed. The skill (`.claude/skills/sprint/`) is the council

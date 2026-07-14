@@ -98,6 +98,11 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       `skill-creator` to author `ui-style`; Storybook as the kit's living workbench.
       Standing rule: owner sketches remain first-class input — a zoning sketch + the
       token system IS a professional spec.
+      **Sprint-01 (2026-07-14) activated the design phase** — stages ①–④ selected
+      (`board/sprints/sprint-01.md`); the deploy-split design + Workbench shell council
+      split out as **PROD-24** (its wireframe/plug-in contract shapes ④'s component
+      boundaries); the HK-7 sequencing note is resolved by sprint-01 decision 1: bridge
+      OPS-13 runs first, ui-kit targets eslint-9/vite-6 — the migration runs once.
 - [ ] **PROD-11 — FUTURE design: Home Assistant in parallel to Wirenboard** (D-4's stress
       test): if the canonical DeviceCommand contract survives HA unchanged, voice gets zero
       tasks; if voice needs changes, the contract leaked WB-specifics. Waits until wanted.
@@ -132,3 +137,23 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       burst lands SEEN, not as a surprise. Closes when the first chain completes
       end-to-end and the re-pin is verified. IDs on record: bridge DRV-37 + VWB-39;
       satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
+- [>] **PROD-24 — the Locveil Workbench: workstation UI shell + deploy-split** (filed at
+      sprint-01 planning, 2026-07-14 — splits out of PROD-10's theme; owner's ask:
+      "a council which will define a wireframe for workstation-deployed UI and how
+      individual services plug into this wireframe"). Naming decided at planning
+      (sprint-01 decision 3): UI classes are **operations** (controller-deployed —
+      bridge `ui`) and **workbench** (workstation-deployed — the **Locveil Workbench**:
+      one shell, repos plug in panels contributing content + functionality). Scope:
+      (1) the **deploy-split design doc** in `docs/design/` classifying every UI surface
+      (voice config-ui, bridge `ui` + its four ID-less `docs/planned/` pages, future
+      satellite panels, possibly the PROD-9 landing page) into operations vs workbench —
+      MUST reconcile satellite D-17 (cert approval is deliberately a root CLI, not a
+      page; any satellite panel is a placeholder gated on satellite DES-5); (2) the
+      **shell council** deciding the Workbench wireframe + the plug-in contract (how
+      repos/components contribute panels) and ratifying the naming — design only: the
+      PROD-10 rule stands (no plugin framework before two real plugins exist); ui-kit
+      component boundaries (PROD-10 ④) consume this entry's output. Delegations:
+      bridge — UI surfaces intake/classification design task (sprint-01 row; write the
+      ID back). Bridge ID: (write back). Voice — none this sprint: config-ui adoption +
+      UI-16 are declared cross-sprint in `board/sprints/sprint-01.md`; voice files IDs
+      at sprint-02 intake.
