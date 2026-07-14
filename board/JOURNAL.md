@@ -1,5 +1,34 @@
 # Board journal — newest on top
 
+## 2026-07-14 — PROD-10 ① extraction landed: token inventory + divergence list
+
+The sprint's critical-path head, executed with the owner's evidence-tier ruling (remote
+pages + remote scan = the only approved taste; appliance pages and all of config-ui =
+inventory only; even the remote's rigid layout is non-sacred — zoning yes, geometry no).
+Two miners over the repos + the scan read directly. Headline finds, both
+assumption-breaking: (1) bridge `ui/` is a stock shadcn/ui install in all but name —
+full CSS-variable semantic theme at DEFAULT values (adopted, never chosen), cn()/cva,
+components/ui/ — so the Locveil tokens file is "fill in the variables", not invent a
+system; (2) @mui/material + emotion have zero imports — the MUI-vs-Tailwind divergence
+everyone assumed does not exist; the only Material reality is the icon set, whose names
+are a backend layout-manifest CONTRACT (icon-family change = mapping layer, D1). The
+approved tier-1 system is the dark remote island: #2a2a2a metal shell, white-alpha
+surface ladder, rounded-square ghost buttons, amber attention, green/red power
+semantics, 200ms motion, px radius ladder 24/16/12/8 — extracted into
+`docs/design/ui/token-inventory-draft.md` with file:line evidence. The stiffness is
+documented as mechanism (fixed 320×850 container, two hand breakpoints, scale-75
+NavCluster hack, runtime <style> blob) → fluid-rebuild requirement D10.
+`docs/design/ui/divergence-list.md` = the stage-② council agenda: D1 icons
+(material/lucide/split), D2 amber-vs-blue accent, D3 neutrals+primary (candidate: derive
+from the island's warm greys), D4 dark-mode policy, D5 chrome radius, D6 type stack
+(system vs Cyrillic-complete webfont, offline-first constraint), D7 density, D8 semantic
+status tokens (the one near-deliberate config-ui system, preserved), D9 shadcn adoption
+(verdict: strong yes), D10 fluid remote. Both artifacts anchored by PROD-10 (HK-10
+rule). Tooling prep: anthropics/skills cloned; the frontend-design + skill-creator
+install into .claude/skills/ was permission-gated — owner runs the cp (command in the
+session log). Next: build the style-council round-1 page from D1–D10. docs: none —
+design/evidence artifacts, anchored by PROD-10; no manifest node touched.
+
 ## 2026-07-14 — HK-10 DECIDED: evidence anchoring + the IMPL prefix; IMPL-1/IMPL-2 filed
 
 Born-decided owner rulings, triggered by the question "where is the Workbench shell's

@@ -107,6 +107,19 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       `skill-creator` to author `ui-style`; Storybook as the kit's living workbench.
       Standing rule: owner sketches remain first-class input — a zoning sketch + the
       token system IS a professional spec.
+      **① Extraction LANDED 2026-07-14:** `docs/design/ui/token-inventory-draft.md`
+      (tiered token evidence) + `docs/design/ui/divergence-list.md` (the stage-②
+      council agenda, D1–D10). Owner evidence-tier ruling applied: T1 = remote pages +
+      remote scan only; appliance pages + config-ui = inventory, not taste. Headline
+      finds: bridge `ui/` is a STOCK shadcn install with never-chosen default theme
+      values (the token carrier exists, empty); @mui/material + emotion have ZERO
+      imports — Material icons are the only real MUI usage (and icon names are a
+      backend-manifest contract); the remote is a deliberately dark, theme-independent
+      island (its stiffness mechanism documented as a fluid-rebuild requirement, D10);
+      shadcn/ui feasibility verdict: strong yes (owner's "standard components" hunch
+      confirmed — inventory §9). Tooling prep: anthropics/skills cloned;
+      frontend-design + skill-creator install into `.claude/skills/` pending owner
+      (permission-gated).
       **Sprint-01 (2026-07-14) activated the design phase** — stages ①–④ selected
       (`board/sprints/sprint-01.md`); the deploy-split design + Workbench shell council
       split out as **PROD-24** (its wireframe/plug-in contract shapes ④'s component
