@@ -1,5 +1,27 @@
 # Board journal — newest on top
 
+## 2026-07-14 — sprint-01 CLOSED: 7.3/7.3 landed, plan-to-close in one day
+
+The first sprint of the HK-9 machinery closed the day it was planned. Read-only
+verification against all three shippable definition lines: voice @3bf39ce (guards green
+at pinned tags, repin-check green with every pin at owner-newest incl. catalog-v1.7,
+suite 1415/7 journal-evidenced), bridge @5da5c96 (guards green, ui check green live,
+heavy gates CI-evidenced unbroken; UI-17 DONE with workbench_split.md spawning
+UI-18/CORE-12/DOC-17; OPS-13 DONE with UI-8 absorbed), satellite @91e7bee (all four
+guards green, OPS-7 DONE verified live, ssh branch honestly flagged). All three:
+SHIPPABLE. The two product caveats — voice's QUAL-78 fix not yet in a published image,
+bridge's vite-6 UI image + the still-unrecorded post-OPS-26 redeploy — land exactly in
+the pre-reserved close-deploy slot (owner op, scheduled not run; deployable ≠ deployed
+held). Realized table: 7.3 of 7.3 session-equivalents, every row at its planned class
+cost, both councils in budgeted rounds, reserve spend 0.1 of 3.6, ≈9 items discovered
+and filed. Calibration headline for sprint-02: relative costs are exact but absolute
+throughput ran ~3–7 s-e per attended session — HK-9's ~10× anchor reconfirmed at sprint
+scale. Carry-overs pre-staged for sprint-02: voice UI-17+UI-16, bridge UI-18+CORE-12,
+the HW set, IMPL-1/IMPL-2, the now-load-bearing PROD-4 council, and the owner-announced
+bridge remote-wireframe session. Close section + review appended to
+`board/sprints/sprint-01.md`; page chip → closed. docs: none — sprint/journal
+artifacts only.
+
 ## 2026-07-14 — satellite intake finding: split rows must not mint letter-suffix IDs
 
 Satellite executed its sprint-01 intake (their a181f5d + be84ea4): the OPS-1 split
