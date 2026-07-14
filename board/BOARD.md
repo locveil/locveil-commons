@@ -117,9 +117,27 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       backend-manifest contract); the remote is a deliberately dark, theme-independent
       island (its stiffness mechanism documented as a fluid-rebuild requirement, D10);
       shadcn/ui feasibility verdict: strong yes (owner's "standard components" hunch
-      confirmed — inventory §9). Tooling prep: anthropics/skills cloned;
-      frontend-design + skill-creator install into `.claude/skills/` pending owner
-      (permission-gated).
+      confirmed — inventory §9). Tooling prep: frontend-design + skill-creator
+      installed (owner cp).
+      **② Style council DECIDED 2026-07-14** (two rounds of rendered choices, owner
+      seed "blued steel, island stays black-ish"): neutrals = steel-A «Воронение»
+      (hue 211-213, light `210 25% 97.5%` / dark near-black `213 26% 8.5%`) · accent =
+      **steel-blue, polished dark calibration** (`207 70% 42%` light / `207 80% 62%`
+      dark) — monochrome-metallic, color reserved for meaning · icons = **SPLIT**
+      (lucide stroke in workbench/chrome; Material filled stays inside the island —
+      manifest names remain a contract) · chrome radius **0.75rem** (island ladder
+      untouched) · compact density · system type stack ratified (offline-first, no
+      webfonts) · status tokens ratified with **tested-stays-blue** owner ruling ·
+      dual theme day one · shadcn/radix base ratified · island as-shipped + D10 fluid
+      implementation deferred to a dedicated **bridge wireframe/layout session**
+      (owner-announced; bridge files it at that session's intake).
+      **③ Codification LANDED 2026-07-14:** tokens
+      `packages/ui-kit/tokens/locveil.css` + `.json` (seed of the ui-kit package) ·
+      stylebook `docs/design/ui/stylebook.md` (docs-manifest node `stylebook`, new
+      `ui-kit` surface) · **`ui-style` skill** (`.claude/skills/ui-style/`) as the
+      executable half. Remaining: **④ ui-kit-v1** (components on the tokens, Storybook,
+      radix/`components.json`, first tag) — unblocked: OPS-13 done bridge-side,
+      shell contract (PROD-24) decided, tokens decided.
       **Sprint-01 (2026-07-14) activated the design phase** — stages ①–④ selected
       (`board/sprints/sprint-01.md`); the deploy-split design + Workbench shell council
       split out as **PROD-24** (its wireframe/plug-in contract shapes ④'s component

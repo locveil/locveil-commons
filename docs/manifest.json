@@ -1,20 +1,45 @@
 {
   "$comment": "Locveil commons docs manifest (HK-6/PROD-17; schema: process/user-docs/manifest.schema.json). Commons has no end-user classes (floor-where-exists) — its readers are contributors and integrators (the product repos' developers and the owner's sessions).",
   "repo": "locveil-commons",
-  "roots": ["README.md", "CONTRIBUTING.md", "eval/README.md", "contracts/README.md"],
+  "roots": [
+    "README.md",
+    "CONTRIBUTING.md",
+    "eval/README.md",
+    "contracts/README.md"
+  ],
   "surfaces": {
-    "eval-framework": ["eval/**"],
-    "contracts": ["contracts/**", "packages/contract-guard/**"],
-    "process-kit": ["packages/scope-guard/**", "process/**"],
-    "board": ["board/**"]
+    "eval-framework": [
+      "eval/**"
+    ],
+    "contracts": [
+      "contracts/**",
+      "packages/contract-guard/**"
+    ],
+    "process-kit": [
+      "packages/scope-guard/**",
+      "process/**"
+    ],
+    "board": [
+      "board/**"
+    ],
+    "ui-kit": [
+      "packages/ui-kit/**",
+      "docs/design/ui/**"
+    ]
   },
   "nodes": [
     {
       "id": "readme",
       "path": "README.md",
       "class": "front-door",
-      "audience": ["contributor", "integrator"],
-      "covers": ["board", "process-kit"],
+      "audience": [
+        "contributor",
+        "integrator"
+      ],
+      "covers": [
+        "board",
+        "process-kit"
+      ],
       "status": "banner",
       "note": "The umbrella's front door: what the commons is, the sibling map, where the board lives."
     },
@@ -22,8 +47,15 @@
       "id": "contributing",
       "path": "CONTRIBUTING.md",
       "class": "contributor",
-      "audience": ["contributor"],
-      "covers": ["process-kit", "contracts", "eval-framework", "board"],
+      "audience": [
+        "contributor"
+      ],
+      "covers": [
+        "process-kit",
+        "contracts",
+        "eval-framework",
+        "board"
+      ],
       "status": "ok",
       "note": "The contributor front door: links the normative process specs, the packages, the registry, the board conventions."
     },
@@ -31,8 +63,13 @@
       "id": "eval-readme",
       "path": "eval/README.md",
       "class": "contributor",
-      "audience": ["integrator", "contributor"],
-      "covers": ["eval-framework"],
+      "audience": [
+        "integrator",
+        "contributor"
+      ],
+      "covers": [
+        "eval-framework"
+      ],
       "status": "ok",
       "note": "How the product repos consume the eval framework (YAML-first, make targets, file:// references)."
     },
@@ -40,8 +77,13 @@
       "id": "contracts-registry",
       "path": "contracts/README.md",
       "class": "canonical-reference",
-      "audience": ["integrator", "contributor"],
-      "covers": ["contracts"],
+      "audience": [
+        "integrator",
+        "contributor"
+      ],
+      "covers": [
+        "contracts"
+      ],
       "status": "ok",
       "canonical": {
         "invariant": "uniform contracts layout (process/contracts.md §2)",
@@ -49,6 +91,24 @@
         "guard": "packages/contract-guard/contract_guard.py --check (pre-commit + contract-guard CI)"
       },
       "note": "The direction-labeled registry; per-contract READMEs hang off it under the contract-guard layout rules."
+    },
+    {
+      "id": "stylebook",
+      "path": "docs/design/ui/stylebook.md",
+      "class": "canonical-reference",
+      "audience": [
+        "contributor",
+        "integrator"
+      ],
+      "covers": [
+        "ui-kit"
+      ],
+      "status": "ok",
+      "canonical": {
+        "invariant": "token values live in packages/ui-kit/tokens/locveil.css; the stylebook is their normative prose (PROD-10 style council 2026-07-14)",
+        "guard": "none yet — rides ui-kit-v1 (a drift check between tokens.css and .json is the natural first guard)"
+      },
+      "note": "The Locveil design system: blued-steel tokens, usage rules, the split icon ruling, fluid-layout requirement. Executable half: the ui-style skill."
     }
   ]
 }

@@ -1,5 +1,30 @@
 # Board journal — newest on top
 
+## 2026-07-14 — PROD-10 ②+③: style council decided, tokens + stylebook + ui-style landed
+
+The style council ran exactly as designed — two rounds of rendered choices, zero design
+vocabulary asked of the owner. Round 1 (nine cards, all real workbench slices with
+config-ui's actual RU content): owner seeded "blued steel, island stays black-ish" and
+picked steel-A «Воронение» neutrals, then diverged from the recommendations into a
+coherent monochrome-metallic identity: STEEL-BLUE accent (over the incumbent amber),
+SPLIT icons (lucide stroke in chrome, Material filled stays inside the island — the
+backend manifest contract untouched), 0.75rem chrome radius (rounder than stock);
+compact density, system type stack, status tokens and all three confirmations (dual
+theme, shadcn/radix, fluid-remote) accepted as recommended. Two owner notes recorded:
+the island ships as-is AND the remote wireframe/layout rework — including D10's fluid
+implementation — happens in a dedicated bridge-project session (bridge files it at that
+intake). Round 2 (the assembly — one full mock, both themes, all picks applied): accepted
+first pass; accent = polished dark calibration; the one collision the choices created
+(tested-chip blue vs accent blue) resolved by owner ruling KEEP BLUE — the pill shape
+carries the status-vs-interaction distinction. ③ transcribed the outcome:
+`packages/ui-kit/tokens/locveil.css` + `.json` (the package seed), the stylebook
+(`docs/design/ui/stylebook.md`) with a new `ui-kit` manifest surface + `stylebook` node,
+and the `ui-style` skill as the executable half (already registered in-session).
+frontend-design + skill-creator installed by the owner. Sprint: c-council realized at
+1.0 (2 rounds, no reserve draw), c-stylebook at its planned 1.0 same day. Next: ④
+ui-kit-v1 — fully unblocked (OPS-13 done, shell contract decided, tokens decided).
+docs: stylebook (new node; manifest gains the ui-kit surface).
+
 ## 2026-07-14 — PROD-10 ① extraction landed: token inventory + divergence list
 
 The sprint's critical-path head, executed with the owner's evidence-tier ruling (remote

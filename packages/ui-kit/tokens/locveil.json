@@ -1,0 +1,41 @@
+{
+  "$comment": "Locveil design tokens — PROD-10 style council, 2026-07-14. Mirror of tokens/locveil.css (hand-synced until ui-kit-v1 wires a generator). hsl triplets unless noted.",
+  "identity": "voronenaya-stal (gun-blued steel)",
+  "themes": {
+    "light": {
+      "background": "210 25% 97.5%", "foreground": "213 35% 12%",
+      "card": "0 0% 100%", "muted": "211 22% 93%", "mutedForeground": "211 14% 44%",
+      "border": "211 20% 86%",
+      "primary": "207 70% 42%", "primaryForeground": "0 0% 100%",
+      "destructive": "0 72% 45%"
+    },
+    "dark": {
+      "background": "213 26% 8.5%", "foreground": "208 20% 88%",
+      "card": "212 22% 12.5%", "muted": "212 18% 16%", "mutedForeground": "209 12% 58%",
+      "border": "211 18% 22%",
+      "primary": "207 80% 62%", "primaryForeground": "213 40% 10%",
+      "destructive": "0 62% 52%"
+    }
+  },
+  "radius": { "chrome": "0.75rem", "island": { "shell": "24px", "strip": "16px", "zone": "12px", "group": "8px" } },
+  "type": {
+    "stack": "system-ui, -apple-system, 'Segoe UI', sans-serif (ratified; no webfont)",
+    "scale": { "label": "11px/600/uppercase/tracking-.04em", "body-sm": "12.5px", "body": "14px", "heading": "18px/700", "error": "24px/700", "island-legend": "10px/600/uppercase/tracking-.5px (island-scoped)" },
+    "numeric": "tabular-nums for readings; mono for code; 8px micro-size DROPPED"
+  },
+  "density": "compact — inputs px-3 py-2 text-sm class; operator-tool bias",
+  "icons": {
+    "policy": "SPLIT (council round 1): lucide stroke-2 in workbench/chrome; Material filled stays inside the remote island; backend layout-manifest icon names remain a Material-namespace contract until the island rebuild (bridge session) — any family change there needs a name-mapping layer",
+    "sizes": "16px inline / 20px buttons / island per-zone (size-prop redesign owed at ui-kit)"
+  },
+  "status": {
+    "recipeLight": "bg h 70% 96% · border h 45% 80% · text h 55% 32%",
+    "recipeDark": "bg h 45% 22% /45% · border h 45% 45% /60% · text h 70% 72%",
+    "hues": { "pristine": 211, "edited": 28, "tested": 210, "persisted": 145, "conflict": 0 },
+    "testedNote": "tested stays BLUE next to the blue accent — owner ruling, round 2",
+    "device": { "on": "145 60% 42%", "off": "0 65% 50%" }
+  },
+  "motion": { "standard": "200ms transition", "pending": "spin", "armed": "pulse (island, amber)" },
+  "themePolicy": "dual theme from day one; .dark class strategy; island theme-independent",
+  "base": "shadcn/ui + radix (D9 ratified); fluid-remote requirement D10 — implementation in a dedicated bridge wireframe session"
+}

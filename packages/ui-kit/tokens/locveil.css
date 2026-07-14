@@ -1,0 +1,95 @@
+/* Locveil design tokens — decided by the PROD-10 style council (2 rounds, 2026-07-14).
+   Source of truth for values: this file + tokens/locveil.json (kept in sync by hand
+   until ui-kit-v1 wires a generator). Normative usage rules: docs/design/ui/stylebook.md.
+   shadcn/ui-compatible variable names; Locveil extensions carry the lv- prefix.
+   Identity: «воронёная сталь» — gun-blued steel, hue 207-213, restrained chroma. */
+
+:root {
+  /* neutrals — steel-A «Воронение», light */
+  --background: 210 25% 97.5%;
+  --foreground: 213 35% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 213 35% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 213 35% 12%;
+  --muted: 211 22% 93%;
+  --muted-foreground: 211 14% 44%;
+  --border: 211 20% 86%;
+  --input: 211 20% 86%;
+
+  /* accent — steel-blue (light calibration) */
+  --primary: 207 70% 42%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 207 70% 42%;
+  --accent-foreground: 0 0% 100%;
+  --ring: 207 70% 42%;
+
+  --secondary: 211 22% 93%;
+  --secondary-foreground: 213 35% 12%;
+  --destructive: 0 72% 45%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* geometry — council: 0.75rem chrome radius (island keeps its own px ladder) */
+  --radius: 0.75rem;
+
+  /* status tokens (D8 ratified; tested stays BLUE by owner ruling, round 2) —
+     light recipe: bg h/70%/96% · border h/45%/80% · text h/55%/32% */
+  --lv-status-pristine: 211;   /* grey-steel */
+  --lv-status-edited: 28;      /* orange */
+  --lv-status-tested: 210;     /* blue — deliberately shares the accent neighborhood */
+  --lv-status-persisted: 145;  /* green */
+  --lv-status-conflict: 0;     /* red */
+  --lv-on: 145 60% 42%;
+  --lv-off: 0 65% 50%;
+}
+
+.dark {
+  /* neutrals — steel-A «Воронение», dark (near-black oxide) */
+  --background: 213 26% 8.5%;
+  --foreground: 208 20% 88%;
+  --card: 212 22% 12.5%;
+  --card-foreground: 208 20% 88%;
+  --popover: 212 22% 12.5%;
+  --popover-foreground: 208 20% 88%;
+  --muted: 212 18% 16%;
+  --muted-foreground: 209 12% 58%;
+  --border: 211 18% 22%;
+  --input: 211 18% 22%;
+
+  /* accent — steel-blue, "polished" calibration (council round 2) */
+  --primary: 207 80% 62%;
+  --primary-foreground: 213 40% 10%;
+  --accent: 207 80% 62%;
+  --accent-foreground: 213 40% 10%;
+  --ring: 207 80% 62%;
+
+  --secondary: 212 18% 16%;
+  --secondary-foreground: 208 20% 88%;
+  --destructive: 0 62% 52%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* status dark recipe: bg h/45%/22%/45% · border h/45%/45%/60% · text h/70%/72% */
+  --lv-on: 145 60% 46%;
+  --lv-off: 0 65% 55%;
+}
+
+/* The remote island — approved as shipped (owner, round 1); theme-INDEPENDENT.
+   These are extraction constants, not preferences; the island renders identically on
+   both themes. Material-filled glyphs stay INSIDE the island (split icon ruling). */
+:root {
+  --lv-island-shell: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 25%, #2a2a2a 50%,
+                                     #1a1a1a 75%, #2a2a2a 100%);
+  --lv-island-shell-border: #404040;
+  --lv-island-surface-1: rgba(255, 255, 255, 0.03);
+  --lv-island-surface-2: rgba(255, 255, 255, 0.05);
+  --lv-island-surface-3: rgba(255, 255, 255, 0.08);
+  --lv-island-border: rgba(255, 255, 255, 0.10);
+  --lv-island-text: #ffffff;
+  --lv-island-text-secondary: rgba(255, 255, 255, 0.70);
+  --lv-island-text-dim: rgba(255, 255, 255, 0.45);
+  --lv-island-attention: 38 92% 50%;   /* amber stays the island's attention color */
+  --lv-island-radius-shell: 24px;
+  --lv-island-radius-strip: 16px;
+  --lv-island-radius-zone: 12px;
+  --lv-island-radius-group: 8px;
+}
