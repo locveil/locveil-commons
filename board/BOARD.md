@@ -19,6 +19,9 @@ stable ID `PROD-N`, referenced in commit messages (`PROD-3: …`).
   delegations have local IDs written back.
 - Statuses: `[ ]` open · `[>]` in progress · `[x]` done. Session notes go to
   `JOURNAL.md` (newest on top), not here.
+- **IMPL-N (HK-10, 2026-07-14):** implementation work genuinely on commons (regime-2/3
+  code under `packages/`, `site/`, `eval/`) that is not itself a cross-repo initiative
+  lives under `## IMPL`. PROD stays cross-repo initiatives; HK stays council topics.
 - **Ledger discipline (HK-1 / PROD-13, normative: `process/ledger-discipline.md`):** this
   board is the active ledger; completed entries MOVE to `BOARD_DONE.md` in the same change
   as their journal entry. Council topics carry the `HK-N` prefix; being born-decided they
@@ -143,3 +146,27 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       burst lands SEEN, not as a surprise. Closes when the first chain completes
       end-to-end and the re-pin is verified. IDs on record: bridge DRV-37 + VWB-39;
       satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
+
+## IMPL — commons implementation
+
+- [ ] **IMPL-1 — Workbench shell v1** (`packages/workbench`): implement
+      `docs/design/workbench.md` §3 (the shell: chrome — logo, plugin tabs +
+      status badges, locale switch, Material `BugReport` button, reserved auth-guard
+      slot; sidebar; content outlet; React 18 SPA on ui-kit tokens) and §4 (the plug-in
+      contract as code: `WorkbenchPlugin`/`PageDescriptor`, dormant-gate semantics, the
+      dev-phase `file:` consumption wiring — built sibling packages, never TS sources);
+      first `workbench-v1` tag. The registry may be a hand-maintained list until two
+      real plugins exist (PROD-10 rule). Gates: **ui-kit-v1** (PROD-10 ④ — the shell
+      builds ON the tokens); plugin content arrives via voice UI-17 + bridge UI-17
+      (their designs feed the registry — no blocking dep for the chrome itself). Write
+      APIs stay separately gated on PROD-4's auth decision (the shell ships without
+      them). Sprint-02 candidate. Filed at HK-10 — this entry is `workbench.md`'s
+      anchoring live task (evidence-anchoring rule, first application).
+- [ ] **IMPL-2 — scope-guard: UNREFERENCED-evidence check** (`packages/scope-guard`):
+      the missing fourth direction of evidence checking (HK-10 ruling 1,
+      `process/ledger-discipline.md` §6) — an evidence doc on disk (`[evidence] dirs`)
+      that no entry in active+DONE references is an error (config-toggled:
+      `unreferenced = "error"|"warn"|"off"`, default warn for consumers, error in
+      commons). Ships at the next `scope-vX` tag; consumers adopt on re-pin per §3.
+      S/M class. Acceptance: commons run flags a synthetic orphan; the anchored
+      `fixture_recorder.md` (HK-10 sweep) passes.

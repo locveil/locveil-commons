@@ -74,8 +74,10 @@ Every repo keeps:
 ## 5. Board specifics (commons)
 
 - The board ledger is `board/BOARD.md` (active) + `board/BOARD_DONE.md` (completed
-  entries moved on close). Prefixes: `PROD` (cross-repo initiatives) and `HK`
-  (housekeeping/council topics). **Entries live under per-prefix sections**
+  entries moved on close). Prefixes: `PROD` (cross-repo initiatives), `HK`
+  (housekeeping/council topics), and `IMPL` (implementation work genuinely on commons —
+  regime-2/3 code under `packages/`, `site/`, `eval/` — that is not itself a cross-repo
+  initiative; decided HK-10, 2026-07-14). **Entries live under per-prefix sections**
   (`## PROD — …`, `## HK — …`), sorted-insert within — the same shape as the product
   ledgers; a flat interleaved list is not acceptable (owner finding 2026-07-11; commons
   config runs `require_sections` + `sections_required_for_all` accordingly).
@@ -87,3 +89,19 @@ Every repo keeps:
   text contains a `Delegation →` block must carry a written-back local ID. The wider rule
   — **the board never asserts a delegated task's status** — remains prose (per-repo
   ledgers own status).
+
+## 6. Evidence anchoring (design + review docs) — HK-10
+
+- **Every design doc and every review doc must be referenced by at least one ledger
+  entry** (active or DONE) — an unreferenced evidence doc is forgotten scope (owner
+  ruling, 2026-07-14). Sharper form: a doc whose scope is **not fully executed** must be
+  referenced by an **open** task; a fully-executed doc is anchored by the completion
+  entries that cite it (a record, not work).
+- The rule is org-wide. The product repos already run pieces of it (voice's evidence
+  index with `[x]` exists-markers, bridge's path-scan dead-link checks) — but those
+  guard the ledger→doc direction. The missing direction — **a doc ON DISK that no
+  ledger entry references** — becomes a scope-guard check (`UNREFERENCED evidence`,
+  config-toggled) at the next `scope-vX` cut (commons **IMPL-2**); consumers adopt it
+  when they re-pin, per §3 pinned-consumption rules.
+- Evidence directories are config (`[evidence] dirs`); commons scans `docs/design/` +
+  `docs/review/`.

@@ -1,5 +1,25 @@
 # Board journal — newest on top
 
+## 2026-07-14 — HK-10 DECIDED: evidence anchoring + the IMPL prefix; IMPL-1/IMPL-2 filed
+
+Born-decided owner rulings, triggered by the question "where is the Workbench shell's
+implementation task?" — answer at the time: nowhere, just the design doc. Ruling 1:
+every design AND review doc must be referenced by at least one ledger entry (open task
+while scope is unexecuted; completion entries anchor executed docs) —
+`process/ledger-discipline.md` gains §6, commons `[evidence] dirs` gains `docs/review`,
+and the missing mechanical direction (doc on disk, zero ledger references) is filed as
+IMPL-2 (scope-guard UNREFERENCED check, next scope-vX cut, consumers adopt on re-pin).
+The decision-time sweep found exactly one true orphan proving the point:
+`fixture_recorder.md`, pre-board and implemented, now anchored by the HK-10 entry.
+Ruling 2: commons-local implementation work gets the IMPL prefix (registered in
+`.scope-guard.toml`, new `## IMPL` board section; IMPL collides with no product
+workstream, unlike BUILD/CORE). First filings: IMPL-1 — Workbench shell v1
+(`packages/workbench`, implements `docs/design/workbench.md` §3–4, gated on ui-kit-v1,
+plugin content via the two UI-17s, sprint-02 candidate; simultaneously the design doc's
+anchoring task per ruling 1) and IMPL-2 (above). Sprint-01 note: both IMPL tasks are
+new-scope discoveries — reserve items if pulled in, else sprint-02 rows. docs: none —
+process file updated in place; no manifest node invalidated.
+
 ## 2026-07-14 — PROD-24 CLOSED: all three write-backs in, entry moved to BOARD_DONE
 
 Filed, council-decided, design-doc'd, delegated, and closed within one day. The three

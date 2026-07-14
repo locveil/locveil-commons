@@ -1,8 +1,9 @@
 # Locveil board — DONE ledger
 
-Completed `PROD-N` / `HK-N` entries, MOVED here from `BOARD.md` on close (same change as
-the journal entry — `process/ledger-discipline.md`). Frozen history: entries are never
-re-edited; delegated IDs listed inside them are pointers, never status assertions.
+Completed `PROD-N` / `HK-N` / `IMPL-N` entries, MOVED here from `BOARD.md` on close
+(same change as the journal entry — `process/ledger-discipline.md`). Frozen history:
+entries are never re-edited; delegated IDs listed inside them are pointers, never status
+assertions.
 
 ## PROD — cross-repo initiatives
 
@@ -962,3 +963,31 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       realized stats (the calibration loop). Side-finds delegated via PROD-23: voice
       stale gate-prose sweep, bridge VWB-39 dep line. docs: none — process convention
       + board artifacts; no commons manifest node covers process/ internals.
+- [x] **HK-10 — Evidence anchoring + the commons IMPL prefix** (tenth council topic;
+      owner terminal decisions in-session, 2026-07-14 — born-decided, no keeper round:
+      both rulings are process-mechanical). **Ruling 1 — evidence anchoring:** every
+      design doc AND every review doc must be referenced by at least one ledger entry
+      (active or DONE); a doc whose scope is not fully executed needs an OPEN task
+      reference; fully-executed docs are anchored by the completion entries that cite
+      them. Org-wide; normative: `process/ledger-discipline.md` §6. The product repos
+      already run the ledger→doc directions (voice's evidence index, bridge's path-scan
+      dead links); the missing doc→ledger direction (a doc on disk that nothing
+      references) becomes the scope-guard `UNREFERENCED evidence` check — filed as
+      commons **IMPL-2**, ships at the next `scope-vX` tag, consumers adopt on re-pin.
+      Commons config extended: `docs/review` joins `[evidence] dirs`. Orphan sweep at
+      decision time: ONE true orphan — `docs/design/fixture_recorder.md` (pre-board
+      eval-framework design, implemented in `eval/`; anchored henceforth by THIS entry
+      as its historical record); all other commons design docs verified anchored.
+      **Ruling 2 — the IMPL prefix:** implementation work genuinely on commons
+      (regime-2/3 code: `packages/`, `site/`, `eval/`) that is not itself a cross-repo
+      initiative gets **IMPL-N** under `## IMPL` on the board ledger (prefix registered
+      in `.scope-guard.toml`; IMPL chosen over BUILD/CORE because it collides with no
+      product-repo workstream — "commons IMPL-3" is unambiguous cross-repo). PROD stays
+      cross-repo initiatives; HK stays councils. First filings: **IMPL-1** (Workbench
+      shell v1 — implements `docs/design/workbench.md` §3–4, gated on ui-kit-v1; the
+      shell design doc thereby gains its anchoring live task, ruling 1's first
+      application) + **IMPL-2** (the guard check above). No repo delegations: the rule
+      reaches products mechanically at their next scope-guard re-pin; their existing
+      partial forms stand until then. docs: none — normative process file updated in
+      place (`ledger-discipline.md` §5–6); CONTRIBUTING's existing ledger-discipline
+      row still covers it; no manifest node invalidated.

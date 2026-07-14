@@ -4,7 +4,7 @@
 active = "board/BOARD.md"
 done = "board/BOARD_DONE.md"
 archive_dir = "board/archive/ledger"
-prefixes = ["PROD", "HK"]
+prefixes = ["PROD", "HK", "IMPL"]
 open_statuses = [" ", ">"]
 require_sections = true                  # per-prefix sections (## PROD — …, ## HK — …); owner finding 2026-07-11
 sections_required_for_all = true
@@ -14,7 +14,7 @@ hard_ceiling = 4000
 docs_verdict_since = "2026-07-13"   # HK-6: completions from this date need a docs: verdict (2026-07-12 entries predate the rule, frozen)
 
 [evidence]
-dirs = ["docs/design"]
+dirs = ["docs/design", "docs/review"]   # HK-10: review docs join evidence anchoring
 link_scan = true
 
 [journal]
