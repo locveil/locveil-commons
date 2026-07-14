@@ -1,5 +1,26 @@
 # Board journal — newest on top
 
+## 2026-07-14 — PROD-10 ④ ui-kit-v1 LANDED; PROD-10 CLOSED (all four stages in one day)
+
+`packages/ui-kit` = `locveil-ui-kit` 0.1.0, tagged **ui-kit-v1**: 17 radix-based
+primitives on the council's tokens — including StatusChip/StatusDot implementing the D8
+recipes with the tested-stays-blue pill contract, and an Icon component that OWNS sizing
+(16/20px; the extraction's `!w-*` override pattern is structurally impossible now) —
+plus the tailwind preset, version-agnostic ESM + types (deps externalized; vite majors
+per-consumer, honored), eslint-9 flat config, and the Storybook workbench with a
+dual-theme toolbar whose assembly story is the council's round-2 mock rebuilt on the
+real components. Verified end-to-end: install (0 vulnerabilities), typecheck + lint,
+lib build, storybook build. One build wrinkle caught live: vite's emptyOutDir wiped
+tsc's declarations — build order flipped. Deployment-class ruling recorded from the
+owner Q&A: ONE kit for workbench AND operations; the future controller-UI council adds
+token sections/profiles (island retune, touch density), never a second kit; bridge
+composites stay bridge-owned, built ON the kit. PROD-10 moved to BOARD_DONE — write-backs
+voice UI-17 + bridge UI-17 both on record via PROD-24; delegated adoption executes
+cross-sprint as declared. Sprint-01: c-uikit realized at its planned 1.0 — the entire
+PROD-10 backbone (①②③④, 4.0 planned) landed on planning day; remaining sprint rows:
+bridge UI-17 execution, satellite OPS-1a. docs: stylebook — node covers the ui-kit
+surface; the package README is the consumer doc.
+
 ## 2026-07-14 — PROD-10 ②+③: style council decided, tokens + stylebook + ui-style landed
 
 The style council ran exactly as designed — two rounds of rendered choices, zero design

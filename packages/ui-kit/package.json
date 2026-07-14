@@ -1,0 +1,60 @@
+{
+  "name": "locveil-ui-kit",
+  "version": "0.1.0",
+  "description": "Locveil design system: blued-steel tokens + shadcn/radix primitives (PROD-10). Normative: docs/design/ui/stylebook.md; values: tokens/locveil.css.",
+  "type": "module",
+  "license": "MIT",
+  "files": ["dist", "tokens", "tailwind-preset.cjs"],
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./tokens.css": "./tokens/locveil.css",
+    "./preset": "./tailwind-preset.cjs"
+  },
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --max-warnings 0",
+    "check": "npm run typecheck && npm run lint",
+    "storybook": "storybook dev -p 6106",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.0 || ^4.0.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-checkbox": "^1.1.0",
+    "@radix-ui/react-dialog": "^1.1.0",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-select": "^2.1.0",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slider": "^1.2.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-switch": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.453.0",
+    "tailwind-merge": "^2.5.0"
+  },
+  "devDependencies": {
+    "@storybook/react-vite": "^8.6.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.39.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "postcss": "^8.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^8.6.0",
+    "tailwindcss": "^3.4.9",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.60.0",
+    "vite": "^6.4.0"
+  },
+  "engines": { "node": ">=18.0.0" }
+}

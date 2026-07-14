@@ -136,6 +136,89 @@ assertions.
       `.claude/skills/council/dossier-template.html`, the two keeper agents,
       `process/council.md` (+ satellite-keeper when that repo exists). First live topic
       shook it down: HK-1.
+- [x] **PROD-10 — ui-kit package + stylebook** (D-8/D-9, next release): `packages/ui-kit`
+      npm package consumed by both config UIs (`../locveil-voice/config-ui`,
+      `../locveil-bridge/ui`); component boundaries keep one-shell-with-plugins reachable —
+      no plugin framework before two real plugins exist. **Sequencing note (HK-7):**
+      bridge OPS-13 (eslint-9/vite-6 toolchain pass, absorbing UI-8) must not run twice —
+      if ui-kit lands first it imposes its own toolchain; coordinate the order at
+      whichever activates first.
+      **Design-phase shape (owner discussion 2026-07-12; premise: the owner is not a UI
+      professional and expresses intent by sketch and plain words — the proven precedent
+      is `locveil-bridge/docs/design/ui/remote.png`, the paper scan that became
+      `RemoteControlLayout.tsx`; sketches carry zoning/hierarchy fully, the stylebook
+      supplies what they can't: color, type, spacing, radii, states):**
+      three stages when this activates —
+      (1) **Extraction**: reverse-engineer the IMPLICIT design system from what the owner
+      already approved — the two shipped UIs + the remote scan — into a draft token
+      inventory + a divergence list (where the two UIs quietly disagree);
+      (2) **Style council — preference elicitation by RENDERED A/B, never by terms**: the
+      dossier mechanism repurposed — pages show rendered variants (density, radius, type
+      pairs, contrast, light/dark) side by side; the owner clicks preferences +
+      free-words comments (RU/EN both fine); each click becomes a token. 2–3 rounds;
+      no design vocabulary required from the owner, ever;
+      (3) **Codification**: tokens file → the stylebook (prose + rendered examples; a
+      docs-manifest node per HK-6) → ui-kit components built ON the tokens → a
+      **`ui-style` skill** in commons as the executable half (the council/scope-guard
+      pattern: every future UI session loads the stylebook instead of reading about it),
+      versioned with the package (`ui-kit-vX`). Tooling prep at activation: install the
+      `frontend-design` skill (anthropics/skills) for the professional-realization side;
+      `skill-creator` to author `ui-style`; Storybook as the kit's living workbench.
+      Standing rule: owner sketches remain first-class input — a zoning sketch + the
+      token system IS a professional spec.
+      **① Extraction LANDED 2026-07-14:** `docs/design/ui/token-inventory-draft.md`
+      (tiered token evidence) + `docs/design/ui/divergence-list.md` (the stage-②
+      council agenda, D1–D10). Owner evidence-tier ruling applied: T1 = remote pages +
+      remote scan only; appliance pages + config-ui = inventory, not taste. Headline
+      finds: bridge `ui/` is a STOCK shadcn install with never-chosen default theme
+      values (the token carrier exists, empty); @mui/material + emotion have ZERO
+      imports — Material icons are the only real MUI usage (and icon names are a
+      backend-manifest contract); the remote is a deliberately dark, theme-independent
+      island (its stiffness mechanism documented as a fluid-rebuild requirement, D10);
+      shadcn/ui feasibility verdict: strong yes (owner's "standard components" hunch
+      confirmed — inventory §9). Tooling prep: frontend-design + skill-creator
+      installed (owner cp).
+      **② Style council DECIDED 2026-07-14** (two rounds of rendered choices, owner
+      seed "blued steel, island stays black-ish"): neutrals = steel-A «Воронение»
+      (hue 211-213, light `210 25% 97.5%` / dark near-black `213 26% 8.5%`) · accent =
+      **steel-blue, polished dark calibration** (`207 70% 42%` light / `207 80% 62%`
+      dark) — monochrome-metallic, color reserved for meaning · icons = **SPLIT**
+      (lucide stroke in workbench/chrome; Material filled stays inside the island —
+      manifest names remain a contract) · chrome radius **0.75rem** (island ladder
+      untouched) · compact density · system type stack ratified (offline-first, no
+      webfonts) · status tokens ratified with **tested-stays-blue** owner ruling ·
+      dual theme day one · shadcn/radix base ratified · island as-shipped + D10 fluid
+      implementation deferred to a dedicated **bridge wireframe/layout session**
+      (owner-announced; bridge files it at that session's intake).
+      **③ Codification LANDED 2026-07-14:** tokens
+      `packages/ui-kit/tokens/locveil.css` + `.json` (seed of the ui-kit package) ·
+      stylebook `docs/design/ui/stylebook.md` (docs-manifest node `stylebook`, new
+      `ui-kit` surface) · **`ui-style` skill** (`.claude/skills/ui-style/`) as the
+      executable half. Remaining: **④ ui-kit-v1** (components on the tokens, Storybook,
+      radix/`components.json`, first tag) — unblocked: OPS-13 done bridge-side,
+      shell contract (PROD-24) decided, tokens decided.
+      **Sprint-01 (2026-07-14) activated the design phase** — stages ①–④ selected
+      (`board/sprints/sprint-01.md`); the deploy-split design + Workbench shell council
+      split out as **PROD-24** (its wireframe/plug-in contract shapes ④'s component
+      boundaries); the HK-7 sequencing note is resolved by sprint-01 decision 1: bridge
+      OPS-13 runs first, ui-kit targets eslint-9/vite-6 — the migration runs once.
+      **④ ui-kit-v1 LANDED — PROD-10 CLOSED 2026-07-14** (all four stages ran in one
+      day): `packages/ui-kit` = `locveil-ui-kit` 0.1.0, tag **`ui-kit-v1`** — 17
+      primitives on radix + the tokens (Button, Badge, StatusChip/StatusDot with the D8
+      recipes, Card, Label, Input, Textarea, Alert, Skeleton, Separator, Tabs, Dialog,
+      Tooltip, Select, Checkbox, Switch, Slider, Icon with owned 16/20px sizing),
+      tailwind preset, version-agnostic ESM + types (deps externalized — vite majors
+      stay per-consumer), eslint-9 flat config, Storybook workbench with a dual-theme
+      toolbar (the assembly story is the council's round-2 mock rebuilt on the real
+      components). Verified: install 0 vulnerabilities · typecheck + lint clean · lib
+      build · storybook build. Deployment-class-agnostic by design (owner Q&A on
+      record): one kit for workbench AND operations; future controller-UI council adds
+      token sections/profiles, never a second kit. Write-backs: voice **UI-17**
+      (config-ui adoption, declared cross-sprint → sprint-02) + bridge **UI-17**
+      (adoption plan inside its Workbench-split design) — both filed at PROD-24 intake;
+      the HK-7 sequencing note resolved by sprint-01 decision 1 (OPS-13 ran first).
+      docs: stylebook — the node covers the ui-kit surface; the package README is the
+      consumer doc.
 - [x] **PROD-13 — Ledger & journal discipline harmonization + scope-guard** (HK-1, the
       first council topic, decided 2026-07-11 — positions/synthesis in `JOURNAL.md`).
       Decision: every repo adopts the ledger triad (active+DONE split, rotating journal,
