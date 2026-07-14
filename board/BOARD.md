@@ -216,7 +216,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       voice — (a) satellite-local config endpoint design (`design-then-implement`,
       dev-phase shape; new attack surface → PROD-4 auth posture applies); (b) the
       declared sprint-02 config-ui adoption task grows the 6-page cut (Overview + Header
-      retire) + status-slot wiring. Voice IDs: (write back).
+      retire) + status-slot wiring. Voice IDs: **ARCH-51** (a) + **UI-17** (b)
+      (written back 2026-07-14 at intake; reconciled clean — page count, Header status,
+      CoreConfig sections all verified).
       bridge — UI-17 intake (sprint-01 row) grows: the staged-write API shape + the
       planned-docs DOC follow-up (device-setup/topology-setup: "Apply stages via the
       controller API; promotion is a commit"; topology-setup's live-vs-file open
