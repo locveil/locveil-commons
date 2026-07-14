@@ -1,5 +1,22 @@
 # Board journal — newest on top
 
+## 2026-07-14 — PROD-22 CLOSED: contract-guard-v2 vendored everywhere — the rule caught two more on arrival
+
+The re-vendors executed directly by the commons session on owner instruction, filed
+under each repo's own discipline (voice BUILD-37, bridge OPS-27, satellite OPS-5 —
+satellite added to the delegation list at execution; the bridge-filed original named
+two repos, the guard has three consumers). The story is the rule's instant payoff:
+TAG-MISSING fired in bridge AND satellite — both had stamped `docs-manifest-v1`
+without ever creating the tag, the 2nd and 3rd instances of the false green the bridge
+caught manually at catalog-v1.7. Tags created at each STAMP's landing commit, pushed.
+Voice was fully clean. Every guard green in all four repos; the satellite's three-stage
+hook (scope + contract + its own surface checks) made a nice showing. Two small craft
+notes: both product-ledger insertions initially landed past a section header (MISFILED,
+caught by each repo's own scope-guard within seconds — the guards disciplining the
+coordinator again), and voice's remote flagged a bypassed branch-protection rule on
+push (owner-auth bypass; worth an owner glance at whether main-protection is intended
+to bind these sessions). docs: none — board only.
+
 ## 2026-07-13 — PROD-21 CLOSED: both HK-8 migrations verified; the bounce loop worked both ways
 
 Voice's bounce fixes verified: 8/8 discovery_paths flipped, zero IRENE_* left in the

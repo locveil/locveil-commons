@@ -655,6 +655,34 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       docs: none — board/ledger artifacts only.
 
 
+- [x] **PROD-22 — contract-guard: verify the STAMP-named git tag exists** (shared-tooling gap
+      surfaced by PROD-21/CORE-10, filed by the bridge 2026-07-13). The catalog-v1.7 cut set
+      `STAMP.json`'s `"tag": "catalog-v1.7"` and passed scope-guard + contract-guard + the golden
+      drift test **green**, but the `catalog-v1.7` git tag itself was never created — a false green:
+      `contract_guard.py` checks STAMP coherence + pinned-copy hashes, **not** that the tag it names
+      actually exists. A consumer cannot re-pin against a tag that doesn't exist (voice pins AGAINST
+      the family tag). The bridge owner caught it manually and created `catalog-v1.7` @ `73f8179`.
+      **Scope (commons, `packages/contract-guard/contract_guard.py`):** for each contract carrying a
+      STAMP, assert the tag named in `STAMP.tag` resolves as a git tag object — catches the "forgot
+      to create it entirely" failure mode; remote-push verification is explicitly OUT of scope (a
+      local tag object is the bar, since a guard can't see the remote). Ship as **`contract-guard-v2`**.
+      No council needed — mechanical enforcement, no new convention. **Delegations executed 2026-07-14** (by the
+      commons session on owner instruction, filed per each repo's discipline): bridge
+      ID: **OPS-27** · voice ID: **BUILD-37** · satellite ID: **OPS-5** (satellite ADDED
+      at execution — the original list named bridge+voice only; it vendors the same
+      guard). Commons-side
+      deliverable: EXECUTED 2026-07-13 — `contract_guard.py` 1.1.0 (`TAG-MISSING` fail
+      on owned STAMPs, `TAG-UNCHECKED` warning outside git; functional-tested both ways;
+      commons run green — its own tags resolve), tagged **`contract-guard-v2`**.
+      **CLOSED 2026-07-14.** contract-guard 1.1.0 @ `contract-guard-v2` vendored
+      byte-identical in all three product repos; the new rule paid for itself on
+      arrival — TAG-MISSING fired in BOTH bridge and satellite (`docs-manifest-v1`
+      stamped but never tagged: the 2nd and 3rd instances of the exact false-green
+      class this entry was filed about); tags created at each STAMP's landing commit
+      and pushed. Voice was clean (all four tags existed). All guards green in all
+      four repos. docs: none — vendored tooling; each repo's ledger carries its own
+      verdict.
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;
