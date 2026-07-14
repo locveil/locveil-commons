@@ -820,3 +820,34 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       queued to a running keeper stranded silently — re-engage after the notification,
       never mid-flight. docs: contributing — the process-kit pointer row; plus the new
       spec itself and the template/process-README rows.
+- [x] **HK-9 — Sprint planning: convention + `/sprint` skill** (ninth council topic;
+      bare seed → owner brief of 7 rules, decided 2026-07-14 over two rounds, all three
+      keepers; **normative: `process/sprints.md`**; execution filed as **PROD-23**).
+      Decision digest: capacity currency = owner-attended sessions + a separate
+      bench-slot budget, never calendar effort (anchor: BUILD-36 predicted 4.5–5 days
+      by its own keeper, realized 2h45m — ~10×); effort classes S/M/L/XL +
+      attempt-slot + no-data-is-legal; 30% discovery reserve (50% with XL/HW),
+      incidents displace reserve visibly; sprint file `board/sprints/sprint-NN.md`
+      lists IDs and NEVER asserts status (zero repo churn; HK-1 required-task-tags
+      earmark resolved: no new tags); deps v1 = fresh per-sprint closures in proposal
+      artifacts (standing `deps:` field parked as v2; partial deps = split the task);
+      travels-with groups = single selectable rows; blocked/unstartable pull members =
+      visibility rows; planned councils first-class ≈0.5 day + enabling-council rule;
+      rule3×rule7 (PROD pull into an excluded repo) always surfaced to the owner.
+      Round-2 delta (owner): the **shippable invariant** — every sprint closes with
+      each involved repo deployABLE per its OWN existing gates (per-repo definition
+      declared in the sprint file; deployable ≠ deployed — the WB7 deploy is one
+      pre-reserved owner slot; binds the deployability gate, never a `[release]` scope
+      gate); cut atomicity not group confinement (cut-coupled members land in the
+      cut's sprint; design/implement may straddle; trailing sibling pin
+      version-tolerable); cross-sprint features declared in the sprint file only, with
+      mandatory zero-effort carry-over rows, HW-GATED auto-declared cross-sprint by
+      default, mid-sprint declaration owner-only; naming = plain `sprint-NN` (all
+      three keepers independently flagged date/release-shaped names as pre-empting the
+      parked release-numbering council); close labeling = SHA-in-sprint-file
+      (`repo@sha` + one-line verdict; unanimous keeper opposition to repo-side sprint
+      tags — tag namespaces are guard-checked contract machinery, planning facts live
+      commons-side); close runs each repo's repin-check; sprint review appends
+      realized stats (the calibration loop). Side-finds delegated via PROD-23: voice
+      stale gate-prose sweep, bridge VWB-39 dep line. docs: none — process convention
+      + board artifacts; no commons manifest node covers process/ internals.

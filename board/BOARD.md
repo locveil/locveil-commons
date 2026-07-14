@@ -132,3 +132,22 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       burst lands SEEN, not as a surprise. Closes when the first chain completes
       end-to-end and the re-pin is verified. IDs on record: bridge DRV-37 + VWB-39;
       satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
+- [ ] **PROD-23 — Build the `/sprint` skill** (HK-9 execution task; normative:
+      `process/sprints.md` — the convention landed with the council, this entry builds
+      its executable half). Scope: a commons skill running the sprint loop — round 0 =
+      owner scoping page (theme, excluded repos, session capacity, bench slots; one
+      owner slot pre-reserved for the close deploy); round 1 = keepers in contributor
+      mode propose `{id, gist, class, deps, travels-with, rank}` with fresh dependency
+      closures; coordinator computes PROD pulls + cross-repo closure + conflicts;
+      selection page = travels-with group rows with live JS dependency closure (checking
+      X auto-checks its pulls), fill gauge vs session capacity ("can is full" goes red),
+      bench-slot ledger, per-repo shippable definition lines, cross-sprint declarations
+      (HW-GATED auto-proposed), conflict cards (excluded-repo pulls surfaced); Copy-delta
+      lands `board/sprints/sprint-NN.md` + journal; close ritual = per-repo gates +
+      repin-check + `repo@sha` rows + owner deploy slot; sprint review appends realized
+      stats. Dossier/Copy-delta machinery reused from `/council`. Also carries HK-9's
+      two side-find delegations (S-class hygiene, found by the round-1 dependency
+      audit): voice — stale gate-prose sweep (ARCH-42/43 "Gated on BUILD-21" is stale,
+      UI-4 "Gate 2"); file a local ID, write it back. Voice ID: (write back). Bridge —
+      VWB-39's dependency line is stale (names DONE VWB-38 + wrong DRV-36); file a local
+      ID, write it back. Bridge ID: (write back).

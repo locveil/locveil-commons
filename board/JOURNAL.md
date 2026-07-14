@@ -1,5 +1,27 @@
 # Board journal — newest on top
 
+## 2026-07-14 — HK-9 DECIDED: sprint planning convention landed, /sprint skill filed as PROD-23
+
+Ninth council, two rounds, all three keepers, accepted (no-changes) both rounds after
+one owner delta. Round 1 settled the mechanics: capacity in owner-attended sessions +
+a separate bench-slot budget (the calibration table killed calendar estimates —
+BUILD-36's own keeper predicted 4.5–5 days, reality was 2h45m), S/M/L/XL classes with
+no-data legal for satellite HW, 30/50% discovery reserve, a commons sprint file that
+lists IDs but never asserts status, deps computed fresh per sprint (the audit found
+live stale gate prose in both product ledgers — the reason a standing deps: field
+waits for v2), travels-with groups as atomic rows, refusal-grade HW gates. Round 2
+took the owner's philosophy additions and the keepers converged hard: the shippable
+invariant binds each repo's EXISTING deployability gates via per-repo definition lines
+(nothing invented; deploy itself = one pre-reserved owner slot), cut atomicity rather
+than group confinement, HW-GATED members cross-sprint by default with mandatory
+carry-over rows, plain sprint-NN naming (all three independently flagged date/release
+shapes as pre-empting the parked release-numbering council), and SHA-in-sprint-file
+over repo-side sprint tags — voice put the principle best: tags mark what a repo
+asserts about itself; sprint participation is a planning fact, and planning facts
+live commons-side. Landed: `process/sprints.md` (normative), PROD-23 (build /sprint;
+carries the two S-class side-find delegations to voice and bridge), HK-9 →
+BOARD_DONE. docs: none — process convention + board artifacts only.
+
 ## 2026-07-14 — BUILD-36 tail confirmed live: the HK-8 migration is fully deployed
 
 Commons verification of the WB7 cutover: voice's journal records the scripted sequence
