@@ -134,7 +134,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       retired; `wb-user-reports` is now `locveil/locveil-reports`). Voice ID:
       **BUILD-14**. Bridge — file the twin AT intake (HK-7 finding: BUILD-14's "the
       bridge repo has the same question" claim had no bridge task behind it). Bridge
-      ID: (write back).
+      ID: **OPS-28** (written back 2026-07-14; reconciled — no pre-board machinery on
+      the bridge side, but the public Issues tab is enabled bare; posture decided
+      jointly with BUILD-14).
 - [ ] **PROD-20 — Satellite first-light chain (visibility entry, HW-GATED)** (HK-7 q6,
       owner ruling: light PROD). The coupled multi-repo burst that fires when the
       satellite's first conforming descriptor reaches the bridge: satellite descriptor
