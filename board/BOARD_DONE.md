@@ -682,6 +682,29 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       and pushed. Voice was clean (all four tags existed). All guards green in all
       four repos. docs: none — vendored tooling; each repo's ledger carries its own
       verdict.
+- [x] **PROD-23 — Build the `/sprint` skill** (HK-9 execution task; normative:
+      `process/sprints.md` — the convention landed with the council, this entry built
+      its executable half). **CLOSED 2026-07-14, same day as filed.** Deliverable:
+      `.claude/skills/sprint/` — `SKILL.md` (the executable procedure: plan/close
+      modes, one-sprint-at-a-time, contributor-round mechanics with the cost mapping
+      S≈0.1/M≈0.3/L≈1/XL≈2+/council≈0.5 session-equivalents, no repo-side writes at
+      plan time) + `scoping-template.html` (round 0: theme, sessions, bench slots,
+      excluded repos, reserve; `sprint-reply` delta grammar) +
+      `selection-template.html` (round 1+: selectable rows with
+      `data-cost`/`data-bench`/`data-deps`, live JS dependency closure — checking a
+      row auto-pulls its deps, unchecking drops dependents — fill gauge against
+      usable capacity = sessions − reserve − the pre-reserved close-deploy slot,
+      "the can is full" goes red, bench ledger, ghost visibility rows excluded from
+      serialization, cross-sprint override toggles, conflict cards). Copy-delta
+      machinery inherited from the council dossier (localStorage drafts keyed
+      topic+round, delta-only serialization). Both side-find delegations executed
+      same day by the commons session on owner instruction, filed repo-side per the
+      quick-task precedent: voice — stale gate-prose sweep (ARCH-42/43 + BUILD-18
+      re-anchored off closed BUILD-21 to commons PROD-8/PROD-4; UI-4's Gate-2 block
+      discharged; `locveil-voice@bcb669b`). Voice ID: **DOC-13**. Bridge — VWB-39
+      dep line re-anchored (artifact exists; DRV-37 not "DRV-36's implementation";
+      `locveil-bridge@19b7014`). Bridge ID: **DOC-16**. docs: contributing — the
+      new Sprints row in the process list; the convention itself landed at HK-9.
 
 ## HK — council topics
 

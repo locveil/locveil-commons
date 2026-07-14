@@ -1,0 +1,264 @@
+<!-- Locveil sprint SELECTION page TEMPLATE (round 1+) — PROD-23.
+     The /sprint skill fills {{PLACEHOLDERS}} and replicates the marked blocks.
+     Same file sprint-NN.html as round 0 => same URL; favicon 📆; bump {{ROUND}}
+     every redeploy (baked into the delta header + the localStorage draft key).
+
+     ROW mechanics (the convention, executable — process/sprints.md §4/§6):
+       - one <label class="row"> per selectable item or travels-with GROUP (groups are
+         atomic: one checkbox, summed cost, members listed in the gist)
+       - data-cost  = session-equivalents (S≈0.1 M≈0.3 L≈1 XL≈2+ council≈0.5;
+                      visibility/carry-over rows = 0)
+       - data-bench = bench slots consumed (attempt-slots; else 0)
+       - data-deps  = comma-separated row VALUES this row depends on (in-sprint closure;
+                      checking a row auto-checks its closure, unchecking un-checks
+                      dependents — the live form of "selecting X pulls its deps")
+       - pre-check the recommended selection; the serializer emits only the delta.
+       - visibility rows (blocked members, carry-overs): render as .row.ghost with a
+         DISABLED checked checkbox and cost 0 — visible, not selectable, not serialized
+         (no class="cf").
+     CAPACITY MATH baked into the script consts below: USABLE = sessions − reserve −
+     1 close-deploy slot. The gauge goes red past USABLE ("the can is full"). -->
+<title>Sprint {{NN}} — selection</title>
+<style>
+  :root { --bg:#ffffff; --fg:#1a1a1a; --muted:#6b6b6b; --card:#f6f6f4; --line:#dcdcd7;
+          --accent:#245a8d; --warn:#a05a00; --bad:#b3362b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141414; --fg:#e8e8e4; --muted:#9a9a94; --card:#1f1f1e; --line:#33332f;
+            --accent:#7db3e0; --warn:#e0a04a; --bad:#e07a70; }
+  }
+  :root[data-theme="dark"]  { --bg:#141414; --fg:#e8e8e4; --muted:#9a9a94; --card:#1f1f1e;
+                              --line:#33332f; --accent:#7db3e0; --warn:#e0a04a; --bad:#e07a70; }
+  :root[data-theme="light"] { --bg:#ffffff; --fg:#1a1a1a; --muted:#6b6b6b; --card:#f6f6f4;
+                              --line:#dcdcd7; --accent:#245a8d; --warn:#a05a00; --bad:#b3362b; }
+  body { background:var(--bg); color:var(--fg);
+         font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;
+         max-width:64rem; margin:0 auto; padding:1.5rem 1rem 8.5rem; }
+  h1 { font-size:1.45rem; margin:.2rem 0 .3rem; }
+  h2 { font-size:1rem; text-transform:uppercase; letter-spacing:.06em;
+       color:var(--muted); margin:1.6rem 0 .5rem; }
+  .meta { color:var(--muted); font-size:.9rem; }
+  .chip { display:inline-block; padding:.1rem .55rem; border-radius:999px;
+          border:1px solid var(--accent); color:var(--accent); font-size:.8rem;
+          margin-left:.4rem; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:.8rem 1rem; margin:.5rem 0; overflow-x:auto; }
+  .conflict { border-left:3px solid var(--warn); padding-left:.8rem; }
+  .row { display:grid; grid-template-columns:auto 8.5rem 1fr auto; gap:.6rem;
+         align-items:baseline; padding:.45rem .6rem; border-bottom:1px solid var(--line);
+         cursor:pointer; margin:0; }
+  .row:last-child { border-bottom:none; }
+  .row .id { font-weight:600; font-variant-numeric:tabular-nums; }
+  .row .gist { color:inherit; }
+  .row .cost { color:var(--muted); font-size:.85rem; white-space:nowrap;
+               font-variant-numeric:tabular-nums; }
+  .row.ghost { opacity:.55; cursor:default; }
+  .row .why { display:block; color:var(--muted); font-size:.83rem; }
+  fieldset { border:1px solid var(--line); border-radius:10px; margin:.8rem 0;
+             padding:.7rem 1rem; }
+  legend { font-weight:600; padding:0 .4rem; }
+  .hint { color:var(--muted); font-size:.85rem; margin:.15rem 0 .4rem; }
+  label.opt { display:block; margin:.3rem 0; cursor:pointer; }
+  textarea { width:100%; box-sizing:border-box; background:var(--bg); color:var(--fg);
+        border:1px solid var(--line); border-radius:8px; padding:.5rem .6rem;
+        font:inherit; min-height:4rem; resize:vertical; }
+  .copybar { position:fixed; bottom:0; left:0; right:0; background:var(--card);
+             border-top:1px solid var(--line); padding:.55rem 1rem; }
+  .gaugewrap { max-width:64rem; margin:0 auto .5rem; }
+  .gaugebar { height:.55rem; border-radius:999px; background:var(--line);
+              overflow:hidden; }
+  .gaugebar > div { height:100%; background:var(--accent); width:0%;
+                    transition:width .15s; }
+  .gauge-over .gaugebar > div { background:var(--bad); }
+  .gaugetext { display:flex; justify-content:space-between; font-size:.85rem;
+               color:var(--muted); font-variant-numeric:tabular-nums; }
+  .gauge-over .gaugetext .fill { color:var(--bad); font-weight:600; }
+  .copyrow { max-width:64rem; margin:0 auto; text-align:center; }
+  .copyrow button { font:inherit; font-weight:600; padding:.5rem 1.4rem;
+             border-radius:8px; border:1px solid var(--accent); background:var(--accent);
+             color:var(--bg); cursor:pointer; }
+  .copyrow .note { color:var(--muted); font-size:.85rem; margin-left:.8rem; }
+</style>
+
+<header>
+  <div class="meta">Locveil sprint · selection · round {{ROUND}}
+    <span class="chip">{{STATUS}}</span></div>
+  <h1>sprint-{{NN}} — {{THEME}}</h1>
+  <div class="meta">budgets: {{SESSIONS}} sessions · reserve {{RESERVE_PCT}}% ·
+    1 close-deploy slot pre-reserved · {{BENCH_SLOTS}} bench slot(s) ·
+    excluded: {{EXCLUDED_OR_NONE}}</div>
+</header>
+
+<h2>Shippable definitions (per repo, convention §6)</h2>
+<div class="card">{{SHIPPABLE_DEFINITIONS_HTML}}</div>
+
+<!-- CONFLICT BLOCK: repeat per conflict card (e.g. a PROD pull reaching an excluded
+     repo — rule3×rule7); each carries its own qN radio group. Omit when none. -->
+<div class="card conflict">
+  <strong>Conflict:</strong> {{CONFLICT_TEXT}}
+  <label class="opt"><input class="cf" type="radio" name="q{{N}}" value="{{REC_VALUE}}" checked> {{REC_LABEL}} (recommended)</label>
+  <label class="opt"><input class="cf" type="radio" name="q{{N}}" value="{{ALT_VALUE}}"> {{ALT_LABEL}}</label>
+</div>
+<!-- /CONFLICT BLOCK -->
+
+<!-- REPO SECTION BLOCK: repeat per contributing repo (+ one "cross-repo / commons"
+     section for PROD rows, councils, groups spanning repos). -->
+<h2>{{REPO_NAME}}</h2>
+<div class="card">
+  <!-- SELECTABLE ROW: replicate. Groups = one row, one checkbox, summed cost. -->
+  <label class="row">
+    <input class="cf pick" type="checkbox" name="pick" value="{{ROW_VALUE}}"
+           data-cost="{{COST}}" data-bench="{{BENCH}}" data-deps="{{DEPS_CSV}}" {{CHECKED}}>
+    <span class="id">{{ROW_ID_OR_GROUP}}</span>
+    <span class="gist">{{GIST}}<span class="why">{{CLASS_DEPS_NOTE}}</span></span>
+    <span class="cost">{{CLASS}} · {{COST}}s{{BENCH_NOTE}}</span>
+  </label>
+  <!-- /SELECTABLE ROW -->
+  <!-- VISIBILITY / CARRY-OVER ROW: not selectable, not serialized (no cf). -->
+  <label class="row ghost">
+    <input type="checkbox" checked disabled>
+    <span class="id">{{ROW_ID}}</span>
+    <span class="gist">{{GIST}}<span class="why">{{UNBLOCK_CONDITION_OR_CARRYOVER}}</span></span>
+    <span class="cost">visibility · 0s</span>
+  </label>
+  <!-- /VISIBILITY ROW -->
+</div>
+<!-- /REPO SECTION BLOCK -->
+
+<h2>Cross-sprint declarations (convention §7)</h2>
+<div class="card">
+  <p class="hint">HW-GATED rows arrive cross-sprint by default. Toggling one ON here is
+  the explicit owner override that pulls it fully into this sprint (it then consumes its
+  bench slot AND session cost).</p>
+  <!-- OVERRIDE ROW: replicate per HW-GATED candidate; omit block when none. -->
+  <label class="opt"><input class="cf" type="checkbox" name="pull-in" value="{{ROW_VALUE}}">
+    {{ROW_ID}} — {{GIST}} (bench {{BENCH}}, cost {{COST}}s)</label>
+  <!-- /OVERRIDE ROW -->
+</div>
+
+<fieldset>
+  <legend>Anything else</legend>
+  <textarea class="cf" name="general-comment" placeholder="Adjustments, additions, priorities…"></textarea>
+</fieldset>
+
+<div class="copybar">
+  <div class="gaugewrap" id="gauge">
+    <div class="gaugebar"><div id="gauge-fill"></div></div>
+    <div class="gaugetext"><span class="fill" id="gauge-label">0.0 / 0 sessions</span>
+      <span id="bench-label">bench 0 / 0</span></div>
+  </div>
+  <div class="copyrow">
+    <button id="copy-delta" type="button">Copy my changes</button>
+    <span class="note">only your delta is copied → paste into the terminal ·
+      (no-changes) = recommended selection stands</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  var TOPIC = "sprint-{{NN}}", ROUND = "{{ROUND}}";
+  var SESSIONS = {{SESSIONS}}, RESERVE = {{RESERVE_FRACTION}}, BENCH = {{BENCH_SLOTS}};
+  var USABLE = Math.max(0, SESSIONS * (1 - RESERVE) - 1);   // − close-deploy slot
+  var LS = "sprint:" + TOPIC + ":" + ROUND + ":";
+  var fields = Array.prototype.slice.call(document.querySelectorAll(".cf"));
+  var picks  = Array.prototype.slice.call(document.querySelectorAll(".pick"));
+
+  function pickByValue(v) {
+    for (var i = 0; i < picks.length; i++) if (picks[i].value === v) return picks[i];
+    return null;
+  }
+  function depsOf(el) {
+    var d = el.getAttribute("data-deps") || "";
+    return d ? d.split(",") : [];
+  }
+  // Checking a row pulls its dependency closure in; unchecking drops dependents.
+  function closeOver(el) {
+    if (el.checked) {
+      depsOf(el).forEach(function (v) {
+        var dep = pickByValue(v);
+        if (dep && !dep.checked) { dep.checked = true; closeOver(dep); }
+      });
+    } else {
+      picks.forEach(function (p) {
+        if (p.checked && depsOf(p).indexOf(el.value) >= 0) { p.checked = false; closeOver(p); }
+      });
+    }
+  }
+  function gauge() {
+    var cost = 0, bench = 0;
+    picks.forEach(function (p) {
+      if (!p.checked) return;
+      cost  += parseFloat(p.getAttribute("data-cost")  || "0");
+      bench += parseFloat(p.getAttribute("data-bench") || "0");
+    });
+    var g = document.getElementById("gauge");
+    document.getElementById("gauge-fill").style.width =
+      Math.min(100, USABLE ? (cost / USABLE) * 100 : 100) + "%";
+    document.getElementById("gauge-label").textContent =
+      cost.toFixed(1) + " / " + USABLE.toFixed(1) + " usable sessions" +
+      (cost > USABLE ? " — the can is full" : "");
+    document.getElementById("bench-label").textContent = "bench " + bench + " / " + BENCH;
+    g.className = "gaugewrap" + ((cost > USABLE || bench > BENCH) ? " gauge-over" : "");
+  }
+
+  function groupState(name) {
+    var els = fields.filter(function (f) { return f.name === name; });
+    if (els[0].type === "radio")
+      { var c = els.filter(function (f) { return f.checked; }); return c.length ? c[0].value : ""; }
+    if (els[0].type === "checkbox")
+      return els.filter(function (f) { return f.checked; }).map(function (f) { return f.value; }).sort().join(",");
+    return els[0].value;
+  }
+  var names = [];
+  fields.forEach(function (f) { if (names.indexOf(f.name) < 0) names.push(f.name); });
+
+  var baseline = {};
+  names.forEach(function (n) { baseline[n] = groupState(n); });
+
+  names.forEach(function (n) {
+    var saved = null;
+    try { saved = localStorage.getItem(LS + n); } catch (e) {}
+    if (saved === null) return;
+    fields.filter(function (f) { return f.name === n; }).forEach(function (f) {
+      if (f.type === "radio")         f.checked = (f.value === saved);
+      else if (f.type === "checkbox") f.checked = saved.split(",").indexOf(f.value) >= 0;
+      else                            f.value = saved;
+    });
+  });
+  fields.forEach(function (f) {
+    f.addEventListener("input", function () {
+      if (f.classList.contains("pick")) closeOver(f);
+      gauge();
+      // persist the whole pick group after closure may have flipped siblings
+      try {
+        localStorage.setItem(LS + f.name, groupState(f.name));
+        if (f.classList.contains("pick")) localStorage.setItem(LS + "pick", groupState("pick"));
+      } catch (e) {}
+    });
+  });
+  gauge();
+
+  function needsQuoting(v) { return /[\n":]|^\s|\s$/.test(v); }
+  function buildDelta() {
+    var lines = ["sprint-reply " + TOPIC + " round-" + ROUND];
+    names.forEach(function (n) {
+      var v = groupState(n);
+      if (v === baseline[n]) return;
+      lines.push(n + ": " + (needsQuoting(v) ? JSON.stringify(v) : (v === "" ? '""' : v)));
+    });
+    if (lines.length === 1) lines.push("(no-changes)");
+    return lines.join("\n");
+  }
+
+  document.getElementById("copy-delta").addEventListener("click", function () {
+    var text = buildDelta(), btn = this;
+    function ok()   { btn.textContent = "Copied ✓ — paste into the terminal"; setTimeout(function () { btn.textContent = "Copy my changes"; }, 2500); }
+    function fall() { var t = document.createElement("textarea"); t.value = text;
+                      document.body.appendChild(t); t.select();
+                      try { document.execCommand("copy"); ok(); } catch (e) { alert(text); }
+                      document.body.removeChild(t); }
+    if (navigator.clipboard && navigator.clipboard.writeText)
+      navigator.clipboard.writeText(text).then(ok, fall);
+    else fall();
+  });
+})();
+</script>

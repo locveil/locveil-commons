@@ -26,6 +26,9 @@ mostly *process and shared machinery*; product code belongs in the product repos
   the scope of record; style + rule: [`process/user-docs.md`](process/user-docs.md).
 - **The council** — cross-repo decisions with real stakes:
   [`process/council.md`](process/council.md).
+- **Sprints** — planning in owner-session capacity with the shippable-at-sprint-end
+  invariant; the sprint file (`board/sprints/`) lists IDs and never asserts status.
+  Normative: [`process/sprints.md`](process/sprints.md).
 - **Python layout & naming** — src-layout, config/docker at root, locveil_* backend
   imports: [`process/python-layout.md`](process/python-layout.md) (binds product repos
   and new packages; the eval framework and single-file guards are ruled exempt).

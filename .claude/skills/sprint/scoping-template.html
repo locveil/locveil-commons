@@ -1,0 +1,167 @@
+<!-- Locveil sprint SCOPING page TEMPLATE (round 0) — PROD-23.
+     The /sprint skill fills {{PLACEHOLDERS}}. Published via the Artifact tool:
+     content only (no doctype/html/head/body), file sprint-NN.html, favicon 📆,
+     same path across rounds => same URL. Every field: unique name= + class="cf". -->
+<title>Sprint {{NN}} — scoping</title>
+<style>
+  :root { --bg:#ffffff; --fg:#1a1a1a; --muted:#6b6b6b; --card:#f6f6f4; --line:#dcdcd7;
+          --accent:#245a8d; --warn:#a05a00; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141414; --fg:#e8e8e4; --muted:#9a9a94; --card:#1f1f1e; --line:#33332f;
+            --accent:#7db3e0; --warn:#e0a04a; }
+  }
+  :root[data-theme="dark"]  { --bg:#141414; --fg:#e8e8e4; --muted:#9a9a94; --card:#1f1f1e;
+                              --line:#33332f; --accent:#7db3e0; --warn:#e0a04a; }
+  :root[data-theme="light"] { --bg:#ffffff; --fg:#1a1a1a; --muted:#6b6b6b; --card:#f6f6f4;
+                              --line:#dcdcd7; --accent:#245a8d; --warn:#a05a00; }
+  body { background:var(--bg); color:var(--fg);
+         font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;
+         max-width:52rem; margin:0 auto; padding:1.5rem 1rem 6rem; }
+  h1 { font-size:1.45rem; margin:.2rem 0 .3rem; }
+  .meta { color:var(--muted); font-size:.9rem; }
+  .chip { display:inline-block; padding:.1rem .55rem; border-radius:999px;
+          border:1px solid var(--accent); color:var(--accent); font-size:.8rem;
+          margin-left:.4rem; }
+  fieldset { border:1px solid var(--line); border-radius:10px; margin:.8rem 0;
+             padding:.7rem 1rem; }
+  legend { font-weight:600; padding:0 .4rem; }
+  .hint { color:var(--muted); font-size:.85rem; margin:.15rem 0 .4rem; }
+  label { display:block; margin:.3rem 0; cursor:pointer; }
+  input[type=text], input[type=number], textarea { width:100%; box-sizing:border-box;
+        background:var(--bg); color:var(--fg); border:1px solid var(--line);
+        border-radius:8px; padding:.5rem .6rem; font:inherit; }
+  input[type=number] { max-width:9rem; }
+  textarea { min-height:5rem; resize:vertical; }
+  .copybar { position:fixed; bottom:0; left:0; right:0; background:var(--card);
+             border-top:1px solid var(--line); padding:.6rem 1rem; text-align:center; }
+  .copybar button { font:inherit; font-weight:600; padding:.55rem 1.4rem;
+             border-radius:8px; border:1px solid var(--accent); background:var(--accent);
+             color:var(--bg); cursor:pointer; }
+  .copybar .note { color:var(--muted); font-size:.85rem; margin-left:.8rem; }
+</style>
+
+<header>
+  <div class="meta">Locveil sprint · scoping · round 0 <span class="chip">open</span></div>
+  <h1>sprint-{{NN}} — scoping</h1>
+  <div class="meta">convention: <code>process/sprints.md</code> · the sprint lands at
+    <code>board/sprints/sprint-{{NN}}.md</code>; this page is a view, not a record</div>
+</header>
+
+<!-- CARRY-OVER BLOCK: include when the previous sprint file has carry-over rows -->
+<fieldset>
+  <legend>Carried over from sprint-{{PREV_NN}}</legend>
+  <p class="hint">Cross-sprint features re-enter automatically as zero-cost rows; they are
+  listed here for visibility.</p>
+  {{CARRYOVER_LIST_HTML}}
+</fieldset>
+<!-- /CARRY-OVER BLOCK -->
+
+<fieldset>
+  <legend>Theme</legend>
+  <p class="hint">A field in the sprint file — never part of the name.</p>
+  <input class="cf" type="text" name="theme" value="{{THEME_DEFAULT}}">
+</fieldset>
+
+<fieldset>
+  <legend>Capacity — owner-attended sessions</legend>
+  <p class="hint">How many sessions will you actually attend this sprint? (Guide: 3 weeks
+  ≈ 12–15; an attended session lands 3–4 M-tasks or ~2 L. One slot is pre-reserved for
+  the close deploy.)</p>
+  <input class="cf" type="number" name="sessions" value="{{SESSIONS_DEFAULT}}" min="1">
+</fieldset>
+
+<fieldset>
+  <legend>Bench / rack slots</legend>
+  <p class="hint">The separate hardware budget: how many bench attempts fit this sprint?
+  0 is a fine answer — HW rows then stay cross-sprint.</p>
+  <input class="cf" type="number" name="bench-slots" value="{{BENCH_DEFAULT}}" min="0">
+</fieldset>
+
+<fieldset>
+  <legend>Excluded repos</legend>
+  <p class="hint">Excluded repos get no rows; a PROD pull reaching one becomes a conflict
+  card at selection (never silent).</p>
+  <label><input class="cf" type="checkbox" name="exclude" value="voice"> locveil-voice</label>
+  <label><input class="cf" type="checkbox" name="exclude" value="bridge"> locveil-bridge</label>
+  <label><input class="cf" type="checkbox" name="exclude" value="satellite"> locveil-satellite</label>
+</fieldset>
+
+<fieldset>
+  <legend>Discovery reserve</legend>
+  <label><input class="cf" type="radio" name="reserve" value="default" checked>
+    Convention default — 30%, or 50% if the sprint contains XL/HW (recommended)</label>
+  <label><input class="cf" type="radio" name="reserve" value="custom">
+    Custom (state the percentage in the notes)</label>
+</fieldset>
+
+<fieldset>
+  <legend>Notes for the contributor round</legend>
+  <textarea class="cf" name="scoping-notes" placeholder="Priorities, must-haves, hard dates, anything the keepers should weigh…"></textarea>
+</fieldset>
+
+<div class="copybar">
+  <button id="copy-delta" type="button">Copy my changes</button>
+  <span class="note">copies only what you changed → paste into the terminal</span>
+</div>
+
+<script>
+(function () {
+  var TOPIC = "sprint-{{NN}}", ROUND = "0";
+  var LS = "sprint:" + TOPIC + ":" + ROUND + ":";
+  var fields = Array.prototype.slice.call(document.querySelectorAll(".cf"));
+
+  function groupState(name) {
+    var els = fields.filter(function (f) { return f.name === name; });
+    if (els[0].type === "radio")
+      { var c = els.filter(function (f) { return f.checked; }); return c.length ? c[0].value : ""; }
+    if (els[0].type === "checkbox")
+      return els.filter(function (f) { return f.checked; }).map(function (f) { return f.value; }).sort().join(",");
+    return els[0].value;
+  }
+  var names = [];
+  fields.forEach(function (f) { if (names.indexOf(f.name) < 0) names.push(f.name); });
+
+  var baseline = {};
+  names.forEach(function (n) { baseline[n] = groupState(n); });
+
+  names.forEach(function (n) {
+    var saved = null;
+    try { saved = localStorage.getItem(LS + n); } catch (e) {}
+    if (saved === null) return;
+    fields.filter(function (f) { return f.name === n; }).forEach(function (f) {
+      if (f.type === "radio")         f.checked = (f.value === saved);
+      else if (f.type === "checkbox") f.checked = saved.split(",").indexOf(f.value) >= 0;
+      else                            f.value = saved;
+    });
+  });
+  fields.forEach(function (f) {
+    f.addEventListener("input", function () {
+      try { localStorage.setItem(LS + f.name, groupState(f.name)); } catch (e) {}
+    });
+  });
+
+  function needsQuoting(v) { return /[\n":]|^\s|\s$/.test(v); }
+  function buildDelta() {
+    var lines = ["sprint-reply " + TOPIC + " round-" + ROUND];
+    names.forEach(function (n) {
+      var v = groupState(n);
+      if (v === baseline[n]) return;
+      lines.push(n + ": " + (needsQuoting(v) ? JSON.stringify(v) : (v === "" ? '""' : v)));
+    });
+    if (lines.length === 1) lines.push("(no-changes)");
+    return lines.join("\n");
+  }
+
+  document.getElementById("copy-delta").addEventListener("click", function () {
+    var text = buildDelta(), btn = this;
+    function ok()   { btn.textContent = "Copied ✓ — paste into the terminal"; setTimeout(function () { btn.textContent = "Copy my changes"; }, 2500); }
+    function fall() { var t = document.createElement("textarea"); t.value = text;
+                      document.body.appendChild(t); t.select();
+                      try { document.execCommand("copy"); ok(); } catch (e) { alert(text); }
+                      document.body.removeChild(t); }
+    if (navigator.clipboard && navigator.clipboard.writeText)
+      navigator.clipboard.writeText(text).then(ok, fall);
+    else fall();
+  });
+})();
+</script>

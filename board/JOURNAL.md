@@ -1,5 +1,23 @@
 # Board journal — newest on top
 
+## 2026-07-14 — PROD-23 CLOSED: /sprint skill built, both HK-9 side-finds executed
+
+Closed the same day it was filed. The skill (`.claude/skills/sprint/`) is the council
+pattern extended with live math: the selection page's rows carry cost/bench/deps data,
+checking a row auto-pulls its dependency closure, and the fill gauge computes usable
+capacity as sessions minus reserve minus the pre-reserved close-deploy slot — "the can
+is full" is now a red bar, not a judgment call. Scoping and selection pages share the
+council's delta-only Copy machinery under a `sprint-reply` grammar. Both side-find
+delegations executed directly (owner instruction, quick-task precedent): voice DOC-13 —
+the stale-gate sweep found FOUR stale gates, not two (ARCH-42/43 AND BUILD-18 all still
+"gated on BUILD-21", closed 2026-07-11 — re-anchored to commons PROD-8/PROD-4; UI-4's
+Gate-2 block discharged since the remediation core is fully DONE; the sequencing block's
+"QUAL-29 remains" corrected); bridge DOC-16 — VWB-39's dep line re-anchored (VWB-38's
+artifact exists since 2026-07-12; the implementation dependency is DRV-37, not "DRV-36's
+implementation"). The QUAL-82→VWB-33 gate checked and verified LIVE — the audit
+distinguishes stale from standing. Both repos' guards green; write-backs on the entry.
+docs: contributing (the Sprints process row).
+
 ## 2026-07-14 — HK-9 DECIDED: sprint planning convention landed, /sprint skill filed as PROD-23
 
 Ninth council, two rounds, all three keepers, accepted (no-changes) both rounds after
