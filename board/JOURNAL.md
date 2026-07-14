@@ -1,5 +1,26 @@
 # Board journal — newest on top
 
+## 2026-07-14 — PROD-24: deploy-split design doc landed (`docs/design/workbench.md`)
+
+The sprint-01 `c-split` row, executed as transcription of the decided council:
+`docs/design/workbench.md` codifies the three-plus-one UI classes, the full per-surface
+classification table, the shell spec around the checked-in wireframe
+(`docs/design/ui/workbench-wireframe.png`), the plug-in contract v1 (runtime-registrable
+pages, per-page backend targets, status slot, dormant gates), the DEV-PHASE
+config-ownership/staged-write model with the owner's productization deferral quoted and
+PROD-4 named as the convention home, the satellite reserved-verbs table with named
+gates, the v1 auth posture (trusted-LAN documented, guard slot reserved, no write API
+before PROD-4), the deferred reporter, sequencing/non-goals, and change control
+(commons owns shell+contract; products own plugin content). One design decision made
+here rather than left open: the dev-phase plugin consumption mechanism = `file:`
+dependencies on sibling repos' BUILT plugin packages (the eval framework's sibling-path
+pattern; honors the bridge's no-TS-source-imports condition), final distribution
+deferred to productization like the write model. PROD-24 stays [>] on the three
+write-backs (satellite DES-5 expansion, voice endpoint + adoption growth, bridge
+UI-17). docs: none — contributor-facing design record; the commons manifest carries no
+design-doc class (its nodes are front-door/contributor/reference), and no existing node's
+coverage is invalidated by this addition.
+
 ## 2026-07-14 — PROD-24 shell council DECIDED: the Workbench wireframe + plug-in contract
 
 Tenth council, two rounds, all three keepers, seeded from the PROD-24 entry plus the

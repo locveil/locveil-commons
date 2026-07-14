@@ -201,8 +201,12 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       endpoints; re-provisionable by clearing its credentials dir; the read-only panel
       needs the broker/list surface first; re-provisioning leaves the old cert trusted
       for its full term — the DES-5 gap, rendered honestly, never papered over).
-      **Remaining commons deliverable:** the deploy-split design doc (sprint-01 row)
-      codifying (2)+(3)+(4); ui-kit component boundaries (PROD-10 ④) consume it.
+      **Commons deliverable LANDED:** the deploy-split design doc —
+      `docs/design/workbench.md` (2026-07-14) — codifies (2)+(3)+(4) + the reserved-verbs
+      table + change control; it also fixes the dev-phase plugin consumption mechanism
+      (`file:` deps on sibling repos' BUILT plugin packages — never TS sources; final
+      distribution deferred to productization). ui-kit component boundaries (PROD-10 ④)
+      consume it. Entry stays open on the three write-backs.
       **Delegations (board-as-outbox):**
       satellite — **DES-5 expansion**: the cert-lifecycle design absorbs the broker (one
       privileged path, two clients), the full verb vocabulary, the workstation
