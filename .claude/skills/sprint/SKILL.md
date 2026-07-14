@@ -46,6 +46,10 @@ The coordinator (you) then computes what no single keeper can:
   the page (never silent either way). Rule of thumb for costs (session-equivalents baked
   into `data-cost`): S batched ≈0.1 · M ≈0.3 · L ≈1 · XL ≈2+ (flag owner-latency) ·
   council ≈0.5 · visibility/carry-over = 0 · attempt-slot → `data-bench="1"`, cost 0.
+- **Split rows never mint letter-suffix IDs** ("OPS-1a" is a page display name only):
+  the repo files a FRESH numeric ID at intake and records the display name in the task
+  text — scope-guard's regex/aliases are numeric-only (convention §4, satellite finding
+  sprint-01).
 
 ### 3. Selection round(s)
 

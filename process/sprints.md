@@ -41,7 +41,12 @@ number there is fabrication.
   from repo reality each sprint (prose gates rot; the stale "Gated on BUILD-21" entries
   are the proof). A standing `deps:` ledger field is v2 hardening, only if sprints recur.
   Partial dependencies = split the task (design-then-implement already splits); no new
-  syntax.
+  syntax. **Split halves get FRESH NUMERIC IDs in the repo's ledger at intake** —
+  letter-suffix labels ("OPS-1a") are sprint-page display names only, never ledger IDs:
+  scope-guard's declaration regex and aliases table are numeric-only by design
+  (satellite intake finding, sprint-01 2026-07-14 — the coordinator minted a suffix ID
+  its own guard couldn't parse). The sprint row's display name goes into the fresh
+  task's text for traceability.
 - The coordinator alone computes PROD pulls and **cross-repo** closure (a single repo
   agent cannot see the other ledgers). Artifact-shaped deps at repo boundaries are
   normal (`satellite:DES-4#descriptor`).

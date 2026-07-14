@@ -1,5 +1,23 @@
 # Board journal — newest on top
 
+## 2026-07-14 — satellite intake finding: split rows must not mint letter-suffix IDs
+
+Satellite executed its sprint-01 intake (their a181f5d + be84ea4): the OPS-1 split
+landed as **OPS-7** (model-pack publish flow, PROD-16 amendment absorbed, execution
+questions recorded) + OPS-1 narrowed to the firmware half, dormant until FW-1. The
+wrinkle they caught and correctly reported upstream instead of fixing silently: the
+sprint coordinator pre-named the split half "OPS-1a", and scope-guard's declaration
+regex + aliases table are numeric-only BY DESIGN — the row parsed as prose (the guard's
+own per-prefix count exposed it). Their resolution is now the convention:
+`process/sprints.md` §4 amended — split halves get FRESH NUMERIC IDs at intake,
+letter-suffix labels are sprint-page display names only, recorded in the fresh task's
+text for traceability; the /sprint skill gained the same rule. This was the
+coordinator's own deviation from §4's existing "no new syntax" clause, so the fix is
+remediation, not a new decision; teaching the guard suffixes was rejected (parser +
+aliases complexity for zero benefit). Sprint file annotated (OPS-1a → OPS-7).
+Discovered work, S-class, first draw on the sprint's reserve (0.1). docs: none —
+process convention + sprint artifacts; no manifest node touched.
+
 ## 2026-07-14 — PROD-10 ④ ui-kit-v1 LANDED; PROD-10 CLOSED (all four stages in one day)
 
 `packages/ui-kit` = `locveil-ui-kit` 0.1.0, tagged **ui-kit-v1**: 17 radix-based

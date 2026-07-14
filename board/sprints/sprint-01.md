@@ -75,7 +75,7 @@ task's status**; per-repo ledgers own status.
 
 | ID | gist | class | cost | group |
 |---|---|---|---|---|
-| OPS-1a | model-pack publish flow (hash-at-publish vs wake-pack STAMP) — the zero-dependency half of OPS-1, split at intake per §4 | M | 0.3 | — |
+| OPS-1a → **OPS-7** | model-pack publish flow (hash-at-publish vs wake-pack STAMP) — the zero-dependency half of OPS-1, split at intake per §4. *Intake note 2026-07-14: filed as satellite **OPS-7** — letter-suffix IDs are unparseable by scope-guard (numeric-only regex); §4 amended accordingly. OPS-1 narrowed to the firmware half, dormant until FW-1.* | M | 0.3 | — |
 
 ## Visibility rows (zero cost)
 
