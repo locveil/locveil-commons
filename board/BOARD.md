@@ -226,4 +226,4 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       planned-docs DOC follow-up (device-setup/topology-setup: "Apply stages via the
       controller API; promotion is a commit"; topology-setup's live-vs-file open
       question is answered = staging; the admin-shell rows across all four planned
-      pages). Bridge ID: (write back).
+      pages). Bridge ID: **UI-17** (bridge-repo serial — distinct from voice's UI-17 above).
