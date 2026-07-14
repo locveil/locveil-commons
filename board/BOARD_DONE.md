@@ -706,6 +706,94 @@ re-edited; delegated IDs listed inside them are pointers, never status assertion
       `locveil-bridge@19b7014`). Bridge ID: **DOC-16**. docs: contributing — the
       new Sprints row in the process list; the convention itself landed at HK-9.
 
+- [x] **PROD-24 — the Locveil Workbench: workstation UI shell + deploy-split** (filed at
+      sprint-01 planning, 2026-07-14; **shell council DECIDED 2026-07-14** — two rounds,
+      all three keepers, owner wireframe sketch as seed; the dossier was a view, this
+      entry is the record). **CLOSED 2026-07-14, same day as filed** — council decided, design doc landed, all three write-backs verified present in the sibling ledgers (voice ARCH-51 + UI-17, bridge UI-17, satellite DES-5 expansion + OPS-6). Naming **operations / workbench** ratified.
+      **Council decisions:**
+      (1) **Wireframe ratified as sketched**: shell chrome = logo + one tab per plugin +
+      problem-report button (Material `BugReport` glyph in bridge-ui's quiet-grey/amber
+      treatment; the SVG ships in ui-kit, no MUI dependency); left sidebar = the active
+      plugin's pages; main area = the selected page. **Repo = plugin** (one tab per
+      product). Shell = React 18 SPA living in commons **`packages/workbench`**
+      (tags `workbench-vX`).
+      (2) **Classification**: voice config-ui → workbench (voice's operations column is
+      empty by design; **6 pages** — the Overview page + own top bar retire into shell
+      chrome/Monitoring; a per-plugin **status slot** in the contract preserves
+      connection/health visibility) · bridge `ui` + appliance/room pages → operations
+      (the unbuilt "admin route / auth shell" scope is deleted from operations — the
+      Workbench answers it once) · bridge device-setup/topology-setup/voice-setup →
+      workbench under one Bridge tab (IR learning = sidebar entry; voice-setup stays
+      under Bridge — it is a bridge-backend surface) · satellite on-device softAP/admin
+      UI → neither class (D-16) · satellite provisioning/config page → workbench, all
+      privileged writes via a **controller-side privileged broker** (owner overruled the
+      CLI-only reading of D-17: the CLI's functionality MUST be replicated in the UI;
+      CLI and page become peer clients of ONE privileged code path — the CA-key
+      privilege boundary survives, the SSH-only gate does not; D-17 second amendment
+      lands via the expanded DES-5) · PROD-9 landing page → a third class (public
+      site), out of shell v1.
+      (3) **Write model — DEV-PHASE convention** (owner ruling: fine while the owner is
+      the only user/customer; the FINAL design/convention is **deferred to a further
+      productization step**): config targets classify by ownership — *repo-owned*
+      (bridge config tree, voice WB7 TOML): workbench pages write **staged proposals**
+      via controller APIs (bridge: `data/staged-config/` in the writable data mount),
+      promotion to the canonical repo is an explicit human commit, live mounts stay
+      read-only, `update.sh` one-way sync unchanged · *device-owned* (desktop/ESP32
+      satellite config): direct write via a device-local endpoint — the desktop-satellite
+      config page is **voice-owned** under the Voice tab (it edits the same CoreConfig
+      `[satellite]`/`[vad]`/`[voice_trigger]` sections; same dev-phase deferral) ·
+      *privileged* (cert operations): the satellite broker with narrow verbs
+      (`list/status/approve/reject-pending` now; `revoke-issued/renew` when DES-5
+      defines them).
+      (4) **Plug-in contract v1 headlines**: `{id, title, pages (runtime-registrable —
+      UI-16-proof), i18n bundles RU/EN + shell-provided locale, per-page backend targets
+      (heterogeneous device-class backends allowed), per-plugin status slot, optional
+      report hook, dormant verbs with named gates, optional plugin gate}`; plugin source
+      lives in its owning repo (openapi generators stay repo-side; the shell consumes
+      built artifacts — exact mechanism in the design doc); dormant plugins are
+      registry-declared, not rendered.
+      (5) **Reporter pipeline deferred** out of v1 (the chrome button stays; a
+      shell-level fallback is designed later under PROD-19). **Auth: PROD-4 owns it** —
+      v1 documents the trusted-LAN assumption and reserves an auth-guard slot; bridge's
+      binding condition on record: **no write API ships before PROD-4's auth decision
+      lands**. Toolchain clarification of sprint-01 decision 1: eslint-9 flat config is
+      the shared target; vite majors are per-consumer; ui-kit publishes version-agnostic
+      ESM.
+      (6) **Desktop satellite = the provisioning page's test target** (voice's
+      `locveil-voice-satellite` runs the same CSR flow against the same Plane-B
+      endpoints; re-provisionable by clearing its credentials dir; the read-only panel
+      needs the broker/list surface first; re-provisioning leaves the old cert trusted
+      for its full term — the DES-5 gap, rendered honestly, never papered over).
+      **Commons deliverable LANDED:** the deploy-split design doc —
+      `docs/design/workbench.md` (2026-07-14) — codifies (2)+(3)+(4) + the reserved-verbs
+      table + change control; it also fixes the dev-phase plugin consumption mechanism
+      (`file:` deps on sibling repos' BUILT plugin packages — never TS sources; final
+      distribution deferred to productization). ui-kit component boundaries (PROD-10 ④)
+      consume it. All three write-backs arrived the same day (below).
+      **Delegations (board-as-outbox):**
+      satellite — **DES-5 expansion**: the cert-lifecycle design absorbs the broker (one
+      privileged path, two clients), the full verb vocabulary, the workstation
+      operator-credential design (client cert from the home CA vs a separate secret),
+      and an **OPS earmark** for the ansible-deploy rework (owner: not this sprint).
+      Satellite ID: **DES-5** (expanded in place) + **OPS-6** (ansible earmark)
+      (written back 2026-07-14 at intake; reconciled clean — CLI verbs, D-17's
+      "config-ui may call the same scripts later" hook, and the ansible target all
+      verified; today's CLI `revoke` = the board's `reject-pending`).
+      voice — (a) satellite-local config endpoint design (`design-then-implement`,
+      dev-phase shape; new attack surface → PROD-4 auth posture applies); (b) the
+      declared sprint-02 config-ui adoption task grows the 6-page cut (Overview + Header
+      retire) + status-slot wiring. Voice IDs: **ARCH-51** (a) + **UI-17** (b)
+      (written back 2026-07-14 at intake; reconciled clean — page count, Header status,
+      CoreConfig sections all verified).
+      bridge — UI-17 intake (sprint-01 row) grows: the staged-write API shape + the
+      planned-docs DOC follow-up (device-setup/topology-setup: "Apply stages via the
+      controller API; promotion is a commit"; topology-setup's live-vs-file open
+      question is answered = staging; the admin-shell rows across all four planned
+      pages). Bridge ID: **UI-17** (bridge-repo serial — distinct from voice's UI-17
+      above). docs: none — the deliverable IS a design record (`docs/design/workbench.md`);
+      the commons manifest carries no design-doc node class and no existing node's
+      coverage is invalidated.
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;

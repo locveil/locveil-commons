@@ -1,5 +1,25 @@
 # Board journal — newest on top
 
+## 2026-07-14 — PROD-24 CLOSED: all three write-backs in, entry moved to BOARD_DONE
+
+Filed, council-decided, design-doc'd, delegated, and closed within one day. The three
+repos pulled their delegations and wrote back: voice — **ARCH-51** (satellite-local
+config endpoint design) + **UI-17** (config-ui → Workbench plugin, the grown sprint-02
+adoption task); bridge — **UI-17** (its own serial — the repos coincidentally minted the
+same ID; cross-repo references must say "bridge UI-17" / "voice UI-17", which bridge's
+entry itself flags); satellite — **DES-5 expanded in place** (broker, verb vocabulary,
+workstation operator credential; its reconciliation mapped today's CLI `revoke` to the
+board's `reject-pending`) + **OPS-6** (the ansible-rework earmark). All five IDs verified
+present in the sibling ledgers before the move (the board never asserts their status —
+they were verified to EXIST, nothing more). Close condition per board convention:
+commons deliverable landed (`docs/design/workbench.md`) + all delegations have local IDs
+written back. Sprint-01 note: both PROD-24 rows (split doc M·0.5 + shell council
+council·0.5) realized at their planned cost on planning day. What PROD-24 leaves behind:
+the Workbench design doc as the normative UI-split reference, the PROD-4 item (4)
+amendment (write convention + auth, now load-bearing for sprint-02), and the dormant
+reserved-verbs table waiting on DES-5. docs: none — ledger/journal move only; the design
+doc's verdict was recorded at its own landing.
+
 ## 2026-07-14 — PROD-24: deploy-split design doc landed (`docs/design/workbench.md`)
 
 The sprint-01 `c-split` row, executed as transcription of the decided council:
