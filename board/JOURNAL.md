@@ -1,5 +1,19 @@
 # Board journal — newest on top
 
+## 2026-07-14 — BUILD-36 tail confirmed live: the HK-8 migration is fully deployed
+
+Commons verification of the WB7 cutover: voice's journal records the scripted sequence
+(git pull → `cutover-env-locveil-voice.sh` .env token-key rename → update.sh →
+`/health` smoke) on image v20260713-a946dab, code == HEAD, no breakage-BUG; and a live
+probe from here confirms `/health` → healthy, v0.5.2 — the renamed image family
+answering on the controller, which also proves the `LOCVEIL_VOICE_*` env cutover
+end-to-end (boot consumes the config-file key). With this, the ENTIRE HK-8 arc is
+deployed reality in every repo and on the controller. One residual observation, not a
+bounce: the hand-edited secrets key's soft-fail path (reports silently off on a typo)
+is not exercised by a /health smoke — one «сообщи о проблеме» utterance through the
+controller would prove the reports pipeline post-rename; owner's call, zero urgency.
+docs: none — board only.
+
 ## 2026-07-14 — PROD-22 CLOSED: contract-guard-v2 vendored everywhere — the rule caught two more on arrival
 
 The re-vendors executed directly by the commons session on owner instruction, filed
