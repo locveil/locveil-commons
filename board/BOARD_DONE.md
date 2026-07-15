@@ -1146,7 +1146,9 @@ assertions.
       (externals + fragment emission + single-file bundle) + same-change amendment to
       `../locveil-bridge/docs/design/ui/workbench_split.md` §2.1 — absorbed into the
       already-filed UI-18,
-      no new ID expected. Bridge ID: **UI-18** (confirm at intake). Satellite — none
+      no new ID expected. Bridge ID: **UI-18** (confirmed at intake 2026-07-15 —
+      refinement + the §2.1 amendment landed in one bridge change; intake finding:
+      IMPL-1 done discharges UI-18's shell gate, task startable). Satellite — none
       (zero obligations; conditions recorded). IMPL-1 is hereby unblocked. docs: none —
       design record amended in place (workbench.md is not a manifest node; the stylebook
       node's ui-kit surface is unaffected).
