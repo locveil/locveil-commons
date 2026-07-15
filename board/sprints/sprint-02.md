@@ -141,14 +141,11 @@ DRV-39 stack. Every involved product repo is **shippable**.
 |---|---|---|
 | **commons** | `8cb7880` | IMPL-1 (Workbench shell v1) + IMPL-2 (scope-guard UNREFERENCED check, scope-v6) + the **runtime-assembly council (HK-11)** all in `BOARD_DONE.md`; scope-guard clean at HEAD. Discovery: IMPL-4 (Toast/AlertDialog, ui-kit 0.1.1), IMPL-5 (ActionBar, ui-kit 0.1.2 + workbench-v1.1), IMPL-6 (`PageProps.backends`). Regime-3 — no product deploy gate. |
 | **voice** | `4175aeb` | **Port arc complete** — UI-18 (kit-first foundation) · UI-19 (full body) · UI-17 (plugin conversion) · UI-16 (schema-driven sections). config-ui is now the Voice tab of the Workbench, standalone app retired, `config-ui-stays-functional` re-anchored to the plugin build. Gates: check + plugin build + vitest 44/44 + docs-manifest 8/8; multi-arch image + WB7 `/health` smoke path ready. **Image deploy DONE (owner).** Shippable ✓. |
-| **bridge** | `c60a2bc` | **UI-18** Bridge Workbench plugin (read-only v1) landed + loads in the commons shell. Standing gates green: **suite 734** · pyright 0 · import-linter 6/6 · no contract drift; both armv7 images build; contract-guard v2 clean; `workbench-plugin/` check + build green. Shippable ✓. **DOC-17 not landed → carry-over.** |
+| **bridge** | `c60a2bc` | **UI-18** Bridge Workbench plugin (read-only v1) landed + loads in the commons shell; **DOC-17** landed (planned-pages prose staleness + diagram rename-era title fix; scope narrowed twice at owner direction — dummy placeholder pages left untouched, diagram content already fixed by DOC-14). Standing gates green: **suite 734** · pyright 0 · import-linter 6/6 · no contract drift; both armv7 images build; contract-guard v2 clean; `workbench-plugin/` check + build green. Shippable ✓. |
 | **satellite** | `5761e7d` | **OPS-8** (`publish_model_pack.py` ssh/tag-fetch verify; PROD-25 write-back) done; incident-born **OPS-9** (contract-guard CI tag-fetch defect caught in OPS-8's own wake) done in the same window. Four guards green at HEAD; provisioning surface intact. Shippable ✓. |
 
 ### Unlanded selected rows
 
-- **bridge DOC-17** (M, 0.3) — planned-pages status sweep + 15 stale `wb-mqtt-bridge`-titled
-  `.dot` diagrams + PNG regen. Still `[ ]` `[deferred]` in bridge `docs/action_plan.md`.
-  Non-blocking (docs only; shippability unaffected). **→ carry-over into sprint-03.**
 - **satellite D-17 marker S-chore** (S, 0.1) — **superseded, not carried.** The owner
   overruled D-17's CLI-only reading; its second amendment lands via the expanded DES-5
   design (satellite journal 2026-07-12/15), so the standalone pending-amendment marker was
@@ -163,8 +160,8 @@ cross-sprint).
 
 ### Realized velocity (feeds §2 calibration)
 
-Selected 7.3 s-e · **landed ≈ 6.9 s-e** (11 rows: 9 landed, DOC-17 unlanded, D-17 chore
-superseded).
+Selected 7.3 s-e · **landed ≈ 7.2 s-e** (11 rows: 10 landed, D-17 chore superseded — a
+full clear of the selected work bar the one absorbed chore).
 
 | class | planned | landed | notes |
 |---|---|---|---|
@@ -172,7 +169,7 @@ superseded).
 | L / L+ | 5 | 5 | IMPL-1, voice UI-18/UI-17/UI-19(L+), bridge UI-18 |
 | M–L | 1 | 1 | voice UI-16 |
 | S/M | 1 | 1 | IMPL-2 (scope-v6) |
-| M | 1 | 0 | bridge DOC-17 → carry-over |
+| M | 1 | 1 | bridge DOC-17 (scope narrowed twice at owner direction) |
 | S | 2 | 1 | satellite OPS-8 landed; D-17 S-chore superseded |
 
 **Discovery** (born + closed in-window, un-planned): commons IMPL-4/5/6 · voice UI-22 +

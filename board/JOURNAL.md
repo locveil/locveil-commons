@@ -7,10 +7,10 @@
 + IMPL-2 scope-v6 + HK-11 runtime-assembly council, plus discovery IMPL-4/5/6) ·
 **voice@4175aeb** (port arc COMPLETE — UI-18/19/17/16; config-ui is now the Voice tab, the
 standalone app is gone; image deploy DONE by the owner) · **bridge@c60a2bc** (UI-18 Bridge
-plugin loads in the shell; suite 734 · pyright 0 · import-linter 6/6 · no drift; both armv7
-images build) · **satellite@5761e7d** (OPS-8 + incident-born OPS-9 done; four guards green).
-Landed ≈ 6.9 of 7.3 selected s-e. **Carry-over:** bridge DOC-17 (docs sweep, non-blocking)
-→ sprint-03. **Superseded, not carried:** the satellite D-17 marker S-chore — the owner
+plugin loads in the shell + DOC-17 done; suite 734 · pyright 0 · import-linter 6/6 · no
+drift; both armv7 images build) · **satellite@5761e7d** (OPS-8 + incident-born OPS-9 done;
+four guards green). Landed ≈ 7.2 of 7.3 selected s-e — a full clear of the selected work
+bar one absorbed chore. **Superseded, not carried:** the satellite D-17 marker S-chore — the owner
 overruled D-17's CLI-only reading and its amendment lands via the expanded DES-5 design, so
 the standalone marker was absorbed. Discovery ran hot again (commons IMPL-4/5/6, bridge
 LIB-1/2/3 eMotiva burst, satellite OPS-9) inside the 30% reserve; no incident-P1
