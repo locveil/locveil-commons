@@ -1140,7 +1140,9 @@ assertions.
       (stale `file:` sentence → runtime loading; standalone retirement + DoD re-anchor;
       lib-mode externals; router stays 6) + the **Monaco-CDN side-find** (jsdelivr fetch
       at runtime in a privacy-first product — voice files a local bundle-Monaco task;
-      write the ID back). Voice IDs: (write back). Bridge — UI-18 intake refinement
+      write the ID back). Voice IDs: **UI-17** (all four corrections applied to the
+      entry at sprint-02 intake, 2026-07-15) + **UI-20** (bundle-Monaco; CDN loader
+      verified live in TomlPreview/DiffViewer at filing). Written back 2026-07-15. Bridge — UI-18 intake refinement
       (externals + fragment emission + single-file bundle) + same-change amendment to
       `../locveil-bridge/docs/design/ui/workbench_split.md` §2.1 — absorbed into the
       already-filed UI-18,
