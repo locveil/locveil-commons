@@ -15,9 +15,10 @@
   },
   "scripts": {
     "build:vendor": "node scripts/build-vendor.mjs",
+    "smoke:vendor": "node scripts/smoke-vendor.mjs",
     "build:shell": "vite build",
     "build:demo": "node scripts/build-demo.mjs",
-    "build": "npm run build:vendor && npm run build:shell && npm run build:demo",
+    "build": "npm run build:vendor && npm run smoke:vendor && npm run build:shell && npm run build:demo",
     "dev": "vite build --watch",
     "serve": "node scripts/serve.mjs",
     "typecheck": "tsc --noEmit",

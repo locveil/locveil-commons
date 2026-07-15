@@ -2,13 +2,16 @@
    Each vendor bundle externalizes the OTHER singletons so the graph shares one
    instance of everything.
 
-   CJS→ESM interop (owner-found live, first browser run): react's packages are CJS
-   behind a NODE_ENV conditional re-export — esbuild cannot statically detect their
-   named exports, so a plain entry bundle exports only `default` and true-ESM importers
-   (`import { Fragment } from "react/jsx-runtime"`) throw at evaluation. Fix: for CJS
-   entries we ENUMERATE the exports in node at build time and generate a static
-   re-export entry (the vite-prebundle strategy). ESM entries (react-router-dom,
-   locveil-ui-kit) keep the direct path — their named exports survive statically. */
+   CJS→ESM interop (two owner-found live failures, first browser runs):
+   1. react's packages are CJS behind a NODE_ENV conditional — esbuild can't statically
+      detect their named exports, so a plain entry bundle exports only `default`.
+      → we ENUMERATE exports in node and generate a static re-export entry.
+   2. esbuild externalizes a package INCLUDING its subpaths, and a CJS `require()` of an
+      external under ESM output becomes a throwing `__require` shim.
+      → the entry requires the RESOLVED FILE (never the bare name), and a banner
+        defines an ambient `require` mapping external bare names to real ESM imports —
+        esbuild's __require defers to an ambient `require` when present.
+   Verified by scripts/smoke-vendor.mjs, which EXECUTES the whole vendor graph. */
 import { build } from "esbuild";
 import { mkdir } from "node:fs/promises";
 import { createRequire } from "node:module";
@@ -19,13 +22,28 @@ const require = createRequire(import.meta.url);
 const SINGLETONS = ["react", "react-dom", "react-dom/client", "react/jsx-runtime", "react-router-dom", "locveil-ui-kit"];
 
 function cjsEntryContents(specifier) {
+  const resolved = require.resolve(specifier);
   const names = Object.keys(require(specifier)).filter(
     (n) => n !== "default" && n !== "__esModule" && /^[A-Za-z_$][\w$]*$/.test(n)
   );
   return [
-    `const m = require(${JSON.stringify(specifier)});`,
+    `const m = require(${JSON.stringify(resolved)});`,
     ...names.map((n) => `export const ${n} = m[${JSON.stringify(n)}];`),
     `export default m;`,
+  ].join("\n");
+}
+
+function requireShimBanner(externals) {
+  if (externals.length === 0) return "";
+  const imports = externals
+    .map((e, i) => `import * as __shim${i} from ${JSON.stringify(e)};`)
+    .join("\n");
+  const map = externals.map((e, i) => `${JSON.stringify(e)}: __shim${i}`).join(", ");
+  return [
+    imports,
+    `const __shimmed = { ${map} };`,
+    // esbuild's __require uses the ambient `require` when one is defined
+    `var require = (n) => { const s = __shimmed[n]; if (!s) throw new Error("unshimmed require: " + n); return s.default ?? s; };`,
   ].join("\n");
 }
 
@@ -52,6 +70,7 @@ for (const b of bundles) {
   if (b.cjs) {
     await build({
       ...common,
+      banner: { js: requireShimBanner(b.external) },
       stdin: {
         contents: cjsEntryContents(b.entry),
         resolveDir: process.cwd(),
@@ -62,5 +81,5 @@ for (const b of bundles) {
   } else {
     await build({ ...common, entryPoints: [b.entry] });
   }
-  console.log(`vendor: ${b.entry} → dist/vendor/${b.out}${b.cjs ? " (cjs re-export)" : ""}`);
+  console.log(`vendor: ${b.entry} → dist/vendor/${b.out}${b.cjs ? " (cjs re-export + require shim)" : ""}`);
 }
