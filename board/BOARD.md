@@ -147,6 +147,21 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       "satellite at v1" was stale: satellite's OPS-5 had already re-vendored v2 on
       2026-07-14, so its guard job was latently broken NOW, both owned STAMPs firing;
       fix landed standalone, failure + fix both reproduced in a tag-less local clone).
+      **REOPENING FINDING (satellite session, 2026-07-15 — the fix class is a dud):**
+      `fetch-tags: true` does NOT deliver tags on the default shallow single-commit
+      fetch — actions/checkout#1467: the flag only drops `--no-tags`, and git tag
+      auto-following can't see tags on unfetched commits, so STAMP tags pointing at
+      older commits never arrive. Proof, live: satellite's flag-fix run 29414821199
+      FAILED (2× TAG-MISSING, checkout log shows no tag refspec in the fetch);
+      **commons' own post-fix run dd7c270 (29414186194) FAILED identically — the
+      EXECUTED deliverable (2) is defective and the §4 amendment (1) prescribes the
+      dead one-liner.** Voice's BUILD-38 was cleared "by simulation" — same latent
+      state expected on its next live run. Working fix (satellite **OPS-9**, done
+      2026-07-15): an explicit `git fetch --tags --depth=1 origin` step after
+      checkout — verified from checkout's exact clone-procedure replica AND live
+      green (satellite run 29415097500 @ 5761e7d). Back on commons + voice: re-fix
+      the workflows and re-word §4 (fix class: explicit tag-fetch step, or
+      `fetch-depth: 0` where full history is acceptable — the flag alone never works).
 
 ## IMPL — commons implementation
 
