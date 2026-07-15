@@ -1074,3 +1074,41 @@ assertions.
       partial forms stand until then. docs: none — normative process file updated in
       place (`ledger-discipline.md` §5–6); CONTRIBUTING's existing ledger-discipline
       row still covers it; no manifest node invalidated.
+- [x] **HK-11 — Workbench runtime assembly from multiple repos** (eleventh council
+      topic; the sprint-02 planned council — owner directive at sprint planning: "this
+      should be a council"; decided 2026-07-15, one round, all three keepers + commons).
+      **Decision: native ESM dynamic import + import map** — unanimous; Module
+      Federation rejected (couples build tooling across repos, violating the
+      vite-majors-per-consumer ruling), iframes/web-components rejected (amputate the
+      plugin contract). Mechanics (normative elaboration: `docs/design/workbench.md` §4
+      as amended): import-map singleton set frozen at react / react-dom(/client) /
+      react/jsx-runtime / react-router-dom (**pinned major 6** — voice and bridge both
+      ship 6.30.4 today, zero migration; v7 later = coordinated contract bump) /
+      locveil-ui-kit; everything else bundles per-plugin (i18n = plugin-local instances
+      + shell locale signal); **build-emitted manifest fragments** in each plugin's dist
+      (`{id, version, entry, styles[], peers{}, backendCompat?}`) with the shell config
+      carrying locations + dormant slots only (dormant = id+title+gate, NO location,
+      zero shell activity; gates support conjunctions); **peer mismatch = strict
+      refuse-and-surface** (owner ruling); shell owns style inject/remove + tokens +
+      the single preflight; dev loop = build --watch + reload, no cross-bundle HMR, no
+      serving pipelines in v1; fragment schema versions with **workbench-vX**; published
+      URLs + pinning = productization-step contracts act. **Owner Q&A on record:** "must
+      all parties harmonize on one vite version (and other tools)?" — NO: the boundary
+      is runtime ESM, bundler-blind; what must match is the runtime peer majors,
+      enforced mechanically by peers+refuse; tool convergence stays welcome but never
+      contractual (MF was rejected precisely because it would force harmonization).
+      **Owner ruling q5: the standalone config-ui app RETIRES at voice UI-17**, with the
+      `config-ui-stays-functional` DoD re-anchored to the plugin build in the same
+      change. Satellite exception now citable: its panel code lives commons-side, tags
+      only (recorded in workbench.md §4). Delegations: voice — UI-17 intake corrections
+      (stale `file:` sentence → runtime loading; standalone retirement + DoD re-anchor;
+      lib-mode externals; router stays 6) + the **Monaco-CDN side-find** (jsdelivr fetch
+      at runtime in a privacy-first product — voice files a local bundle-Monaco task;
+      write the ID back). Voice IDs: (write back). Bridge — UI-18 intake refinement
+      (externals + fragment emission + single-file bundle) + same-change amendment to
+      `../locveil-bridge/docs/design/ui/workbench_split.md` §2.1 — absorbed into the
+      already-filed UI-18,
+      no new ID expected. Bridge ID: **UI-18** (confirm at intake). Satellite — none
+      (zero obligations; conditions recorded). IMPL-1 is hereby unblocked. docs: none —
+      design record amended in place (workbench.md is not a manifest node; the stylebook
+      node's ui-kit surface is unaffected).

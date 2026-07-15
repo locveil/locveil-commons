@@ -1,5 +1,29 @@
 # Board journal — newest on top
 
+## 2026-07-15 — HK-11 DECIDED: Workbench runtime assembly = native ESM + import map
+
+The sprint-02 planned council, one round to convergence — all three keepers backed the
+same mechanism independently: native ESM dynamic import behind a shell-served import
+map, with Module Federation rejected for coupling build tooling across repos (the
+vite-majors-per-consumer ruling's enemy) and iframes for amputating the contract. The
+design assembled itself from keeper contributions: bridge supplied the manifest
+reconciliation (shell config = locations + dormant slots only; each plugin's dist
+carries its own BUILD-EMITTED fragment — cross-repo-source-of-truth by construction)
+and the strict refuse-and-surface compat rule; voice verified the hard cases (Monaco
+is moot for bundling — it loads from CDN at runtime, itself a privacy side-find voice
+now owns; router is the one real coupling → externalized, pinned major 6, both repos
+already on identical 6.30.4) and won plugin-local i18n; satellite locked dormant slots
+as pure metadata (no location, zero shell activity, conjunctive gates) and got its
+commons-side-panel exception finally made citable. Owner rulings: all recommendations
+stood; q5 = the standalone config-ui app RETIRES at voice UI-17 (DoD re-anchored to the
+plugin build in the same change); and the harmonization question answered on record —
+NO shared vite version required, the boundary is bundler-blind runtime ESM, peer majors
+are what must match and the manifest enforces them mechanically. workbench.md §4
+amended in place; HK-11 filed born-decided; delegations to voice (UI-17 corrections +
+the Monaco task) and bridge (UI-18 refinement + workbench_split.md amendment) committed
+in the entry. IMPL-1 unblocked — the sprint's commons chain is now
+council✓ → shell. docs: none — design record amended in place.
+
 ## 2026-07-15 — sprint-02 PLANNED: the Workbench arc (shell + full config-ui port)
 
 Second run of the sprint machinery: scoping + two selection rounds, the second REDONE
