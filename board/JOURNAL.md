@@ -1,5 +1,27 @@
 # Board journal — newest on top
 
+## 2026-07-15 — sprint-02 PLANNED: the Workbench arc (shell + full config-ui port)
+
+Second run of the sprint machinery: scoping + two selection rounds, the second REDONE
+mid-flight on the owner's flag that bridge had closed a burst of eMotiva tech debt —
+the bridge keeper's delta (SendMessage, context intact) absorbed 7 closures (LIB-1/2/3
+= the new LIB workstream + pymotivaxmc2 0.8.0 on PyPI, OPS-29, SCN-18, DRV-39 with
+DRV-40 folded), moved the shippable line to pytest 734, rewrote DRV-38 [P1] as the
+validation replay of the fresh fail-closed stack, and flagged the WB7 as running
+pre-DRV-39 code — whence decision 5: the bridge deploy runs EARLY in-sprint, safety-
+relevant, with the fail-closed/`force` briefing and the OPS-26 verify folded in.
+Selected 7.3/7.4 (12 sessions, 30% reserve, bench 0): the commons Workbench arc
+(runtime-assembly COUNCIL per owner directive — seeds as the next HK, amends
+workbench.md §4, IMPL-1 depends on it; IMPL-1 shell; IMPL-2), voice's port arc split
+per §4 from the XL-in-disguise "fully ported" (fresh IDs UI-18 foundation / UI-19 port
+body / UI-17 narrowed to plugin conversion, + UI-16 riding its declared travel-with),
+bridge UI-18 (read-only plugin cut — the two-real-plugins rule wants it beside the
+voice port) + DOC-17, satellite OPS-8 + the D-17 marker chore. Owner decisions
+recorded: ARCH-50 explicitly deferred (not starved), bench stays 0 with the DRV-38
+attempt-slot offered and declined, no XL selected (DES-5 and the bridge wireframe
+session wait), PROD-4 council deferred again — all write-gated work stays dormant.
+docs: none — planning artifacts only.
+
 ## 2026-07-14 — sprint-01 CLOSED: 7.3/7.3 landed, plan-to-close in one day
 
 The first sprint of the HK-9 machinery closed the day it was planned. Read-only
