@@ -183,3 +183,13 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       commons). Ships at the next `scope-vX` tag; consumers adopt on re-pin per §3.
       S/M class. Acceptance: commons run flags a synthetic orphan; the anchored
       `fixture_recorder.md` (HK-10 sweep) passes.
+- [ ] **IMPL-4 — ui-kit: Toast + AlertDialog (+ Tooltip adoption unblocked)** (filed
+      2026-07-15 by the voice session at UI-19 execution intake — direct operational
+      filing). The stylebook §7 names Toast ("no more `window.confirm`"), AlertDialog
+      and Tooltip as adopted standards, but `ui-kit-v1` ships only Tooltip — Toast and
+      AlertDialog are missing, so consumers cannot comply (voice UI-19 ported with
+      `window.confirm` kept, 3 sites; bare `title=` attrs kept). Deliverable: the two
+      shadcn-base components themed on the tokens (Toast needs the viewport/provider
+      story decided for the PLUGIN context — the shell likely owns the viewport, one
+      per page won't do), stories in the workbench, next `ui-kit-vX` tag. First
+      consumers: voice **UI-21** (gated on this), bridge at its restyle. S/M class.
