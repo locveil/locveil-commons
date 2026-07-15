@@ -82,12 +82,21 @@ contracts/
 `packages/contract-guard/` (regime 2), distribution `locveil-contract-guard`, tags
 `contract-guard-vN`, **vendored per consumer at a pinned tag** exactly like scope-guard;
 runs in pre-commit hooks and a path-gated CI job; `--check` only.
-**CI checkout requirement (PROD-25, 2026-07-15):** a CI job running contract-guard v2+
-must give its checkout tags — `actions/checkout` with `fetch-tags: true` (shallow stays
-fine; the TAG-MISSING rule only needs the tag ref, resolved via `git tag -l`). The
-failure signature of a tag-less checkout is a false `TAG-MISSING` alarm on every owned
-STAMP that names a tag, with nothing wrong in the contracts (bridge run 29317709478 was
-the live case). The fix rides each consumer's contract-guard-v2 re-pin. It verifies what is
+**CI checkout requirement (PROD-25, 2026-07-15; AMENDED same day — the original
+`fetch-tags: true` prescription is a dud):** a CI job running contract-guard v2+ must
+give its checkout tags, and the flag alone **never works**: `actions/checkout`'s
+`fetch-tags: true` only drops `--no-tags` from a fetch that names a single commit, and
+git tag auto-following cannot see tags pointing at unfetched commits
+(actions/checkout#1467; proven live three times — satellite run 29414821199, commons
+run 29414186194, voice run 29417879036, each with the flag set and no tag refspec in
+the checkout log). The fix class is an **explicit step after checkout**:
+`git fetch --tags --depth=1 origin` (shallow stays shallow; the TAG-MISSING rule only
+needs the tag ref, resolved via `git tag -l`) — or `fetch-depth: 0` where full history
+is acceptable. Reference: satellite OPS-9 (verified from checkout's exact
+clone-procedure replica AND live green, run 29415097500). The failure signature of a
+tag-less checkout is a false `TAG-MISSING` alarm on every owned STAMP that names a tag,
+with nothing wrong in the contracts (bridge run 29317709478 was the first live case).
+The fix rides each consumer's contract-guard-v2 re-pin. It verifies what is
 generic and LOCAL: registry/layout shape, STAMP core present and well-formed, PIN.json
 well-formed, sha256 of local pinned copies match PIN.json, version-string consistency
 (STAMP vs markers vs registry). It never checks semantics and never reaches across repos.

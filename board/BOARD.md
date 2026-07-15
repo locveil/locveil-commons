@@ -162,6 +162,16 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       green (satellite run 29415097500 @ 5761e7d). Back on commons + voice: re-fix
       the workflows and re-word §4 (fix class: explicit tag-fetch step, or
       `fetch-depth: 0` where full history is acceptable — the flag alone never works).
+      **REOPENING DISCHARGED 2026-07-15 (voice session):** voice's next live run
+      confirmed the prediction (run 29417879036, 4× TAG-MISSING with the flag set) →
+      voice **BUILD-39** (explicit-step fix per the OPS-9 reference, re-simulated +
+      pushed); commons re-fixed in the same breath — `contract-guard.yml` now runs the
+      explicit `git fetch --tags --depth=1 origin` step and §4 is re-worded to name
+      the dud (flag-only prescriptions removed, OPS-9 recorded as the reference, all
+      three failing runs cited). Remaining before close: bridge confirms OPS-30 on
+      checkout@v6 with a live tag-resolving run (repo-to-repo heads-up; v6 may or may
+      not share #1467's behavior), and a green `contracts/**`-path run lands on
+      commons + voice.
 
 ## IMPL — commons implementation
 

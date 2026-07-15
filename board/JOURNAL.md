@@ -1,5 +1,18 @@
 # Board journal — newest on top
 
+## 2026-07-15 — PROD-25 reopening discharged: the explicit tag-fetch lands on commons + voice
+
+The satellite session's "fetch-tags is a dud" finding (actions/checkout#1467) got its
+third live confirmation exactly as predicted: voice's push-day run 29417879036 fired 4×
+TAG-MISSING with the flag set and no tag refspec in the checkout log. Voice fixed as
+BUILD-39 (explicit `git fetch --tags --depth=1 origin` per the satellite OPS-9
+reference, plus an unrelated frontend-health repair — the Workbench-era sibling `file:`
+deps need a side-by-side commons checkout in CI). Commons' own defective deliverable
+(2) is re-fixed the same way, and §4's prescription re-worded: the flag-only form is
+gone, the explicit step (or `fetch-depth: 0`) is the fix class, OPS-9 is the reference,
+all three failing runs are cited. Left on the entry: bridge's checkout@v6 verification
+of OPS-30, and green `contracts/**` runs on commons + voice. Reserve spend 0.1 (this).
+
 ## 2026-07-15 — IMPL-3: StatusChip was invisible to Tailwind — caught by the first real consumer
 
 Voice's UI-18 kit adoption (the first consumer build to scan the kit's dist with a

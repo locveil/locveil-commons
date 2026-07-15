@@ -19,9 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          # PROD-25: TAG-MISSING resolves owned STAMP tags via `git tag -l`; the default
-          # checkout is tag-less and the rule can never pass without this. Shallow is fine.
-          fetch-tags: true
+      # PROD-25 (amended): TAG-MISSING resolves owned STAMP tags via `git tag -l`; the
+      # default checkout is tag-less, and `fetch-tags: true` never delivers the tags
+      # (actions/checkout#1467 — commons' own run 29414186194 failed with the flag set).
+      # Explicit fetch per the OPS-9 reference; shallow stays fine.
+      - name: Fetch tags
+        run: git fetch --tags --depth=1 origin
       - name: contract-guard --check
         run: python3 packages/contract-guard/contract_guard.py --check
