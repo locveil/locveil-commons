@@ -2,6 +2,7 @@
   "$comment": "Owner-edited shell config (HK-11): locations (dev-phase: local paths to plugin dists) + dormant slots (gate, no location — zero activity). Sibling examples: ../locveil-voice/config-ui/dist, ../../../locveil-bridge/workbench-plugin/dist.",
   "plugins": [
     { "location": "demo-plugin/dist" },
+    { "location": "../../../locveil-voice/config-ui/dist" },
     {
       "id": "satellite",
       "title": { "ru": "Спутник", "en": "Satellite" },
