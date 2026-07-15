@@ -998,7 +998,9 @@ assertions.
       merged with the externally-mounted voice AND bridge plugin entries. Consumer
       note (repo-to-repo): each plugin must route its fetches through
       `PageProps.backends` ("api" is the conventional primary key) — relative URLs
-      resolve against the shell origin, the HK-11 gotcha class. docs: none —
+      resolve against the shell origin, the HK-11 gotcha class. Voice consumed
+      2026-07-15: **UI-23** (written back; synchronous re-point in the page wrapper —
+      child-before-parent effect ordering makes a useEffect too late). docs: none —
       workbench.md + package README amended in place.
 
 ## HK — council topics
