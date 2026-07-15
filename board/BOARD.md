@@ -113,6 +113,27 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       burst lands SEEN, not as a surprise. Closes when the first chain completes
       end-to-end and the re-pin is verified. IDs on record: bridge DRV-37 + VWB-39;
       satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
+- [ ] **PROD-25 — CI checkouts must fetch tags for contract-guard: the convention +
+      consumer sweep** (filed 2026-07-15 by the bridge session, off bridge **OPS-30**).
+      Finding: contract-guard-v2's `TAG-MISSING` rule (PROD-22) resolves owned STAMP tags
+      via `git tag -l`, but the default `actions/checkout` clone is shallow AND tag-less —
+      the rule can never pass in a CI job whose checkout doesn't opt into tags. The bridge
+      hit it live: the OPS-27 re-pin push failed its own path-gated CI job unnoticed
+      (run 29317709478, 2026-07-14), every later push skipped the job, and the first
+      `workflow_dispatch` (2026-07-15) re-exposed it as a 3× TAG-MISSING false alarm —
+      nothing wrong with the contracts. Fix class is one line: `fetch-tags: true` on the
+      guard job's checkout (shallow stays fine — the rule only needs the tag ref). Sweep
+      verified 2026-07-15: **commons' own `.github/workflows/contract-guard.yml` is latently
+      broken NOW** (runs the v2 source package, two owned STAMPs name tags
+      `docs-manifest-v1`/`report-protocol-v1`, bare checkout — fires on the next
+      `contracts/**` push); **voice** (`ci.yml` contract-guard step) and **satellite**
+      (`contract-guard.yml`) are vendored at v1 (no tag rule yet) with bare checkouts —
+      the gap bites at their contract-guard-v2 re-pin, so the checkout fix should ride
+      that re-pin. Deliverables: (1) amend `process/contracts.md` §4 (the consumption
+      model) — a CI job running contract-guard must give its checkout tags, with the
+      failure signature named; (2) fix the commons workflow (same change); (3) delegate
+      the checkout fix + v2 re-pin to voice and satellite (local IDs to be written back).
+      IDs on record: bridge **OPS-30** (done 2026-07-15 — the reference fix).
 
 ## IMPL — commons implementation
 

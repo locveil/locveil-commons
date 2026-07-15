@@ -1,5 +1,19 @@
 # Board journal — newest on top
 
+## 2026-07-15 — PROD-25 filed: CI checkouts must fetch tags for contract-guard
+
+Filed by the bridge session off bridge OPS-30. contract-guard-v2's TAG-MISSING rule
+reads tags via `git tag -l`, but the default `actions/checkout` clone carries none — the
+bridge's path-gated guard job had been failing since the OPS-27 re-pin push itself
+(unnoticed; re-exposed by the first workflow_dispatch, a 3× false alarm with all tags
+present on origin). One-line fix class: `fetch-tags: true` on the guard job's checkout;
+bridge already fixed (OPS-30, the reference). Sweep at filing: commons' own
+contract-guard workflow is latently broken NOW (v2 source + two tagged owned STAMPs +
+bare checkout — fires on the next contracts/** push); voice + satellite are at v1 and
+inherit the gap at their v2 re-pin, so their checkout fix rides the re-pin delegation.
+Deliverables on the entry: process/contracts.md §4 amendment + the commons workflow fix
++ the two delegations. docs: none — board filing only.
+
 ## 2026-07-15 — HK-11 DECIDED: Workbench runtime assembly = native ESM + import map
 
 The sprint-02 planned council, one round to convergence — all three keepers backed the
