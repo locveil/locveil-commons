@@ -1,5 +1,25 @@
 # Board journal — newest on top
 
+## 2026-07-15 — IMPL-4 DONE: Toast + AlertDialog land in ui-kit 0.1.1 (ui-kit-v1.1)
+
+The voice session's UI-19 filing closed same-day: the two stylebook-§7 standards
+ui-kit-v1 didn't ship. The plugin-context Toast question the filing asked resolved
+elegantly out of HK-11 itself — locveil-ui-kit is an import-map SINGLETON, so the
+module-scope toast bus in use-toast is one shared instance across the shell and every
+runtime-loaded plugin by construction: plugins call toast(), the shell renders the one
+<Toaster/> (added to the workbench App in the same change), standalone apps render
+their own. AlertDialog = full shadcn set on the tokens with the destructive recipe from
+the status hues; feedback stories with RU content. Versioning honored the loader's
+strict 0.x rule: 0.1.1 / tag ui-kit-v1.1 — additive, plugin peers ^0.1 keep matching,
+zero refuse-churn. Verified: check clean, kit + storybook + workbench builds green.
+Voice UI-21 ungated. Also absorbed from the same external burst: IMPL-3 (StatusChip
+literal recipes — a real consumer find fixing my template-literal mistake), the voice
+plugin mounted in workbench.config.json (the first real product plugin through the
+import map), HK-11 write-backs complete (voice UI-17 corrections + UI-20 bundle-Monaco;
+bridge UI-18 confirmed), and PROD-25's reopening — my fetch-tags one-liner was the dud,
+satellite OPS-9 established the explicit-fetch fix, voice re-fixed the commons workflow.
+docs: none — stylebook already names both standards.
+
 ## 2026-07-15 — PROD-25 reopening discharged: the explicit tag-fetch lands on commons + voice
 
 The satellite session's "fetch-tags is a dud" finding (actions/checkout#1467) got its

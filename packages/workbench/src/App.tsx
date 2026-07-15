@@ -7,7 +7,7 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import { cn } from "locveil-ui-kit";
+import { Toaster, cn } from "locveil-ui-kit";
 import type { Locale, PageDescriptor, ReportContext } from "./contract";
 import type { LoadedPlugin } from "./loader";
 import { initialLocale, ls, persistLocale, t } from "./i18n";
@@ -59,6 +59,9 @@ export function App({ plugins }: AppProps) {
         {/* the ONE bottom action-bar slot the shell owns (stylebook §8);
             plugin-facing API lands with the first consumer */}
         <div id="wb-bottom-slot" />
+        {/* IMPL-4: the ONE toast viewport — plugins call toast() through the
+            import-map singleton bus; they never render their own Toaster */}
+        <Toaster />
       </div>
     </HashRouter>
   );

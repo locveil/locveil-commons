@@ -1,6 +1,6 @@
 {
   "name": "locveil-ui-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Locveil design system: blued-steel tokens + shadcn/radix primitives (PROD-10). Normative: docs/design/ui/stylebook.md; values: tokens/locveil.css.",
   "type": "module",
   "license": "MIT",
@@ -24,6 +24,7 @@
     "tailwindcss": "^3.4.0 || ^4.0.0"
   },
   "dependencies": {
+    "@radix-ui/react-alert-dialog": "^1.1.0",
     "@radix-ui/react-checkbox": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.0",
     "@radix-ui/react-label": "^2.1.0",
@@ -33,6 +34,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-switch": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.0",
     "@radix-ui/react-tooltip": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",

@@ -932,6 +932,31 @@ assertions.
       working tree (dev-phase `file:` consumers pick it up on rebuild); next kit tag
       carries it. docs: none — kit
       source fix only (stylebook values unchanged; README consumption prose unaffected).
+- [x] **IMPL-4 — ui-kit: Toast + AlertDialog (+ Tooltip adoption unblocked)** (filed
+      2026-07-15 by the voice session at UI-19 execution intake — direct operational
+      filing). The stylebook §7 names Toast ("no more `window.confirm`"), AlertDialog
+      and Tooltip as adopted standards, but `ui-kit-v1` ships only Tooltip — Toast and
+      AlertDialog are missing, so consumers cannot comply (voice UI-19 ported with
+      `window.confirm` kept, 3 sites; bare `title=` attrs kept). Deliverable: the two
+      shadcn-base components themed on the tokens (Toast needs the viewport/provider
+      story decided for the PLUGIN context — the shell likely owns the viewport, one
+      per page won't do), stories in the workbench, next `ui-kit-vX` tag. First
+      consumers: voice **UI-21** (gated on this), bridge at its restyle. S/M class.
+      **DONE 2026-07-15** — ui-kit 0.1.1, tag **`ui-kit-v1.1`** (minor tag = additive
+      per the contracts convention; plugin `peers: ^0.1` keeps matching — zero
+      refuse-churn, the shell loader's 0.x strict-minor rule unchanged). Landed:
+      Toast (radix) + Toaster + a module-scope toast bus in `use-toast` — **the
+      plugin-context answer falls out of HK-11: the kit is an import-map singleton, so
+      the bus is one shared instance across shell and plugins by construction; the
+      SHELL renders the single viewport** (workbench App gained `<Toaster/>`, plugins
+      only call `toast()`; standalone apps render their own) — plus AlertDialog (full
+      shadcn set on the tokens, destructive recipe from the status hues) and the
+      feedback stories (RU content). Verified: 0 vulns, check clean, kit build (26 kB),
+      storybook build, workbench check + rebuild green (vendor kit bundle 376→412 kB).
+      Voice **UI-21** ungated; bridge picks the pair up at its restyle. docs: none —
+      stylebook §7 already named both as standards; the package README precedent
+      stands.
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;
