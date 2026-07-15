@@ -134,6 +134,12 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       failure signature named; (2) fix the commons workflow (same change); (3) delegate
       the checkout fix + v2 re-pin to voice and satellite (local IDs to be written back).
       IDs on record: bridge **OPS-30** (done 2026-07-15 — the reference fix).
+      **Commons deliverables (1)+(2) EXECUTED 2026-07-15** (sprint-02 discovery
+      reserve): `process/contracts.md` §4 gained the CI-checkout requirement with the
+      failure signature named; `.github/workflows/contract-guard.yml` checkout gained
+      `fetch-tags: true`. Remaining: the voice + satellite delegations (checkout fix
+      rides their contract-guard-v2 re-pins). Voice ID: (write back). Satellite ID:
+      (write back).
 
 ## IMPL — commons implementation
 

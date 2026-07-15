@@ -1,5 +1,17 @@
 # Board journal — newest on top
 
+## 2026-07-15 — PROD-25 commons half executed: contract-guard CI checkouts get tags
+
+The bridge session's filing (off its OPS-30) found commons' own contract-guard workflow
+latently broken — TAG-MISSING resolves owned STAMP tags via `git tag -l`, and a default
+actions/checkout is tag-less, so the rule could never pass on the next `contracts/**`
+push. Executed under sprint-02 discovery reserve, same day: `process/contracts.md` §4
+now states the CI-checkout requirement (fetch-tags: true; shallow fine) with the
+false-alarm failure signature named, and the commons workflow carries the fix. The
+voice + satellite delegations stand (their fix rides the contract-guard-v2 re-pins);
+write-back slots open on the entry. Reserve spend now 0.1 (this) of 3.6. docs: none —
+process file amended in place.
+
 ## 2026-07-15 — IMPL-1 DONE: the Workbench shell lives (workbench-v1)
 
 `packages/workbench` = locveil-workbench 0.1.0, the first IMPL-prefix completion. The
