@@ -45,18 +45,21 @@ export function peerMismatch(peers: Record<string, string>): string | null {
   return null;
 }
 
-function injectStyles(baseUrl: string, styles: string[] | undefined): void {
+function injectStyles(base: URL, styles: string[] | undefined): void {
   for (const href of styles ?? []) {
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = new URL(href, baseUrl).toString();
-    link.dataset.workbenchPlugin = baseUrl;
+    link.href = new URL(href, base).toString();
+    link.dataset.workbenchPlugin = base.toString();
     document.head.appendChild(link);
   }
 }
 
 async function loadOne(baseUrl: string, backends: Record<string, string>): Promise<LoadedPlugin> {
-  const manifestUrl = new URL("manifest.json", baseUrl).toString();
+  /* Config URLs are root-relative ("/plugins/0/") — a URL BASE must be absolute
+     (browser-only failure class; anchor to the shell origin first). */
+  const base = new URL(baseUrl, window.location.href);
+  const manifestUrl = new URL("manifest.json", base).toString();
   let fragment: ManifestFragment;
   try {
     const res = await fetch(manifestUrl);
@@ -69,10 +72,10 @@ async function loadOne(baseUrl: string, backends: Record<string, string>): Promi
   const mismatch = peerMismatch(fragment.peers ?? {});
   if (mismatch) return { kind: "failed", id: fragment.id, reason: `peer mismatch — ${mismatch}` };
 
-  injectStyles(baseUrl, fragment.styles);
+  injectStyles(base, fragment.styles);
 
   try {
-    const entryUrl = new URL(fragment.entry, baseUrl).toString();
+    const entryUrl = new URL(fragment.entry, base).toString();
     const mod = (await import(/* @vite-ignore */ entryUrl)) as { default?: WorkbenchPlugin };
     if (!mod.default?.id || typeof mod.default.pages !== "function")
       return { kind: "failed", id: fragment.id, reason: "entry has no WorkbenchPlugin default export" };
