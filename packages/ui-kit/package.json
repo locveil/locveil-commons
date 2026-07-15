@@ -1,6 +1,6 @@
 {
   "name": "locveil-ui-kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Locveil design system: blued-steel tokens + shadcn/radix primitives (PROD-10). Normative: docs/design/ui/stylebook.md; values: tokens/locveil.css.",
   "type": "module",
   "license": "MIT",

@@ -1,5 +1,22 @@
 # Board journal — newest on top
 
+## 2026-07-15 — IMPL-5 filed and done: the bottom action-bar surface (ui-kit-v1.2 + workbench-v1.1)
+
+Voice's port comment ("the two fixed bottom-0 action bars wait on a plugin-contract
+bottom-slot surface that doesn't exist yet") was the first-consumer trigger IMPL-1
+deliberately deferred to — filed as IMPL-5 and closed in one arc. The IMPL-4 pattern
+reused wholesale: <ActionBar> in the kit registers into a module-scope bus (one
+instance everywhere via the import-map singleton — usable from any depth of a plugin
+tree, no prop drilling), the shell renders the single <ActionBarHost/> in normal flex
+flow at its bottom slot, single-occupancy latest-wins with a dev warning, unmount
+clears, standalone apps render their own host. The demo plugin now renders an ActionBar
++ fires a toast ACROSS the bundle boundary — the cross-bundle proof baked into the
+repo. Tags: ui-kit-v1.2 (0.1.2, additive — plugin peers ^0.1 unaffected) +
+workbench-v1.1 (contract addition, workbench.md §4 amended). Both packages + storybook
+green; the serve smoke showed the voice plugin mounting from its real dist alongside
+the demo. Voice now collapses ApplyChangesBar + the LocalizationsPage bar into
+<ActionBar> at its port. docs: none — design doc amended in place.
+
 ## 2026-07-15 — IMPL-4 DONE: Toast + AlertDialog land in ui-kit 0.1.1 (ui-kit-v1.1)
 
 The voice session's UI-19 filing closed same-day: the two stylebook-§7 standards

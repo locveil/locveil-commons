@@ -63,6 +63,7 @@ export {
 } from "./components/ui/toast";
 export { toast, dismissToast, useToast, type ToastOptions, type ToastItem } from "./components/ui/use-toast";
 export { Toaster } from "./components/ui/toaster";
+export { ActionBar, ActionBarHost } from "./components/ui/action-bar";
 export {
   AlertDialog,
   AlertDialogTrigger,

@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  ActionBar,
   Alert,
   AlertDescription,
   Button,
@@ -10,6 +11,7 @@ import {
   Input,
   Label,
   StatusChip,
+  toast,
 } from "locveil-ui-kit";
 import type { PageProps, WorkbenchPlugin } from "../../src/contract";
 
@@ -48,6 +50,24 @@ function DemoPage({ locale }: PageProps) {
           </Alert>
         </CardContent>
       </Card>
+      {/* IMPL-5 cross-bundle proof: this ActionBar renders in the SHELL's bottom slot
+          through the kit's singleton bus; the toast crosses the same boundary. */}
+      <ActionBar>
+        <Button
+          size="sm"
+          onClick={() =>
+            toast({
+              title: ru ? "Применено" : "Applied",
+              description: ru ? "Порог VAD обновлён." : "VAD threshold updated.",
+            })
+          }
+        >
+          {ru ? "Применить всё" : "Apply all"}
+        </Button>
+        <span className="text-xs text-muted-foreground">
+          {ru ? "панель из плагина — слот оболочки" : "plugin bar — shell slot"}
+        </span>
+      </ActionBar>
     </div>
   );
 }

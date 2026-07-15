@@ -127,6 +127,12 @@ interface PageDescriptor {
 - **Dormant registration:** a gated plugin/verb is registry-declared with its gate
   reference (satellite: DES-5 + first light) and not rendered until the gate is
   discharged — rendered dormant with its gate named, never "failed to load".
+- **The bottom action-bar surface (IMPL-5, workbench-v1.1 / ui-kit-v1.2):** plugins
+  render `<ActionBar>` (from `locveil-ui-kit`) anywhere in a page tree; the kit's
+  module-scope bus — one instance through the import-map singleton, the IMPL-4 Toast
+  pattern — delivers it to the shell-rendered `<ActionBarHost/>` in the bottom slot.
+  Single-occupancy, latest-wins with a dev warning, unmount clears. Plugin-owned
+  `fixed bottom-0` is banned (stylebook §8); standalone apps render their own host.
 - Plugins may not require chrome changes; anything a plugin needs from the shell goes
   through this contract, and contract changes go through commons (a ledger task +
   `workbench-vX` bump).

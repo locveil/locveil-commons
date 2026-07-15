@@ -7,7 +7,7 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import { Toaster, cn } from "locveil-ui-kit";
+import { ActionBarHost, Toaster, cn } from "locveil-ui-kit";
 import type { Locale, PageDescriptor, ReportContext } from "./contract";
 import type { LoadedPlugin } from "./loader";
 import { initialLocale, ls, persistLocale, t } from "./i18n";
@@ -56,9 +56,10 @@ export function App({ plugins }: AppProps) {
             />
           </Routes>
         </div>
-        {/* the ONE bottom action-bar slot the shell owns (stylebook §8);
-            plugin-facing API lands with the first consumer */}
-        <div id="wb-bottom-slot" />
+        {/* IMPL-5: the ONE bottom action-bar slot — plugins render <ActionBar>
+            (locveil-ui-kit) anywhere in their tree; the kit's singleton bus delivers
+            it here. Plugin-owned fixed bottom-0 is banned (stylebook §8). */}
+        <ActionBarHost />
         {/* IMPL-4: the ONE toast viewport — plugins call toast() through the
             import-map singleton bus; they never render their own Toaster */}
         <Toaster />

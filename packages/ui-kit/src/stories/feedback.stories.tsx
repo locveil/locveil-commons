@@ -1,4 +1,6 @@
+import * as React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import { ActionBar, ActionBarHost } from "../components/ui/action-bar";
 import { Button } from "../components/ui/button";
 import { Toaster } from "../components/ui/toaster";
 import { toast } from "../components/ui/use-toast";
@@ -44,6 +46,29 @@ export const Toasts: StoryObj = {
       <Toaster />
     </div>
   ),
+};
+
+/* IMPL-5: plugins render <ActionBar> anywhere in their tree; the shell renders the
+   single <ActionBarHost/>. Toggle to see single-occupancy + unmount-clears. */
+export const BottomActionBar: StoryObj = {
+  render: function Story() {
+    const [on, setOn] = React.useState(true);
+    return (
+      <div className="flex min-h-48 flex-col justify-between gap-4">
+        <Button variant="outline" onClick={() => setOn((v) => !v)}>
+          {on ? "Убрать панель" : "Показать панель"}
+        </Button>
+        {on && (
+          <ActionBar>
+            <Button>Сохранить</Button>
+            <Button variant="outline">Проверить</Button>
+            <span className="text-xs text-muted-foreground">3 изменения не применены</span>
+          </ActionBar>
+        )}
+        <ActionBarHost />
+      </div>
+    );
+  },
 };
 
 export const ConfirmDialog: StoryObj = {

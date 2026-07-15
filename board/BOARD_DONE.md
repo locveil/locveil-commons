@@ -957,6 +957,29 @@ assertions.
       stylebook §7 already named both as standards; the package README precedent
       stands.
 
+- [x] **IMPL-5 — the bottom action-bar surface: ActionBar + ActionBarHost** (filed AND
+      done 2026-07-15 — consumer-demanded: voice's UI-19 port parked its two colliding
+      `fixed bottom-0` bars "waiting on a plugin-contract bottom-slot surface that
+      doesn't exist yet"; IMPL-1 had shipped the slot as a placeholder with the API
+      deferred to the first consumer — voice became that consumer). Design = the IMPL-4
+      pattern reused: `<ActionBar>` in **locveil-ui-kit** registers its children into a
+      module-scope bus (ONE instance across shell and plugins through the HK-11
+      import-map singleton — no prop drilling, works from any depth of a plugin tree);
+      the shell renders the single `<ActionBarHost/>` in its bottom slot (in normal
+      flex flow, not fixed); single-occupancy latest-wins with a dev warning; unmount
+      clears; standalone apps render their own host (the Toaster symmetry).
+      Plugin-owned `fixed bottom-0` is now implementable-around and stays banned
+      (stylebook §8). Landed: kit 0.1.2 / tag **`ui-kit-v1.2`** (additive — plugin
+      peers `^0.1` keep matching) + workbench App hosts the slot / tag
+      **`workbench-v1.1`** (contract addition recorded in workbench.md §4) + a
+      BottomActionBar story + the demo plugin now renders an ActionBar + toast ACROSS
+      the bundle boundary (the cross-bundle proof, verified in the built artifacts).
+      Verified: both packages check + build green, storybook green, serve path intact
+      (with the voice plugin mounting from its real dist alongside). First consumer:
+      voice collapses ApplyChangesBar + the LocalizationsPage bar into `<ActionBar>` at
+      its port. docs: none — workbench.md §4 amended in place; package READMEs are the
+      consumer docs.
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;
