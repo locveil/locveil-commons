@@ -138,8 +138,15 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       reserve): `process/contracts.md` §4 gained the CI-checkout requirement with the
       failure signature named; `.github/workflows/contract-guard.yml` checkout gained
       `fetch-tags: true`. Remaining: the voice + satellite delegations (checkout fix
-      rides their contract-guard-v2 re-pins). Voice ID: (write back). Satellite ID:
-      (write back).
+      rides their contract-guard-v2 re-pins). Voice ID: **BUILD-38** (written back
+      2026-07-15; intake correction — the sweep's "voice at v1" was stale: voice's
+      BUILD-37 had already re-vendored v2 on 2026-07-14, leaving only two v1 labels,
+      so voice was latently broken NOW like commons; BUILD-38 = checkout fix + label
+      bumps, TAG-MISSING signature reproduced and cleared by simulation). Satellite
+      ID: **OPS-8** (written back 2026-07-15; same intake correction — the sweep's
+      "satellite at v1" was stale: satellite's OPS-5 had already re-vendored v2 on
+      2026-07-14, so its guard job was latently broken NOW, both owned STAMPs firing;
+      fix landed standalone, failure + fix both reproduced in a tag-less local clone).
 
 ## IMPL — commons implementation
 
