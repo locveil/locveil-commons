@@ -174,12 +174,3 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       commons + voice.
 
 ## IMPL — commons implementation
-
-- [ ] **IMPL-2 — scope-guard: UNREFERENCED-evidence check** (`packages/scope-guard`):
-      the missing fourth direction of evidence checking (HK-10 ruling 1,
-      `process/ledger-discipline.md` §6) — an evidence doc on disk (`[evidence] dirs`)
-      that no entry in active+DONE references is an error (config-toggled:
-      `unreferenced = "error"|"warn"|"off"`, default warn for consumers, error in
-      commons). Ships at the next `scope-vX` tag; consumers adopt on re-pin per §3.
-      S/M class. Acceptance: commons run flags a synthetic orphan; the anchored
-      `fixture_recorder.md` (HK-10 sweep) passes.

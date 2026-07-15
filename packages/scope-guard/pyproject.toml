@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "locveil-scope-guard"
-version = "1.0.0"
+version = "1.3.0"
 description = "Locveil ledger/journal discipline guard (HK-1/PROD-13) — union rule set, config-driven, stdlib-only"
 requires-python = ">=3.11"
 license = "MIT"

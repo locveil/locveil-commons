@@ -914,6 +914,24 @@ assertions.
       demo-plugin build shape. docs: none — the package README is the consumer doc
       (ui-kit precedent).
 
+- [x] **IMPL-2 — scope-guard: UNREFERENCED-evidence check** (`packages/scope-guard`):
+      the missing fourth direction of evidence checking (HK-10 ruling 1,
+      `process/ledger-discipline.md` §6) — an evidence doc on disk (`[evidence] dirs`)
+      that no entry in active+DONE references is an error (config-toggled:
+      `unreferenced = "error"|"warn"|"off"`, default warn for consumers, error in
+      commons). Ships at the next `scope-vX` tag; consumers adopt on re-pin per §3.
+      S/M class. Acceptance: commons run flags a synthetic orphan; the anchored
+      `fixture_recorder.md` (HK-10 sweep) passes.
+      **DONE 2026-07-15** — scope_guard.py 1.3.0, tag **`scope-v6`** (pyproject aligned
+      from a stale 1.0.0 in the same change). The check: an evidence doc on disk whose
+      repo-relative path AND basename both appear nowhere in active+DONE →
+      `UNREFERENCED evidence` (config `unreferenced = "error"|"warn"|"off"`, default
+      warn; commons runs error via `.scope-guard.toml`). Acceptance ran exactly as
+      specified: commons clean (the HK-10-anchored `fixture_recorder.md` passes), a
+      synthetic orphan flagged as error, clean again after removal.
+      `ledger-discipline.md` §3 rule-union + §6 updated to shipped-state. Consumers
+      adopt at their next `scope-vX` re-pin (default warn keeps their first run
+      honest, not red). docs: none — normative process file updated in place.
 - [x] **IMPL-3 — ui-kit: StatusChip recipes must be statically extractable** (filed +
       fixed 2026-07-15 by the voice session at UI-18 intake — first real consumer
       adoption; found-and-fixed, S class, discovery reserve). `status-chip.tsx` built

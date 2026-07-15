@@ -16,6 +16,7 @@ docs_verdict_since = "2026-07-13"   # HK-6: completions from this date need a do
 [evidence]
 dirs = ["docs/design", "docs/review"]   # HK-10: review docs join evidence anchoring
 link_scan = true
+unreferenced = "error"                  # IMPL-2: error in commons; consumers default warn
 
 [journal]
 active = "board/JOURNAL.md"

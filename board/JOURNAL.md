@@ -1,5 +1,19 @@
 # Board journal — newest on top
 
+## 2026-07-15 — IMPL-2 DONE: the UNREFERENCED-evidence check ships (scope-v6)
+
+HK-10's evidence-anchoring rule goes mechanical: scope_guard.py 1.3.0 adds the fourth
+direction — an evidence doc on disk whose path and basename both appear nowhere in
+active+DONE is flagged (`unreferenced = "error"|"warn"|"off"`, default warn; commons
+runs error). Acceptance per the entry's own spec: commons clean with the
+HK-10-anchored fixture_recorder.md passing, a synthetic orphan flagged, clean after
+removal. Tagged scope-v6 (pyproject aligned from a stale 1.0.0 en route);
+ledger-discipline §3/§6 updated to shipped-state; consumers adopt at their next re-pin
+with warn keeping first runs honest rather than red. With this, EVERY commons sprint-02
+row is done — the sprint's remaining work is bridge DOC-17, the two satellite chores,
+voice UI-23 verification, and the close-deploy slot. docs: none — process file updated
+in place.
+
 ## 2026-07-15 — IMPL-6 filed and done: backends reach plugins (workbench-v1.2)
 
 The owner's first-controller-run question exposed the last contract gap: the prose

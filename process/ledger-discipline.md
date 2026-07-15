@@ -49,7 +49,10 @@ Every repo keeps:
 - **Rule set = the union** of the historical voice + bridge checkers, config-toggled:
   DUPLICATE id · MISPLACED status (two-directional) · ORPHAN finding · DEAD evidence link
   (with voice's evidence-index `[x]` exists-marker semantics) · ALIAS phantom · MISFILED
-  task · OUT-OF-ORDER id · UNINDEXED review · tombstone handling — plus the HK-1 additions:
+  task · OUT-OF-ORDER id · UNINDEXED review · **UNREFERENCED evidence** (HK-10/IMPL-2,
+  scope-v6: an evidence doc on disk that no active/DONE entry references;
+  `unreferenced = "error"|"warn"|"off"`, default warn) · tombstone handling — plus the
+  HK-1 additions:
   journal & DONE watermark checks · archive-pointer integrity · completion-journal
   cross-check · required-task-tags (per-repo list) · board rule pack (commons).
 - Everything repo-specific is config: file paths, prefixes, status chars, section style,
@@ -100,8 +103,10 @@ Every repo keeps:
 - The rule is org-wide. The product repos already run pieces of it (voice's evidence
   index with `[x]` exists-markers, bridge's path-scan dead-link checks) — but those
   guard the ledger→doc direction. The missing direction — **a doc ON DISK that no
-  ledger entry references** — becomes a scope-guard check (`UNREFERENCED evidence`,
-  config-toggled) at the next `scope-vX` cut (commons **IMPL-2**); consumers adopt it
-  when they re-pin, per §3 pinned-consumption rules.
+  ledger entry references** — is the `UNREFERENCED evidence` check, **shipped at
+  scope-v6 (IMPL-2, 2026-07-15)**: config-toggled (`unreferenced =
+  "error"|"warn"|"off"`), default warn for consumers, error in commons; "referenced" =
+  the doc's repo-relative path or basename appears in the active or DONE ledger.
+  Consumers adopt it when they re-pin, per §3 pinned-consumption rules.
 - Evidence directories are config (`[evidence] dirs`); commons scans `docs/design/` +
   `docs/review/`.
