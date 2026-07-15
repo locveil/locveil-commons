@@ -126,3 +126,62 @@ satellite bench items (FS90 rail isolation, deck [VERIFY] measurements).
   action_plan.md header date stale; UI-18 gate prose can name IMPL-1 concretely.
 - **satellite**: D-17 prose (selected as the S-chore row); DES-4 v1.1 wrinkle confirmed
   live, not stale.
+
+## Close — 2026-07-15
+
+Closed via `/sprint close` (convention `process/sprints.md` §8). Read-only shippable
+verification per involved repo (gate evidence in journals/CI; guards `--check` gate every
+committed HEAD). The WB7/image deploy is the owner's pre-reserved slot — the **voice image
+deploy is DONE** (owner-confirmed); the bridge early-in-sprint deploy (decision 5) rode the
+DRV-39 stack. Every involved product repo is **shippable**.
+
+### repo@sha + verdict
+
+| repo | sha | verdict |
+|---|---|---|
+| **commons** | `8cb7880` | IMPL-1 (Workbench shell v1) + IMPL-2 (scope-guard UNREFERENCED check, scope-v6) + the **runtime-assembly council (HK-11)** all in `BOARD_DONE.md`; scope-guard clean at HEAD. Discovery: IMPL-4 (Toast/AlertDialog, ui-kit 0.1.1), IMPL-5 (ActionBar, ui-kit 0.1.2 + workbench-v1.1), IMPL-6 (`PageProps.backends`). Regime-3 — no product deploy gate. |
+| **voice** | `4175aeb` | **Port arc complete** — UI-18 (kit-first foundation) · UI-19 (full body) · UI-17 (plugin conversion) · UI-16 (schema-driven sections). config-ui is now the Voice tab of the Workbench, standalone app retired, `config-ui-stays-functional` re-anchored to the plugin build. Gates: check + plugin build + vitest 44/44 + docs-manifest 8/8; multi-arch image + WB7 `/health` smoke path ready. **Image deploy DONE (owner).** Shippable ✓. |
+| **bridge** | `c60a2bc` | **UI-18** Bridge Workbench plugin (read-only v1) landed + loads in the commons shell. Standing gates green: **suite 734** · pyright 0 · import-linter 6/6 · no contract drift; both armv7 images build; contract-guard v2 clean; `workbench-plugin/` check + build green. Shippable ✓. **DOC-17 not landed → carry-over.** |
+| **satellite** | `5761e7d` | **OPS-8** (`publish_model_pack.py` ssh/tag-fetch verify; PROD-25 write-back) done; incident-born **OPS-9** (contract-guard CI tag-fetch defect caught in OPS-8's own wake) done in the same window. Four guards green at HEAD; provisioning surface intact. Shippable ✓. |
+
+### Unlanded selected rows
+
+- **bridge DOC-17** (M, 0.3) — planned-pages status sweep + 15 stale `wb-mqtt-bridge`-titled
+  `.dot` diagrams + PNG regen. Still `[ ]` `[deferred]` in bridge `docs/action_plan.md`.
+  Non-blocking (docs only; shippability unaffected). **→ carry-over into sprint-03.**
+- **satellite D-17 marker S-chore** (S, 0.1) — **superseded, not carried.** The owner
+  overruled D-17's CLI-only reading; its second amendment lands via the expanded DES-5
+  design (satellite journal 2026-07-12/15), so the standalone pending-amendment marker was
+  absorbed by that design rather than filed as its own task. Closed by supersession — does
+  **not** re-enter the next plan.
+
+### Deferred-at-planning (still sprint-03 candidates, unchanged)
+
+voice ARCH-50 (decision 1) · satellite DES-5 (XL) · bridge UI-19 wireframe session (XL) ·
+PROD-4 council (decision 6) · the HW/bench queue headed by bridge DRV-38 (decision 2,
+cross-sprint).
+
+### Realized velocity (feeds §2 calibration)
+
+Selected 7.3 s-e · **landed ≈ 6.9 s-e** (11 rows: 9 landed, DOC-17 unlanded, D-17 chore
+superseded).
+
+| class | planned | landed | notes |
+|---|---|---|---|
+| council | 1 | 1 | HK-11 (runtime assembly) |
+| L / L+ | 5 | 5 | IMPL-1, voice UI-18/UI-17/UI-19(L+), bridge UI-18 |
+| M–L | 1 | 1 | voice UI-16 |
+| S/M | 1 | 1 | IMPL-2 (scope-v6) |
+| M | 1 | 0 | bridge DOC-17 → carry-over |
+| S | 2 | 1 | satellite OPS-8 landed; D-17 S-chore superseded |
+
+**Discovery** (born + closed in-window, un-planned): commons IMPL-4/5/6 · voice UI-22 +
+BUILD-37/38/40 (scope-v6 re-pin trail) · bridge LIB-1/2/3 (pymotivaxmc2 0.8.0 eMotiva
+debt-closure burst, the round-2-mid-flight absorption) · satellite OPS-9 (incident-born
+off OPS-8). Discovery ran hot again — the 30% reserve held; no incident-P1 displacement
+fired (the fourth eMotiva wedge decision-2 pre-armed never occurred).
+
+Calibration for sprint-03: relative S/M/L costs held; the L-heavy port arc (voice 4.0 s-e
+across four rows) landed inside its estimate — the "largest execution risk" UI-19 did not
+overrun. The 1.0 pre-reserved close-deploy slot was consumed by the voice image dispatch as
+designed.

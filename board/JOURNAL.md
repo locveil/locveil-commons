@@ -1,5 +1,23 @@
 # Board journal — newest on top
 
+## 2026-07-15 — sprint-02 CLOSED: Workbench shell + config-ui port, all four repos shippable
+
+`/sprint close` ran the per-repo shippable verdicts read-only (gate evidence in journals +
+`--check` guards gating every committed HEAD). Verdicts: **commons@8cb7880** (IMPL-1 shell
++ IMPL-2 scope-v6 + HK-11 runtime-assembly council, plus discovery IMPL-4/5/6) ·
+**voice@4175aeb** (port arc COMPLETE — UI-18/19/17/16; config-ui is now the Voice tab, the
+standalone app is gone; image deploy DONE by the owner) · **bridge@c60a2bc** (UI-18 Bridge
+plugin loads in the shell; suite 734 · pyright 0 · import-linter 6/6 · no drift; both armv7
+images build) · **satellite@5761e7d** (OPS-8 + incident-born OPS-9 done; four guards green).
+Landed ≈ 6.9 of 7.3 selected s-e. **Carry-over:** bridge DOC-17 (docs sweep, non-blocking)
+→ sprint-03. **Superseded, not carried:** the satellite D-17 marker S-chore — the owner
+overruled D-17's CLI-only reading and its amendment lands via the expanded DES-5 design, so
+the standalone marker was absorbed. Discovery ran hot again (commons IMPL-4/5/6, bridge
+LIB-1/2/3 eMotiva burst, satellite OPS-9) inside the 30% reserve; no incident-P1
+displacement fired. The L-heavy voice port arc (4.0 s-e) landed inside estimate — UI-19,
+flagged the sprint's largest execution risk, did not overrun. Close section + realized
+velocity table appended to `board/sprints/sprint-02.md`. docs: none — planning artifact.
+
 ## 2026-07-15 — IMPL-2 DONE: the UNREFERENCED-evidence check ships (scope-v6)
 
 HK-10's evidence-anchoring rule goes mechanical: scope_guard.py 1.3.0 adds the fourth
