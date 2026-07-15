@@ -3,6 +3,7 @@
   "plugins": [
     { "location": "demo-plugin/dist" },
     { "location": "../../../locveil-voice/config-ui/dist" },
+    { "location": "../../../locveil-bridge/workbench-plugin/dist" },
     {
       "id": "satellite",
       "title": { "ru": "Спутник", "en": "Satellite" },
