@@ -977,7 +977,7 @@ assertions.
       Verified: both packages check + build green, storybook green, serve path intact
       (with the voice plugin mounting from its real dist alongside). First consumer:
       voice collapses ApplyChangesBar + the LocalizationsPage bar into `<ActionBar>` at
-      its port. docs: none — workbench.md §4 amended in place; package READMEs are the
+      its port — voice ID: **UI-22** (written back 2026-07-15). docs: none — workbench.md §4 amended in place; package READMEs are the
       consumer docs.
 
 ## HK — council topics
