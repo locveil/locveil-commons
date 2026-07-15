@@ -1,0 +1,5 @@
+/* The shell owns the ONE preflight + tailwind layers (HK-11: plugin builds disable
+   preflight; the shell loads tokens.css separately in main.tsx). */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

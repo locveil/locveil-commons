@@ -878,6 +878,42 @@ assertions.
       the commons manifest carries no design-doc node class and no existing node's
       coverage is invalidated.
 
+## IMPL — commons implementation
+
+- [x] **IMPL-1 — Workbench shell v1** (`packages/workbench`): implement
+      `docs/design/workbench.md` §3 (the shell: chrome — logo, plugin tabs +
+      status badges, locale switch, Material `BugReport` button, reserved auth-guard
+      slot; sidebar; content outlet; React 18 SPA on ui-kit tokens) and §4 (the plug-in
+      contract as code: `WorkbenchPlugin`/`PageDescriptor`, dormant-gate semantics, the
+      dev-phase `file:` consumption wiring — built sibling packages, never TS sources);
+      first `workbench-v1` tag. The registry may be a hand-maintained list until two
+      real plugins exist (PROD-10 rule). Gates: **ui-kit-v1** (PROD-10 ④ — the shell
+      builds ON the tokens); plugin content arrives via voice UI-17 + bridge UI-17
+      (their designs feed the registry — no blocking dep for the chrome itself). Write
+      APIs stay separately gated on PROD-4's auth decision (the shell ships without
+      them). Sprint-02 candidate. Filed at HK-10 — this entry is `workbench.md`'s
+      anchoring live task (evidence-anchoring rule, first application).
+      **DONE 2026-07-15** — `packages/workbench` = `locveil-workbench` 0.1.0, tag
+      **`workbench-v1`**. Landed: the chrome per the ratified wireframe (plugin tabs +
+      status dots, RU/EN switch, theme toggle, the Material-glyph BugReport button
+      delegating to the active plugin's reportHook, reserved `#wb-auth-slot` +
+      `#wb-bottom-slot`); the contract AS CODE (`locveil-workbench/contract`, types
+      only — WorkbenchPlugin/PageDescriptor/PluginStatus/ManifestFragment/
+      GateDescriptor); **HK-11 implemented natively**: the shell itself externalizes
+      the singleton set and ships vendor ESM bundles behind the import map (one react
+      by construction — react-dom-client vendor is 4 kB, proving the re-export chain),
+      loader with strict-major refuse-and-surface, style inject, dormant slots with
+      zero activity + conjunctive gates; `scripts/serve.mjs` (mounts config locations,
+      generates runtime-config) + `workbench.config.json` (owner-edited); an in-tree
+      demo plugin built exactly as a product repo would (externals + build-emitted
+      fragment) proving the loading path. Verified: install 0 vulns · typecheck + lint
+      clean · vendor/shell/demo builds · full HTTP path live (runtime-config, fragment,
+      entry, styles, vendor, SPA fallback). Honest caveat: browser-render E2E is one
+      `npm run serve` away — machine checks stop at the HTTP layer. Consumers next:
+      voice UI-17 + bridge UI-18 compile against `locveil-workbench/contract` and the
+      demo-plugin build shape. docs: none — the package README is the consumer doc
+      (ui-kit precedent).
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;

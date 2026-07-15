@@ -1,5 +1,25 @@
 # Board journal — newest on top
 
+## 2026-07-15 — IMPL-1 DONE: the Workbench shell lives (workbench-v1)
+
+`packages/workbench` = locveil-workbench 0.1.0, the first IMPL-prefix completion. The
+shell implements HK-11 natively rather than around it: the shell's own build
+externalizes the singleton set and ships vendor ESM bundles behind the import map, so
+shell and plugins share one react BY CONSTRUCTION — the 4 kB react-dom-client vendor
+bundle is the proof the re-export chain held. Chrome per the ratified wireframe (tabs +
+status dots, RU/EN, theme toggle, the Material BugReport glyph delegating to the active
+plugin's reportHook, both reserved slots); contract as code exported types-only at
+`locveil-workbench/contract`; loader with strict refuse-and-surface, style injection,
+and dormant slots that trigger zero activity and render their conjunctive gate; a
+serve script that mounts owner-config locations and generates the runtime config; and
+an in-tree demo plugin built exactly the way voice UI-17 and bridge UI-18 will build
+(externals + build-emitted fragment) proving the loading path end-to-end over HTTP.
+Verified: 0 vulns, check clean, all three builds, full HTTP path (runtime-config →
+fragment → entry → styles → vendor → SPA fallback); browser render is one `npm run
+serve` away. Sprint-02: the commons chain (council 0.5 + shell 1.0) is done at planned
+cost; remaining rows are the voice port arc, bridge UI-18 + DOC-17, satellite OPS-8 +
+marker. docs: none — package README is the consumer doc.
+
 ## 2026-07-15 — PROD-25 filed: CI checkouts must fetch tags for contract-guard
 
 Filed by the bridge session off bridge OPS-30. contract-guard-v2's TAG-MISSING rule

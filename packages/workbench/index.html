@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Locveil Workbench</title>
+    <!-- HK-11: the import map IS the singleton contract. Exactly these names; every
+         entry is a forever compat obligation. Vendor bundles are built by
+         scripts/build-vendor.mjs from the shell's own installed versions. -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "/vendor/react.js",
+          "react/jsx-runtime": "/vendor/react-jsx-runtime.js",
+          "react-dom": "/vendor/react-dom.js",
+          "react-dom/client": "/vendor/react-dom-client.js",
+          "react-router-dom": "/vendor/react-router-dom.js",
+          "locveil-ui-kit": "/vendor/locveil-ui-kit.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

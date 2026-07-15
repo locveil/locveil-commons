@@ -137,19 +137,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 
 ## IMPL — commons implementation
 
-- [ ] **IMPL-1 — Workbench shell v1** (`packages/workbench`): implement
-      `docs/design/workbench.md` §3 (the shell: chrome — logo, plugin tabs +
-      status badges, locale switch, Material `BugReport` button, reserved auth-guard
-      slot; sidebar; content outlet; React 18 SPA on ui-kit tokens) and §4 (the plug-in
-      contract as code: `WorkbenchPlugin`/`PageDescriptor`, dormant-gate semantics, the
-      dev-phase `file:` consumption wiring — built sibling packages, never TS sources);
-      first `workbench-v1` tag. The registry may be a hand-maintained list until two
-      real plugins exist (PROD-10 rule). Gates: **ui-kit-v1** (PROD-10 ④ — the shell
-      builds ON the tokens); plugin content arrives via voice UI-17 + bridge UI-17
-      (their designs feed the registry — no blocking dep for the chrome itself). Write
-      APIs stay separately gated on PROD-4's auth decision (the shell ships without
-      them). Sprint-02 candidate. Filed at HK-10 — this entry is `workbench.md`'s
-      anchoring live task (evidence-anchoring rule, first application).
 - [ ] **IMPL-2 — scope-guard: UNREFERENCED-evidence check** (`packages/scope-guard`):
       the missing fourth direction of evidence checking (HK-10 ruling 1,
       `process/ledger-discipline.md` §6) — an evidence doc on disk (`[evidence] dirs`)
