@@ -1,5 +1,17 @@
 # Board journal — newest on top
 
+## 2026-07-15 — IMPL-3: StatusChip was invisible to Tailwind — caught by the first real consumer
+
+Voice's UI-18 kit adoption (the first consumer build to scan the kit's dist with a
+lightningcss-minifying pipeline) failed on a `$` in generated CSS and exposed the real
+defect underneath: `status-chip.tsx` assembled its variant classes via a template
+literal, so Tailwind never saw the five real recipes whole (chips unstyled everywhere)
+while happily extracting the `${h}` pseudo-candidate into consumer CSS. Fixed
+found-and-fixed as **IMPL-3**: a fully-literal class map per variant, values exactly
+the council-ratified recipe; kit green, dist clean, voice's build is the live proof.
+Lesson for kit authors on record: className strings must be statically whole — the
+extractor is the contract. Reserve spend 0.2 of 3.6.
+
 ## 2026-07-15 — PROD-25 commons half executed: contract-guard CI checkouts get tags
 
 The bridge session's filing (off its OPS-30) found commons' own contract-guard workflow

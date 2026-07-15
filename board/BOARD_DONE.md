@@ -914,6 +914,24 @@ assertions.
       demo-plugin build shape. docs: none — the package README is the consumer doc
       (ui-kit precedent).
 
+- [x] **IMPL-3 — ui-kit: StatusChip recipes must be statically extractable** (filed +
+      fixed 2026-07-15 by the voice session at UI-18 intake — first real consumer
+      adoption; found-and-fixed, S class, discovery reserve). `status-chip.tsx` built
+      its per-variant classes through a **template literal**
+      (`bg-[hsl(var(${h})_70%_96%)]` joined at runtime): Tailwind's extractor only
+      generates arbitrary-value utilities it can read whole, so (a) the REAL five
+      variant recipes were never generated in any consumer — StatusChip rendered
+      unstyled — and (b) the `${h}` pseudo-candidate WAS extracted into consumer CSS,
+      where the `$` breaks lightningcss minification (voice's vite-8 build failed on
+      exactly this; the kit's own vite-6/esbuild pipeline never minified with
+      lightningcss, which is why it stayed latent). Fix: one fully-literal class
+      string per variant (`recipe: Record<StatusVariant, string>`), values identical
+      to the council-ratified recipe. Kit check + build green; dist carries zero `${`
+      and all five literal recipes; voice's consumer build is the live verification.
+      Sweep: no other template-literal classNames in kit src. Rides the pre-`ui-kit-v2`
+      working tree (dev-phase `file:` consumers pick it up on rebuild); next kit tag
+      carries it. docs: none — kit
+      source fix only (stylebook values unchanged; README consumption prose unaffected).
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;

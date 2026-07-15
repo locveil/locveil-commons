@@ -15,27 +15,26 @@ export type StatusVariant =
   | "persisted"
   | "conflict";
 
-const hueVar: Record<StatusVariant, string> = {
-  pristine: "--lv-status-pristine",
-  edited: "--lv-status-edited",
-  tested: "--lv-status-tested",
-  persisted: "--lv-status-persisted",
-  conflict: "--lv-status-conflict",
-};
-
 export interface StatusChipProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant: StatusVariant;
 }
 
-const recipe = (h: string) =>
-  [
-    `bg-[hsl(var(${h})_70%_96%)]`,
-    `border-[hsl(var(${h})_45%_80%)]`,
-    `text-[hsl(var(${h})_55%_32%)]`,
-    `dark:bg-[hsl(var(${h})_45%_22%_/_0.45)]`,
-    `dark:border-[hsl(var(${h})_45%_45%_/_0.6)]`,
-    `dark:text-[hsl(var(${h})_70%_72%)]`,
-  ].join(" ");
+/* One fully-literal class string per variant: Tailwind's extractor only generates
+   arbitrary-value utilities it can read WHOLE from the source/dist — a template
+   literal here means no chip styles in any consumer (and the `${...}` pseudo-class
+   it does extract breaks lightningcss minification downstream). */
+const recipe: Record<StatusVariant, string> = {
+  pristine:
+    "bg-[hsl(var(--lv-status-pristine)_70%_96%)] border-[hsl(var(--lv-status-pristine)_45%_80%)] text-[hsl(var(--lv-status-pristine)_55%_32%)] dark:bg-[hsl(var(--lv-status-pristine)_45%_22%_/_0.45)] dark:border-[hsl(var(--lv-status-pristine)_45%_45%_/_0.6)] dark:text-[hsl(var(--lv-status-pristine)_70%_72%)]",
+  edited:
+    "bg-[hsl(var(--lv-status-edited)_70%_96%)] border-[hsl(var(--lv-status-edited)_45%_80%)] text-[hsl(var(--lv-status-edited)_55%_32%)] dark:bg-[hsl(var(--lv-status-edited)_45%_22%_/_0.45)] dark:border-[hsl(var(--lv-status-edited)_45%_45%_/_0.6)] dark:text-[hsl(var(--lv-status-edited)_70%_72%)]",
+  tested:
+    "bg-[hsl(var(--lv-status-tested)_70%_96%)] border-[hsl(var(--lv-status-tested)_45%_80%)] text-[hsl(var(--lv-status-tested)_55%_32%)] dark:bg-[hsl(var(--lv-status-tested)_45%_22%_/_0.45)] dark:border-[hsl(var(--lv-status-tested)_45%_45%_/_0.6)] dark:text-[hsl(var(--lv-status-tested)_70%_72%)]",
+  persisted:
+    "bg-[hsl(var(--lv-status-persisted)_70%_96%)] border-[hsl(var(--lv-status-persisted)_45%_80%)] text-[hsl(var(--lv-status-persisted)_55%_32%)] dark:bg-[hsl(var(--lv-status-persisted)_45%_22%_/_0.45)] dark:border-[hsl(var(--lv-status-persisted)_45%_45%_/_0.6)] dark:text-[hsl(var(--lv-status-persisted)_70%_72%)]",
+  conflict:
+    "bg-[hsl(var(--lv-status-conflict)_70%_96%)] border-[hsl(var(--lv-status-conflict)_45%_80%)] text-[hsl(var(--lv-status-conflict)_55%_32%)] dark:bg-[hsl(var(--lv-status-conflict)_45%_22%_/_0.45)] dark:border-[hsl(var(--lv-status-conflict)_45%_45%_/_0.6)] dark:text-[hsl(var(--lv-status-conflict)_70%_72%)]",
+};
 
 const StatusChip = React.forwardRef<HTMLSpanElement, StatusChipProps>(
   ({ className, variant, ...props }, ref) => (
@@ -43,7 +42,7 @@ const StatusChip = React.forwardRef<HTMLSpanElement, StatusChipProps>(
       ref={ref}
       className={cn(
         "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold",
-        recipe(hueVar[variant]),
+        recipe[variant],
         className
       )}
       {...props}
