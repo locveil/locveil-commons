@@ -1,12 +1,17 @@
 {
   "name": "locveil-workbench",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The Locveil Workbench shell (IMPL-1): chrome + plugin contract + HK-11 runtime assembly (native ESM + import map).",
   "type": "module",
   "license": "MIT",
-  "files": ["dist", "src/contract.ts"],
+  "files": [
+    "dist",
+    "src/contract.ts"
+  ],
   "exports": {
-    "./contract": { "types": "./src/contract.ts" }
+    "./contract": {
+      "types": "./src/contract.ts"
+    }
   },
   "scripts": {
     "build:vendor": "node scripts/build-vendor.mjs",
@@ -40,5 +45,7 @@
     "typescript-eslint": "^8.60.0",
     "vite": "^6.4.0"
   },
-  "engines": { "node": ">=18.0.0" }
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

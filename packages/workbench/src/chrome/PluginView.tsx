@@ -5,7 +5,15 @@ import { ls, t } from "../i18n";
 
 /* Sidebar of the active plugin's pages + the content outlet — the wireframe's
    second nav level. Pages are read per render pass: RUNTIME-registrable (UI-16). */
-export function PluginView({ plugin, locale }: { plugin: WorkbenchPlugin; locale: Locale }) {
+export function PluginView({
+  plugin,
+  locale,
+  backends,
+}: {
+  plugin: WorkbenchPlugin;
+  locale: Locale;
+  backends: Record<string, string>;
+}) {
   const pages: PageDescriptor[] = plugin.pages();
 
   if (pages.length === 0)
@@ -41,7 +49,11 @@ export function PluginView({ plugin, locale }: { plugin: WorkbenchPlugin; locale
         <Routes>
           <Route index element={<Navigate to={pages[0].route} replace />} />
           {pages.map((p) => (
-            <Route key={p.route} path={p.route} element={<p.render locale={locale} />} />
+            <Route
+              key={p.route}
+              path={p.route}
+              element={<p.render locale={locale} backends={backends} />}
+            />
           ))}
         </Routes>
       </main>

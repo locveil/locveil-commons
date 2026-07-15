@@ -72,13 +72,19 @@ function DemoPage({ locale }: PageProps) {
   );
 }
 
-function AboutPage({ locale }: PageProps) {
+function AboutPage({ locale, backends }: PageProps) {
+  const ru = locale === "ru";
   return (
-    <p className="max-w-md text-sm text-muted-foreground">
-      {locale === "ru"
-        ? "Вторая страница — проверяет боковую навигацию плагина."
-        : "Second page — exercises the plugin sidebar navigation."}
-    </p>
+    <div className="max-w-md space-y-2 text-sm text-muted-foreground">
+      <p>
+        {ru
+          ? "Вторая страница — проверяет боковую навигацию плагина."
+          : "Second page — exercises the plugin sidebar navigation."}
+      </p>
+      <p className="font-mono text-xs">
+        backends: {Object.keys(backends).length ? JSON.stringify(backends) : "—"}
+      </p>
+    </div>
   );
 }
 

@@ -17,7 +17,13 @@ export const SHELL_SINGLETONS: Record<string, number> = {
 const UI_KIT_MINOR = 1; // locveil-ui-kit 0.1.x
 
 export type LoadedPlugin =
-  | { kind: "active"; fragment: ManifestFragment; plugin: WorkbenchPlugin; baseUrl: string }
+  | {
+      kind: "active";
+      fragment: ManifestFragment;
+      plugin: WorkbenchPlugin;
+      baseUrl: string;
+      backends: Record<string, string>;
+    }
   | { kind: "dormant"; id: string; title: LocalizedString; gate: GateDescriptor }
   | { kind: "failed"; id: string; reason: string };
 
@@ -49,7 +55,7 @@ function injectStyles(baseUrl: string, styles: string[] | undefined): void {
   }
 }
 
-async function loadOne(baseUrl: string): Promise<LoadedPlugin> {
+async function loadOne(baseUrl: string, backends: Record<string, string>): Promise<LoadedPlugin> {
   const manifestUrl = new URL("manifest.json", baseUrl).toString();
   let fragment: ManifestFragment;
   try {
@@ -70,7 +76,7 @@ async function loadOne(baseUrl: string): Promise<LoadedPlugin> {
     const mod = (await import(/* @vite-ignore */ entryUrl)) as { default?: WorkbenchPlugin };
     if (!mod.default?.id || typeof mod.default.pages !== "function")
       return { kind: "failed", id: fragment.id, reason: "entry has no WorkbenchPlugin default export" };
-    return { kind: "active", fragment, plugin: mod.default, baseUrl };
+    return { kind: "active", fragment, plugin: mod.default, baseUrl, backends };
   } catch (e) {
     return { kind: "failed", id: fragment.id, reason: `entry import failed: ${String(e)}` };
   }
@@ -81,6 +87,7 @@ interface RuntimeEntry {
   id?: string;
   title?: LocalizedString;
   gate?: GateDescriptor;
+  backends?: Record<string, string>;
 }
 
 /** Reads the serve-script-generated runtime config; dormant entries load NOTHING. */
@@ -99,7 +106,7 @@ export async function loadPlugins(): Promise<LoadedPlugin[]> {
       if (e.gate && !e.url)
         return { kind: "dormant", id: e.id ?? "?", title: e.title ?? e.id ?? "?", gate: e.gate };
       if (!e.url) return { kind: "failed", id: e.id ?? "?", reason: "config entry has neither url nor gate" };
-      return loadOne(e.url.endsWith("/") ? e.url : e.url + "/");
+      return loadOne(e.url.endsWith("/") ? e.url : e.url + "/", e.backends ?? {});
     })
   );
 }

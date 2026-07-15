@@ -980,6 +980,27 @@ assertions.
       its port — voice ID: **UI-22** (written back 2026-07-15). docs: none — workbench.md §4 amended in place; package READMEs are the
       consumer docs.
 
+- [x] **IMPL-6 — backend targets reach plugins: `PageProps.backends`** (filed AND done
+      2026-07-15 — owner-demanded at the first controller run: "how do we tell voice
+      and bridge how to reach their backends? IP needs to be passed thru — what about
+      ports?"). The contract prose promised per-page backend targets since PROD-24;
+      contract-as-code v1 shipped only `locale` — plugins would have fallen back to
+      same-hostname defaults and hit the SHELL origin instead of the WB7. Decision
+      implemented: **deployment facts live in the owner-edited shell config, never in
+      build artifacts** — per-plugin `backends: {"api": "http://<wb7-ip>:<port>"}`
+      (absolute origins, IP AND port explicit; WB7 host-network reference: voice
+      backend `:8080`, bridge backend `:8000` — verified from both repos' compose
+      files), passed config → serve runtime-config → loader → `PageProps.backends`.
+      CORS is already `*` on both backends, so the browser talks to the controller
+      directly — no shell proxying. Additive contract change (old-built plugins ignore
+      the extra prop): tag **`workbench-v1.2`**, 0.1.1; workbench.md §4 amended; the
+      demo plugin's About page renders its backends map as the visible proof; config
+      merged with the externally-mounted voice AND bridge plugin entries. Consumer
+      note (repo-to-repo): each plugin must route its fetches through
+      `PageProps.backends` ("api" is the conventional primary key) — relative URLs
+      resolve against the shell origin, the HK-11 gotcha class. docs: none —
+      workbench.md + package README amended in place.
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;

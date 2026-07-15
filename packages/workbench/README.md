@@ -41,7 +41,12 @@ npm run serve                    # http://localhost:6107 — mounts workbench.co
 npm run dev                      # vite build --watch (pair with npm run serve; reload per change)
 ```
 
-`workbench.config.json` is the owner-edited config: `{"location": "<path to a plugin
-dist>"}` per plugin (dev-phase: sibling repo paths), or `{"id", "title", "gate"}` for a
+`workbench.config.json` is the owner-edited config: per plugin `{"location": "<path to
+a plugin dist>", "backends": {"api": "http://<controller-ip>:<port>"}}` (dev-phase:
+sibling repo paths; **backends are deployment facts — absolute origins, IP AND port —
+delivered to pages as `PageProps.backends`**, IMPL-6; on the WB7 host-network the voice
+backend is `:8080`, the bridge backend `:8000`), or `{"id", "title", "gate"}` for a
 dormant slot. The serve script mounts locations under `/plugins/<n>/` and generates
-`/runtime-config.json`; published-artifact URLs are the productization step.
+`/runtime-config.json`; published-artifact URLs are the productization step. Plugins
+must use `backends` for every fetch — relative URLs resolve against the SHELL origin,
+never the controller.

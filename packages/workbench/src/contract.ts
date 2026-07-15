@@ -17,6 +17,12 @@ export interface PluginStatus {
 /** Props the shell passes to every page component. */
 export interface PageProps {
   locale: Locale;
+  /** Deployment facts (IMPL-6): ABSOLUTE backend origins from the owner-edited shell
+      config — never from build artifacts. Keys are plugin-defined; convention: "api"
+      for the plugin's primary backend (e.g. http://<wb7-ip>:8080 for voice,
+      :8000 for bridge). Relative fetches resolve against the SHELL origin — always
+      use these. Empty when the owner configured none. */
+  backends: Record<string, string>;
 }
 
 export interface PageDescriptor {
@@ -66,7 +72,7 @@ export interface GateDescriptor {
 
 /** One entry of the owner-edited shell config (workbench.config.json). */
 export type ConfigEntry =
-  | { location: string } // dev-phase: sibling dist path; later: URL
+  | { location: string; backends?: Record<string, string> } // dev-phase: sibling dist path; later: URL
   | { id: string; title: LocalizedString; gate: GateDescriptor }; // dormant: ZERO activity
 
 export interface WorkbenchConfig {

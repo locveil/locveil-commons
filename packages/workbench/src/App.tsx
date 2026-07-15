@@ -72,7 +72,14 @@ function PluginRoute({ plugins, locale }: { plugins: LoadedPlugin[]; locale: Loc
   const { pluginId } = useParams();
   const entry = plugins.find((p) => p.kind === "active" && p.plugin.id === pluginId);
   if (!entry || entry.kind !== "active") return <EmptyState locale={locale} />;
-  return <PluginView key={pluginId} plugin={entry.plugin} locale={locale} />;
+  return (
+    <PluginView
+      key={pluginId}
+      plugin={entry.plugin}
+      locale={locale}
+      backends={entry.backends}
+    />
+  );
 }
 
 function EmptyState({ locale }: { locale: Locale }) {

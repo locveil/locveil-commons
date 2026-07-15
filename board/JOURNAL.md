@@ -1,5 +1,22 @@
 # Board journal — newest on top
 
+## 2026-07-15 — IMPL-6 filed and done: backends reach plugins (workbench-v1.2)
+
+The owner's first-controller-run question exposed the last contract gap: the prose
+promised per-page backend targets since PROD-24, but contract-as-code v1 passed only
+locale — plugins would have resolved fetches against the SHELL origin (localhost:6107)
+instead of the WB7. Implemented as decided everywhere else in this arc: deployment
+facts (absolute origins — IP AND port) live in the owner-edited workbench.config.json
+per plugin and flow config → runtime-config → loader → PageProps.backends; build
+artifacts stay deployment-blind. Ports pinned from repo reality: voice backend :8080,
+bridge backend :8000 (both host-network on the WB7); CORS already wide open on both, so
+the browser hits the controller directly — no proxying. Additive (old plugins ignore
+the prop): workbench-v1.2, §4 amended, README recipe updated, demo About page renders
+its backends map as proof. Config merged with the externally-mounted voice AND bridge
+plugin dists — the shell now assembles demo + voice + bridge + the dormant satellite
+slot. Repo-to-repo consumer note: plugins route every fetch through PageProps.backends
+("api" = the conventional key). docs: none — design doc + README amended in place.
+
 ## 2026-07-15 — IMPL-5 filed and done: the bottom action-bar surface (ui-kit-v1.2 + workbench-v1.1)
 
 Voice's port comment ("the two fixed bottom-0 action bars wait on a plugin-contract

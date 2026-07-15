@@ -1,9 +1,15 @@
 {
-  "$comment": "Owner-edited shell config (HK-11): locations (dev-phase: local paths to plugin dists) + dormant slots (gate, no location — zero activity). Sibling examples: ../locveil-voice/config-ui/dist, ../../../locveil-bridge/workbench-plugin/dist.",
+  "$comment": "Owner-edited shell config (HK-11 + IMPL-6): per plugin — location (dev-phase: local path to its dist) + backends (ABSOLUTE origins — deployment facts: IP AND port; on the WB7 host-network: voice backend :8080, bridge backend :8000). Replace 192.168.1.50 with the controller's address. Dormant slots: gate, no location.",
   "plugins": [
     { "location": "demo-plugin/dist" },
-    { "location": "../../../locveil-voice/config-ui/dist" },
-    { "location": "../../../locveil-bridge/workbench-plugin/dist" },
+    {
+      "location": "../../../locveil-voice/config-ui/dist",
+      "backends": { "api": "http://192.168.1.50:8080" }
+    },
+    {
+      "location": "../../../locveil-bridge/workbench-plugin/dist",
+      "backends": { "api": "http://192.168.1.50:8000" }
+    },
     {
       "id": "satellite",
       "title": { "ru": "Спутник", "en": "Satellite" },

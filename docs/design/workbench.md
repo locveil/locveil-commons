@@ -127,6 +127,13 @@ interface PageDescriptor {
 - **Dormant registration:** a gated plugin/verb is registry-declared with its gate
   reference (satellite: DES-5 + first light) and not rendered until the gate is
   discharged — rendered dormant with its gate named, never "failed to load".
+- **Backend targets (IMPL-6, workbench-v1.2):** deployment facts — absolute backend
+  origins (IP and port) — live in the owner-edited shell config per plugin
+  (`backends: {"api": "http://<wb7>:8080"}`) and reach pages as `PageProps.backends`.
+  Never in build artifacts (the fragment's `backendCompat` stays an informational
+  statement); never relative (relative resolves against the shell origin — the HK-11
+  gotcha class). WB7 host-network reference: voice backend `:8080`, bridge backend
+  `:8000`.
 - **The bottom action-bar surface (IMPL-5, workbench-v1.1 / ui-kit-v1.2):** plugins
   render `<ActionBar>` (from `locveil-ui-kit`) anywhere in a page tree; the kit's
   module-scope bus — one instance through the import-map singleton, the IMPL-4 Toast

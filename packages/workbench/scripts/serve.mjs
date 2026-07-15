@@ -18,7 +18,7 @@ for (const entry of config.plugins ?? []) {
     const dir = resolve(entry.location);
     const n = mounts.length;
     mounts.push(dir);
-    runtime.plugins.push({ url: `/plugins/${n}/` });
+    runtime.plugins.push({ url: `/plugins/${n}/`, backends: entry.backends ?? {} });
     if (!existsSync(dir)) console.warn(`WARN: plugin location missing on disk: ${dir}`);
   } else {
     runtime.plugins.push(entry); // dormant slot — metadata only
