@@ -100,7 +100,15 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       preserve the `build_analyzer`→`get_provider_class`→classmethod seam"; confirm ARCH-50-first
       and fold the dead `get_provider_capabilities` (`components/base.py:216`, zero call sites)
       into ARCH-50's dead-code sweep; ARCH-43 parked. Voice write-back — lead ID: **ARCH-42**
-      (+ ARCH-50, ARCH-43). Bridge — reconcile **CORE-7** (adopt the core-py registry for the
+      (+ ARCH-50, ARCH-43) — **RECONCILED AT INTAKE 2026-07-16 (voice session), all three entries
+      amended in the voice ledger:** ARCH-42 narrowed to the entry-point-group registry only
+      (`utils/loader.py:133` `DynamicLoader`), with the `EntryPointMetadata` quartet
+      (`core/metadata.py:25`) + values explicitly voice-side, the `build_analyzer`→
+      `get_provider_class`→classmethod seam named as preserved, and ARCH-50 recorded as a hard
+      predecessor on both entries; ARCH-50 carries the dead `get_provider_capabilities`
+      (`components/base.py:216` — zero call sites VERIFIED at intake, resolves as delete per
+      `dead-code-remove-not-fix`); ARCH-43 marked PARKED. No scope drift found — the council's
+      voice-side claims all held against repo reality. Bridge — reconcile **CORE-7** (adopt the core-py registry for the
       driver axis, keep the config resolver local, no config→entry-point unification, loader in
       `utils/`/behind a port never `domain/`, zero new import-linter exceptions, no catalog
       drift; FIX the stale gate "voice BUILD-21" → "PROD-8 / core-py exists"; fold the dead
