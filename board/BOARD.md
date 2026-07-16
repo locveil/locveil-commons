@@ -71,6 +71,43 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       skeleton (own pyproject, `core-py-vX` tags), then the two designs — dynamic code
       loader (voice ARCH-42; voice consumer #1, bridge #2 via CORE-7) and logging scheme
       (voice ARCH-43; retires the BUG-30/OPS-12 hand-copy → bridge OPS-14).
+      **COUNCIL-DECIDED 2026-07-16 (PROD-8 council, 2 rounds; keepers voice+bridge —
+      satellite is not a core-py Python consumer).** Both support-with-conditions; both
+      confirm entry-points is the discovery spine (voice: 13 provider groups + one
+      `DynamicLoader`; bridge: `locveil_bridge.devices`, 9 drivers) and that bridge authored
+      the logging scheme (OPS-12 DONE → voice BUG-30 is the copy). **Decisions:**
+      **(1) Shared loader = the entry-point-group registry only** (voice's `DynamicLoader`
+      engine) — the genuine rule-of-two leaf. Voice's `EntryPointMetadata` build-time metadata
+      quartet (`get_python_dependencies`/`get_platform_support`/`get_supported_architectures`/
+      `get_platform_dependencies` — dependency-closure + the load-bearing arch gate) and all its
+      values stay voice-side; bridge's by-name config resolver (`class_loader.py`) stays
+      bridge-side. Each auxiliary graduates to core-py only on its own second consumer.
+      **(2) "Config-based driver loading" = unify resolution, keep entry points.** Replacing
+      entry points with runtime config-path discovery is REJECTED — it breaks the offline
+      catalog generator (`dump_catalog`) that builds the voice-pinned golden without loading a
+      single driver. CORE-7 stays a self-contained infra swap; no catalog-contract bump.
+      **(3) The UI/panel driver-availability gating is a SEPARATE bridge task**, never a rider
+      on CORE-7. Today the surface is split-brained (operational pages gate on loaded drivers →
+      404 + absent from catalog; config pages / nav / workbench still show configured-but-
+      unloaded devices). The invariant "no driver → no device pages AND config pages" is a
+      presentation + possible catalog-contract change; that task decides suppress-vs-surface.
+      **(4) Sequencing locks:** ARCH-50 is a HARD PREDECESSOR of ARCH-42 (its hardcodings
+      inventory feeds the loader design); the `packages/core-py` skeleton is cut AFTER ARCH-50 +
+      ARCH-42 land (surface known first); the logging extraction (ARCH-43 → OPS-14) is PARKED —
+      loader first, logging a later round (bridge's OPS-12 is the reference when it resumes).
+      **Delegations (board-as-outbox):** voice — reconcile **ARCH-42** scope to "extract the
+      entry-point-group discovery engine only; metadata contract + values stay voice-side;
+      preserve the `build_analyzer`→`get_provider_class`→classmethod seam"; confirm ARCH-50-first
+      and fold the dead `get_provider_capabilities` (`components/base.py:216`, zero call sites)
+      into ARCH-50's dead-code sweep; ARCH-43 parked. Voice write-back — lead ID: **ARCH-42**
+      (+ ARCH-50, ARCH-43). Bridge — reconcile **CORE-7** (adopt the core-py registry for the
+      driver axis, keep the config resolver local, no config→entry-point unification, loader in
+      `utils/`/behind a port never `domain/`, zero new import-linter exceptions, no catalog
+      drift; FIX the stale gate "voice BUILD-21" → "PROD-8 / core-py exists"; fold the dead
+      `config/validation.py:89,94` pre-HK-8-prefix cleanup) AND file at intake the **new
+      UI/panel driver-availability gating task**. Bridge write-back — lead ID: **CORE-7** + the
+      new UI-gating ID. The board lists delegated IDs but never asserts their status — per-repo
+      ledgers own it.
 - [ ] **PROD-9 — Landing page + first suite manifest** (D-11/D-12): `site/` on GitHub Pages
       at `locveil.com` — joint story, per-product blurbs, honest quickstart, routing only
       (never duplicates per-repo reference docs); the calver suite manifest ("Locveil

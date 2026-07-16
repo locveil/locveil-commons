@@ -1,5 +1,29 @@
 # Board journal — newest on top
 
+## 2026-07-16 — PROD-8 COUNCIL DECIDED: core-py loader scope + sequencing (2 rounds)
+
+Convened PROD-8 (D-8 core-py bootstrap + the loader/logging extractions) as a council;
+keepers voice + bridge (satellite skipped — not a core-py Python consumer). Both landed
+support-with-conditions. Round 1 established the shared spine is **entry-points** (voice's
+`get_*` methods are accessors/metadata, not a rival mechanism) and that **bridge authored the
+logging scheme** (OPS-12 DONE; voice BUG-30 is the copy — settling the owner's "who's ahead"
+hunch). The owner sent it back with three sharp questions; round 2 answered all and dissolved
+the round-1 single-vs-two-axis crux: the voice `get_***_capabilities/platform` "~4 methods" are
+the `EntryPointMetadata` build-time quartet (dependency-closure + the load-bearing arch gate),
+orthogonal to discovery and staying voice-side; the bridge "second axis" is the *simple* by-name
+config resolver, required because the offline catalog generator builds the voice-pinned golden
+**without loading drivers**, and it stays bridge-local. **Decisions (accepted no-changes):**
+(1) core-py loader = the **entry-point-group registry only**, auxiliaries stay local until a
+second consumer; (2) config-based driver loading = **unify resolution, keep entry points** —
+runtime config-path discovery REJECTED (breaks catalog generation); (3) the UI/panel
+driver-availability gating (bridge is split-brained today: config pages show configured-but-
+unloaded devices) is a **separate bridge task**, not a CORE-7 rider; (4) sequencing locks —
+ARCH-50 ⟶ ARCH-42, skeleton after both, logging parked (loader-first). Delegations committed in
+the PROD-8 entry: voice reconciles ARCH-42/ARCH-50 scope (+ dead `get_provider_capabilities` to
+ARCH-50's sweep); bridge reconciles CORE-7 (fix its stale "BUILD-21" gate → PROD-8; fold the dead
+`validation.py` cleanup) and files the new UI-gating task. PROD-8 stays open — the skeleton +
+designs are unexecuted; the council set scope + sequencing only. docs: none — board + journal.
+
 ## 2026-07-15 — sprint-02 CLOSED: Workbench shell + config-ui port, all four repos shippable
 
 `/sprint close` ran the per-repo shippable verdicts read-only (gate evidence in journals +
