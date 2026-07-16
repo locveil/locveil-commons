@@ -4,11 +4,11 @@
     { "location": "demo-plugin/dist" },
     {
       "location": "../../../locveil-voice/config-ui/dist",
-      "backends": { "api": "http://192.168.1.50:8080" }
+      "backends": { "api": "http://192.168.110.250:8080" }
     },
     {
       "location": "../../../locveil-bridge/workbench-plugin/dist",
-      "backends": { "api": "http://192.168.1.50:8000" }
+      "backends": { "api": "http://192.168.110.250:8000" }
     },
     {
       "id": "satellite",

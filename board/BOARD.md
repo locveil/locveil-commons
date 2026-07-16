@@ -114,8 +114,28 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       drift; FIX the stale gate "voice BUILD-21" → "PROD-8 / core-py exists"; fold the dead
       `config/validation.py:89,94` pre-HK-8-prefix cleanup) AND file at intake the **new
       UI/panel driver-availability gating task**. Bridge write-back — lead ID: **CORE-7** + the
-      new UI-gating ID. The board lists delegated IDs but never asserts their status — per-repo
-      ledgers own it.
+      new UI-gating ID — **RECONCILED AT INTAKE 2026-07-16 (bridge session), both delegations
+      executed:** CORE-7 reconciled as **(d) scope drifted → redefined** (owner consulted before
+      the edit per the bridge dialect's STOP rule) — narrowed to the entry-point-group registry
+      only, `utils/class_loader.py` kept bridge-side, the config→entry-point unification recorded
+      as REJECTED with the `dump_catalog` reason, and the stale **"voice BUILD-21"** gate corrected
+      to **"PROD-8 / core-py exists"**. Driver axis verified live: the `locveil_bridge.devices`
+      group, 9 drivers (`backend/pyproject.toml:98-107`) → `domain/devices/service.py:51-52`. The
+      dead-code fold VERIFIED at intake and folded into CORE-7: `validate_class_references`
+      (`infrastructure/config/validation.py:67-97`, the board's cited `:89,94` prefixes) has zero
+      call sites — `validate_device_configs` never calls it, so `device_class` is **never validated
+      at startup at all**. New UI-gating task filed: **UI-20** `[P1]` `[release]`.
+      **Intake correction — decision 3's "split-brained" wording understates it: the surface is
+      THREE-brained.** Beyond the raw-config-vs-loaded-driver split, (a) **room membership is a
+      loaded-driver surface too** since the 2026-06-08 refactor (`domain/rooms/service.py:203-240`
+      derives `room.devices` by walking `DeviceManager.devices`), so the device vanishes the moment
+      a room is selected — the nav only shows it unfiltered; and (b) a **third brain**,
+      `GET /devices/{id}/persisted_state` (`presentation/api/routers/state.py:75-92`), reads the
+      state store directly and answers **200 with a stale snapshot** for a device the rest of the
+      runtime denies exists. Root cause: `domain/devices/service.py:116-120` logs and skips with no
+      retained status — the deliberate opposite of the setup()-failure policy (`:154-183`, device
+      stays registered). UI-20 owns the suppress-vs-surface verdict and must make all three obey.
+      The board lists delegated IDs but never asserts their status — per-repo ledgers own it.
 - [ ] **PROD-9 — Landing page + first suite manifest** (D-11/D-12): `site/` on GitHub Pages
       at `locveil.com` — joint story, per-product blurbs, honest quickstart, routing only
       (never duplicates per-repo reference docs); the calver suite manifest ("Locveil
