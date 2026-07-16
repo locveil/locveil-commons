@@ -108,7 +108,21 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       predecessor on both entries; ARCH-50 carries the dead `get_provider_capabilities`
       (`components/base.py:216` — zero call sites VERIFIED at intake, resolves as delete per
       `dead-code-remove-not-fix`); ARCH-43 marked PARKED. No scope drift found — the council's
-      voice-side claims all held against repo reality. Bridge — reconcile **CORE-7** (adopt the core-py registry for the
+      voice-side claims all held against repo reality. **SEQUENCING LOCK DISCHARGED 2026-07-16
+      (voice session, same day):** ARCH-50 DONE (review + all 8 remediation tasks landed) →
+      ARCH-42 DONE — the design is AGREED and committed at
+      `../locveil-voice/docs/design/core_py_loader_extraction.md`. **The `packages/core-py` skeleton is UNBLOCKED**
+      ("surface known first" is satisfied). Surface summary for the skeleton cut: module
+      `entry_point_loader.py`, class `DynamicLoader` ONLY (no module-level singleton — consumers
+      own theirs); methods `discover_providers(namespace, enabled=None, base_class=None)` /
+      `get_provider_class(namespace, name, base_class=None)` (single-EP load) /
+      `list_available_providers` / `list_registered` (names without import) /
+      `get_discovery_failures` / `clear_cache`; Python 3.11, importlib.metadata only; own
+      pyproject + tests; tag **`core-py-v1`**. Consumption = vendored copy at tag with STRICT pin
+      (consumer pins/core-py + byte-identity test — first vendored RUNTIME code). Voice follow-up:
+      **ARCH-58** `[release]` (migration, gated on `core-py-v1`). Bridge CORE-7 codes against the
+      design's §5 (base_class native, loader never in domain/, no golden drift, `list_registered`
+      for dump_catalog). Bridge — reconcile **CORE-7** (adopt the core-py registry for the
       driver axis, keep the config resolver local, no config→entry-point unification, loader in
       `utils/`/behind a port never `domain/`, zero new import-linter exceptions, no catalog
       drift; FIX the stale gate "voice BUILD-21" → "PROD-8 / core-py exists"; fold the dead
