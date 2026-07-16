@@ -1,5 +1,21 @@
 # Board journal — newest on top
 
+## 2026-07-17 — wakeword-training moved into the locveil org (owner research repo)
+
+Org housekeeping, owner-requested, same shape as the 2026-07-13 library moves: the
+microWakeWord training factory (Russian wake words «Ирина»/«Борис» for the ESP32
+satellites) transferred `droman42/wakeword-training` → `locveil/wakeword-training`.
+Name kept (library/tooling precedent — `locveil-*` is for product repos), visibility
+stays PRIVATE, and unlike the PyPI libraries there was no publisher prework: the repo
+has no CI and publishes nothing — its artifact channel is Hugging Face
+(`droman42/microwakeword-irina-ru`), which is untouched by a GitHub transfer, so the
+voice/satellite wake-pack pins (STAMPs reference the HF model, not the GitHub repo)
+need no re-pin. Local remote re-pointed; living old-owner URLs fixed in the repo's own
+`scripts/train_local.py` + `scripts/publish_hf.py` (@a1aa39f); historical
+`results/run_*/irina.json` manifests deliberately untouched — history stays. The repo
+remains a lightweight research spike: org membership does NOT mean the Locveil process
+kit. docs: none — sibling-repo op, no commons manifest node describes it.
+
 ## 2026-07-16 — PROD-8 COUNCIL DECIDED: core-py loader scope + sequencing (2 rounds)
 
 Convened PROD-8 (D-8 core-py bootstrap + the loader/logging extractions) as a council;
