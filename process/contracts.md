@@ -96,6 +96,12 @@ is acceptable. Reference: satellite OPS-9 (verified from checkout's exact
 clone-procedure replica AND live green, run 29415097500). The failure signature of a
 tag-less checkout is a false `TAG-MISSING` alarm on every owned STAMP that names a tag,
 with nothing wrong in the contracts (bridge run 29317709478 was the first live case).
+**v6 footnote (PROD-25 close, 2026-07-17):** the dud is checkout@v4's shallow-SHA
+path — on `actions/checkout@v6` the flag DOES deliver tags, proven live twice on the
+bridge (runs 29413490074 and 29436060503, guard green immediately after a bare-checkout
+3× TAG-MISSING failure). The explicit step stays the prescription because it is
+checkout-version-proof; the bridge's `fetch-tags: true` on v6 is the recorded working
+exception — do not "fix" it to the explicit form.
 The fix rides each consumer's contract-guard-v2 re-pin. It verifies what is
 generic and LOCAL: registry/layout shape, STAMP core present and well-formed, PIN.json
 well-formed, sha256 of local pinned copies match PIN.json, version-string consistency

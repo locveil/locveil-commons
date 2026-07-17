@@ -1,5 +1,21 @@
 # Board journal — newest on top
 
+## 2026-07-17 — PROD-25 CLOSED: all three close conditions verified in live CI
+
+The close was pure verification — the work had already happened in the consumer repos;
+this session checked run histories and wrote the evidence back. Commons: run 29435212549
+@ 8cb7880 executed the guard job green on the explicit-fetch workflow (two tag-naming
+owned STAMPs → a passing `--check` proves tag resolution). Voice: run 29435718102 @
+4175aeb (contains BUILD-39) ran the `contract-guard` job to success — every later green
+CI was a path-skip, checked job-by-job. Bridge answered the entry's open question with
+two live runs (29413490074, 29436060503, guard green right after the bare-checkout 3×
+TAG-MISSING dispatch): **checkout@v6 does not share #1467's behavior — `fetch-tags:
+true` genuinely works there.** §4 therefore gains a v6 footnote scoping the flag-form
+ban to v4's shallow-SHA path and protecting bridge's working flag-on-v6 from being
+"fixed" to the explicit form; the explicit step stays the prescription as the
+checkout-version-proof fix class. Entry moved to BOARD_DONE. docs: none — process file
+amended in place.
+
 ## 2026-07-17 — IMPL-7: the logo lands — packages/brand + kit `<Logo>` + Workbench top bar
 
 The owner's browser design session delivered the identity (mark 2b + wordmark B, drawn
