@@ -3,3 +3,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* One width for the wireframe's left rail: the top bar's logo region and the
+   plugin-pages sidebar share it BY CONSTRUCTION (owner amendment 2026-07-17, IMPL-7:
+   the logo region is exactly as wide as the plugin-functions region). */
+:root {
+  --wb-rail-w: 13rem;
+}

@@ -25,14 +25,19 @@ export const Variants: Story = {
   ),
 };
 
-/* Mirrors the Workbench top bar (stylebook §10): horizontal lockup at the width of
-   the function cluster on the right. */
+/* Mirrors the Workbench top bar: a logo region exactly as wide as the plugin-pages
+   sidebar (shell: --wb-rail-w = 13rem), tabs flush with the content area. */
 export const InChrome: Story = {
   render: () => (
-    <div className="flex h-14 items-center gap-3 rounded-xl border border-border bg-card px-4">
-      <Logo variant="horizontal" height={32} />
+    <div className="flex h-14 items-center rounded-xl border border-border bg-card">
+      <div className="flex w-52 shrink-0 items-center px-4">
+        <Logo variant="horizontal" height={32} />
+      </div>
+      <span className="ml-4 rounded-md bg-primary px-3 py-1 text-sm font-semibold text-primary-foreground">
+        Демо
+      </span>
       <div className="flex-1" />
-      <span className="text-sm font-semibold uppercase text-muted-foreground">ru</span>
+      <span className="pr-4 text-sm font-semibold uppercase text-muted-foreground">ru</span>
     </div>
   ),
 };

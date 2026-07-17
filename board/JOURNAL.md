@@ -16,6 +16,13 @@ The kit component wires colors internally (`--primary`/`--muted-foreground`) so 
 mis-wiring class dies at the API. Proven live: kit + workbench checks and builds
 green, storybook stories screenshot-verified on dark. docs: stylebook (§10 added).
 
+Amended same day off the owner's first live screenshot: "function cluster" was the
+wrong reading of the placement ruling — the logo gets a dedicated top-bar region
+exactly as wide as the **plugin-pages sidebar**, both consuming one `--wb-rail-w`
+(13rem) so equality holds by construction and the tabs start flush with the content
+area. Wireframe prose in workbench.md §3 carries the amendment; verified on the
+running shell.
+
 Org housekeeping, owner-requested, same shape as the 2026-07-13 library moves: the
 microWakeWord training factory (Russian wake words «Ирина»/«Борис» for the ESP32
 satellites) transferred `droman42/wakeword-training` → `locveil/wakeword-training`.

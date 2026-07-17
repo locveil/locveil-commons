@@ -25,7 +25,7 @@ export function PluginView({
 
   return (
     <>
-      <aside className="w-52 shrink-0 overflow-y-auto border-r border-border bg-card p-2">
+      <aside className="w-[var(--wb-rail-w)] shrink-0 overflow-y-auto border-r border-border bg-card p-2">
         <nav className="flex flex-col gap-0.5">
           {pages.map((p) => (
             <NavLink

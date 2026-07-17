@@ -43,7 +43,9 @@ Every Locveil UI surface belongs to exactly one class:
 
 The wireframe is ratified **as drawn**: top bar = logo · one tab per plugin · problem-
 report button top-right; left sidebar = the active plugin's pages/functions; main area =
-the selected page.
+the selected page. **Amendment (owner, 2026-07-17, IMPL-7):** the top bar carries a
+dedicated **logo region exactly as wide as the sidebar** (shared `--wb-rail-w`, 13rem),
+so the plugin tabs start flush with the content area.
 
 - **Granularity: repo = plugin.** One tab per product (Voice, Bridge, later Satellite).
   Per-device or per-feature drill-down is *pages*, never tabs — the tab bar must not

@@ -105,17 +105,19 @@ export function TopBar({ plugins, locale, onLocale, theme, onTheme }: TopBarProp
   const report = useReportHook(plugins, locale);
   return (
     <TooltipProvider delayDuration={300}>
-      <header className="flex h-14 shrink-0 items-center gap-3 border-b border-border bg-card px-4">
-        {/* Horizontal lockup at the width of the function cluster on the right
-           (owner ruling 2026-07-17, IMPL-7; stylebook §10). */}
-        <Logo variant="horizontal" height={32} />
-        <nav className="flex items-center gap-1">
+      <header className="flex h-14 shrink-0 items-center border-b border-border bg-card">
+        {/* Logo region — exactly the sidebar's width, so the tabs start flush with
+           the content area (owner wireframe amendment 2026-07-17, IMPL-7). */}
+        <div className="flex w-[var(--wb-rail-w)] shrink-0 items-center px-4">
+          <Logo variant="horizontal" height={32} />
+        </div>
+        <nav className="flex items-center gap-1 pl-4">
           {plugins.map((p, i) => (
             <PluginTab key={p.kind === "active" ? p.plugin.id : `${p.kind}-${i}`} entry={p} locale={locale} />
           ))}
         </nav>
         <div className="flex-1" />
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 pr-4">
           <Button
             variant="ghost"
             size="sm"

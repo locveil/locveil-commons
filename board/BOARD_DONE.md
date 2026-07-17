@@ -1046,6 +1046,14 @@ assertions.
       on dark (token-wired accent renders polished-steel bright, correct). Follow-ups
       open elsewhere: favicon adoption (mark-16) and consumer re-vendors ride the next
       ui-kit tag; `site/` consumes brand/ at PROD-9. docs: stylebook.
+      **AMENDED 2026-07-17 (owner, off the first live screenshot):** decision (4)'s
+      "function cluster" reading was wrong — the owner meant the **plugin-pages
+      sidebar**. Landed same day: the top bar gains a dedicated **logo region exactly
+      as wide as the sidebar** via one shared `--wb-rail-w` (13rem, shell.css) consumed
+      by both the TopBar region and the PluginView aside — same-width BY CONSTRUCTION,
+      tabs start flush with the content area. workbench.md §3 wireframe prose amended;
+      InChrome story re-mirrored. Verified on the live shell (:6107): region edge ==
+      sidebar edge, tab flush with content.
 
 ## HK — council topics
 
