@@ -19,6 +19,13 @@ color changes here, the component must be re-synced in the same change.
 | `locveil-wordmark.svg` | Wordmark alone. **≥18px ascender only.** |
 | `locveil-lockup-horizontal.svg` | Top bar, README headers. Default lockup. |
 | `locveil-lockup-stacked.svg` | Splash, empty states, square crops. |
+| `favicon.ico` | Generated multi-size ICO (16 from `mark-16`, 32/48 from `mark`; light fallbacks, transparent). For `/favicon.ico` slots; pair with the SVG icon link. |
+
+`favicon.ico` regeneration (when the marks or tokens change): render each frame with
+headless Chrome (`--default-background-color=00000000`, window-size = frame size, an
+`<img>` wrapper at exact px), then `convert fav-16.png fav-32.png fav-48.png favicon.ico`.
+Consumers (workbench `public/`, later `site/`) hold byte-identical COPIES — re-copy on
+change; this directory stays canonical.
 
 ## Color hooks
 

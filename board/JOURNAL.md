@@ -39,6 +39,12 @@ exactly as wide as the **plugin-pages sidebar**, both consuming one `--wb-rail-w
 area. Wireframe prose in workbench.md §3 carries the amendment; verified on the
 running shell.
 
+Second same-day amendment (owner: "why doesn't the workbench use the brand favicon?"
+— it didn't, the adoption was parked and no ico existed): favicon.ico generated into
+brand/ (multi-size, regen recipe documented), workbench adopts both forms via
+byte-identical public/ copies, index.html icon links + serve.mjs `.ico` MIME landed,
+both URLs verified 200 on the live shell. The IMPL-7 favicon follow-up is closed.
+
 Org housekeeping, owner-requested, same shape as the 2026-07-13 library moves: the
 microWakeWord training factory (Russian wake words «Ирина»/«Борис» for the ESP32
 satellites) transferred `droman42/wakeword-training` → `locveil/wakeword-training`.

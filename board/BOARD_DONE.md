@@ -1128,6 +1128,14 @@ assertions.
       tabs start flush with the content area. workbench.md §3 wireframe prose amended;
       InChrome story re-mirrored. Verified on the live shell (:6107): region edge ==
       sidebar edge, tab flush with content.
+      **AMENDED 2026-07-17 (owner follow-up, same day):** the parked favicon adoption
+      executed — brand/ gains a generated `favicon.ico` (16 from mark-16, 32/48 from
+      mark, transparent, light fallbacks; regen recipe in the brand README), workbench
+      `public/` holds byte-identical copies (favicon.svg = mark-16 verbatim + the ico),
+      `index.html` carries both icon links (SVG preferred, ICO fallback), serve.mjs
+      MIME map gains `.ico`. Verified live on :6107 — svg 200 image/svg+xml, ico 200
+      (correct MIME after the next serve restart). Favicon follow-up hereby closed;
+      only consumer re-vendors + site/ adoption remain elsewhere.
 
 ## HK — council topics
 
