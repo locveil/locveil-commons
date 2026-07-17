@@ -1,7 +1,7 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
-import { Button, Icon, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, cn } from "locveil-ui-kit";
+import { Button, Icon, Logo, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, cn } from "locveil-ui-kit";
 import type { Locale, PluginStatus } from "../contract";
 import type { LoadedPlugin } from "../loader";
 import { ls, t } from "../i18n";
@@ -106,7 +106,9 @@ export function TopBar({ plugins, locale, onLocale, theme, onTheme }: TopBarProp
   return (
     <TooltipProvider delayDuration={300}>
       <header className="flex h-14 shrink-0 items-center gap-3 border-b border-border bg-card px-4">
-        <div className="h-5 w-5 rounded-md bg-gradient-to-br from-primary to-foreground" aria-hidden />
+        {/* Horizontal lockup at the width of the function cluster on the right
+           (owner ruling 2026-07-17, IMPL-7; stylebook §10). */}
+        <Logo variant="horizontal" height={32} />
         <nav className="flex items-center gap-1">
           {plugins.map((p, i) => (
             <PluginTab key={p.kind === "active" ? p.plugin.id : `${p.kind}-${i}`} entry={p} locale={locale} />

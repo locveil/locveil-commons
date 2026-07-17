@@ -1020,6 +1020,32 @@ assertions.
       2026-07-15: **UI-23** (written back; synchronous re-point in the page wrapper —
       child-before-parent effect ordering makes a useEffect too late). docs: none —
       workbench.md + package README amended in place.
+- [x] **IMPL-7 — the Locveil logo: brand package + ui-kit `<Logo>` + Workbench top
+      bar** (filed AND done 2026-07-17 — owner delivered the browser-designed assets:
+      mark 2b, nested chevrons/roof + wordmark B, parted-veil `o`; 5 SVGs + usage
+      README, drawn in the chrome's icon language, 24px grid/stroke-2). Intake
+      analysis found the delivery's two self-flagged guesses were real defects: the
+      prescribed structure wiring (`hsl(var(--status-pristine))`) names a nonexistent
+      token AND targets a bare-hue token class — invalid CSS, invisible house; the
+      correct pair is `--primary` (form was right) + `--muted-foreground`. Fallback
+      hexes were ~20 chroma points off-token. **Owner decisions:** (1) canonical home
+      is an independently reusable `packages/brand/` (landing page, presentation
+      templates consume the raw SVGs) with the ui-kit component as its token-wired
+      rendition; (2) fallbacks snapped to exact token renditions — #2073B6/#51A6EC
+      accent, #607080/#8794A1 structure (locveil.css rendered to hex; re-snap when
+      tokens move); (3) **the Latin wordmark is universal** — no Cyrillic lockup ever,
+      closing the delivery's «локвейл» open item; (4) **Workbench top bar carries the
+      horizontal lockup** at the width of the right-hand function cluster
+      (`height={32}` → 124px ≈ the RU/EN+theme+report cluster), replacing the
+      IMPL-1 placeholder gradient square. Landed: `packages/brand/` (5 snapped SVGs +
+      corrected README), kit `<Logo>` (`logo.tsx`, variants mark/mark-16/wordmark/
+      horizontal/stacked, colors wired internally so consumers cannot mis-wire;
+      path data must stay byte-equal to brand SVGs), Identity/Logo stories,
+      TopBar swap, stylebook **§10**. Verified live: kit check+build green (30.8 kB),
+      workbench check+build green, storybook built and both stories screenshot-proven
+      on dark (token-wired accent renders polished-steel bright, correct). Follow-ups
+      open elsewhere: favicon adoption (mark-16) and consumer re-vendors ride the next
+      ui-kit tag; `site/` consumes brand/ at PROD-9. docs: stylebook.
 
 ## HK — council topics
 

@@ -1,0 +1,7 @@
+<svg class="lv" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-label="Locveil">
+<title>Locveil</title>
+<style>.lv{--a:var(--locveil-logo-accent,#2073B6);--s:var(--locveil-logo-structure,#607080)}@media(prefers-color-scheme:dark){.lv{--a:var(--locveil-logo-accent,#51A6EC);--s:var(--locveil-logo-structure,#8794A1)}}.lv .a{stroke:var(--a);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.lv .st{stroke:var(--s);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.lv .ad{fill:var(--a)}</style>
+<path class="st" d="M3 21V12L12 3L21 12V21Z"/>
+<path class="a" d="M7.5 15L12 10.5L16.5 15"/>
+<circle class="ad" cx="12" cy="18" r="1.2"/>
+</svg>

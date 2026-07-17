@@ -104,3 +104,22 @@ Tokens and this stylebook are commons-owned (PROD-10 lineage): changes land here
 ledger task and version with the package (`ui-kit-vX`). Product repos consume — they do
 not fork values. A visual decision not covered here goes back through a style-council
 round, not into a one-off hex in a component.
+
+## 10. The logo
+
+- **Mark 2b + wordmark B** (owner-picked in a browser design session, integrated
+  2026-07-17 as IMPL-7). Canonical assets + usage rules: `packages/brand/`. The kit's
+  `<Logo>` component is the token-wired rendition — accent = `--primary`, structure =
+  `--muted-foreground` — and is the way React surfaces render it; raw SVGs are for
+  favicons, `<img>`, `site/` and documents, where their built-in fallbacks apply.
+- Drawn in the chrome's icon language (§5): 24px grid, stroke-2, round caps/joins.
+  Primary mark ≥24px; the simplified `mark-16` owns 16px slots and favicons. Lockup
+  spacing derives from the mark box, `u = H/12`: gap `3u` horizontal / `4u` stacked,
+  clear space `2u`.
+- Two colors, never a third; **no amber** (§2) — a listening state animates the accent
+  dot/arcs, never recolors.
+- The brand SVGs' standalone fallback hexes are **exact renditions of the tokens**
+  (`#2073B6`/`#51A6EC` accent, `#607080`/`#8794A1` structure) — the one sanctioned
+  place hex literals mirror the tokens file; re-snap them whenever the tokens move.
+- **The Latin wordmark is universal** (owner ruling 2026-07-17): RU surfaces use it
+  as-is; no Cyrillic lockup exists or is planned.

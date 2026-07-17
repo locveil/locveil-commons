@@ -1,0 +1,25 @@
+<svg class="lv" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 209 54" width="209" height="54" role="img" aria-label="Locveil">
+<title>Locveil</title>
+<style>.lv{--a:var(--locveil-logo-accent,#2073B6);--s:var(--locveil-logo-structure,#607080)}@media(prefers-color-scheme:dark){.lv{--a:var(--locveil-logo-accent,#51A6EC);--s:var(--locveil-logo-structure,#8794A1)}}.lv .a{stroke:var(--a);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.lv .st{stroke:var(--s);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.lv .aw{stroke:var(--a);fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.lv .sw{stroke:var(--s);fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.lv .ad{fill:var(--a)}.lv .sd{fill:var(--s)}</style>
+<g transform="translate(2.7 2.7)">
+<g transform="translate(-8 -8) scale(2.6667)">
+<path class="st" d="M3 21V12L12 3L21 12V21Z"/>
+<path class="a" d="M6.5 13.5L12 8L17.5 13.5"/>
+<path class="a" d="M9 16L12 13L15 16"/>
+<circle class="ad" cx="12" cy="18.5" r="1"/>
+</g>
+<g transform="translate(60 48) scale(0.6207)">
+<path class="sw" d="M2.5 -58V0"/>
+<path class="aw" d="M41.2 -39.3A20 20 0 0 1 41.2 -0.7"/>
+<path class="aw" d="M30.8 -0.7A20 20 0 0 1 30.8 -39.3"/>
+<circle class="ad" cx="36" cy="-20" r="4"/>
+<path class="sw" d="M100.5 -33A20 20 0 1 0 100.5 -7"/>
+<path class="sw" d="M116 -40L134 0L152 -40"/>
+<path class="sw" d="M162 -20H202"/>
+<path class="sw" d="M202 -20A20 20 0 1 0 196.1 -5.9"/>
+<path class="sw" d="M214.5 -40V0"/>
+<circle class="sd" cx="214.5" cy="-52" r="3.5"/>
+<path class="sw" d="M230.5 -58V0"/>
+</g>
+</g>
+</svg>

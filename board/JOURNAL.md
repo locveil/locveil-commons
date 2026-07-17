@@ -1,6 +1,20 @@
 # Board journal — newest on top
 
-## 2026-07-17 — wakeword-training moved into the locveil org (owner research repo)
+## 2026-07-17 — IMPL-7: the logo lands — packages/brand + kit `<Logo>` + Workbench top bar
+
+The owner's browser design session delivered the identity (mark 2b + wordmark B, drawn
+in the chrome's own 24px/stroke-2 language) and this session integrated it. The
+delivery's own README flagged its two guesses and both were live defects — the
+structure-wiring recipe pointed at a nonexistent token whose real namesake holds a
+bare hue (`hsl(var(--lv-status-pristine))` = invalid CSS = invisible house outline),
+and all four standalone fallback hexes sat ~20 chroma points off-token. Owner rulings
+at integration: independent `packages/brand/` as the canonical, reuse-anywhere home;
+fallbacks snapped to exact token renditions; **Latin wordmark universal — the Cyrillic
+lockup question is closed as never**; the Workbench top bar carries the horizontal
+lockup at the function-cluster width (the IMPL-1 gradient-square placeholder retires).
+The kit component wires colors internally (`--primary`/`--muted-foreground`) so the
+mis-wiring class dies at the API. Proven live: kit + workbench checks and builds
+green, storybook stories screenshot-verified on dark. docs: stylebook (§10 added).
 
 Org housekeeping, owner-requested, same shape as the 2026-07-13 library moves: the
 microWakeWord training factory (Russian wake words «Ирина»/«Борис» for the ESP32
