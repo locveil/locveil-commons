@@ -178,6 +178,24 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       adoption write-backs arrive (owner ruling 2026-07-18)**; at close, also decide whether the
       parked logging extraction (ARCH-43 → OPS-14) spins off as its own entry or PROD-8 closes
       title-narrowed to the loader.
+      **Bridge adoption write-back (2026-07-18, evening) — CORE-7 executed; the bridge half of
+      the loader arc is done (status lives in the bridge ledger).** Vendored at **`core-py-v1.1`**
+      per the consumer note (v1 refused by construction — its tree predates the STAMP); the pin
+      was taken by the bridge's own vendored repin tool (`.repin.toml` core-py family + strict
+      PIN.json + byte-identity conformance test, the ARCH-58 shape; hashes bit-identical to
+      voice's pin). §5 conditions all held: singleton in `utils/` (never `domain/`), zero new
+      import-linter exceptions, registry re-keyed by class name (the configs' vocabulary),
+      fresh-discovery semantics kept for `/reload`; the dead `validate_class_references` folded
+      out with the swap. Verified by driving it: 9/9 drivers via `discover_providers
+      (base_class=DevicePort)` with an empty failure ledger; `dump_catalog` golden byte-identical
+      (79 devices) — no contract movement, as the council scoped. Bridge follow-ups filed off a
+      config-driven-loading analysis (voice's slim-image pattern, bridge dialect): **CORE-13**
+      (config-driven driver activation — the config tree already declares demand via
+      `device_class`, no new config format; failure policy decided WITH UI-20) and **OPS-35**
+      (per-driver pip EXTRAS + profile-driven slim images — deliberately NOT the
+      `EntryPointMetadata` quartet, which stays voice-side per the council; graduation only on a
+      genuine second metadata consumer). **Both adoption write-backs are now in** — the close +
+      the logging-extraction spin-off question are the board keeper's per the owner ruling.
       The board lists delegated IDs but never asserts their status — per-repo ledgers own it.
 - [ ] **PROD-9 — Landing page + first suite manifest** (D-11/D-12): `site/` on GitHub Pages
       at `locveil.com` — joint story, per-product blurbs, honest quickstart, routing only
