@@ -1,5 +1,26 @@
 # Board journal — newest on top
 
+## 2026-07-18 — PROD-8 CLOSED: the loader arc completes — both consumers live on core-py-v1.1
+
+Bridge's CORE-7 verified at close, condition by §5 condition: pin + owner STAMP
+byte-identical to `core-py-v1.1`, importable copy in `utils/` equal to the pin with the
+identity test wired, the driver axis live on `discover_providers("locveil_bridge.devices",
+base_class=DevicePort)` through a `utils/entry_points.py` singleton (never `domain/`),
+`class_loader.py` untouched since CORE-10, `validate_class_references` gone, and the
+dump_catalog golden byte-identical — no contract movement, exactly as the council
+scoped. With voice's ARCH-58 verified this morning, both consumers of the estate's
+first vendored RUNTIME code are pinned at the same tag with the same three-way
+byte-identity discipline, and bridge's pin hashes match voice's bit for bit. The arc's
+recorded lesson is the v1→v1.1 packaging correction: a tag must carry its STAMP, and
+the first strict pin proved it. Bridge filed CORE-13 + OPS-35 off its adoption
+analysis (config-driven activation, slim images — deliberately not the voice-side
+metadata quartet). **The parked logging extraction spins off as PROD-27, OPTIONAL and
+trigger-driven** (owner ruling at close): bridge OPS-12 stays the authored reference,
+voice ARCH-43 un-parks as the design task if it ever activates; PROD-8 closes on the
+loader alone. docs: none — the package README and design doc are the integrator
+surface, both current. contracts: none at close — the arc's surfaces carried their own
+verdicts. (Journal is over high-water — rotation due, its own commit per discipline.)
+
 ## 2026-07-18 — IMPL-8 DONE: guard v3.1 ARTIFACTS-PATH — and it bit its own author first
 
 The Option B ruling executed: every STAMP `artifacts` entry must be repo-root-relative

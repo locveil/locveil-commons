@@ -67,136 +67,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       write the ID back). Voice write-back — lead ID: **BUILD-18** + BUILD-28 (+ gate
       task ID pending). Bridge — OPS-15 (stands), CORE-8 (joins: secrets posture +
       the rotation op). Bridge write-back — lead ID: **OPS-15** + CORE-8.
-- [ ] **PROD-8 — core-py bootstrap + first two extractions** (D-8): `packages/core-py`
-      skeleton (own pyproject, `core-py-vX` tags), then the two designs — dynamic code
-      loader (voice ARCH-42; voice consumer #1, bridge #2 via CORE-7) and logging scheme
-      (voice ARCH-43; retires the BUG-30/OPS-12 hand-copy → bridge OPS-14).
-      **COUNCIL-DECIDED 2026-07-16 (PROD-8 council, 2 rounds; keepers voice+bridge —
-      satellite is not a core-py Python consumer).** Both support-with-conditions; both
-      confirm entry-points is the discovery spine (voice: 13 provider groups + one
-      `DynamicLoader`; bridge: `locveil_bridge.devices`, 9 drivers) and that bridge authored
-      the logging scheme (OPS-12 DONE → voice BUG-30 is the copy). **Decisions:**
-      **(1) Shared loader = the entry-point-group registry only** (voice's `DynamicLoader`
-      engine) — the genuine rule-of-two leaf. Voice's `EntryPointMetadata` build-time metadata
-      quartet (`get_python_dependencies`/`get_platform_support`/`get_supported_architectures`/
-      `get_platform_dependencies` — dependency-closure + the load-bearing arch gate) and all its
-      values stay voice-side; bridge's by-name config resolver (`class_loader.py`) stays
-      bridge-side. Each auxiliary graduates to core-py only on its own second consumer.
-      **(2) "Config-based driver loading" = unify resolution, keep entry points.** Replacing
-      entry points with runtime config-path discovery is REJECTED — it breaks the offline
-      catalog generator (`dump_catalog`) that builds the voice-pinned golden without loading a
-      single driver. CORE-7 stays a self-contained infra swap; no catalog-contract bump.
-      **(3) The UI/panel driver-availability gating is a SEPARATE bridge task**, never a rider
-      on CORE-7. Today the surface is split-brained (operational pages gate on loaded drivers →
-      404 + absent from catalog; config pages / nav / workbench still show configured-but-
-      unloaded devices). The invariant "no driver → no device pages AND config pages" is a
-      presentation + possible catalog-contract change; that task decides suppress-vs-surface.
-      **(4) Sequencing locks:** ARCH-50 is a HARD PREDECESSOR of ARCH-42 (its hardcodings
-      inventory feeds the loader design); the `packages/core-py` skeleton is cut AFTER ARCH-50 +
-      ARCH-42 land (surface known first); the logging extraction (ARCH-43 → OPS-14) is PARKED —
-      loader first, logging a later round (bridge's OPS-12 is the reference when it resumes).
-      **Delegations (board-as-outbox):** voice — reconcile **ARCH-42** scope to "extract the
-      entry-point-group discovery engine only; metadata contract + values stay voice-side;
-      preserve the `build_analyzer`→`get_provider_class`→classmethod seam"; confirm ARCH-50-first
-      and fold the dead `get_provider_capabilities` (`components/base.py:216`, zero call sites)
-      into ARCH-50's dead-code sweep; ARCH-43 parked. Voice write-back — lead ID: **ARCH-42**
-      (+ ARCH-50, ARCH-43) — **RECONCILED AT INTAKE 2026-07-16 (voice session), all three entries
-      amended in the voice ledger:** ARCH-42 narrowed to the entry-point-group registry only
-      (`utils/loader.py:133` `DynamicLoader`), with the `EntryPointMetadata` quartet
-      (`core/metadata.py:25`) + values explicitly voice-side, the `build_analyzer`→
-      `get_provider_class`→classmethod seam named as preserved, and ARCH-50 recorded as a hard
-      predecessor on both entries; ARCH-50 carries the dead `get_provider_capabilities`
-      (`components/base.py:216` — zero call sites VERIFIED at intake, resolves as delete per
-      `dead-code-remove-not-fix`); ARCH-43 marked PARKED. No scope drift found — the council's
-      voice-side claims all held against repo reality. **SEQUENCING LOCK DISCHARGED 2026-07-16
-      (voice session, same day):** ARCH-50 DONE (review + all 8 remediation tasks landed) →
-      ARCH-42 DONE — the design is AGREED and committed at
-      `../locveil-voice/docs/design/core_py_loader_extraction.md`. **The `packages/core-py` skeleton is UNBLOCKED**
-      ("surface known first" is satisfied). Surface summary for the skeleton cut: module
-      `entry_point_loader.py`, class `DynamicLoader` ONLY (no module-level singleton — consumers
-      own theirs); methods `discover_providers(namespace, enabled=None, base_class=None)` /
-      `get_provider_class(namespace, name, base_class=None)` (single-EP load) /
-      `list_available_providers` / `list_registered` (names without import) /
-      `get_discovery_failures` / `clear_cache`; Python 3.11, importlib.metadata only; own
-      pyproject + tests; tag **`core-py-v1`**. Consumption = vendored copy at tag with STRICT pin
-      (consumer pins/core-py + byte-identity test — first vendored RUNTIME code). Voice follow-up:
-      **ARCH-58** `[release]` (migration, gated on `core-py-v1`).
-      **Voice write-back (2026-07-18) — ARCH-58 DONE; voice's half of PROD-8 is CLOSED.** The
-      migration executed against **`core-py-v1.1`**: the FIRST strict pin refused v1 — the tag
-      was cut before the "PROD-8 amended" commit added the STAMP, so the v1 tree cannot satisfy
-      pins-complete-and-verbatim — and commons cut the v1.1 packaging correction (artifact
-      bytes diff-verified unchanged; STAMP note + board journal record it). Voice landed: the
-      `core-py` family in `.repin.toml` (the BUILD-43 sequencing held — declared once, new
-      format), strict pin + byte-identity test, `utils/entry_points.py` singleton, the full
-      20-file sweep, `startup_validation` on `list_registered`, DynamicLoader deleted from
-      `utils/loader.py`. Acceptance: suite 1433 green, analyzer JSON byte-identical ×6 profiles,
-      import contracts 11/11, guards + `repin --check --fail-on any` green. **CONSUMERS NOTE:
-      bridge CORE-7 vendors at `core-py-v1.1`** (not v1 — same bytes, but only v1.1's tree
-      carries the STAMP a conforming pin needs). Remaining in this entry: bridge CORE-7 + the
-      parked logging extraction. Bridge CORE-7 codes against the
-      design's §5 (base_class native, loader never in domain/, no golden drift, `list_registered`
-      for dump_catalog). Bridge — reconcile **CORE-7** (adopt the core-py registry for the
-      driver axis, keep the config resolver local, no config→entry-point unification, loader in
-      `utils/`/behind a port never `domain/`, zero new import-linter exceptions, no catalog
-      drift; FIX the stale gate "voice BUILD-21" → "PROD-8 / core-py exists"; fold the dead
-      `config/validation.py:89,94` pre-HK-8-prefix cleanup) AND file at intake the **new
-      UI/panel driver-availability gating task**. Bridge write-back — lead ID: **CORE-7** + the
-      new UI-gating ID — **RECONCILED AT INTAKE 2026-07-16 (bridge session), both delegations
-      executed:** CORE-7 reconciled as **(d) scope drifted → redefined** (owner consulted before
-      the edit per the bridge dialect's STOP rule) — narrowed to the entry-point-group registry
-      only, `utils/class_loader.py` kept bridge-side, the config→entry-point unification recorded
-      as REJECTED with the `dump_catalog` reason, and the stale **"voice BUILD-21"** gate corrected
-      to **"PROD-8 / core-py exists"**. Driver axis verified live: the `locveil_bridge.devices`
-      group, 9 drivers (`backend/pyproject.toml:98-107`) → `domain/devices/service.py:51-52`. The
-      dead-code fold VERIFIED at intake and folded into CORE-7: `validate_class_references`
-      (`infrastructure/config/validation.py:67-97`, the board's cited `:89,94` prefixes) has zero
-      call sites — `validate_device_configs` never calls it, so `device_class` is **never validated
-      at startup at all**. New UI-gating task filed: **UI-20** `[P1]` `[release]`.
-      **Intake correction — decision 3's "split-brained" wording understates it: the surface is
-      THREE-brained.** Beyond the raw-config-vs-loaded-driver split, (a) **room membership is a
-      loaded-driver surface too** since the 2026-06-08 refactor (`domain/rooms/service.py:203-240`
-      derives `room.devices` by walking `DeviceManager.devices`), so the device vanishes the moment
-      a room is selected — the nav only shows it unfiltered; and (b) a **third brain**,
-      `GET /devices/{id}/persisted_state` (`presentation/api/routers/state.py:75-92`), reads the
-      state store directly and answers **200 with a stale snapshot** for a device the rest of the
-      runtime denies exists. Root cause: `domain/devices/service.py:116-120` logs and skips with no
-      retained status — the deliberate opposite of the setup()-failure policy (`:154-183`, device
-      stays registered). UI-20 owns the suppress-vs-surface verdict and must make all three obey.
-      **SKELETON CUT 2026-07-18 (commons session): `packages/core-py/` EXISTS — tag
-      `core-py-v1`** (distribution `locveil-core-py` 1.0.0). `entry_point_loader.py` implements
-      the design's §2 surface exactly — class only, no module-level singleton, `importlib.metadata`
-      on py3.11 only, faithful cache + failure-ledger semantics plus the three agreed deltas
-      (`base_class=` rejection into the ledger, single-EP `get_provider_class`, import-free
-      `list_registered`); behavior suite 23 tests green; own pyproject + README per the guards'
-      precedent. Amended same day (owner: "no new contract?" — right): the owned surface
-      **`contracts/core-py/`** (STAMP `core-py` v1 + cross-ref README, registry row) landed per
-      `process/contracts.md` §2 — the pin convention requires the owner's STAMP verbatim inside
-      every consumer pin, and the first stamp already carries the `artifacts` completeness list
-      (exactly `entry_point_loader.py`; tests/pyproject never travel). **ARCH-58 (voice) and
-      CORE-7 (bridge) are UNBLOCKED** — they vendor at the tag with the strict pin +
-      byte-identity test (design §3/§5). **Entry stays OPEN until both
-      adoption write-backs arrive (owner ruling 2026-07-18)**; at close, also decide whether the
-      parked logging extraction (ARCH-43 → OPS-14) spins off as its own entry or PROD-8 closes
-      title-narrowed to the loader.
-      **Bridge adoption write-back (2026-07-18, evening) — CORE-7 executed; the bridge half of
-      the loader arc is done (status lives in the bridge ledger).** Vendored at **`core-py-v1.1`**
-      per the consumer note (v1 refused by construction — its tree predates the STAMP); the pin
-      was taken by the bridge's own vendored repin tool (`.repin.toml` core-py family + strict
-      PIN.json + byte-identity conformance test, the ARCH-58 shape; hashes bit-identical to
-      voice's pin). §5 conditions all held: singleton in `utils/` (never `domain/`), zero new
-      import-linter exceptions, registry re-keyed by class name (the configs' vocabulary),
-      fresh-discovery semantics kept for `/reload`; the dead `validate_class_references` folded
-      out with the swap. Verified by driving it: 9/9 drivers via `discover_providers
-      (base_class=DevicePort)` with an empty failure ledger; `dump_catalog` golden byte-identical
-      (79 devices) — no contract movement, as the council scoped. Bridge follow-ups filed off a
-      config-driven-loading analysis (voice's slim-image pattern, bridge dialect): **CORE-13**
-      (config-driven driver activation — the config tree already declares demand via
-      `device_class`, no new config format; failure policy decided WITH UI-20) and **OPS-35**
-      (per-driver pip EXTRAS + profile-driven slim images — deliberately NOT the
-      `EntryPointMetadata` quartet, which stays voice-side per the council; graduation only on a
-      genuine second metadata consumer). **Both adoption write-backs are now in** — the close +
-      the logging-extraction spin-off question are the board keeper's per the owner ruling.
-      The board lists delegated IDs but never asserts their status — per-repo ledgers own it.
 - [ ] **PROD-9 — Landing page + first suite manifest** (D-11/D-12): `site/` on GitHub Pages
       at `locveil.com` — joint story, per-product blurbs, honest quickstart, routing only
       (never duplicates per-repo reference docs); the calver suite manifest ("Locveil
@@ -239,5 +109,19 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       burst lands SEEN, not as a surprise. Closes when the first chain completes
       end-to-end and the re-pin is verified. IDs on record: bridge DRV-37 + VWB-39;
       satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
+- [ ] **PROD-27 — Logging-scheme extraction (OPTIONAL — spun off from PROD-8 at its
+      close, owner ruling 2026-07-18)** (D-8's second leaf, parked by the PROD-8 council:
+      "loader first, logging a later round"). Scope when activated: extract the shared
+      logging scheme — bridge **OPS-12** (DONE) is the authored reference implementation,
+      voice **BUG-30** is the hand-copy it retires (voice-side task: parked **ARCH-43**;
+      bridge-side cleanup: OPS-14). Home: `packages/core-py` (second module beside
+      `entry_point_loader.py`), tag = a `core-py-vX` minor/major per surface impact, strict
+      pin + byte-identity consumption exactly like the loader (the ARCH-58/CORE-7 shape is
+      the template). Rule-of-two is already satisfied in principle (the hand-copy pair IS
+      two consumers) — this entry is OPTIONAL and trigger-driven, not queued: activate on
+      owner interest, the next logging-shape pain in either repo, or a third consumer
+      (satellite firmware logging is NOT one — different runtime). No delegations until
+      activated; design-then-implement applies (ARCH-43 un-parks as the design task).
+
 ## IMPL — commons implementation
 
