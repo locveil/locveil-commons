@@ -240,7 +240,18 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       (voice-owned, doc-canonical — the shape today lives only in voice's trace-persistence
       design doc)
       + block re-pin (mechanical carve-out) + answer satellite's wake-pack-v1.x bump
-      confirmation. Voice write-back — lead ID pending. Bridge — guard sweep (contract-guard
+      confirmation. Voice write-back (2026-07-18) — lead ID **BUILD-41** (sub-IDs: BUILD-42,
+      the guard+block halves executed as ONE commit per the keepers' condition; BUILD-43 repin
+      adoption — `.repin.toml` with the catalog multi-dest + the `[[tool]]` manifest, dry-run
+      verified both dests at catalog-v1.7; **DOC-14** the trace-format contract —
+      `trace-format-v1` cut doc-canonical on `docs/guides/tracing.md` with a version-triple
+      test; found live: the commons docs-manifest schema caps `surfaces` at 10, so voice's
+      trace-format glob-trigger mapping waits for the next schema bump). The satellite filing
+      **BUILD-44 ANSWERED same day** (tagged-bumps-only + flat-sha256-enumeration
+      parse-stability across v1.x + drift re-stamp & immutable `/resolve/<revision>/` URLs at
+      the cut; execution filed as voice ASSET-6, gated on the next trained words); ARCH-58
+      annotated to declare the core-py family in the new `.repin.toml` format. Status lives in
+      the voice ledger. Bridge — guard sweep (contract-guard
       v3 + scope-v7 + verdict date + third block, one OPS task per its round-1 condition) +
       repin adoption (family config: report-protocol now, workbench pin when stamped) + the
       workbench-plugin CI job (owed regardless — zero coverage today) + satellite's
