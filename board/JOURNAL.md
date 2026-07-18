@@ -1,5 +1,18 @@
 # Board journal — newest on top
 
+## 2026-07-18 — IMPL-9: the rotation that refused — scope-guard v7.2
+
+The owner-ordered journal rotation refused with "fewer than 2 dated sections" on a
+journal carrying eight days — the DATED pattern wanted the date flush against the
+heading marks, so the commons `## date — …` style parsed as zero sections; the
+voice/bridge bullet style masked the bug because their dates ARE flush. One-character
+class of fix (`\s*`), verified against the live journal (8 day sections), shipped as
+scope-v7.2 / 1.4.1 with the STAMP bump in the same change — CONTENT-DRIFT would have
+demanded it anyway, which is the day's now-familiar refrain: fifth self-catch. The
+rotation itself follows in its own commit, per the discipline the fixed tool enforces.
+contracts: scope-v7.2 cut (bug-fix minor); re-pin owed: voice, bridge, satellite
+(advisory nags). docs: none — guard internals.
+
 ## 2026-07-18 — PROD-8 CLOSED: the loader arc completes — both consumers live on core-py-v1.1
 
 Bridge's CORE-7 verified at close, condition by §5 condition: pin + owner STAMP

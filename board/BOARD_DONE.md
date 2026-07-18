@@ -1460,6 +1460,23 @@ assertions.
       contract-guard-v3.1 cut; re-pin owed: voice, bridge, satellite (their `[[tool]]`
       manifests nag from this tag; re-vendor is a one-commit quick task each).
 
+- [x] **IMPL-9 — scope-guard v7.2: journal rotation parsed ##-style journals as ZERO
+      sections** (`packages/scope-guard`; born-done 2026-07-18, found executing the
+      owner-ordered rotation minutes after PROD-8's close pushed the journal over
+      high-water). The `DATED` pattern demanded the date flush against the heading marks
+      (`^(?:#{2,3}|- \*\*)\d{4}…`), but the commons journal style is `## 2026-07-18 — …`
+      with a space — every line fell into "header", `dated_sections` returned zero day
+      units, and `--rotate journal` refused with "fewer than 2 dated sections". The
+      voice/bridge bullet style (`- **date`) puts the date flush against the markers, so
+      their rotations worked and the bug stayed invisible until the first ##-style
+      rotation — this one. Fix: `\s*` after the heading marks; verified: 8 day sections
+      parse, rotation executes (its own commit, per discipline). Script 1.4.1, tag
+      **`scope-v7.2`**, STAMP 7.1→7.2 in the same change (block text unchanged — the
+      single-pin lane carries a no-op for block consumers). docs: none — guard internals;
+      convention docs unaffected. contracts: scope-v7.2 cut (bug-fix minor); re-pin owed:
+      voice, bridge, satellite — advisory `[[tool]]` nags, one-commit quick tasks riding
+      whenever each repo commits next.
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;
