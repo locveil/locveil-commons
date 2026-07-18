@@ -253,5 +253,20 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       delegated IDs but never asserts their status — per-repo ledgers own it. Sequencing:
       commons build first (repin-v1 + guard tags are what the sweeps vendor); satellite's
       major-gap severity stays advisory until FW first light (§5); nothing here gates FW-2.
+      **PROGRESS 2026-07-18 — item (1) DONE: `packages/repin/` EXISTS, tag `repin-v1`**
+      (distribution `locveil-repin` 1.0.0, stdlib single file). Engine promoted faithfully +
+      the HK-12 deltas: per-repo `.repin.toml` (families/dests/tools; `pinned_by` +
+      `default_fail_on` config), `--fail-on none|major|any` severity ladder, remote-first
+      tokenless `ls-remote` with stale-clone fallback (WARN + fetch age) and offline
+      no-source degradation (warn at none/major, fail at any), untagged-family drift check,
+      `check_only` families (repin refused, check allowed), commons-only cross-repo dest
+      validation, `[[tool]]` vendored-tools manifest. Behavior suite: 15 tests on real
+      throwaway git repos, green. Owned surface `contracts/repin/` (STAMP v1 + `artifacts`
+      list + registry row) cut IN THE SAME CHANGE as the tag — §2–3 walked at creation, per
+      this very council. Commons adopted: `.repin.toml` (catalog family `check_only` —
+      voice's multi-dest stamps it; crossover-fixtures joins at its strict-PIN task) +
+      pre-commit warn stage in `hooks/pre-commit`; live check green (catalog current at
+      v1.7 via real ls-remote). Product sweeps may now vendor at `repin-v1`; guard v3/v7
+      (items 2–3) are the remaining commons build.
 
 ## IMPL — commons implementation

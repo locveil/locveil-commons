@@ -1,5 +1,28 @@
 # Board journal — newest on top
 
+## 2026-07-18 — PROD-26 item 1: repin promoted — `packages/repin/` @ `repin-v1`
+
+The HK-12 centerpiece lands hours after the decision. Voice's BUILD-24 engine promoted
+faithfully — registry-anchored newest-tag parsing, fetch-at-tag + sha256 + PIN.json with
+mirrored owner-STAMP keys, multi-dest one-run writes — with the council's deltas built
+in: topology moved wholesale into per-repo `.repin.toml` (the tool carries none), the §5
+severity ladder as `--fail-on none|major|any` (pre-commit / ordinary CI / release gates),
+remote-first tokenless `ls-remote` with satellite's stale-clone fallback (WARN + fetch
+age) and never-network-required-to-commit degradation, untagged families drift-checked
+locally and warn-skipped without a source, `check_only` for pins another repo's flow
+stamps, cross-repo dest writes validated commons-only, and the `[[tool]]` vendored-tools
+manifest so tag↔vendored-copy stops living in prose. 15 behavior tests on real throwaway
+git repos, all green. Commons ate its own cooking in the same commit: `.repin.toml`
+(catalog check_only under voice's multi-dest authority), a warn-only pre-commit stage,
+and — per this very council's ruling — the owned surface `contracts/repin/` (STAMP v1
+with `artifacts` list + registry row) cut in the SAME change as the tag, not after a
+prompt. Live check green: catalog current at v1.7 over real ls-remote. Voice BUILD-43 and
+the bridge/satellite sweeps can now vendor at `repin-v1`; guard v3/v7 are the remaining
+commons build. contracts: repin STAMP v1 cut (new owned surface, tag `repin-v1`); no
+consumer re-pins owed yet — adoption rides the PROD-26 sweeps. docs: none —
+packages/README.md row added in the same change; the package README is the consumer doc
+(guards precedent).
+
 ## 2026-07-18 — HK-12 DECIDED: convention-enforcement hardening (council, 2 rounds)
 
 Seeded by the owner minutes after catching the PROD-8 contract-surface miss ("no new

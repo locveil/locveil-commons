@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "locveil-repin"
+version = "1.0.0"
+description = "Locveil consumed-contract re-pin + staleness check (HK-12/PROD-26) — promoted voice BUILD-24 engine, config-driven, stdlib-only"
+requires-python = ">=3.11"
+license = "MIT"
+
+[project.scripts]
+repin = "repin:main"
+
+[tool.setuptools]
+py-modules = ["repin"]

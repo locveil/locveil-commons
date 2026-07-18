@@ -1,0 +1,12 @@
+{
+  "contract": "repin",
+  "version": "1",
+  "tag": "repin-v1",
+  "date": "2026-07-18",
+  "owner_repo": "locveil-commons",
+  "artifact": "packages/repin/repin.py",
+  "artifacts": ["packages/repin/repin.py"],
+  "design": "HK-12 council decision (board/BOARD_DONE.md) + process/contracts.md §5 severity ladder",
+  "distribution": "locveil-repin 1.0.0",
+  "note": "Cross-reference stamp (PROD-26): the tool stays runnable in packages/repin/ per the stays-in-home rule. Pinned set = repin.py only; each consumer's .repin.toml is repo-owned config and never travels. Consumers vendor at repin-vN (scope-guard model) and list the tool in their own [[tool]] manifest so the vendored copy watches its own staleness."
+}

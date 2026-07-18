@@ -1,0 +1,29 @@
+# Commons repin config (HK-12/PROD-26; tool: packages/repin/repin.py, severity:
+# process/contracts.md §5). Families this repo CONSUMES.
+#
+# NOT listed (deliberately):
+# - crossover-fixtures: co-owned legacy pin, no tag family and no PIN.json yet — the
+#   strict PIN arrives with the next fixtures task, which also adds the family here.
+# - [[tool]] entries: commons OWNS the shared tools (scope-guard, contract-guard, repin);
+#   the vendored-tools manifest is a consumer-repo concern.
+
+[repin]
+pinned_by = "locveil-commons packages/repin (PROD-26)"
+default_fail_on = "major"   # ordinary-CI severity per §5; release gates pass --fail-on any
+
+[[family]]
+name = "catalog"
+owner_repo = "locveil-bridge"
+owner_dir = "../locveil-bridge"
+owner_url = "https://github.com/locveil/locveil-bridge.git"
+files = ["contracts/catalog/catalog.golden.json",
+         "contracts/catalog/openapi.json",
+         "contracts/catalog/STAMP.json"]
+mirror = ["bridge_commit", "catalog_version"]
+# One-way inward pin OWNED BY LOCVEIL-VOICE: its re-pin flow stamps this repo's copy in
+# the same multi-dest run as its own (never diverge). Commons checks freshness only.
+check_only = true
+managed_by = "locveil-voice"
+[[family.dest]]
+path = "contracts/pins/catalog"
+conformance = "eval/tests/test_contracts_pin.py"

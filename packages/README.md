@@ -18,3 +18,6 @@ Packages:
   favicons, and later `site/`.
 - **scope-guard** / **contract-guard** — the process guards (`scope-vX`,
   `contract-guard-vX`), vendored by all repos.
+- **repin** — HK-12/PROD-26: consumed-contract re-pin + staleness check (`repin-vX`),
+  the promoted voice BUILD-24 engine; config-driven via each repo's `.repin.toml`,
+  vendored by all repos.
