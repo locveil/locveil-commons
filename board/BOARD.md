@@ -221,123 +221,23 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       burst lands SEEN, not as a surprise. Closes when the first chain completes
       end-to-end and the re-pin is verified. IDs on record: bridge DRV-37 + VWB-39;
       satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
-- [ ] **PROD-26 — HK-12 execution: convention-enforcement hardening** (decision of record:
-      HK-12 in `BOARD_DONE.md`, decided 2026-07-18; normative severity policy already landed
-      as `process/contracts.md` §5 in the HK-12 landing commit). **Commons build (this
-      repo):** (1) `packages/repin/` — promote the voice BUILD-24 engine (generic ~120 lines:
-      registry-keyed newest-tag parser, fetch-at-tag + sha256 + PIN.json writer, `--check`,
-      CLI) with per-repo TOML family config (multi-dest + per-dest conformance + `pinned_by`
-      as config; multi-dest writes legal only into commons), remote-first tokenless
-      `ls-remote` + offline fallback (WARN + fetch age), untagged-family skip-warn in CI
-      mode, vendored-tools-manifest family kind; tag **`repin-v1`** + `contracts/repin/`
-      STAMP + registry row from day one. (2) contract-guard v3: registry-keyed orphan-tag
-      rule, content-drift rule (`git show tag:path` vs HEAD), `vendorable_roots` explicit
-      config (commons: `packages/*`; products default empty), mid-bump local tolerance
-      (hook warns / CI strict); tag `contract-guard-v3`. (3) scope-guard v7: `contracts:`
-      verdict line ("created, bumped, or first consumed"; owner bumps record `re-pin owed:
-      <consumers>` — normative; per-repo `contracts_verdict_since`, DONE frozen) +
-      unknown-prefix rule; tag scope-v7; `process/ledger-discipline.md` gains the verdict
-      spec. (4) Pinned contract-triad block: source in `process/claude-blocks/`, digest only
-      (STAMP+tag+registry same change; bump = tag+STAMP together; pins complete & verbatim;
-      consumers move only by re-pin tasks). (5) Commons stamps: `contracts/workbench/`
-      (contract types + runtime-config schema + manifest-fragment schema + peers semantics),
-      `contracts/ui-kit/`, STAMP folders for scope-guard + contract-guard (closing the
-      registry cross-reference gap); eval deferral + the non-candidate list recorded in
-      `contracts/README.md`. Commons adopts its own medicine in the same arc (verdict line
-      on, vendorable_roots set, repin config for its consumed pins). **Delegations
-      (board-as-outbox, ONE sweep per repo — the keepers' sequencing condition):**
-      voice — BUILD-41 (contract-guard v3 re-vendor) + BUILD-42 (scope-v7 + verdict date) +
-      BUILD-43 (adopt vendored repin at `repin-v1`, convert `FAMILIES` to config, keep
-      `make repin`/`repin-check`, pre-commit warn stage; SEQUENCED BEFORE ARCH-58 so the
-      core-py family is declared once in the new format) + the trace-format contract task
-      (voice-owned, doc-canonical — the shape today lives only in voice's trace-persistence
-      design doc)
-      + block re-pin (mechanical carve-out) + answer satellite's wake-pack-v1.x bump
-      confirmation. Voice write-back (2026-07-18) — lead ID **BUILD-41** (sub-IDs: BUILD-42,
-      the guard+block halves executed as ONE commit per the keepers' condition; BUILD-43 repin
-      adoption — `.repin.toml` with the catalog multi-dest + the `[[tool]]` manifest, dry-run
-      verified both dests at catalog-v1.7; **DOC-14** the trace-format contract —
-      `trace-format-v1` cut doc-canonical on `docs/guides/tracing.md` with a version-triple
-      test; found live: the commons docs-manifest schema caps `surfaces` at 10, so voice's
-      trace-format glob-trigger mapping waits for the next schema bump). The satellite filing
-      **BUILD-44 ANSWERED same day** (tagged-bumps-only + flat-sha256-enumeration
-      parse-stability across v1.x + drift re-stamp & immutable `/resolve/<revision>/` URLs at
-      the cut; execution filed as voice ASSET-6, gated on the next trained words); ARCH-58
-      annotated to declare the core-py family in the new `.repin.toml` format. Status lives in
-      the voice ledger. Bridge — guard sweep (contract-guard
-      v3 + scope-v7 + verdict date + third block, one OPS task per its round-1 condition) +
-      repin adoption (family config: report-protocol now, workbench pin when stamped) + the
-      workbench-plugin CI job (owed regardless — zero coverage today) + satellite's
-      device-integration-v1.1 minor-tag request (repo-to-repo). Bridge write-back (2026-07-18) —
-      lead ID **OPS-32** (guard + block halves as ONE commit per the keepers' round-1 condition;
-      `.contract-guard.toml` born with explicitly empty `vendorable_roots`, the keeper's recorded
-      posture; `contracts_verdict_since = 2026-07-18`). Sub-IDs: **OPS-33** repin adoption
-      (`.repin.toml` = report-protocol family + the `[[tool]]` manifest at
-      scope-v7.1/contract-guard-v3/repin-v1; ordinary CI at `--fail-on major`; the workbench
-      family joins when commons ships the machine schemas at the next workbench bump) and
-      **OPS-34** the workbench-plugin CI job (sibling commons checkout + ui-kit build — the
-      `file:` deps). The satellite filing executed as **VWB-42**: `device-integration-v1.1` cut
-      with an artifacts-enumerated STAMP (repo-root-relative paths), arming CONTENT-DRIFT for the
-      family; re-pin owed: satellite (their DES-4 takes the first pin). Found live by the first
-      v3 run: the catalog STAMP's pre-v3 `artifacts` entries are bare names where v3 reads
-      repo-root-relative — a latent root-README false-drift trap, filed bridge-side as VWB-43
-      (fix rides the next catalog cut). Status lives in the bridge ledger. Satellite — guard sweep + repin adoption (hook stage with offline fallback +
-      the same freshness check inside `publish_model_pack.py verify/publish`) + the
-      `contracts/README.md:35` drift one-liner (contract-guard-v1 → v2, found live in HK-12
-      round 2) + born-stamped clauses in DES-5 and the D-16 Stage-2 design + execute the two
-      greenlit repo-to-repo filings. Satellite write-back (2026-07-18) — lead ID **OPS-11**
-      (sub-IDs OPS-12 guard+block sweep, OPS-13 repin adoption; the two filings executed
-      repo-to-repo: voice **BUILD-44** (wake-pack bump confirmation — plus a same-day
-      addendum: the satellite's OPS-13 smoke test found the published pack ALREADY drifted,
-      HF mutable-ref URLs) and bridge **VWB-42** (device-integration-v1.1 minor tag); status
-      lives in the satellite ledger). The board lists
-      delegated IDs but never asserts their status — per-repo ledgers own it. Sequencing:
-      commons build first (repin-v1 + guard tags are what the sweeps vendor); satellite's
-      major-gap severity stays advisory until FW first light (§5); nothing here gates FW-2.
-      **PROGRESS 2026-07-18 — item (1) DONE: `packages/repin/` EXISTS, tag `repin-v1`**
-      (distribution `locveil-repin` 1.0.0, stdlib single file). Engine promoted faithfully +
-      the HK-12 deltas: per-repo `.repin.toml` (families/dests/tools; `pinned_by` +
-      `default_fail_on` config), `--fail-on none|major|any` severity ladder, remote-first
-      tokenless `ls-remote` with stale-clone fallback (WARN + fetch age) and offline
-      no-source degradation (warn at none/major, fail at any), untagged-family drift check,
-      `check_only` families (repin refused, check allowed), commons-only cross-repo dest
-      validation, `[[tool]]` vendored-tools manifest. Behavior suite: 15 tests on real
-      throwaway git repos, green. Owned surface `contracts/repin/` (STAMP v1 + `artifacts`
-      list + registry row) cut IN THE SAME CHANGE as the tag — §2–3 walked at creation, per
-      this very council. Commons adopted: `.repin.toml` (catalog family `check_only` —
-      voice's multi-dest stamps it; crossover-fixtures joins at its strict-PIN task) +
-      pre-commit warn stage in `hooks/pre-commit`; live check green (catalog current at
-      v1.7 via real ls-remote). Product sweeps may now vendor at `repin-v1`; guard v3/v7
-      (items 2–3) are the remaining commons build.
-      **PROGRESS 2026-07-18 (same day) — items (2), (3), (5) DONE.** contract-guard
-      **v3** (script 3.0.0 — major now tracks the tag family; tag `contract-guard-v3`):
-      ORPHAN-TAG (registry-keyed, reverse of TAG-MISSING), CONTENT-DRIFT (STAMPs carrying
-      `artifacts` are byte-frozen at their tag; package-style contracts opt out by not
-      enumerating), VENDORABLE-UNREGISTERED (`.contract-guard.toml`: `vendorable_roots` —
-      commons sets `packages/*` — + `non_contract` + `contract_names`), and `--relax-tags`
-      (hook warns mid-bump, CI strict; the hook line updated). scope-guard **v7** (1.4.0,
-      tag `scope-v7`): CONTRACTS-VERDICT (per-repo `contracts_verdict_since`; commons cut
-      over 2026-07-18, HK-12's own entry retro-carries the line per the HK-6 rollout
-      precedent) + UNKNOWN-PREFIX; spec landed as `process/ledger-discipline.md` §7. All
-      new rules smoke-tested on synthetic repos (orphan/drift/vendorable/relax;
-      verdict-present vs -missing vs pre-cutover; rogue prefix) and both guards run green
-      live. Item (5) stamps cut: `contracts/scope/` + `contracts/contract-guard/`
-      (drift-checked `artifacts`, first stamp of each family — v1..v6 / v1..v2 recorded
-      as frozen pre-stamp history) and package-style `contracts/ui-kit/` +
-      `contracts/workbench/` at their existing v1.2 tags (deliberately no byte
-      enumeration — HEAD advances between tags; the workbench manifest-fragment +
-      runtime-config JSON Schemas are RECORDED OWED at the next workbench bump); registry
-      updated incl. the non-candidate record.
-      **PROGRESS 2026-07-18 (same day) — item (4) DONE; THE COMMONS BUILD IS COMPLETE.**
-      The `contract-triad` pinned block authored (`process/claude-blocks/contract-triad.md`
-      — 4 digest invariants: surface-with-the-artifact, pins-complete-and-verbatim,
-      contracts-verdict, staleness ladder), pinned into commons' own CLAUDE.md + hashed in
-      `.scope-guard.toml`, shipped at **`scope-v7.1`** (blocks version with scope tags per
-      HK-2 single-pin; additive — script bytes unchanged from v7, STAMP bumped 7→7.1 in
-      the same change). **The product sweeps vendor `scope-v7.1` + `contract-guard-v3` +
-      `repin-v1` in one pass each** (v7.1 supersedes the v7 reference above). **ENTRY
-      STAYS OPEN until all three product write-backs arrive (owner ruling 2026-07-18)** —
-      commons has nothing left to build; what remains is delegation execution + IDs
-      written back, per board-as-outbox.
-
 ## IMPL — commons implementation
+
+- [ ] **IMPL-8 — contract-guard v3.1: ARTIFACTS-PATH rule (Option B — owner pick
+      2026-07-18 at PROD-26 close)** (`packages/contract-guard`): every entry in a STAMP's
+      `artifacts` list MUST be repo-root-relative and resolve at HEAD; a bare/ambiguous
+      name FAILS (`ARTIFACTS-PATH`). Kills the false-drift class bridge VWB-43 found at
+      OPS-32's first v3 run: v3 resolves artifacts from the repo root, so the catalog
+      STAMP's bare `README.md` compares the ROOT readme on both sides (green by luck
+      until the next root-README edit → baffling CONTENT-DRIFT on the catalog family) and
+      its `catalog.golden.json`/`openapi.json` degrade to CONTENT-UNVERIFIABLE. Option A
+      (folder-first resolution) REJECTED — one canonical path form beats two coexisting
+      conventions. **Rollout coupling is real and sequenced by design:** bridge's catalog
+      STAMP violates the rule and a STAMP is tag bytes, so bridge re-vendors v3.1 only
+      AFTER its VWB-43 catalog cut rewrites the three entries as `contracts/catalog/…`
+      (from the v3.1 tag its `[[tool]]` manifest nags — correct and advisory); voice and
+      satellite stamps are repo-root already and may re-vendor freely; commons' own
+      stamps all conform. The legacy singular `artifact` field stays informational —
+      never validated (report-protocol's folder-relative singular is frozen history).
+      Deliverable: rule + synthetic smoke tests per the v3 pattern, tag
+      `contract-guard-v3.1` + STAMP bump in the same change.

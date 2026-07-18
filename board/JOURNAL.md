@@ -1,5 +1,31 @@
 # Board journal — newest on top
 
+## 2026-07-18 — PROD-26 CLOSED: the hardening is live in all four repos — and it already earns its keep
+
+Decided in the morning (HK-12), built by mid-day, adopted and verified by evening —
+the fastest decision-to-org-wide-enforcement arc the estate has run. All three product
+sweeps landed same-day and each was independently verified from commons: vendored
+scripts byte-compared against the tags, block hashes exact, verdict cutovers set, hooks
+staged, live guard + repin runs green, CI checked job-by-job (the PROD-25 lesson).
+Satellite OPS-11/12/13 set the pace and improved on the plan twice (declared-ahead
+device-integration family = a visible nag instead of a forgotten pin; the publish-tool
+freshness gate). Voice BUILD-41/42/43 + DOC-14 cut the estate's fourth doc-canonical
+contract (trace-format-v1, version-triple-tested) and answered BUILD-44 with teeth
+(tagged-bumps-only + immutable /resolve/ URLs). Bridge OPS-32/33/34 + VWB-42 closed its
+plugin CI hole — first live run failed on exactly the new job, proving the gate gates —
+and cut device-integration-v1.1 STAMP-in-tree, applying the core-py packaging lesson
+hours after it was learned. **Three real defects caught on day one:** the published
+wake pack had already drifted on HF mutable refs; core-py-v1 couldn't satisfy a
+conforming pin (→ v1.1); and bridge's bare-name catalog artifacts hide a
+false-CONTENT-DRIFT trap — VWB-43 bridge-side, and commons **IMPL-8** filed at close
+(owner pick: Option B, one canonical repo-root path form, loud ARTIFACTS-PATH failure;
+rollout sequenced so bridge re-vendors v3.1 only after its VWB-43 catalog cut).
+Residuals ride their recorded vehicles: workbench machine schemas at its next bump,
+the docs-manifest 10-surface cap at its next bump. PROD-8 remains the only open thread
+of the arc (bridge CORE-7 + the parked logging decision). docs: none — closure; the
+execution items carried their own verdicts. contracts: none — the close moves no
+surface (every surface cut during execution carried its own verdict).
+
 ## 2026-07-18 — PROD-8: core-py-v1.1 — packaging correction found by the first consumer pin
 
 Voice's ARCH-58 pin run (the first live consumer of both `core-py` AND the new repin
