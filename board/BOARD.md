@@ -268,8 +268,20 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       v3 + scope-v7 + verdict date + third block, one OPS task per its round-1 condition) +
       repin adoption (family config: report-protocol now, workbench pin when stamped) + the
       workbench-plugin CI job (owed regardless — zero coverage today) + satellite's
-      device-integration-v1.1 minor-tag request (repo-to-repo). Bridge write-back — lead ID
-      pending. Satellite — guard sweep + repin adoption (hook stage with offline fallback +
+      device-integration-v1.1 minor-tag request (repo-to-repo). Bridge write-back (2026-07-18) —
+      lead ID **OPS-32** (guard + block halves as ONE commit per the keepers' round-1 condition;
+      `.contract-guard.toml` born with explicitly empty `vendorable_roots`, the keeper's recorded
+      posture; `contracts_verdict_since = 2026-07-18`). Sub-IDs: **OPS-33** repin adoption
+      (`.repin.toml` = report-protocol family + the `[[tool]]` manifest at
+      scope-v7.1/contract-guard-v3/repin-v1; ordinary CI at `--fail-on major`; the workbench
+      family joins when commons ships the machine schemas at the next workbench bump) and
+      **OPS-34** the workbench-plugin CI job (sibling commons checkout + ui-kit build — the
+      `file:` deps). The satellite filing executed as **VWB-42**: `device-integration-v1.1` cut
+      with an artifacts-enumerated STAMP (repo-root-relative paths), arming CONTENT-DRIFT for the
+      family; re-pin owed: satellite (their DES-4 takes the first pin). Found live by the first
+      v3 run: the catalog STAMP's pre-v3 `artifacts` entries are bare names where v3 reads
+      repo-root-relative — a latent root-README false-drift trap, filed bridge-side as VWB-43
+      (fix rides the next catalog cut). Status lives in the bridge ledger. Satellite — guard sweep + repin adoption (hook stage with offline fallback +
       the same freshness check inside `publish_model_pack.py verify/publish`) + the
       `contracts/README.md:35` drift one-liner (contract-guard-v1 → v2, found live in HK-12
       round 2) + born-stamped clauses in DES-5 and the D-16 Stage-2 design + execute the two
