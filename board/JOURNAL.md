@@ -21,6 +21,17 @@ logging-extraction spin-off question is parked with it. docs: none — packages/
 planned-list refreshed to reality in the same change; no manifest node covers
 `packages/core-py` (integrator surface, own README).
 
+Amended same day off the owner's "no new contract?": the cut had skipped the owner-side
+contract surface the pin convention presupposes — `contracts/pins/core-py/` in each
+consumer must hold the owner's STAMP.json verbatim, which therefore has to exist.
+`contracts/core-py/` landed in the docs-manifest cross-reference style (artifact keeps
+its importable home in `packages/core-py/`; the folder holds STAMP + pointer README;
+registry row added). STAMP `core-py` version "1" ↔ tag `core-py-v1` (the guard's
+tag==contract-vVersion rule), and — first stamp of a new family — it already carries the
+`artifacts` completeness list per the HK-5 forward requirement: exactly
+`entry_point_loader.py`; tests/pyproject/README are owner-side tooling and never travel.
+contract-guard green (sole warning is the pre-existing crossover-fixtures PIN-PENDING).
+
 ## 2026-07-17 — PROD-25 CLOSED: all three close conditions verified in live CI
 
 The close was pure verification — the work had already happened in the consumer repos;

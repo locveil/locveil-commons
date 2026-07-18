@@ -155,8 +155,13 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       on py3.11 only, faithful cache + failure-ledger semantics plus the three agreed deltas
       (`base_class=` rejection into the ledger, single-EP `get_provider_class`, import-free
       `list_registered`); behavior suite 23 tests green; own pyproject + README per the guards'
-      precedent. **ARCH-58 (voice) and CORE-7 (bridge) are UNBLOCKED** — they vendor at the tag
-      with the strict pin + byte-identity test (design §3/§5). **Entry stays OPEN until both
+      precedent. Amended same day (owner: "no new contract?" — right): the owned surface
+      **`contracts/core-py/`** (STAMP `core-py` v1 + cross-ref README, registry row) landed per
+      `process/contracts.md` §2 — the pin convention requires the owner's STAMP verbatim inside
+      every consumer pin, and the first stamp already carries the `artifacts` completeness list
+      (exactly `entry_point_loader.py`; tests/pyproject never travel). **ARCH-58 (voice) and
+      CORE-7 (bridge) are UNBLOCKED** — they vendor at the tag with the strict pin +
+      byte-identity test (design §3/§5). **Entry stays OPEN until both
       adoption write-backs arrive (owner ruling 2026-07-18)**; at close, also decide whether the
       parked logging extraction (ARCH-43 → OPS-14) spins off as its own entry or PROD-8 closes
       title-narrowed to the loader.
