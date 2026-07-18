@@ -1,5 +1,18 @@
 # Board journal — newest on top
 
+## 2026-07-18 — PROD-8: core-py-v1.1 — packaging correction found by the first consumer pin
+
+Voice's ARCH-58 pin run (the first live consumer of both `core-py` AND the new repin
+tool) refused `core-py-v1` immediately: the tag was cut before the "PROD-8 amended"
+commit added `contracts/core-py/STAMP.json`, so the v1 TREE carries no STAMP and a
+pins-complete-and-verbatim pin (artifact + owner STAMP verbatim at ONE tag) cannot be
+assembled from it. Exactly the class of gap HK-12's rules exist for — surface-with-the-
+artifact says STAMP + tag land in the SAME change, and the amendment didn't re-tag.
+Fix: **`core-py-v1.1`**, artifact bytes UNCHANGED from v1 (diff-verified), STAMP bumped
+1→1.1 with the correction recorded in its note, registry + pointer README re-anchored.
+A quiet vindication of the strict-pin ruling: convention-only discipline missed this;
+the very first mechanical pin caught it.
+
 ## 2026-07-18 — PROD-26 item 4: the contract-triad block — commons build COMPLETE
 
 The last commons-side piece of HK-12: the contract discipline finally gets what the
