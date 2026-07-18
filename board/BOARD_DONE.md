@@ -1375,3 +1375,57 @@ assertions.
       (zero obligations; conditions recorded). IMPL-1 is hereby unblocked. docs: none —
       design record amended in place (workbench.md is not a manifest node; the stylebook
       node's ui-kit surface is unaffected).
+
+- [x] **HK-12 — Convention-enforcement hardening** (twelfth council topic; seeded free-text
+      by the owner 2026-07-18 after the PROD-8 core-py cut missed its owned contract surface
+      until the owner asked "no new contract?" — a repeated org-wide class, especially around
+      pinning new contract versions. Decided 2026-07-18, two rounds, all three keepers +
+      commons; execution: **PROD-26**). Diagnosis confirmed by the keepers with paper trails
+      in all three product repos (voice: WS protocol shipped long before stamping, catalog
+      consumed unpinned until HK-5 forced BUILD-34; bridge: catalog-v1.7 false green,
+      docs-manifest tagless 2 days, v1.5/v1.6 re-pin-owed prose rot; satellite: 4 instances
+      in 6 days incl. an owned surface consumed by voice before registration, plus LIVE drift
+      found during round 2 — its registry still cited contract-guard-v1 while running v2):
+      the guards verify coherence of what EXISTS; omissions were invisible; the prose
+      conventions weren't in context at the miss. **Decisions:** **(1) Wave A hardening:**
+      contract-guard v3 = orphan-tag rule (tag→STAMP, keyed to the `contracts/README.md`
+      registry, never tag-pattern sniffing) + content-drift rule (owned bytes at HEAD ≠ bytes
+      at the STAMP's tag with no version move ⇒ FAIL) + `vendorable_roots` explicit config
+      (empty default; commons sets `packages/*`) + mid-bump tolerance (local hook warns, CI
+      strict); scope-guard v7 = required `contracts:` verdict in completion entries (wording
+      "created, bumped, or FIRST CONSUMED a cross-repo surface"; owner-side bumps record
+      `re-pin owed: <consumers>` — normative; per-repo `contracts_verdict_since`, DONE
+      frozen) + unknown-prefix rule (a task id whose prefix isn't in guard config FAILS);
+      plus a pinned contract-triad CLAUDE.md block on the block-pin lane. **(2) repin
+      promotion (owner amendment, round 2):** voice's `scripts/repin.py` engine is promoted
+      to commons `packages/repin/` (tags `repin-vN`, own `contracts/repin/` STAMP from day
+      one), `FAMILIES` becomes per-repo TOML config (multi-dest + per-dest conformance
+      pointers preserved; cross-repo pin WRITES legal only into commons, co-owned ground);
+      tag lookup remote-first via tokenless `ls-remote` with offline fallback (WARN + fetch
+      age, never network-required-to-commit); untagged families skip-warn in CI; satellite's
+      vendored-tools manifest (`scope-vX`/`contract-guard-vN`/`repin-vN`) rides as a family
+      kind. **(3) Severity = bridge's three-case model** (owner pick over voice's
+      never-fails ladder and the strict push-gate): staleness fails CI only on
+      touch-the-family / release workflows / major-gap (per-repo configurable; satellite
+      advisory until FW first light); warn everywhere else; pre-commit warn-only.
+      `process/contracts.md` §5 amended in this landing (supersedes "never a push gate";
+      public-repo assumption recorded). **(4) Wave B central freshness job DROPPED** —
+      repin + the re-pin-owed verdict cover both directions; revivable as one commons
+      workflow if release instrumentation wants it. **(5) Procedure skills DEFERRED**
+      (bridge showed the miss mode is en-passant riders that skills don't intercept; the
+      verdict line fires at every completion regardless). **(6) Contract-candidate sweep:**
+      stamp commons-side NOW — `contracts/workbench/` (types + runtime-config schema +
+      manifest schema; unanimous top ask — voice's config-ui DoD hard-wires it, bridge's
+      plugin consumes it live with zero CI coverage), `contracts/ui-kit/`, STAMP folders for
+      the shared tools (scope-guard, contract-guard, repin); voice files the utterance-trace
+      format contract task (voice-owned, doc-canonical); satellite's DES-5 + D-16 API
+      surfaces get born-stamped clauses; eval DEFERRED to its first hermetic gate (live
+      co-dev is the designed asymmetry); NON-candidates on record: the raw MQTT topic tree
+      (golden holds zero topic strings by design; canonical REST already pinned via
+      openapi), pymotivaxmc2 (PyPI pinning suffices), brand (no second external consumer),
+      `meta/locveil` (stays inside device-integration), `components/locveil_*` (internal).
+      Side-finds greenlit round 1: satellite executes two repo-to-repo filings (voice
+      wake-pack-v1.x bump confirmation; bridge device-integration-v1.1 request) + its
+      registry-README drift one-liner. Delegations + write-backs: **PROD-26**. docs: none —
+      normative change landed in `process/contracts.md` §5 (process file, not a manifest
+      node); the dossier is ephemeral by convention.

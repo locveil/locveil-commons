@@ -118,20 +118,37 @@ suite, asserting the consuming code actually honors the pinned surface. The VWB-
 **Pin == tag bytes** is checked at **re-pin time** by the re-pin flow (the tooling fetches
 the tag and records hashes into PIN.json) — not in CI, which cannot see sibling repos.
 
-## 5. Staleness — never a push gate
+## 5. Staleness — the severity ladder (HK-12, 2026-07-18; supersedes "never a push gate")
 
 Conformance gates are hermetic and run on push. **Staleness** (my pin vs the owner's
-newest tag) is cross-repo and runs:
+newest tag) is cross-repo; the org mechanism is the shared **repin** tool (commons
+`packages/repin/`, tags `repin-vN` — the promoted voice BUILD-24 engine; per-repo family
+config, vendored per the scope-guard model). Severity, org-normative:
 
-- **at runtime**, via version-reporting surfaces — the satellite `register` message
-  (protocol + pack versions), the device `meta/locveil` retained stamp
+- **pre-commit: WARN-only, never blocks.** `repin --check` remote-first via tokenless
+  `git ls-remote --tags` on the owner's public URL; on network failure it falls back to
+  the on-disk sibling's tags with a WARN carrying fetch age. Never network-required-to-
+  commit (offline bench sessions are normal operation); missing sibling = skip-silent.
+- **ordinary push CI: staleness never fails the build**, EXCEPT three narrow cases:
+  1. **touch-the-family** — the commit touches `contracts/pins/<family>/**` or that
+     family's named conformance test while the pin trails: working against a stale pin
+     is an error NOW, and the failing commit is about the pin itself (§5's original
+     anti-coupling reason is preserved);
+  2. **release/deploy workflows** — the REL flow / image-build dispatch runs `--check`
+     hard-fail (each repo's existing release definition);
+  3. **major-version gap** — a pin trailing a MAJOR family version fails (conformance
+     assumptions void). Severity per-repo configurable: a pre-first-release repo may
+     hold it advisory (recorded: satellite, until FW first light).
+- **at runtime**, unchanged: version-reporting surfaces — the satellite `register`
+  message (protocol + pack versions), the device `meta/locveil` retained stamp
   (`{app, fw, descriptor, convention}`), the bridge's retained catalog-version topic —
-  surfaced as visible flags (registry/config-ui), never auto-fetch;
-- **at release/re-pin time**, via the generalized `make repin` flow (PROD-7 lineage:
-  scripted fetch-at-tag + PIN stamp + staleness report), optionally scheduled.
+  surfaced as visible flags (registry/config-ui), never auto-fetch.
 
-A hard cross-repo staleness gate on push is forbidden — it breaks CI hermeticity and
-couples a repo's commits to sibling availability.
+The fix for staleness is always a **deliberate re-pin** (a ledger task), never an
+auto-fetch. Untagged families skip-with-warning in CI mode. Recorded assumption: the
+tokenless CI path rests on the org repos being PUBLIC — a visibility flip re-opens the
+mechanism decision (HK-12). Repos not yet vendoring repin keep the pre-HK-12 behavior
+(release-time `--check` only) until their adoption task lands (PROD-26).
 
 ## 6. The coordinated cut (execution order, PROD-16)
 

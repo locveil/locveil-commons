@@ -1,5 +1,29 @@
 # Board journal — newest on top
 
+## 2026-07-18 — HK-12 DECIDED: convention-enforcement hardening (council, 2 rounds)
+
+Seeded by the owner minutes after catching the PROD-8 contract-surface miss ("no new
+contract?" — a repeated org-wide class). The council confirmed the diagnosis with paper
+trails in every product repo — voice's WS protocol shipped unstamped and its catalog
+consumed unpinned until HK-5; bridge's catalog-v1.7 false green and re-pin-owed journal
+rot; satellite's four instances in six days plus LIVE drift caught during round 2 (its
+registry cited contract-guard-v1 while running v2). Round 1 converged on the `contracts:`
+verdict line as the strongest single control (it fires at every completion, catching the
+en-passant bumps that skills never see) plus orphan-tag/content-drift/unknown-prefix guard
+rules and a pinned triad block; the owner's round-1 amendment then made voice's `repin.py`
+the centerpiece — promoted to commons `packages/repin/` with per-repo config, after bridge
+verified all org repos are public (tokenless `ls-remote`, credential objection withdrawn)
+and satellite set the offline floor (warn with fetch age, never network-required-to-
+commit). Severity landed on bridge's three-case model — staleness fails CI only on
+touch-the-family / release workflows / major-gap (per-repo configurable) — and §5 of
+`process/contracts.md` was amended in this landing, superseding "never a push gate"
+eye-open rather than by adverb. Wave B (central freshness job) dropped as redundant;
+skills deferred. The candidate sweep stamps workbench + ui-kit + the shared tools,
+earmarks voice's trace format and satellite's two future API surfaces (born-stamped),
+defers eval, and puts the non-candidates on record. HK-12 filed born-decided; execution +
+delegations: **PROD-26** (one sweep per repo). docs: none — normative change is a process
+file; the dossier is ephemeral by convention.
+
 ## 2026-07-18 — PROD-8: the core-py skeleton is cut — `core-py-v1`
 
 The last commons-side piece of the loader arc: `packages/core-py/` now exists, carrying

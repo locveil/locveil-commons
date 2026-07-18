@@ -208,5 +208,50 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       burst lands SEEN, not as a surprise. Closes when the first chain completes
       end-to-end and the re-pin is verified. IDs on record: bridge DRV-37 + VWB-39;
       satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
+- [ ] **PROD-26 — HK-12 execution: convention-enforcement hardening** (decision of record:
+      HK-12 in `BOARD_DONE.md`, decided 2026-07-18; normative severity policy already landed
+      as `process/contracts.md` §5 in the HK-12 landing commit). **Commons build (this
+      repo):** (1) `packages/repin/` — promote the voice BUILD-24 engine (generic ~120 lines:
+      registry-keyed newest-tag parser, fetch-at-tag + sha256 + PIN.json writer, `--check`,
+      CLI) with per-repo TOML family config (multi-dest + per-dest conformance + `pinned_by`
+      as config; multi-dest writes legal only into commons), remote-first tokenless
+      `ls-remote` + offline fallback (WARN + fetch age), untagged-family skip-warn in CI
+      mode, vendored-tools-manifest family kind; tag **`repin-v1`** + `contracts/repin/`
+      STAMP + registry row from day one. (2) contract-guard v3: registry-keyed orphan-tag
+      rule, content-drift rule (`git show tag:path` vs HEAD), `vendorable_roots` explicit
+      config (commons: `packages/*`; products default empty), mid-bump local tolerance
+      (hook warns / CI strict); tag `contract-guard-v3`. (3) scope-guard v7: `contracts:`
+      verdict line ("created, bumped, or first consumed"; owner bumps record `re-pin owed:
+      <consumers>` — normative; per-repo `contracts_verdict_since`, DONE frozen) +
+      unknown-prefix rule; tag scope-v7; `process/ledger-discipline.md` gains the verdict
+      spec. (4) Pinned contract-triad block: source in `process/claude-blocks/`, digest only
+      (STAMP+tag+registry same change; bump = tag+STAMP together; pins complete & verbatim;
+      consumers move only by re-pin tasks). (5) Commons stamps: `contracts/workbench/`
+      (contract types + runtime-config schema + manifest-fragment schema + peers semantics),
+      `contracts/ui-kit/`, STAMP folders for scope-guard + contract-guard (closing the
+      registry cross-reference gap); eval deferral + the non-candidate list recorded in
+      `contracts/README.md`. Commons adopts its own medicine in the same arc (verdict line
+      on, vendorable_roots set, repin config for its consumed pins). **Delegations
+      (board-as-outbox, ONE sweep per repo — the keepers' sequencing condition):**
+      voice — BUILD-41 (contract-guard v3 re-vendor) + BUILD-42 (scope-v7 + verdict date) +
+      BUILD-43 (adopt vendored repin at `repin-v1`, convert `FAMILIES` to config, keep
+      `make repin`/`repin-check`, pre-commit warn stage; SEQUENCED BEFORE ARCH-58 so the
+      core-py family is declared once in the new format) + the trace-format contract task
+      (voice-owned, doc-canonical — the shape today lives only in voice's trace-persistence
+      design doc)
+      + block re-pin (mechanical carve-out) + answer satellite's wake-pack-v1.x bump
+      confirmation. Voice write-back — lead ID pending. Bridge — guard sweep (contract-guard
+      v3 + scope-v7 + verdict date + third block, one OPS task per its round-1 condition) +
+      repin adoption (family config: report-protocol now, workbench pin when stamped) + the
+      workbench-plugin CI job (owed regardless — zero coverage today) + satellite's
+      device-integration-v1.1 minor-tag request (repo-to-repo). Bridge write-back — lead ID
+      pending. Satellite — guard sweep + repin adoption (hook stage with offline fallback +
+      the same freshness check inside `publish_model_pack.py verify/publish`) + the
+      `contracts/README.md:35` drift one-liner (contract-guard-v1 → v2, found live in HK-12
+      round 2) + born-stamped clauses in DES-5 and the D-16 Stage-2 design + execute the two
+      greenlit repo-to-repo filings. Satellite write-back — lead ID pending. The board lists
+      delegated IDs but never asserts their status — per-repo ledgers own it. Sequencing:
+      commons build first (repin-v1 + guard tags are what the sweeps vendor); satellite's
+      major-gap severity stays advisory until FW first light (§5); nothing here gates FW-2.
 
 ## IMPL — commons implementation
