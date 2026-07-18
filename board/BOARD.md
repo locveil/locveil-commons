@@ -249,7 +249,12 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       the same freshness check inside `publish_model_pack.py verify/publish`) + the
       `contracts/README.md:35` drift one-liner (contract-guard-v1 → v2, found live in HK-12
       round 2) + born-stamped clauses in DES-5 and the D-16 Stage-2 design + execute the two
-      greenlit repo-to-repo filings. Satellite write-back — lead ID pending. The board lists
+      greenlit repo-to-repo filings. Satellite write-back (2026-07-18) — lead ID **OPS-11**
+      (sub-IDs OPS-12 guard+block sweep, OPS-13 repin adoption; the two filings executed
+      repo-to-repo: voice **BUILD-44** (wake-pack bump confirmation — plus a same-day
+      addendum: the satellite's OPS-13 smoke test found the published pack ALREADY drifted,
+      HF mutable-ref URLs) and bridge **VWB-42** (device-integration-v1.1 minor tag); status
+      lives in the satellite ledger). The board lists
       delegated IDs but never asserts their status — per-repo ledgers own it. Sequencing:
       commons build first (repin-v1 + guard tags are what the sweeps vendor); satellite's
       major-gap severity stays advisory until FW first light (§5); nothing here gates FW-2.
