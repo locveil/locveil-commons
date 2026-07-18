@@ -12,6 +12,7 @@ high_water = 3000
 low_water = 2000
 hard_ceiling = 4000
 docs_verdict_since = "2026-07-13"   # HK-6: completions from this date need a docs: verdict (2026-07-12 entries predate the rule, frozen)
+contracts_verdict_since = "2026-07-18"   # HK-12: completions from this date need a contracts: verdict (earlier entries frozen)
 
 [evidence]
 dirs = ["docs/design", "docs/review"]   # HK-10: review docs join evidence anchoring

@@ -1,0 +1,11 @@
+{
+  "contract": "ui-kit",
+  "version": "1.2",
+  "tag": "ui-kit-v1.2",
+  "date": "2026-07-18",
+  "owner_repo": "locveil-commons",
+  "artifact": "packages/ui-kit/",
+  "design": "docs/design/ui/stylebook.md",
+  "distribution": "locveil-ui-kit (npm-style package, consumed via file: links and workbench import map)",
+  "note": "Package-style contract (HK-12 sweep): the surface is THE PACKAGE AT THE TAG — components, tokens, exports. Deliberately NO artifacts list: HEAD advances between tags by design (regime 2 co-development; consumers pin tags or ride the workbench import-map singleton). Stamp registered at the existing ui-kit-v1.2; bumps follow normal tag+STAMP-together discipline from here."
+}

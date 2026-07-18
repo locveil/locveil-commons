@@ -1,0 +1,11 @@
+{
+  "contract": "contract-guard",
+  "version": "3",
+  "tag": "contract-guard-v3",
+  "date": "2026-07-18",
+  "owner_repo": "locveil-commons",
+  "artifact": "packages/contract-guard/contract_guard.py",
+  "artifacts": ["packages/contract-guard/contract_guard.py"],
+  "distribution": "locveil-contract-guard 3.0.0",
+  "note": "Cross-reference stamp (HK-12/PROD-26): first STAMP of the family — tags v1/v2 are frozen pre-stamp history. v3 adds the HK-12 omission rules (ORPHAN-TAG, CONTENT-DRIFT, VENDORABLE-UNREGISTERED, --relax-tags). artifacts is drift-checked (the guard verifies the guard); consumers track their vendored tag via .repin.toml [[tool]]."
+}

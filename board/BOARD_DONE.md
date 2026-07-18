@@ -1428,4 +1428,5 @@ assertions.
       wake-pack-v1.x bump confirmation; bridge device-integration-v1.1 request) + its
       registry-README drift one-liner. Delegations + write-backs: **PROD-26**. docs: none —
       normative change landed in `process/contracts.md` §5 (process file, not a manifest
-      node); the dossier is ephemeral by convention.
+      node); the dossier is ephemeral by convention. contracts: none — decision entry;
+      §5 is process text, no versioned surface moved (execution surfaces ride PROD-26).

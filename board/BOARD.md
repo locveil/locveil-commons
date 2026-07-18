@@ -268,5 +268,26 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       pre-commit warn stage in `hooks/pre-commit`; live check green (catalog current at
       v1.7 via real ls-remote). Product sweeps may now vendor at `repin-v1`; guard v3/v7
       (items 2–3) are the remaining commons build.
+      **PROGRESS 2026-07-18 (same day) — items (2), (3), (5) DONE.** contract-guard
+      **v3** (script 3.0.0 — major now tracks the tag family; tag `contract-guard-v3`):
+      ORPHAN-TAG (registry-keyed, reverse of TAG-MISSING), CONTENT-DRIFT (STAMPs carrying
+      `artifacts` are byte-frozen at their tag; package-style contracts opt out by not
+      enumerating), VENDORABLE-UNREGISTERED (`.contract-guard.toml`: `vendorable_roots` —
+      commons sets `packages/*` — + `non_contract` + `contract_names`), and `--relax-tags`
+      (hook warns mid-bump, CI strict; the hook line updated). scope-guard **v7** (1.4.0,
+      tag `scope-v7`): CONTRACTS-VERDICT (per-repo `contracts_verdict_since`; commons cut
+      over 2026-07-18, HK-12's own entry retro-carries the line per the HK-6 rollout
+      precedent) + UNKNOWN-PREFIX; spec landed as `process/ledger-discipline.md` §7. All
+      new rules smoke-tested on synthetic repos (orphan/drift/vendorable/relax;
+      verdict-present vs -missing vs pre-cutover; rogue prefix) and both guards run green
+      live. Item (5) stamps cut: `contracts/scope/` + `contracts/contract-guard/`
+      (drift-checked `artifacts`, first stamp of each family — v1..v6 / v1..v2 recorded
+      as frozen pre-stamp history) and package-style `contracts/ui-kit/` +
+      `contracts/workbench/` at their existing v1.2 tags (deliberately no byte
+      enumeration — HEAD advances between tags; the workbench manifest-fragment +
+      runtime-config JSON Schemas are RECORDED OWED at the next workbench bump); registry
+      updated incl. the non-candidate record. Remaining commons build: item (4) the
+      pinned contract-triad block; then the product sweeps vendor `scope-v7` +
+      `contract-guard-v3` + `repin-v1` in one pass each.
 
 ## IMPL — commons implementation

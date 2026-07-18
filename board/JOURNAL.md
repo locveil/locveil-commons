@@ -1,5 +1,33 @@
 # Board journal — newest on top
 
+## 2026-07-18 — PROD-26 items 2/3/5: the guards learn to see omissions — v3 + v7 + stamps
+
+The HK-12 diagnosis was "the guards verify coherence of what exists; omissions are
+invisible" — this lands the cure. contract-guard v3 (3.0.0, `contract-guard-v3`) gains
+the three existence rules: ORPHAN-TAG (a newer family tag than the STAMP records —
+keyed to registered contracts so release tags can't false-positive), CONTENT-DRIFT
+(`artifacts`-carrying STAMPs are byte-frozen at their tag — the satellite
+device-integration scar becomes a commit-time FAIL; package-style contracts opt out by
+not enumerating), and VENDORABLE-UNREGISTERED (explicit `vendorable_roots` config —
+today's PROD-8 seed miss now fails the commit that makes it). Plus `--relax-tags`, the
+mid-bump tolerance the repin-v1 landing painfully re-motivated hours earlier: the hook
+warns on the bump commit's unavoidable tag-less state, CI stays strict. scope-guard v7
+(1.4.0, `scope-v7`) gains CONTRACTS-VERDICT (spec: ledger-discipline §7 — "created,
+bumped, or first consumed", owner bumps carry `re-pin owed:`; commons cut over today,
+HK-12's own entry retro-carries the line per the HK-6 rollout precedent) and
+UNKNOWN-PREFIX (the satellite DOC scar: a prefix missing from config now fails loudly
+instead of silently not counting). Every rule smoke-tested on synthetic repos before
+going live; both guards green on commons. The item-5 stamps rode along because
+VENDORABLE-UNREGISTERED demands them: scope + contract-guard (first stamps of their
+families, drift-checked, pre-stamp tags frozen history) and package-style ui-kit +
+workbench at their existing v1.2 tags — the workbench machine schemas are recorded owed
+at its next bump. Remaining commons build: the pinned contract-triad block (item 4).
+contracts: scope STAMP @ scope-v7 + contract-guard STAMP @ contract-guard-v3 (first-cut,
+new tags) + ui-kit/workbench package-style STAMPs @ existing v1.2 tags; re-pin owed:
+voice, bridge, satellite — discharged by the already-delegated PROD-26 sweeps. docs:
+none — process file §7 + registry/READMEs amended in place; no manifest node covers the
+guard scripts (integrator surface, own READMEs).
+
 ## 2026-07-18 — PROD-26 item 1: repin promoted — `packages/repin/` @ `repin-v1`
 
 The HK-12 centerpiece lands hours after the decision. Voice's BUILD-24 engine promoted

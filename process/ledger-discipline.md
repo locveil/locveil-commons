@@ -110,3 +110,22 @@ Every repo keeps:
   Consumers adopt it when they re-pin, per §3 pinned-consumption rules.
 - Evidence directories are config (`[evidence] dirs`); commons scans `docs/design/` +
   `docs/review/`.
+
+## 7. The contracts verdict — HK-12
+
+- **Every completion entry records a contracts verdict** from the repo's cutover date
+  (`contracts_verdict_since` in `.scope-guard.toml`; earlier entries frozen):
+  `contracts: <what moved>` or `contracts: none — <why>`. "Moved" means the task
+  **created, bumped, or first consumed** a cross-repo surface — the "first consumed"
+  arm exists because a consumed-but-never-pinned dependency has no file for any
+  mechanical rule to see (the voice BUILD-34 lesson); only the human answering the
+  question at close catches it.
+- **Owner-side bumps record the owed downstream**: `contracts: catalog-v1.8 cut;
+  re-pin owed: voice, commons` (normative — the bridge v1.5/v1.6 lesson: "consumer
+  picks it up later" as journal prose rots; as a verdict it is a checkable artifact
+  the re-pin tasks discharge).
+- Enforced by scope-guard v7 (`CONTRACTS-VERDICT missing`) as presence/syntax only —
+  correctness stays judgment; file-level coherence is contract-guard's job
+  (`process/contracts.md` §4), staleness is repin's (`§5`).
+- The rationale, decision trail, and the sibling rules that landed with it (orphan-tag,
+  content-drift, vendorable-roots, unknown-prefix): HK-12 in `board/BOARD_DONE.md`.

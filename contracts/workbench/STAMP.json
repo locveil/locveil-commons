@@ -1,0 +1,11 @@
+{
+  "contract": "workbench",
+  "version": "1.2",
+  "tag": "workbench-v1.2",
+  "date": "2026-07-18",
+  "owner_repo": "locveil-commons",
+  "artifact": "packages/workbench/",
+  "design": "docs/design/workbench.md",
+  "distribution": "locveil-workbench (shell package; the PLUGIN CONTRACT is the consumed surface)",
+  "note": "Package-style contract (HK-12 sweep — the council's unanimous top ask): the consumed surface is the plugin contract — import-map singleton set + strict-major peers semantics, the build-emitted manifest-fragment shape {id, version, entry, styles[], peers{}, backendCompat?}, runtime-config.json, and the contract types under packages/workbench/. Normative prose: docs/design/workbench.md §4 + the package README. Registered at the existing workbench-v1.2; the machine-readable schema files (manifest-fragment + runtime-config JSON Schemas) land as enumerated artifacts AT THE NEXT BUMP per the HK-5 forward requirement — recorded owed work, PROD-26."
+}

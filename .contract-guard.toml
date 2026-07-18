@@ -1,0 +1,9 @@
+# contract-guard v3 config (HK-12/PROD-26). Explicit, empty-by-default rules only.
+# vendorable_roots: dirs matching these globs that carry a package manifest
+# (pyproject.toml / package.json) must have a contracts/<name>/STAMP.json.
+vendorable_roots = ["packages/*"]
+non_contract = []
+
+# Folder name → contract name when they differ (tag family "scope-vN" ⇒ contract "scope").
+[contract_names]
+scope-guard = "scope"
