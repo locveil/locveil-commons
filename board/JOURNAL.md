@@ -1,5 +1,25 @@
 # Board journal — newest on top
 
+## 2026-07-18 — PROD-26 item 4: the contract-triad block — commons build COMPLETE
+
+The last commons-side piece of HK-12: the contract discipline finally gets what the
+ledger triad has had since HK-2 — a pinned digest in every session's context. Four
+invariants, ≤20 lines, dialect-free: surface-with-the-artifact (STAMP + tag + registry
+in the SAME change — the rule whose absence seeded HK-12), pins-complete-and-verbatim,
+contracts-verdict (with the FIRST-CONSUMED arm and `re-pin owed:`), and the §5 staleness
+ladder. Source at `process/claude-blocks/contract-triad.md`, pinned into commons' own
+CLAUDE.md, hash in `.scope-guard.toml`. Shipped at **`scope-v7.1`** — blocks version
+with scope tags (HK-2 single-pin), and v7 was already published, so the additive minor
+bump is the clean vehicle: script bytes unchanged, STAMP 7→7.1 in the same change, and
+the new ORPHAN-TAG/CONTENT-DRIFT rules verified the bump discipline live. With that,
+every PROD-26 commons deliverable exists: `repin-v1`, `contract-guard-v3`, `scope-v7.1`
+(tool + block), the four sweep stamps, §5 + §7 process text. The entry stays OPEN by
+owner ruling until voice, bridge, and satellite execute their sweeps and write their
+IDs back — the product sweeps vendor exactly those three tags in one pass each.
+contracts: scope-v7.1 cut (additive block release, STAMP 7→7.1); re-pin owed: voice,
+bridge, satellite — the already-delegated PROD-26 sweeps. docs: none — block source +
+CLAUDE.md pin + config hash; process/claude-md.md already documents the lane.
+
 ## 2026-07-18 — PROD-26 items 2/3/5: the guards learn to see omissions — v3 + v7 + stamps
 
 The HK-12 diagnosis was "the guards verify coherence of what exists; omissions are

@@ -286,8 +286,17 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       `contracts/workbench/` at their existing v1.2 tags (deliberately no byte
       enumeration — HEAD advances between tags; the workbench manifest-fragment +
       runtime-config JSON Schemas are RECORDED OWED at the next workbench bump); registry
-      updated incl. the non-candidate record. Remaining commons build: item (4) the
-      pinned contract-triad block; then the product sweeps vendor `scope-v7` +
-      `contract-guard-v3` + `repin-v1` in one pass each.
+      updated incl. the non-candidate record.
+      **PROGRESS 2026-07-18 (same day) — item (4) DONE; THE COMMONS BUILD IS COMPLETE.**
+      The `contract-triad` pinned block authored (`process/claude-blocks/contract-triad.md`
+      — 4 digest invariants: surface-with-the-artifact, pins-complete-and-verbatim,
+      contracts-verdict, staleness ladder), pinned into commons' own CLAUDE.md + hashed in
+      `.scope-guard.toml`, shipped at **`scope-v7.1`** (blocks version with scope tags per
+      HK-2 single-pin; additive — script bytes unchanged from v7, STAMP bumped 7→7.1 in
+      the same change). **The product sweeps vendor `scope-v7.1` + `contract-guard-v3` +
+      `repin-v1` in one pass each** (v7.1 supersedes the v7 reference above). **ENTRY
+      STAYS OPEN until all three product write-backs arrive (owner ruling 2026-07-18)** —
+      commons has nothing left to build; what remains is delegation execution + IDs
+      written back, per board-as-outbox.
 
 ## IMPL — commons implementation
