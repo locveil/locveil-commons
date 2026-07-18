@@ -1279,6 +1279,40 @@ assertions.
       (correct MIME after the next serve restart). Favicon follow-up hereby closed;
       only consumer re-vendors + site/ adoption remain elsewhere.
 
+- [x] **IMPL-8 — contract-guard v3.1: ARTIFACTS-PATH rule (Option B — owner pick
+      2026-07-18 at PROD-26 close)** (`packages/contract-guard`): every entry in a STAMP's
+      `artifacts` list MUST be repo-root-relative and resolve at HEAD; a bare/ambiguous
+      name FAILS (`ARTIFACTS-PATH`). Kills the false-drift class bridge VWB-43 found at
+      OPS-32's first v3 run: v3 resolves artifacts from the repo root, so the catalog
+      STAMP's bare `README.md` compares the ROOT readme on both sides (green by luck
+      until the next root-README edit → baffling CONTENT-DRIFT on the catalog family) and
+      its `catalog.golden.json`/`openapi.json` degrade to CONTENT-UNVERIFIABLE. Option A
+      (folder-first resolution) REJECTED — one canonical path form beats two coexisting
+      conventions. **Rollout coupling is real and sequenced by design:** bridge's catalog
+      STAMP violates the rule and a STAMP is tag bytes, so bridge re-vendors v3.1 only
+      AFTER its VWB-43 catalog cut rewrites the three entries as `contracts/catalog/…`
+      (from the v3.1 tag its `[[tool]]` manifest nags — correct and advisory); voice and
+      satellite stamps are repo-root already and may re-vendor freely; commons' own
+      stamps all conform. The legacy singular `artifact` field stays informational —
+      never validated (report-protocol's folder-relative singular is frozen history).
+      Deliverable: rule + synthetic smoke tests per the v3 pattern, tag
+      `contract-guard-v3.1` + STAMP bump in the same change.
+      **DONE 2026-07-18 (same day).** Rule shipped exactly as specified: entries must be
+      repo-root-relative AND resolve to a file at HEAD; bare names and ghost paths FAIL
+      `ARTIFACTS-PATH` (no --relax escape — a shape error is never a mid-bump state); bad
+      entries are excluded from the drift comparison so one mistake doesn't cascade.
+      Smoke-tested synthetic (bare name / ghost path / drift-still-works / relax-immune);
+      the sequencing note aged out before execution — bridge's VWB-43 landed FIRST
+      (`catalog-v1.8`, repo-root artifacts, bridge guard at zero warnings), so the
+      rollout coupling this entry recorded is already moot and all four repos can take
+      v3.1 freely. Poetic acceptance: the first live v3.1 run CONTENT-DRIFT-failed the
+      guard's OWN family (edited script, un-bumped stamp) — the bump to `3.1` was forced
+      by the very rule it ships. Tag `contract-guard-v3.1`, STAMP + registry in the same
+      change, script 3.1.0. docs: none — guard README row + STAMP note updated in place;
+      no manifest node covers the guard (integrator surface). contracts:
+      contract-guard-v3.1 cut; re-pin owed: voice, bridge, satellite (their `[[tool]]`
+      manifests nag from this tag; re-vendor is a one-commit quick task each).
+
 ## HK — council topics
 
 - [x] **HK-1 — Ledger & journal discipline harmonization** (the first live council topic;

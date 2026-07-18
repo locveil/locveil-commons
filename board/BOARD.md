@@ -223,21 +223,3 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       satellite DES-4/FW-1 lineage. HW-GATED — no timing asserted.
 ## IMPL — commons implementation
 
-- [ ] **IMPL-8 — contract-guard v3.1: ARTIFACTS-PATH rule (Option B — owner pick
-      2026-07-18 at PROD-26 close)** (`packages/contract-guard`): every entry in a STAMP's
-      `artifacts` list MUST be repo-root-relative and resolve at HEAD; a bare/ambiguous
-      name FAILS (`ARTIFACTS-PATH`). Kills the false-drift class bridge VWB-43 found at
-      OPS-32's first v3 run: v3 resolves artifacts from the repo root, so the catalog
-      STAMP's bare `README.md` compares the ROOT readme on both sides (green by luck
-      until the next root-README edit → baffling CONTENT-DRIFT on the catalog family) and
-      its `catalog.golden.json`/`openapi.json` degrade to CONTENT-UNVERIFIABLE. Option A
-      (folder-first resolution) REJECTED — one canonical path form beats two coexisting
-      conventions. **Rollout coupling is real and sequenced by design:** bridge's catalog
-      STAMP violates the rule and a STAMP is tag bytes, so bridge re-vendors v3.1 only
-      AFTER its VWB-43 catalog cut rewrites the three entries as `contracts/catalog/…`
-      (from the v3.1 tag its `[[tool]]` manifest nags — correct and advisory); voice and
-      satellite stamps are repo-root already and may re-vendor freely; commons' own
-      stamps all conform. The legacy singular `artifact` field stays informational —
-      never validated (report-protocol's folder-relative singular is frozen history).
-      Deliverable: rule + synthetic smoke tests per the v3 pattern, tag
-      `contract-guard-v3.1` + STAMP bump in the same change.

@@ -1,5 +1,21 @@
 # Board journal — newest on top
 
+## 2026-07-18 — IMPL-8 DONE: guard v3.1 ARTIFACTS-PATH — and it bit its own author first
+
+The Option B ruling executed: every STAMP `artifacts` entry must be repo-root-relative
+and resolve to a file at HEAD; bare names and ghost paths fail `ARTIFACTS-PATH` with no
+relax escape (a shape error is never a mid-bump state), and bad entries are excluded
+from the drift comparison so one mistake doesn't cascade into noise. The rollout
+coupling the task recorded died before execution — bridge landed VWB-43 first
+(`catalog-v1.8`, repo-root paths, zero warnings), so v3.1 rolls out to all four repos
+with no sequencing care; their `[[tool]]` manifests start nagging from the tag. The
+acceptance test wrote itself: the first live v3.1 run CONTENT-DRIFT-failed the guard's
+OWN family — edited script, un-bumped stamp — forcing the 3→3.1 STAMP bump through the
+exact discipline it enforces. Fourth self-catch of the day. Smoke suite: bare name,
+ghost path, relax-immunity, drift-still-works — all correct. contracts:
+contract-guard-v3.1 cut; re-pin owed: voice, bridge, satellite (one-commit quick tasks;
+advisory nags until then). docs: none — STAMP note + registry row updated in place.
+
 ## 2026-07-18 — PROD-26 CLOSED: the hardening is live in all four repos — and it already earns its keep
 
 Decided in the morning (HK-12), built by mid-day, adopted and verified by evening —
