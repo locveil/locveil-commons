@@ -120,7 +120,20 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       `get_discovery_failures` / `clear_cache`; Python 3.11, importlib.metadata only; own
       pyproject + tests; tag **`core-py-v1`**. Consumption = vendored copy at tag with STRICT pin
       (consumer pins/core-py + byte-identity test — first vendored RUNTIME code). Voice follow-up:
-      **ARCH-58** `[release]` (migration, gated on `core-py-v1`). Bridge CORE-7 codes against the
+      **ARCH-58** `[release]` (migration, gated on `core-py-v1`).
+      **Voice write-back (2026-07-18) — ARCH-58 DONE; voice's half of PROD-8 is CLOSED.** The
+      migration executed against **`core-py-v1.1`**: the FIRST strict pin refused v1 — the tag
+      was cut before the "PROD-8 amended" commit added the STAMP, so the v1 tree cannot satisfy
+      pins-complete-and-verbatim — and commons cut the v1.1 packaging correction (artifact
+      bytes diff-verified unchanged; STAMP note + board journal record it). Voice landed: the
+      `core-py` family in `.repin.toml` (the BUILD-43 sequencing held — declared once, new
+      format), strict pin + byte-identity test, `utils/entry_points.py` singleton, the full
+      20-file sweep, `startup_validation` on `list_registered`, DynamicLoader deleted from
+      `utils/loader.py`. Acceptance: suite 1433 green, analyzer JSON byte-identical ×6 profiles,
+      import contracts 11/11, guards + `repin --check --fail-on any` green. **CONSUMERS NOTE:
+      bridge CORE-7 vendors at `core-py-v1.1`** (not v1 — same bytes, but only v1.1's tree
+      carries the STAMP a conforming pin needs). Remaining in this entry: bridge CORE-7 + the
+      parked logging extraction. Bridge CORE-7 codes against the
       design's §5 (base_class native, loader never in domain/, no golden drift, `list_registered`
       for dump_catalog). Bridge — reconcile **CORE-7** (adopt the core-py registry for the
       driver axis, keep the config resolver local, no config→entry-point unification, loader in
