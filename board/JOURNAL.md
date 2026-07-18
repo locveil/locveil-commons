@@ -1,5 +1,26 @@
 # Board journal — newest on top
 
+## 2026-07-18 — PROD-8: the core-py skeleton is cut — `core-py-v1`
+
+The last commons-side piece of the loader arc: `packages/core-py/` now exists, carrying
+`entry_point_loader.py` against the agreed ARCH-42 design's §2 surface — `DynamicLoader`
+class only (no module-level singleton; the shared artifact stays state-free),
+`importlib.metadata`/py3.11 only (the pkg_resources compat branches did not travel),
+faithful cache + BUG-36 failure-ledger semantics, and the three council-agreed deltas:
+optional `base_class=` rejection into the ledger, `get_provider_class` loading a single
+named entry point instead of materializing the whole group, and import-free
+`list_registered`. One divergence-by-necessity from the voice original: the cache key
+gains `base_class` (voice's string key predates the parameter — two same-namespace calls
+with different base classes must not collide). Behavior suite: 23 tests, all green,
+faking the EP mechanism duck-typed so semantics are pinned without throwaway
+distributions. Distribution `locveil-core-py` 1.0.0, tag **`core-py-v1`**, flat-module
+layout per the guards' precedent. Voice ARCH-58 and bridge CORE-7 are unblocked to vendor
+at the tag (strict pin + byte-identity test — the estate's first vendored RUNTIME code).
+**PROD-8 stays OPEN by owner ruling until both adoption write-backs arrive**; the
+logging-extraction spin-off question is parked with it. docs: none — packages/README.md
+planned-list refreshed to reality in the same change; no manifest node covers
+`packages/core-py` (integrator surface, own README).
+
 ## 2026-07-17 — PROD-25 CLOSED: all three close conditions verified in live CI
 
 The close was pure verification — the work had already happened in the consumer repos;
