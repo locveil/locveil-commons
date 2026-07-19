@@ -11,7 +11,9 @@
 #
 # ⚠ Russian grading quality is UNVERIFIED — calibrate against human-scored examples
 #   before trusting scores (ARCHITECTURE.md §7.1).
-id: openai:chat:deepseek-chat
+# voice BUG-44 (2026-07-19): legacy `deepseek-chat` alias retires 2026-07-24 — pinned to the
+# explicit id it last served.
+id: openai:chat:deepseek-v4-flash
 config:
   apiBaseUrl: https://api.deepseek.com/v1
   apiKeyEnvar: DEEPSEEK_API_KEY

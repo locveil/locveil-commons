@@ -210,7 +210,7 @@ session.
 Defined **once** in `shared/deepseek-judge.yaml`, referenced by every UX assertion:
 
 ```yaml
-id: openai:chat:deepseek-chat
+id: openai:chat:deepseek-v4-flash
 config:
   apiBaseUrl: https://api.deepseek.com/v1
   apiKeyEnvar: DEEPSEEK_API_KEY
