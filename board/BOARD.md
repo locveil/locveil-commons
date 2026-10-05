@@ -123,13 +123,3 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       (satellite firmware logging is NOT one — different runtime). No delegations until
       activated; design-then-implement applies (ARCH-43 un-parks as the design task).
 ## IMPL — commons implementation
-- [ ] **IMPL-24 — ui-kit + workbench npm locks: security bumps** (owner request
-      2026-10-05, same sweep as IMPL-23; local `npm audit`, Dependabot being disabled
-      here). Non-major fixes only: postcss, js-yaml, brace-expansion, browserslist,
-      baseline-browser-mapping, nanoid, fast-glob, and react-router-dom to >= 6.30.6 in
-      the workbench shell — the shell SERVES that package to every plugin as the
-      import-map singleton, so its open-redirect/XSS fix reaches both product plugins at
-      runtime. NOT in scope: the tailwindcss 3 → 4 major (and the
-      braces/chokidar/micromatch chain that only it clears) and react-router 7 (the two
-      advisories fixed only in 7.18.0) — the latter is a workbench contract major (the
-      singleton set freezes react-router-dom at major 6); both go to the owner.

@@ -1,6 +1,15 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-24: ui-kit + workbench npm locks — every non-major fix, the router singleton included
+
+The npm half of the commons sweep. Everything `npm audit fix` could do without a major
+is done, and the one that matters most at runtime is react-router-dom 6.30.6 in the
+workbench shell: plugins do not bundle the router, they receive the shell's copy, so the
+fix has to land here to reach them. Two things stay open because fixing them is a
+decision, not a bump — tailwind 4, and react-router 7, which would be a major of the
+plugin contract. contracts: none. docs: none.
+
 ## 2026-10-05 — IMPL-23: the eval lock — three security bumps, audited by hand because Dependabot is off here
 
 The owner asked for a Dependabot sweep across the repos. Commons shows no alerts only

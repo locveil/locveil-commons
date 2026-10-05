@@ -1849,6 +1849,26 @@ assertions.
       audit clean (no third-party runtime deps). Seen, not a vulnerability, left alone:
       the lock resolves `grpcio==1.82.0`, which upstream has yanked. docs: none — lockfile
       only. contracts: none — no versioned surface moved.
+- [x] **IMPL-24 — ui-kit + workbench npm locks: security bumps** (owner request
+      2026-10-05, same sweep as IMPL-23; filed and done the same day). Local `npm audit`
+      (Dependabot is disabled on commons) found 11 advisories in `packages/ui-kit` and 13
+      in `packages/workbench`. `npm audit fix` WITHOUT `--force`, lockfiles only: postcss
+      8.5.19 → 8.5.29, js-yaml 4.3.0 → 4.3.2, brace-expansion (1.1.21 / 2.1.7 / 5.0.12),
+      browserslist 4.28.6 → 4.29.3, baseline-browser-mapping 2.10.43 → 2.11.27, nanoid
+      3.3.16 → 3.3.20, and in the workbench shell **react-router-dom + react-router 6.30.4
+      → 6.30.6** — the shell serves that package to every plugin as the import-map
+      singleton, so the open-redirect/XSS fix (GHSA-jjmj-jmhj-qwj2) reaches both product
+      plugins at runtime. Verified: ui-kit `check` + `build`, workbench `build` (vendor +
+      smoke + shell + demo) + `check`, the workbench-schema and ui-kit-token guards.
+      **Left open, both the owner's call:** (1) `braces` (stack-exhaustion DoS, no fixed
+      version exists) reaching us through tailwindcss 3's chokidar / micromatch /
+      fast-glob — build-time globbing of our own config, not attacker input; only the
+      tailwindcss 3 → 4 major clears it, and that is a design-system migration; (2)
+      react-router advisories GHSA-wrjc-x8rr-h8h6 and GHSA-337j-9hxr-rhxg, fixed only in
+      7.18.0 — react-router 7 is a workbench contract MAJOR (the singleton set freezes
+      react-router-dom at major 6; both plugins would move with it). docs: none —
+      lockfiles only. contracts: none — no enumerated artifact moved (`ui-kit` enumerates
+      nothing; the workbench surface is `contract.ts` + the two schemas, untouched).
 
 ## HK — council topics
 
