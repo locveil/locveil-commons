@@ -1,6 +1,33 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — PROD-28 CLOSED: two sources, five repos, one day
+
+Decided in the morning, closed by evening. HK-13 said the contract graph should have two
+sources — the owner's STAMP and the consumer's repin config — and everything else should
+be derived or checked. That is now true in five repos: the guard holds every STAMP to a
+declared `artifacts` list and every pin to it, repin takes the pin set from the owner
+instead of from a list the consumer typed, the tools themselves are pinned by hash, and
+the guards run on every push with the conformance suites beside them. Seven commons
+tags, ten product tags, one sweep per consumer.
+
+What the day actually taught was in the catches. Commons' own manifest had been failing
+its schema since July with no CI to say so. A new block wording was misread by its first
+consumer within the hour and patched. A package that was filed for a patch cut turned
+out to have gained an export. The first CI run of voice's machine-core test failed on a
+close code that differs between the locked and the unlocked dependency set. And the
+machine core, by forcing every fixture to have a verdict, made voice's guide say several
+things it had only implied — one of which, the reply-audio rate, the document had stated
+wrong. That last one is the day's open question: the satellite reads it as a withdrawn
+guarantee, and it has gone to the owner.
+
+Three agents declined, correctly, to edit their repo's own law on a relayed instruction
+and handed back patches instead; the owner's approval was first-hand here, so the
+coordinator applied them. Left open on purpose: the co-owned `crossover-fixtures` pin
+(no owner, no tag family), satellite's firmware conformance test (FW-1a) and first
+device-integration pin (DES-4), and two voice defects the fixtures exposed. contracts:
+none — closing entry; every cut is recorded by its task. docs: none — board entry.
+
 ## 2026-10-05 — IMPL-19: commons pins the WS protocol — the eval provider answers to golden frames
 
 The last commons build item, and the edge the morning analysis had called undeclared:

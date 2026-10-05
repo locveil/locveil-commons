@@ -282,7 +282,6 @@ assertions.
       loader alone. docs: none — package README + design doc are the integrator surface,
       both current. contracts: none at close — the arc's surfaces carried their own verdicts
       (core-py-v1 cut, owned-surface amendment, v1.1 packaging correction).
-
 - [x] **PROD-10 — ui-kit package + stylebook** (D-8/D-9, next release): `packages/ui-kit`
       npm package consumed by both config UIs (`../locveil-voice/config-ui`,
       `../locveil-bridge/ui`); component boundaries keep one-shell-with-plugins reachable —
@@ -508,7 +507,6 @@ assertions.
       - **Reports-repo consumption** (no ledger there; executed commons-side post-transfer):
         `bootstrap.sh` generates labels from the pinned core + trivial CI compare; README
         pointer flips from voice's design doc to `process/problem-reports.md`.
-
 - [x] **PROD-15 — locveil-satellite bootstrap** (executes D-6/D-7 with dated amendments;
       decided by council **HK-4**, 2026-07-12, four rounds — arc in `BOARD_DONE.md` HK-4,
       positions/synthesis in `JOURNAL.md`). Decision: repo NOW from
@@ -594,7 +592,6 @@ assertions.
       the same close: the `cross-repo-board` shared block now names the fourth sibling
       (`../locveil-satellite`) — source edited in `process/claude-blocks/`, tagged
       **scope-v4**, hash re-pinned in all four CLAUDE.mds the same day.
-
 - [x] **PROD-16 — The contract convention + the coordinated cut** (decided by council
       **HK-5**, 2026-07-12, one round with all THREE product keepers — arc in
       `BOARD_DONE.md` HK-5; **normative: `process/contracts.md`**). Decision: one org-wide
@@ -692,7 +689,6 @@ assertions.
       device-integration STAMP core is post-tag (satellite requests v1.1 repo-to-repo at
       descriptor authoring); STAMP `artifacts` list + guard completeness rule =
       contract-guard v1.1 at the next natural bump.
-
 - [x] **PROD-17 — User-facing docs: the org convention + the docs manifest** (decided by
       council **HK-6**, 2026-07-12, two rounds, all three keepers — arc in
       `BOARD_DONE.md` HK-6; **normative: `process/user-docs.md`** + machine schema
@@ -769,7 +765,6 @@ assertions.
       normal re-pin cadence, description-only delta. All four repos now run manifest +
       verdict discipline. docs: contributing, contracts-registry — created/extended by
       the commons execution; readme untouched (no behavior it describes changed).
-
 - [x] **PROD-21 — Python backend layout & naming: the org convention + both migrations**
       (decided by council **HK-8**, 2026-07-13, three measured rounds — arc in
       `BOARD_DONE.md` HK-8; **normative: `process/python-layout.md`**, which satisfies
@@ -884,8 +879,6 @@ assertions.
       config that violates the entry-points dynamic build-and-loading contract; seed = the handler manager's
       hardcoded namespace vs `discovery_paths`).
       docs: none — board/ledger artifacts only.
-
-
 - [x] **PROD-22 — contract-guard: verify the STAMP-named git tag exists** (shared-tooling gap
       surfaced by PROD-21/CORE-10, filed by the bridge 2026-07-13). The catalog-v1.7 cut set
       `STAMP.json`'s `"tag": "catalog-v1.7"` and passed scope-guard + contract-guard + the golden
@@ -936,7 +929,6 @@ assertions.
       dep line re-anchored (artifact exists; DRV-37 not "DRV-36's implementation";
       `locveil-bridge@19b7014`). Bridge ID: **DOC-16**. docs: contributing — the
       new Sprints row in the process list; the convention itself landed at HK-9.
-
 - [x] **PROD-24 — the Locveil Workbench: workstation UI shell + deploy-split** (filed at
       sprint-01 planning, 2026-07-14; **shell council DECIDED 2026-07-14** — two rounds,
       all three keepers, owner wireframe sketch as seed; the dossier was a view, this
@@ -1024,7 +1016,6 @@ assertions.
       above). docs: none — the deliverable IS a design record (`docs/design/workbench.md`);
       the commons manifest carries no design-doc node class and no existing node's
       coverage is invalidated.
-
 - [x] **PROD-25 — CI checkouts must fetch tags for contract-guard: the convention +
       consumer sweep** (filed 2026-07-15 by the bridge session, off bridge **OPS-30**).
       Finding: contract-guard-v2's `TAG-MISSING` rule (PROD-22) resolves owned STAMP tags
@@ -1098,7 +1089,6 @@ assertions.
       bridge's working flag-on-v6 is the recorded exception, protected from
       "fixing"). docs: none — process file amended in place, per this entry's
       own filing precedent.
-
 - [x] **PROD-26 — HK-12 execution: convention-enforcement hardening** (decision of record:
       HK-12 in `BOARD_DONE.md`, decided 2026-07-18; normative severity policy already landed
       as `process/contracts.md` §5 in the HK-12 landing commit). **Commons build (this
@@ -1240,6 +1230,166 @@ assertions.
       surface; every surface cut during execution carried its own verdict
       (repin-v1, contract-guard-v3, scope-v7/v7.1, the four sweep stamps,
       trace-format-v1, device-integration-v1.1, core-py-v1.1).
+- [x] **PROD-28 — HK-13 execution: single-sourced contract graph + enforcement gaps
+      closed** (decision of record: HK-13 in `BOARD_DONE.md`, decided 2026-10-05, two
+      rounds, all three keepers + commons; the normative rules already landed in
+      `process/contracts.md` §1–§5 in the HK-13 landing commit — that text plus the HK-13
+      entry is the design of record for the rule set). **Tagging (owner ruling q8,
+      re-confirmed round 2): every task filed from this entry is tagged `[release]` in its
+      receiving ledger**; the keepers' dissents are recorded in HK-13, not reopened. **Tag
+      form:** every cut below is three-part (`-vX.Y.Z`); pre-HK-13 tags stay frozen.
+      **Wave 0 — each repo, now, independent of everything else:** un-gate the guards in
+      CI (run on every push), make layer-2 suites run when contracts move, fix known
+      rotted pointers. **Commons build (this repo) — wave 0:** `contract-guard` CI job
+      loses its path gate; a pytest job runs `eval/tests` (the layer-2 pin + manifest
+      tests, never in CI before); a `repin --check` step. **Commons build — wave 1, ONE
+      tag set (the keepers' sweep-once condition):** (1) **contract-guard v4** →
+      `contract-guard-v4.0.0`: `artifacts` key mandatory (legacy STAMP = WARN until its
+      next cut; an empty list needs a guard pointer that resolves — settle the pointer
+      vocabulary here, package-style contracts included); pin completeness (pin files
+      cover the carried owner STAMP's `artifacts`); reserved names (`README.md` /
+      `PIN.json` never enumerated, no duplicate file names in one family — fails at the
+      owner); STAMP at HEAD equals STAMP at its tag; every pointer field resolves to a
+      file; registry `<family>-vX` strings equal the STAMP/PIN tag; an unlisted file in a
+      strict pin folder FAILS; three-part version form for STAMPs dated from 2026-10-05.
+      (2) **repin v2** → `repin-v2.0.0`: pin file set derived from the owner's STAMP
+      `artifacts` at the tag (STAMP always included; consumer `files` kept only as the
+      fallback for pre-enumeration tags); absent cross-repo destination skipped, not
+      never-pinned (voice's CI blocker); touch-the-family from a diff base using `dest`
+      paths + a structured `conformance` path; a `minor` severity level with patch gaps as
+      their own class (release gates: families fail on minor+, patch and `[[tool]]` gaps
+      warn); `[[tool]]` entries carry path + sha256, verified locally. (3) The pinned
+      contract-triad block re-worded to the HK-13 rules — ships with the next scope tag
+      (blocks version with scope tags, HK-2). (4) **Commons surfaces:** `report-protocol`
+      STAMP gains `artifacts` → `report-protocol-v1.0.1` (bytes only; re-pin owed: voice,
+      bridge); new owned family **`docs-manifest-schema`**
+      (`contracts/docs-manifest-schema/`, artifact
+      `process/user-docs/manifest.schema.json`, first tag `docs-manifest-schema-v1.0.0`)
+      and the internal `contracts/docs-manifest/` STAMP retired as instance data; the
+      **workbench machine schemas** owed since HK-12 (manifest-fragment + runtime-config)
+      land as enumerated artifacts at the next workbench cut — bridge's plugin and voice's
+      config-ui are waiting on them; remaining commons STAMPs declare `artifacts`. (5)
+      **Generated org-wide graph page** (owner-ticked rider): built from the four repos'
+      STAMPs + `.repin.toml` files — a view, never a source. (6) When voice's WS machine
+      core lands: commons pins `ws-protocol` for the eval WS provider with a hermetic
+      conformance test against the fixtures, and `CLAUDE.md`'s WS source-of-truth rule
+      gains the matching machine-core sentence (ends the HK-12 eval deferral for this one
+      edge). **Delegations (board-as-outbox; owners cut FIRST, then ONE sweep per repo
+      after the commons tag set):** **bridge** — (a) the README split, startable
+      immediately (guard v3.1 already accepts the shape; it MUST land before guard v4 is
+      vendored): `catalog-v1.10.0` with new enumerated
+      `contracts/catalog/catalog-contract.md` (param semantics + the versioning rule;
+      README keeps intro, changelog, file list, regeneration, drift-guard and realism
+      notes) and `device-integration-v1.2.0` with new enumerated
+      `contracts/device-integration/convention.md` (who must conform, the `wb-mqtt-v1`
+      profile, REST URL conventions, the descriptor + test-locked example, pin/conformance
+      rules; README becomes index + history); update the generator and test file lists,
+      the hand-written device-integration STAMP, the cross-link and the docs-manifest
+      nodes; three-level versions in `dump_catalog.py`; CORE-12 takes the next catalog
+      version (batching withdrawn); re-pin owed: voice + commons (catalog), satellite
+      (first pin, via DES-4); (b) CI: un-gate guard + repin steps, touch-the-family once
+      repin v2 exists, image-dispatch gate at minor-or-major with tools warning; (c) the
+      sweep: re-vendor the tag set, migrate `.repin.toml` (drop `files`), re-pin
+      `report-protocol-v1.0.1`; (d) docs-manifest remediation: the drifted schema copy
+      becomes a pin of `docs-manifest-schema`, the internal STAMP retires, the "no tag
+      cut" prose is re-truthed; (e) reconcile VWB-39's stale text at intake. Bridge ID: **VWB-44** (lead; written back 2026-10-05 —
+      sub-IDs VWB-45, OPS-38, OPS-39, DOC-19, plus UI-22 (the workbench pin) and OPS-40
+      (scope-v7.3.1 re-vendor) filed during the sweep; the VWB-39 redefinition was
+      owner-confirmed 2026-10-05; status lives in the bridge ledger). **voice** — (a) wave 0: un-gate contract-guard, close the
+      layer-2 path-gate hole (pytest must trigger on `contracts/**` and every enumerated
+      artifact path), fix the `docs/manifest.json` guard pointer still naming
+      `irene/tests/…`; (b) owner cuts: `ws-protocol-v1.0.1` (bytes only, served value
+      stays "1"; absorbs the two post-tag drifts `939a205` + `346a5f3`; STAMP enumerates
+      `docs/guides/websocket-api.md`; the version test compares the MAJOR only),
+      `trace-format-v1.0.1` (`docs/guides/tracing.md` enumerated whole — the DOC-14
+      refusal is remediated by owner ruling q3), `ui-openapi` and `wake-pack` STAMPs
+      declare (empty list + resolving guard pointer; wake-pack may ride ASSET-6), internal
+      docs-manifest STAMP retired for a `docs-manifest-schema` pin (the manifest test
+      becomes hermetic), ARCH-48 narrowed to a major-only comparison; (c) the sweep:
+      re-vendor the tag set, drop `files` from `.repin.toml`, re-stamp every pin (both
+      catalog destinations at `catalog-v1.10.0`; the re-stamp fixes the two rotted
+      `conformance` pointers), delete the manual re-pin recipe in
+      `contracts/pins/report-protocol/README.md`, add the CI `repin --check` step and the
+      dispatch gate; (d) **the WS machine core — design AND implementation now (owner
+      amendment q7; round 2 q4: all slices in order, nothing waits for FW-1a and FW-1a
+      waits for nothing):** design doc first (satellite reviews it — one frames file vs
+      one per frame type, unique flat file names), then slice 1
+      `contracts/ws-protocol/frames.golden.json` + an owner test validating real frames
+      from the existing WS suites, slice 2 JSONL transcripts, slice 3
+      `ws-protocol.schema.json`; lands as `ws-protocol-v1.1.0`. **Approved amendment to
+      `ws-protocol-doc-canonical` (owner, round 2 q3), verbatim:**
+      "`contracts/ws-protocol/` additionally holds the protocol's hand-written machine
+      core (golden frames, transcripts, schema). It is subordinate to the document: on
+      disagreement the document wins and the core is fixed. Never generated from code; a
+      wire change updates document and core in the same change." Voice ID: **BUILD-47** (lead; written back 2026-10-05 —
+      sub-IDs BUILD-48 … BUILD-53 (BUILD-53 = the workbench pin, filed during the sweep),
+      ARCH-60 design, ARCH-61 implementation, BUG-45 (an unrelated CI fix the un-gated
+      suite exposed); status lives in the voice ledger). **satellite** — (a) `esp32-site-v1.1.0` as a standalone cut (STAMP
+      enumerates the template only; not riding DES-5); re-pin owed: voice; (b) ONE sweep
+      after the commons tag set: re-vendor scope-guard + contract-guard + repin (it trails
+      on two today, unfiled), un-gate the CI workflow, drop `files`, trim both pin READMEs
+      (manual recipes + stale lines out), pin `docs-manifest-schema` and retire the
+      internal STAMP, fix the registry's "no git tag" line, touch-the-family hard from
+      FW-1a start (its own offer); (c) re-pin `ws-protocol` at `v1.0.1`, then at `v1.1.0`
+      — FW-1a's conformance test consumes the pinned fixtures from the day they exist and
+      is never gated on them; (d) DES-4 amended: its pin set comes from the
+      `device-integration-v1.2.0` STAMP and it waits for that cut (confirmed: nothing
+      consumes the pin yet). Satellite ID: **OPS-14** (lead; written back 2026-10-05 —
+      sub-IDs OPS-15 … OPS-24 (OPS-22 ledger repair, OPS-23 scope-v7.3.1 re-pin, OPS-24
+      the owner-approved `consumer-pins` update), DES-4 and FW-1a amended in place; the
+      `device-integration` family declaration was removed until DES-4; status lives in
+      the satellite ledger). **Sequencing:** wave 0
+      and the owner cuts need no new tooling and start on intake; the commons tag set is
+      on every repo's `[release]` path, so commons builds first; each consumer then sweeps
+      once. Keeper and coordinator estimates, not measured: about 12 owner sessions across
+      the four repos (voice ~5, bridge ~3.25, satellite ~0.5, commons ~3). The board lists
+      delegated IDs but never asserts their status — per-repo ledgers own it. Closes when
+      the commons build is done and all three lead IDs are written back. **Commons intake
+      (2026-10-05):** the build is filed as **IMPL-10 … IMPL-19** under `## IMPL` (one task =
+      one commit). **Owner directive 2026-10-05 (during execution):** `locveil-reports`,
+      the report protocol's third consumer, is brought under the same discipline —
+      **IMPL-21** (it has no ledger of its own; the task lives here).
+      **CLOSED 2026-10-05 — executed the day it was decided, across FIVE repos.** Commons
+      build: IMPL-10 … IMPL-22 all in DONE (contract-guard-v4.0.0, repin-v2.0.0,
+      scope-v7.3.1, report-protocol-v1.0.1, docs-manifest-schema-v1.0.0, workbench-v1.3.0,
+      ui-kit-v1.3.0; CI un-gated with layer 2; the generated graph page; the ws-protocol
+      pin; the new-repo template; locveil-reports). Owner cuts verified on origin: bridge
+      catalog-v1.10.0 + device-integration-v1.2.0; voice ws-protocol-v1.0.1 → **v1.1.0
+      (the machine core: golden frames, nine transcripts, schema — designed,
+      satellite-reviewed approve-with-changes, implemented, cut)**, trace-format-v1.0.1,
+      ui-openapi-v1.1.1, wake-pack-v1.0.1; satellite esp32-site-v1.1.0. Every consumer
+      swept once. **Verified at close (coordinator, all five repos, same minute):**
+      working trees clean and in sync with origin; contract-guard v4 strict 0 failures
+      everywhere; `repin --check --fail-on any` exit 0 everywhere — every pin and every
+      vendored tool at its owner's newest tag, every vendored tool hashed; latest CI green
+      everywhere; the graph page shows 17 edges, none trailing. The two live drifts that
+      seeded HK-13 are gone (voice's WS doc + STAMP re-cut; bridge's schema copy replaced
+      by a pin); pins are complete by the owners' own lists; the three rotted pointers are
+      repaired; touch-the-family and the release/dispatch gates are wired in every repo
+      that has them. **Owner directives during execution:** locveil-reports brought in
+      (IMPL-21); bridge's VWB-39 redefinition confirmed; the repo-local invariant updates
+      approved ("I want these updates as a part of this run") — satellite `consumer-pins`
+      (OPS-24), voice `trace-format-doc-canonical` (BUILD-51) and the verbatim
+      `ws-protocol-doc-canonical` amendment (ARCH-65). **Remaining guard warnings, both
+      recorded and by design:** commons `crossover-fixtures` (co-owned legacy pin without
+      PIN.json — needs an owner and a tag family; predates HK-12, no council took it) and
+      satellite `ws-protocol` PIN-NO-CONFORMANCE (FW-1a writes the test). **Open by
+      design, in their own ledgers:** satellite DES-4 (first `device-integration` pin at
+      v1.2.0, with its descriptors) and FW-1a; voice BUG-47 `[release]` (two deliveries to
+      one reply channel are not serialized) and BUG-48 `[deferred]` (handshake values are
+      not type-checked) — defects the machine-core work exposed, filed not fixed; voice
+      QUAL-87 (anthropic SDK 1.x). **Known limit, recorded in both pin READMEs:** the
+      product plugins still compile against the workbench contract types through the live
+      `file:` link — the pin states what was verified, not what `tsc` reads. **Raised by
+      the satellite at its final re-pin, put to the owner at close:** the v1.1.0 guide
+      corrects "reply audio is already converted to the rate you registered" to "converted
+      down, never up — play by `speak_begin.rate`"; voice cut it as a minor (no frame or
+      key changed; it documents what the server always did), but it withdraws a guarantee
+      satellite's FW-1 baseline R-10 relied on. No device is fielded. docs: none — board
+      entry; every commons docs change rode its IMPL task. contracts: none here — every
+      cut is recorded by the task that made it (IMPL-10/11/13/14/15/16/17/22; bridge
+      VWB-44/45; voice BUILD-48/49/50 + ARCH-61; satellite OPS-15); all re-pins owed by
+      those cuts are discharged.
 
 ## IMPL — commons implementation
 
