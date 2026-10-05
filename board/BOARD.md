@@ -184,8 +184,8 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       sweep: re-vendor the tag set, migrate `.repin.toml` (drop `files`), re-pin
       `report-protocol-v1.0.1`; (d) docs-manifest remediation: the drifted schema copy
       becomes a pin of `docs-manifest-schema`, the internal STAMP retires, the "no tag
-      cut" prose is re-truthed; (e) reconcile VWB-39's stale text at intake. Bridge ID:
-      _pending write-back_. **voice** — (a) wave 0: un-gate contract-guard, close the
+      cut" prose is re-truthed; (e) reconcile VWB-39's stale text at intake. Bridge ID: **VWB-44** (lead; written back 2026-10-05 —
+      sub-IDs VWB-45, OPS-38, OPS-39, DOC-19; status lives in the bridge ledger). **voice** — (a) wave 0: un-gate contract-guard, close the
       layer-2 path-gate hole (pytest must trigger on `contracts/**` and every enumerated
       artifact path), fix the `docs/manifest.json` guard pointer still naming
       `irene/tests/…`; (b) owner cuts: `ws-protocol-v1.0.1` (bytes only, served value
@@ -222,7 +222,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       — FW-1a's conformance test consumes the pinned fixtures from the day they exist and
       is never gated on them; (d) DES-4 amended: its pin set comes from the
       `device-integration-v1.2.0` STAMP and it waits for that cut (confirmed: nothing
-      consumes the pin yet). Satellite ID: _pending write-back_. **Sequencing:** wave 0
+      consumes the pin yet). Satellite ID: **OPS-14** (lead; written back 2026-10-05 —
+      sub-IDs OPS-15 … OPS-21, DES-4 and FW-1a amended in place; status lives in the
+      satellite ledger). **Sequencing:** wave 0
       and the owner cuts need no new tooling and start on intake; the commons tag set is
       on every repo's `[release]` path, so commons builds first; each consumer then sweeps
       once. Keeper and coordinator estimates, not measured: about 12 owner sessions across
