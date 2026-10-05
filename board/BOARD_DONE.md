@@ -1476,6 +1476,28 @@ assertions.
       convention docs unaffected. contracts: scope-v7.2 cut (bug-fix minor); re-pin owed:
       voice, bridge, satellite — advisory `[[tool]]` nags, one-commit quick tasks riding
       whenever each repo commits next.
+- [x] **IMPL-10 — contract-guard v4: the HK-13 rule set** (`packages/contract-guard`;
+      PROD-28 commons build item 1; filed at intake and done 2026-10-05). One declaration
+      checked from both ends: `ARTIFACTS-UNDECLARED` (every STAMP declares `artifacts`;
+      STAMPs dated before 2026-10-05 WARN as legacy) + `ARTIFACTS-EMPTY-NO-GUARD` (an
+      empty list needs a `guard` pointer that resolves); `VERSION-FORM` (three-part for
+      STAMPs dated from 2026-10-05); `RESERVED-NAME` / `DUPLICATE-NAME` (README.md,
+      PIN.json, STAMP.json never enumerated; pins are flat); `STAMP-DRIFT` (STAMP at HEAD
+      equals STAMP at its tag; absent-at-tag WARNs as `STAMP-NOT-IN-TAG`);
+      `PIN-INCOMPLETE` (a pin covers the carried owner STAMP's `artifacts`; pins stamped
+      before 2026-10-05 WARN); `UNLISTED-FILE` now a failure on strict pins;
+      `POINTER-UNRESOLVED` (`guard`, `code_constant`, PIN and `.repin.toml` `conformance`,
+      `[[tool]]` `path`); `REGISTRY-VERSION` (a `<family>-v<digits>` string in the
+      registry must equal the STAMP / PIN / `[[tool]]` tag). Pointer vocabulary settled:
+      ONE field, `guard` (repo-root-relative, optionally `path::symbol`). First test suite
+      for the tool (`packages/contract-guard/tests`, 15 behaviors over throwaway git
+      repos). Dry-run against all four repos before the cut: every failure it raises is a
+      recorded HK-13 finding the sweeps discharge (voice STAMP drifts, bridge's enumerated
+      READMEs, stale registry versions, satellite's prose conformance pointers); nothing
+      unexpected. Script 4.0.0, tag **`contract-guard-v4.0.0`**, STAMP in the same change
+      (the STAMP now names its own `guard`). docs: contracts-registry — row moved to the
+      new tag. contracts: contract-guard-v4.0.0 cut (major: new failing rules); re-pin
+      owed: voice, bridge, satellite (their PROD-28 sweeps).
 
 ## HK — council topics
 

@@ -1,13 +1,13 @@
 {
   "contract": "contract-guard",
-  "version": "3.1",
-  "tag": "contract-guard-v3.1",
-  "date": "2026-07-18",
+  "version": "4.0.0",
+  "tag": "contract-guard-v4.0.0",
+  "date": "2026-10-05",
   "owner_repo": "locveil-commons",
-  "artifact": "packages/contract-guard/contract_guard.py",
   "artifacts": [
     "packages/contract-guard/contract_guard.py"
   ],
-  "distribution": "locveil-contract-guard 3.1.0",
-  "note": "Cross-reference stamp (HK-12/PROD-26): first STAMP of the family — tags v1/v2 are frozen pre-stamp history. v3 added the HK-12 omission rules (ORPHAN-TAG, CONTENT-DRIFT, VENDORABLE-UNREGISTERED, --relax-tags); v3.1 adds ARTIFACTS-PATH (IMPL-8, owner Option B): artifacts entries must be repo-root-relative and resolve at HEAD — bare names fail (the bridge VWB-43 false-drift trap, defused org-wide). Own release note: this very bump was forced by v3.1's CONTENT-DRIFT catching its own uncommitted edit. artifacts is drift-checked (the guard verifies the guard); consumers track their vendored tag via .repin.toml [[tool]]."
+  "guard": "packages/contract-guard/tests/test_contract_guard.py",
+  "distribution": "locveil-contract-guard 4.0.0",
+  "note": "v4 = the HK-13 rule set (IMPL-10, PROD-28): ARTIFACTS-UNDECLARED / ARTIFACTS-EMPTY-NO-GUARD, VERSION-FORM (three-part from 2026-10-05), RESERVED-NAME / DUPLICATE-NAME, STAMP-DRIFT, PIN-INCOMPLETE, UNLISTED-FILE as a failure, POINTER-UNRESOLVED, REGISTRY-VERSION; legacy STAMPs and pins (dated before 2026-10-05) warn until their next cut / re-pin. Pinned set = contract_guard.py only (tests and packaging are owner-side tooling). Consumers vendor via `repin.py tool contract-guard` and track the tag + sha256 in their .repin.toml [[tool]] manifest. History: v3 added the HK-12 omission rules, v3.1 ARTIFACTS-PATH; v1/v2 predate the stamp."
 }

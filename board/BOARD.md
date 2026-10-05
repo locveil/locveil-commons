@@ -234,17 +234,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 
 ## IMPL — commons implementation
 
-- [ ] **IMPL-10 — contract-guard v4: the HK-13 rule set** (`packages/contract-guard`;
-      PROD-28 commons build item 1, filed at intake 2026-10-05). `artifacts` key mandatory
-      (STAMPs dated before 2026-10-05 WARN as legacy; an empty list needs a `guard`
-      pointer that resolves); three-part version form for STAMPs dated from 2026-10-05;
-      reserved names (`README.md`, `PIN.json`, `STAMP.json` never enumerated; no duplicate
-      file names in one family); STAMP at HEAD equals STAMP at its tag (absent-at-tag
-      WARNs); pin completeness against the carried owner STAMP; an unlisted file in a
-      strict pin FAILS; pointer fields resolve (`guard`, `code_constant`, PIN /
-      `.repin.toml` `conformance`); registry `<family>-vX` strings equal the STAMP / PIN /
-      `[[tool]]` tag. Tag `contract-guard-v4.0.0`, STAMP in the same change. Dry-run
-      against all four repos before tagging.
 - [ ] **IMPL-11 — repin v2: the pin set derived from the owner's STAMP**
       (`packages/repin`; PROD-28 commons build item 2, filed at intake 2026-10-05). File
       set from the owner STAMP's `artifacts` at the tag (STAMP always included; config

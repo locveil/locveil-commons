@@ -1,6 +1,17 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-10: contract-guard v4 — one declaration, checked from both ends
+
+The first PROD-28 build item. The guard used to check that what exists is coherent; v4
+makes the owner's `artifacts` list the one declaration both sides answer to — the drift
+rule locks it, the pin-completeness rule holds consumers to it, and an empty list has to
+name the test that guards the contract instead. The legacy line is a date (2026-10-05):
+older STAMPs and pins warn, so re-vendor day blocks nobody, exactly the satellite
+keeper's condition. Dry-run across all four repos raised only the findings HK-13 already
+recorded. The tool also gets its first test suite. contracts: contract-guard-v4.0.0 cut;
+re-pin owed: voice, bridge, satellite. docs: contracts-registry.
+
 ## 2026-10-05 — HK-13: the graph was already there — single-sourcing it (council, two rounds)
 
 Seeded by the owner after a morning analysis of how contracts work across the four repos
