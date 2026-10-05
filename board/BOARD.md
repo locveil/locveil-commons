@@ -185,7 +185,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       `report-protocol-v1.0.1`; (d) docs-manifest remediation: the drifted schema copy
       becomes a pin of `docs-manifest-schema`, the internal STAMP retires, the "no tag
       cut" prose is re-truthed; (e) reconcile VWB-39's stale text at intake. Bridge ID: **VWB-44** (lead; written back 2026-10-05 —
-      sub-IDs VWB-45, OPS-38, OPS-39, DOC-19; status lives in the bridge ledger). **voice** — (a) wave 0: un-gate contract-guard, close the
+      sub-IDs VWB-45, OPS-38, OPS-39, DOC-19, plus UI-22 (the workbench pin) and OPS-40
+      (scope-v7.3.1 re-vendor) filed during the sweep; the VWB-39 redefinition was
+      owner-confirmed 2026-10-05; status lives in the bridge ledger). **voice** — (a) wave 0: un-gate contract-guard, close the
       layer-2 path-gate hole (pytest must trigger on `contracts/**` and every enumerated
       artifact path), fix the `docs/manifest.json` guard pointer still naming
       `irene/tests/…`; (b) owner cuts: `ws-protocol-v1.0.1` (bytes only, served value
@@ -212,8 +214,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       core (golden frames, transcripts, schema). It is subordinate to the document: on
       disagreement the document wins and the core is fixed. Never generated from code; a
       wire change updates document and core in the same change." Voice ID: **BUILD-47** (lead; written back 2026-10-05 —
-      sub-IDs BUILD-48 … BUILD-52, ARCH-60 design, ARCH-61 implementation; status lives
-      in the voice ledger). **satellite** — (a) `esp32-site-v1.1.0` as a standalone cut (STAMP
+      sub-IDs BUILD-48 … BUILD-53 (BUILD-53 = the workbench pin, filed during the sweep),
+      ARCH-60 design, ARCH-61 implementation, BUG-45 (an unrelated CI fix the un-gated
+      suite exposed); status lives in the voice ledger). **satellite** — (a) `esp32-site-v1.1.0` as a standalone cut (STAMP
       enumerates the template only; not riding DES-5); re-pin owed: voice; (b) ONE sweep
       after the commons tag set: re-vendor scope-guard + contract-guard + repin (it trails
       on two today, unfiled), un-gate the CI workflow, drop `files`, trim both pin READMEs
@@ -224,8 +227,10 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       is never gated on them; (d) DES-4 amended: its pin set comes from the
       `device-integration-v1.2.0` STAMP and it waits for that cut (confirmed: nothing
       consumes the pin yet). Satellite ID: **OPS-14** (lead; written back 2026-10-05 —
-      sub-IDs OPS-15 … OPS-21, DES-4 and FW-1a amended in place; status lives in the
-      satellite ledger). **Sequencing:** wave 0
+      sub-IDs OPS-15 … OPS-24 (OPS-22 ledger repair, OPS-23 scope-v7.3.1 re-pin, OPS-24
+      the owner-approved `consumer-pins` update), DES-4 and FW-1a amended in place; the
+      `device-integration` family declaration was removed until DES-4; status lives in
+      the satellite ledger). **Sequencing:** wave 0
       and the owner cuts need no new tooling and start on intake; the commons tag set is
       on every repo's `[release]` path, so commons builds first; each consumer then sweeps
       once. Keeper and coordinator estimates, not measured: about 12 owner sessions across
