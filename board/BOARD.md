@@ -236,11 +236,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 
 ## IMPL — commons implementation
 
-- [ ] **IMPL-18 — generated org-wide contract graph page** (PROD-28 commons build item 5;
-      owner-ticked HK-13 rider, filed at intake 2026-10-05). A generator reads the four
-      repos' STAMPs and `.repin.toml` files and writes the owner → consumer graph as a
-      view — never a source; regenerated on demand, checked for freshness where the
-      siblings are on disk.
 - [ ] **IMPL-19 — commons pins `ws-protocol` for the eval WS provider** (PROD-28 commons
       build item 6, filed at intake 2026-10-05; GATED on voice's `ws-protocol-v1.1.0`
       machine-core cut). Pin + a hermetic conformance test against the golden frames;

@@ -19,7 +19,13 @@ Here now:
 - **[`contracts.md`](contracts.md)** — the general contract convention (HK-5/PROD-16):
   contract classes, the uniform `contracts/` layout (owned + `pins/` + registry README),
   STAMP/PIN cores, family tags, two-layer enforcement (contract-guard + conformance
-  tests), staleness rules. Tool: `../packages/contract-guard/`.
+  tests), staleness rules; amended by HK-12 (severity ladder) and HK-13 (declared
+  artifacts, three-level versions, reserved names, un-gated guards). Tools:
+  `../packages/contract-guard/`, `../packages/repin/`.
+- **[`contract-graph.md`](contract-graph.md)** — GENERATED VIEW of the org-wide contract
+  graph (HK-13 rider): owned surfaces, consumption edges with freshness, vendored tools.
+  Never a source, never edited — regenerate with
+  `python3 packages/contract-graph/contract_graph.py` (`--check` reports staleness).
 
 - **[`python-layout.md`](python-layout.md)** — Python backend layout & naming (HK-8):
   component/src layout, tests outside the package, config/ + docker/ at repo root,

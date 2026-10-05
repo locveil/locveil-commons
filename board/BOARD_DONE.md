@@ -1525,8 +1525,10 @@ assertions.
       `files`; the conformance pointer is a real path). `ledger-guard` keeps its path gate
       (the shared-invariants block prescribes it; not an HK-13 subject). docs:
       contributing — dev-setup section re-worded (un-gated CI, the cut procedure, the
-      three vendored tools, the exact test commands). contracts: none — no versioned
-      surface moved (workflow + repo-local config).
+      three vendored tools, the exact test commands). Fix-forward same day (own commit):
+      the first push failed on an unquoted step name containing `: ` — quoted, run green
+      before any consumer moved. contracts: none — no versioned surface moved (workflow +
+      repo-local config).
 - [x] **IMPL-13 — `report-protocol-v1.0.1`: the STAMP declares its artifact** (PROD-28
       commons surfaces; filed at intake and done 2026-10-05). Bytes-only patch:
       `artifacts` enumerates `contracts/report-protocol/report-protocol.json`
@@ -1604,6 +1606,22 @@ assertions.
       moved to the new tag. contracts: scope-v7.3.0 cut (minor — block text changed,
       script bytes unchanged); re-pin owed: voice, bridge, satellite (block + tool, their
       PROD-28 sweeps).
+- [x] **IMPL-18 — generated org-wide contract graph page** (PROD-28 commons build item 5;
+      owner-ticked HK-13 rider; filed at intake and done 2026-10-05).
+      `packages/contract-graph/contract_graph.py` (stdlib, commons-internal — not a
+      vendored tool, no package manifest) reads exactly the two declarations HK-13 made
+      the sources of the graph — each owner's `contracts/<name>/STAMP.json`, each
+      consumer's `.repin.toml` + `PIN.json` — from the sibling checkouts and writes
+      `process/contract-graph.md`: a mermaid owner → consumer diagram, the owned-surfaces
+      table (tag, enumerated artifacts, guard), the consumption edges with pinned vs
+      owner's current tag and the conformance pointer, and the vendored-tools manifest
+      (pinned tag, bytes hashed or not). A VIEW, never a source: nothing reads it;
+      `--check` reports a stale page and skips when a sibling is absent (CI); wired
+      warn-only into the pre-commit hook. Offline by design — gating on staleness stays
+      repin's job. First render records the mid-migration state (9 vendored tools
+      trailing, 7 pins trailing); the page is regenerated at PROD-28's close. docs: none —
+      `process/` is not a manifest root; the page is listed in `process/README.md`.
+      contracts: none — a derived view; no versioned surface moved.
 
 ## HK — council topics
 

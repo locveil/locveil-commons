@@ -1,6 +1,15 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-18: the contract graph, drawn — a view with two sources and no authority
+
+The rider the owner ticked in round 1. Until today the only way to see who consumes what
+across the four repos was to open four registries and four configs; the page is those
+same declarations rendered once. It is deliberately powerless — generated, never cited,
+stale-checked only as a warning — because the council's point was that the graph has two
+sources and a third would be the old disease. Its first render is a snapshot of the
+migration in flight. contracts: none — derived view. docs: none — process file.
+
 ## 2026-10-05 — IMPL-12: commons adopts HK-13 — guards on every push, layer 2 in CI at last
 
 Commons takes its own medicine. The contract-guard job no longer waits for a path under

@@ -9,4 +9,7 @@ python3 packages/contract-guard/contract_guard.py --check --relax-tags || exit 1
 # HK-12/HK-13 §5 pre-commit stage: staleness WARNS here, never blocks (fail-on none; the
 # trailing || true also covers a missing/broken config — a hook must not brick commits).
 python3 packages/repin/repin.py --check --fail-on none || true
+# HK-13 rider (IMPL-18): the generated contract-graph view — a stale page WARNS, never
+# blocks (it is a view; siblings absent = skipped).
+python3 packages/contract-graph/contract_graph.py --check || true
 exit 0
