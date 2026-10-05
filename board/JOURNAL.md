@@ -1,6 +1,15 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-17: scope-v7.3.0 — the pinned contract-triad block says what HK-13 decided
+
+The digest every repo's CLAUDE.md carries now says what HK-13 decided, so the rules are
+in context at the moment a session cuts or pins something — the HK-12 lesson about
+conventions that are not in context at the miss. Nothing in the guard script moved; the
+tag exists because block text ships with scope tags. Side-find filed rather than fixed:
+the new-repo template still teaches the pre-repin world (IMPL-20). contracts:
+scope-v7.3.0 cut; re-pin owed: voice, bridge, satellite. docs: contracts-registry.
+
 ## 2026-10-05 — IMPL-16: ui-kit-v1.3.0 — a package-style contract names its guard
 
 The last of the commons surfaces that a tag did not carry a STAMP for. The intake called

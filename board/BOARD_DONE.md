@@ -1576,6 +1576,25 @@ assertions.
       manifest node's guard pointer now names the real test (metadata only). contracts:
       ui-kit-v1.3.0 cut (minor); no pins exist — consumers ride the workbench import-map
       singleton or co-development `file:` links by design.
+- [x] **IMPL-17 — contract-triad block re-worded to HK-13, scope cut `scope-v7.3.0`**
+      (PROD-28 commons build item 3; filed at intake and done 2026-10-05). The pinned
+      digest (`process/claude-blocks/contract-triad.md`) now states the HK-13 rules: every
+      STAMP declares `artifacts` (what consumers pin AND what is byte-locked; never a
+      README; the STAMP itself is locked), three-level versions with three-part tags and
+      major-only served versions, flat complete pins derived by repin from the owner's
+      STAMP with `PIN.json` / `README.md` reserved for the consumer, and the enforcement
+      line (guards on every push, layer 2 when contracts move, push CI on major gap or
+      touch-the-family, release gates on minor-or-major, tools pinned by tag + sha256).
+      Block-only release: `scope_guard.py` is byte-identical to `scope-v7.2` (1.4.1);
+      blocks version with scope tags (HK-2 single-pin). Commons' own `CLAUDE.md` re-pinned
+      in the same change (marker `scope-v7.3.0`, new sha256 in `.scope-guard.toml`), and
+      its layout paragraph — which still described `contracts/` as holding one owned
+      surface — re-truthed. Discovered, not fixed here: the new-repo template
+      (`process/new-repo-template/`) trails at scope-v4 with a manual `git show` vendoring
+      recipe and no contract tooling — filed as IMPL-20. docs: contracts-registry — row
+      moved to the new tag. contracts: scope-v7.3.0 cut (minor — block text changed,
+      script bytes unchanged); re-pin owed: voice, bridge, satellite (block + tool, their
+      PROD-28 sweeps).
 
 ## HK — council topics
 

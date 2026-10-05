@@ -1,13 +1,13 @@
 {
   "contract": "scope",
-  "version": "7.2",
-  "tag": "scope-v7.2",
-  "date": "2026-07-18",
+  "version": "7.3.0",
+  "tag": "scope-v7.3.0",
+  "date": "2026-10-05",
   "owner_repo": "locveil-commons",
-  "artifact": "packages/scope-guard/scope_guard.py",
   "artifacts": [
     "packages/scope-guard/scope_guard.py"
   ],
+  "blocks": "process/claude-blocks/",
   "distribution": "locveil-scope-guard 1.4.1",
-  "note": "Cross-reference stamp (HK-12/PROD-26): first STAMP of a family tagged since scope-v1 — pre-existing tags v1..v6 are frozen history, the stamp starts asserting at v7 (contracts.md §3: no version exists that is not in a stamp, from the first stamp onward). v7.1 = additive block release: ships the new contract-triad pinned block (process/claude-blocks/contract-triad.md; blocks version with scope tags per HK-2 single-pin) — script bytes unchanged from v7. artifacts is drift-checked: the vendored script must be byte-identical to the tag; consumers track their vendored tag via their .repin.toml [[tool]] manifest. v7.2 (IMPL-9): rotation bug fix — the DATED pattern demanded the date flush against the heading marks, so ##-style journals (commons) parsed as zero sections and --rotate refused; block text unchanged from v7.1."
+  "note": "v7.3.0 = block release (IMPL-17, HK-13/PROD-28): the pinned contract-triad block (process/claude-blocks/contract-triad.md) is re-worded to the HK-13 rules — declared artifacts, three-level versions with three-part tags, flat pins with reserved names, un-gated guards and the release severity. Script bytes are UNCHANGED from scope-v7.2 (scope-guard 1.4.1); blocks version with scope tags per HK-2 single-pin, so consumers re-pin the block text + its sha256 and re-vendor the (identical) script at this tag via `repin.py tool scope-guard`. History: v7 added the contracts verdict + unknown-prefix rules, v7.1 shipped the first contract-triad block, v7.2 fixed ##-style journal rotation; v1–v6 predate the stamp."
 }

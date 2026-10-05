@@ -6,7 +6,12 @@ runnable at **`../../packages/scope-guard/scope_guard.py`** (stays-in-home rule,
 
 - **Pinned set**: exactly `scope_guard.py`. Each consumer's `.scope-guard.toml` is
   repo-owned config and never travels.
-- **Consumption**: vendor at a `scope-vN` tag; record the tag in the repo's
-  `.repin.toml` `[[tool]]` manifest (HK-12) so staleness is machine-checked.
-- **Version authority**: `STAMP.json` + tag (first stamped at `scope-v7`; v1–v6 predate
-  the stamp and are frozen history).
+- **Blocks ride the same tag** (HK-2 single-pin): the pinned CLAUDE.md block sources in
+  `../../process/claude-blocks/` version with scope tags — a block-only release moves the
+  tag while the script bytes stay identical.
+- **Consumption**: vendor at a `scope-vX.Y.Z` tag (`repin.py tool scope-guard`); the
+  repo's `.repin.toml` `[[tool]]` manifest records tag, path and sha256 (HK-12/HK-13).
+  Re-pin blocks by copying the block text between the markers and updating its sha256
+  in `.scope-guard.toml` (`scope_guard.py --hash-blocks`).
+- **Version authority**: `STAMP.json` + tag (first stamped at v7; v1–v6 predate the stamp
+  and are frozen history; three-part tags from v7.3.0 on — HK-13).
