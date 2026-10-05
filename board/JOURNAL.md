@@ -1,6 +1,14 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-12: commons adopts HK-13 — guards on every push, layer 2 in CI at last
+
+Commons takes its own medicine. The contract-guard job no longer waits for a path under
+`contracts/` to change — it runs on every push, with repin's touch-the-family beside it
+and, for the first time in this repo, the layer-2 suites. That closes the two commons
+gaps the morning analysis found (no pytest in CI; a gate that missed three enumerated
+artifacts). contracts: none — workflow and repo-local config. docs: contributing.
+
 ## 2026-10-05 — IMPL-17: scope-v7.3.0 — the pinned contract-triad block says what HK-13 decided
 
 The digest every repo's CLAUDE.md carries now says what HK-13 decided, so the rules are

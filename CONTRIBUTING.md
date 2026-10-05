@@ -36,17 +36,27 @@ mostly *process and shared machinery*; product code belongs in the product repos
 ## Dev setup & gates
 
 - Python ≥ 3.11, [`uv`](https://github.com/astral-sh/uv). Eval framework tests:
-  `cd eval && uv run --all-extras --with pytest --with jsonschema pytest tests/ -q`.
-- Hooks: `git config core.hooksPath hooks` — runs scope-guard + contract-guard,
-  `--check` only. CI mirrors them (`ledger-guard`, `contract-guard`), path-gated.
-- Shared tooling changes (`packages/scope-guard/`, `packages/contract-guard/`) are
-  released by prefixed tag (`scope-vN`, `contract-guard-vN`); consumers move only by
-  re-pin — never patch a vendored copy in a product repo.
+  `cd eval && uv run --extra record --extra dev pytest tests/ -q`; tool suites:
+  `cd packages/contract-guard && uv run --no-project --with pytest python -m pytest tests -q`
+  (same for `packages/repin`).
+- Hooks: `git config core.hooksPath hooks` — runs scope-guard + contract-guard
+  (`--check` only) and a warn-only `repin --check`. CI: `ledger-guard` (path-gated) and
+  `contract-guard`, which runs on EVERY push with no path gate — layer 1 (guard strict +
+  repin staleness with touch-the-family) and layer 2 (the eval suite and both tool
+  suites). A contract edit that skips its version move, or a pin that trails while you
+  touch it, fails there.
+- Cutting a contract (`process/contracts.md` §2–§3): artifact + `STAMP.json` (three-part
+  version, `artifacts` declared) + registry row in ONE commit, then tag that commit
+  `<family>-vX.Y.Z` and push commit and tag together.
+- Shared tooling changes (`packages/scope-guard/`, `packages/contract-guard/`,
+  `packages/repin/`) are released by prefixed tag; consumers move only by re-vendor
+  (`repin.py tool <name>`) — never patch a vendored copy in a product repo.
 
 ## Shared packages the products vendor
 
 | Package | Distribution | Tags |
 |---|---|---|
-| [`packages/scope-guard/`](packages/scope-guard/README.md) | `locveil-scope-guard` | `scope-vN` |
-| [`packages/contract-guard/`](packages/contract-guard/README.md) | `locveil-contract-guard` | `contract-guard-vN` |
+| [`packages/scope-guard/`](packages/scope-guard/README.md) | `locveil-scope-guard` | `scope-vX.Y.Z` |
+| [`packages/contract-guard/`](packages/contract-guard/README.md) | `locveil-contract-guard` | `contract-guard-vX.Y.Z` |
+| [`packages/repin/`](packages/repin/README.md) | `locveil-repin` | `repin-vX.Y.Z` |
 | [`eval/`](eval/README.md) | `locveil-eval` | `eval-vN` |

@@ -1,29 +1,46 @@
-# contract-guard CI (HK-5/PROD-16; convention: process/contracts.md §4) — layer-1
-# coherence only, --check only. Path-gated like ledger-guard.
+# Contract enforcement CI (convention: process/contracts.md §4–§5; HK-5, HK-12, HK-13).
+# Runs on EVERY push and PR — no path gate (HK-13: owned artifacts mostly live outside
+# contracts/, so a gated job never ran for the edit the drift rule exists to catch).
+#   layer 1  contract-guard --check (strict: tags must exist) + repin --check with
+#            touch-the-family against the push base
+#   layer 2  the owner guards and pin conformance tests (eval/tests + the tool suites)
 name: contract-guard
 
 on:
   push:
-    paths:
-      - "contracts/**"
-      - "packages/contract-guard/**"
-      - ".github/workflows/contract-guard.yml"
   pull_request:
-    paths:
-      - "contracts/**"
-      - "packages/contract-guard/**"
-      - ".github/workflows/contract-guard.yml"
 
 jobs:
   contract-guard:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # PROD-25 (amended): TAG-MISSING resolves owned STAMP tags via `git tag -l`; the
-      # default checkout is tag-less, and `fetch-tags: true` never delivers the tags
-      # (actions/checkout#1467 — commons' own run 29414186194 failed with the flag set).
-      # Explicit fetch per the OPS-9 reference; shallow stays fine.
+        with:
+          # full history: TAG-MISSING / ORPHAN-TAG / CONTENT-DRIFT / STAMP-DRIFT read
+          # tags and tag trees, and --touched diffs against the push base.
+          fetch-depth: 0
+      # PROD-25: never rely on fetch-tags (actions/checkout#1467) — fetch them explicitly.
       - name: Fetch tags
-        run: git fetch --tags --depth=1 origin
-      - name: contract-guard --check
+        run: git fetch --tags --force origin
+      - name: contract-guard --check (layer 1, strict)
         run: python3 packages/contract-guard/contract_guard.py --check
+      - name: repin --check (staleness: major gap + touch-the-family)
+        env:
+          BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before }}
+        run: python3 packages/repin/repin.py --check --fail-on major --touched "$BASE"
+
+  layer-2:
+    # Owner guards + pin conformance (process/contracts.md §4 layer 2). Hermetic.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: eval suite (pin conformance, docs-manifest, workbench + ui-kit guards)
+        working-directory: eval
+        run: uv run --extra record --extra dev pytest tests/ -q
+      - name: contract-guard behavior suite
+        working-directory: packages/contract-guard
+        run: uv run --no-project --with pytest python -m pytest tests -q
+      - name: repin behavior suite
+        working-directory: packages/repin
+        run: uv run --no-project --with pytest python -m pytest tests -q

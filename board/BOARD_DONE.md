@@ -1276,7 +1276,6 @@ assertions.
       voice UI-17 + bridge UI-18 compile against `locveil-workbench/contract` and the
       demo-plugin build shape. docs: none — the package README is the consumer doc
       (ui-kit precedent).
-
 - [x] **IMPL-2 — scope-guard: UNREFERENCED-evidence check** (`packages/scope-guard`):
       the missing fourth direction of evidence checking (HK-10 ruling 1,
       `process/ledger-discipline.md` §6) — an evidence doc on disk (`[evidence] dirs`)
@@ -1337,7 +1336,6 @@ assertions.
       Voice **UI-21** ungated; bridge picks the pair up at its restyle. docs: none —
       stylebook §7 already named both as standards; the package README precedent
       stands.
-
 - [x] **IMPL-5 — the bottom action-bar surface: ActionBar + ActionBarHost** (filed AND
       done 2026-07-15 — consumer-demanded: voice's UI-19 port parked its two colliding
       `fixed bottom-0` bars "waiting on a plugin-contract bottom-slot surface that
@@ -1360,7 +1358,6 @@ assertions.
       voice collapses ApplyChangesBar + the LocalizationsPage bar into `<ActionBar>` at
       its port — voice ID: **UI-22** (written back 2026-07-15). docs: none — workbench.md §4 amended in place; package READMEs are the
       consumer docs.
-
 - [x] **IMPL-6 — backend targets reach plugins: `PageProps.backends`** (filed AND done
       2026-07-15 — owner-demanded at the first controller run: "how do we tell voice
       and bridge how to reach their backends? IP needs to be passed thru — what about
@@ -1425,7 +1422,6 @@ assertions.
       MIME map gains `.ico`. Verified live on :6107 — svg 200 image/svg+xml, ico 200
       (correct MIME after the next serve restart). Favicon follow-up hereby closed;
       only consumer re-vendors + site/ adoption remain elsewhere.
-
 - [x] **IMPL-8 — contract-guard v3.1: ARTIFACTS-PATH rule (Option B — owner pick
       2026-07-18 at PROD-26 close)** (`packages/contract-guard`): every entry in a STAMP's
       `artifacts` list MUST be repo-root-relative and resolve at HEAD; a bare/ambiguous
@@ -1459,7 +1455,6 @@ assertions.
       no manifest node covers the guard (integrator surface). contracts:
       contract-guard-v3.1 cut; re-pin owed: voice, bridge, satellite (their `[[tool]]`
       manifests nag from this tag; re-vendor is a one-commit quick task each).
-
 - [x] **IMPL-9 — scope-guard v7.2: journal rotation parsed ##-style journals as ZERO
       sections** (`packages/scope-guard`; born-done 2026-07-18, found executing the
       owner-ordered rotation minutes after PROD-8's close pushed the journal over
@@ -1518,6 +1513,20 @@ assertions.
       change. docs: contracts-registry — row moved to the new tag. contracts: repin-v2.0.0
       cut (major: config and severity semantics change); re-pin owed: voice, bridge,
       satellite (their PROD-28 sweeps).
+- [x] **IMPL-12 — commons adopts HK-13: CI wave 0 + config migration** (PROD-28; filed at
+      intake and done 2026-10-05, after IMPL-10/11).
+      `.github/workflows/contract-guard.yml` loses its path gate and runs on every push
+      and PR with two jobs: **layer 1** — contract-guard strict (full-history checkout +
+      explicit tag fetch) and `repin --check --fail-on major --touched <push base>`
+      (touch-the-family, live for the first time in any repo); **layer 2** — the eval
+      suite (pin conformance, docs-manifest, workbench and ui-kit guards; 65 + new tests,
+      hermetic) and both tool behavior suites. Commons had never run a layer-2 test in CI;
+      IMPL-14 found one red since July. `.repin.toml` migrated to the v2 shape (no
+      `files`; the conformance pointer is a real path). `ledger-guard` keeps its path gate
+      (the shared-invariants block prescribes it; not an HK-13 subject). docs:
+      contributing — dev-setup section re-worded (un-gated CI, the cut procedure, the
+      three vendored tools, the exact test commands). contracts: none — no versioned
+      surface moved (workflow + repo-local config).
 - [x] **IMPL-13 — `report-protocol-v1.0.1`: the STAMP declares its artifact** (PROD-28
       commons surfaces; filed at intake and done 2026-10-05). Bytes-only patch:
       `artifacts` enumerates `contracts/report-protocol/report-protocol.json`

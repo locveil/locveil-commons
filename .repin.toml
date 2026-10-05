@@ -1,5 +1,6 @@
-# Commons repin config (HK-12/PROD-26; tool: packages/repin/repin.py, severity:
-# process/contracts.md §5). Families this repo CONSUMES.
+# Commons repin config (HK-12/PROD-26, v2 shape HK-13/IMPL-12; tool:
+# packages/repin/repin.py, severity: process/contracts.md §5). Families this repo
+# CONSUMES. No `files` lists: the owner's STAMP enumerates the pin set (repin v2).
 #
 # NOT listed (deliberately):
 # - crossover-fixtures: co-owned legacy pin, no tag family and no PIN.json yet — the
@@ -9,16 +10,13 @@
 
 [repin]
 pinned_by = "locveil-commons packages/repin (PROD-26)"
-default_fail_on = "major"   # ordinary-CI severity per §5; release gates pass --fail-on any
+default_fail_on = "major"   # ordinary-CI severity per §5; release gates pass --fail-on minor
 
 [[family]]
 name = "catalog"
 owner_repo = "locveil-bridge"
 owner_dir = "../locveil-bridge"
 owner_url = "https://github.com/locveil/locveil-bridge.git"
-files = ["contracts/catalog/catalog.golden.json",
-         "contracts/catalog/openapi.json",
-         "contracts/catalog/STAMP.json"]
 mirror = ["bridge_commit", "catalog_version"]
 # One-way inward pin OWNED BY LOCVEIL-VOICE: its re-pin flow stamps this repo's copy in
 # the same multi-dest run as its own (never diverge). Commons checks freshness only.

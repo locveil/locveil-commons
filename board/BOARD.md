@@ -234,10 +234,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 
 ## IMPL — commons implementation
 
-- [ ] **IMPL-12 — commons adopts HK-13: CI wave 0 + config migration** (PROD-28, filed at
-      intake 2026-10-05; after IMPL-10/11). `contract-guard` CI job loses its path gate; a
-      pytest job runs `eval/tests` (layer 2 — never in CI before); `repin --check` step
-      with touch-the-family; `.repin.toml` migrated to the v2 shape; hook updated.
 - [ ] **IMPL-18 — generated org-wide contract graph page** (PROD-28 commons build item 5;
       owner-ticked HK-13 rider, filed at intake 2026-10-05). A generator reads the four
       repos' STAMPs and `.repin.toml` files and writes the owner → consumer graph as a
