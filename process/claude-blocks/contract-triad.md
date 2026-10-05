@@ -18,7 +18,7 @@ files win. Never edit this block in place — edit in commons, then re-pin
 - **contracts-verdict** — every completion entry records `contracts: <what moved>` or
   `contracts: none — <why>`; "moved" = created, bumped, or FIRST CONSUMED a cross-repo
   surface; owner-side bumps add `re-pin owed: <consumers>`.
-- **enforcement (§4–§5)** — both guards run in the hook and on EVERY push, no path gate;
-  layer-2 tests run when contracts move; pre-commit staleness only warns; push CI fails
+- **enforcement (§4–§5)** — contract-guard and repin run in the hook and on EVERY push,
+  no path gate (the ledger guard keeps its own); layer-2 tests run when contracts move; pre-commit staleness only warns; push CI fails
   on a major gap or touch-the-family, release/dispatch gates on minor-or-major; the
   `.repin.toml` `[[tool]]` manifest pins vendored tools by tag + sha256.

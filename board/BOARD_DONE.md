@@ -1634,6 +1634,20 @@ assertions.
       un-gated `contract-guard.yml` are included; the docs manifest is described as
       instance data validated against the pinned schema. docs: none — `process/` is not a
       manifest root. contracts: none — template text; no versioned surface moved.
+- [x] **IMPL-22 — `scope-v7.3.1`: contract-triad block wording patch** (review finding
+      from satellite's OPS-17 sweep; filed and done 2026-10-05). The IMPL-17 block said
+      "both guards run in the hook and on EVERY push, no path gate"; satellite's sweep
+      read that next to the shared-invariants block ("path-gated `ledger-guard` CI job")
+      and reported the two pinned blocks as disagreeing. They do not — HK-13 un-gated
+      contract-guard and repin, never the ledger guard — but a digest that needs the
+      normative file to disambiguate has failed at its one job. The line now names
+      contract-guard and repin and says the ledger guard keeps its own gate. Bytes-only
+      patch (block text; `scope_guard.py` unchanged since v7.2), cut before voice and
+      bridge had pinned v7.3.0, so only satellite re-pins twice. Commons' `CLAUDE.md`
+      re-pinned in the same change. docs: contracts-registry — row moved to the new tag.
+      contracts: scope-v7.3.1 cut (patch — block bytes only); re-pin owed: satellite
+      (block + tool, rides its OPS-20 run), voice and bridge (their sweeps, not yet
+      pinned).
 
 ## HK — council topics
 

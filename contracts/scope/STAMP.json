@@ -1,7 +1,7 @@
 {
   "contract": "scope",
-  "version": "7.3.0",
-  "tag": "scope-v7.3.0",
+  "version": "7.3.1",
+  "tag": "scope-v7.3.1",
   "date": "2026-10-05",
   "owner_repo": "locveil-commons",
   "artifacts": [
@@ -9,5 +9,5 @@
   ],
   "blocks": "process/claude-blocks/",
   "distribution": "locveil-scope-guard 1.4.1",
-  "note": "v7.3.0 = block release (IMPL-17, HK-13/PROD-28): the pinned contract-triad block (process/claude-blocks/contract-triad.md) is re-worded to the HK-13 rules — declared artifacts, three-level versions with three-part tags, flat pins with reserved names, un-gated guards and the release severity. Script bytes are UNCHANGED from scope-v7.2 (scope-guard 1.4.1); blocks version with scope tags per HK-2 single-pin, so consumers re-pin the block text + its sha256 and re-vendor the (identical) script at this tag via `repin.py tool scope-guard`. History: v7 added the contracts verdict + unknown-prefix rules, v7.1 shipped the first contract-triad block, v7.2 fixed ##-style journal rotation; v1–v6 predate the stamp."
+  "note": "v7.3.1 = block wording patch (IMPL-22): the contract-triad enforcement line named \"both guards\", which a consumer read as possibly including the ledger guard — and so as contradicting the shared-invariants block's path-gated ledger-guard job. It now names contract-guard and repin and says the ledger guard keeps its own gate. Script bytes UNCHANGED since scope-v7.2 (scope-guard 1.4.1). v7.3.0 was the block release (IMPL-17, HK-13/PROD-28): the pinned contract-triad block (process/claude-blocks/contract-triad.md) is re-worded to the HK-13 rules — declared artifacts, three-level versions with three-part tags, flat pins with reserved names, un-gated guards and the release severity. Script bytes are UNCHANGED from scope-v7.2 (scope-guard 1.4.1); blocks version with scope tags per HK-2 single-pin, so consumers re-pin the block text + its sha256 and re-vendor the (identical) script at this tag via `repin.py tool scope-guard`. History: v7 added the contracts verdict + unknown-prefix rules, v7.1 shipped the first contract-triad block, v7.2 fixed ##-style journal rotation; v1–v6 predate the stamp."
 }

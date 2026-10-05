@@ -1,6 +1,14 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-22: scope-v7.3.1 — the digest names its guards
+
+Review-then-remediate, a few hours after the block shipped. The first consumer to pin
+the new contract-triad text read "both guards" as maybe including the ledger guard and
+flagged a contradiction with another pinned block. Naming the two guards costs one patch
+tag; leaving a digest ambiguous costs every future reader. contracts: scope-v7.3.1 cut
+(patch); re-pin owed: satellite, voice, bridge. docs: contracts-registry.
+
 ## 2026-10-05 — IMPL-20: the new-repo template catches up with the conventions it seeds
 
 A small debt found while re-pinning commons' own block: the template a new Locveil repo
