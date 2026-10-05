@@ -238,11 +238,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       intake 2026-10-05; after IMPL-10/11). `contract-guard` CI job loses its path gate; a
       pytest job runs `eval/tests` (layer 2 — never in CI before); `repin --check` step
       with touch-the-family; `.repin.toml` migrated to the v2 shape; hook updated.
-- [ ] **IMPL-13 — `report-protocol-v1.0.1`: the STAMP declares its artifact** (PROD-28
-      commons surfaces, filed at intake 2026-10-05). Bytes-only cut: `artifacts`
-      enumerates `contracts/report-protocol/report-protocol.json`; the tag finally carries
-      its STAMP (`report-protocol-v1` predates the file's path). Re-pin owed: voice,
-      bridge.
 - [ ] **IMPL-14 — `docs-manifest-schema-v1.0.0`: the schema becomes the contract**
       (PROD-28 commons surfaces; HK-13 q5, filed at intake 2026-10-05). New owned family
       `contracts/docs-manifest-schema/` enumerating

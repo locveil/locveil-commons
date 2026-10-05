@@ -1518,6 +1518,16 @@ assertions.
       change. docs: contracts-registry — row moved to the new tag. contracts: repin-v2.0.0
       cut (major: config and severity semantics change); re-pin owed: voice, bridge,
       satellite (their PROD-28 sweeps).
+- [x] **IMPL-13 — `report-protocol-v1.0.1`: the STAMP declares its artifact** (PROD-28
+      commons surfaces; filed at intake and done 2026-10-05). Bytes-only patch:
+      `artifacts` enumerates `contracts/report-protocol/report-protocol.json`
+      (byte-identical to v1), and the tag carries its STAMP for the first time —
+      `report-protocol-v1` predates the file's path, so no consumer pin could be verified
+      complete against it (guard v4 `STAMP-NOT-IN-TAG`). The first three-part cut under
+      HK-13 and the first use of the patch level. docs: contracts-registry — row moved to
+      the new tag. contracts: report-protocol-v1.0.1 cut (patch); re-pin owed: voice,
+      bridge (their PROD-28 sweeps) and locveil-reports (the third writer — a patch gap,
+      advisory; not one of the four repos PROD-28 delegates to).
 
 ## HK — council topics
 

@@ -1,6 +1,15 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-13: report-protocol-v1.0.1 — the first patch cut
+
+The first patch cut. Nothing a consumer reads changed — the machine core is
+byte-identical — but the STAMP now says which file the contract is, and the tag carries
+the STAMP, which `report-protocol-v1` never did. That is exactly what the patch level
+was decided for: enumerated bytes (here the STAMP's own) move, the surface does not.
+contracts: report-protocol-v1.0.1 cut; re-pin owed: voice, bridge, locveil-reports.
+docs: contracts-registry.
+
 ## 2026-10-05 — IMPL-11: repin v2 — the consumer stops declaring what it pins
 
 The other half of "declare each edge once". A consumer no longer writes down which files

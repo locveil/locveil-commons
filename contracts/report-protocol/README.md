@@ -8,10 +8,12 @@ registry. The prose half — choreography, leak fence, retention, lens co-owners
 machine core defines, the prose points here.
 
 - **Artifact:** [`report-protocol.json`](report-protocol.json)
-- **Version:** `STAMP.json` + tag (`report-protocol-v1`) — the stamp defines, changelogs
+- **Version:** `STAMP.json` + tag (current: see the STAMP; `v1.0.1` is the bytes-only cut
+  where the STAMP began to enumerate the artifact — HK-13) — the stamp defines, changelogs
   narrate (`process/contracts.md` §3). The in-artifact `version` field arrives at v2.
 - **Consumers (pin + conformance test each):** locveil-voice (`/report` collector),
   locveil-bridge (filing constants), locveil-reports (labels/bootstrap + protocol-check
-  CI). All three were pin-validated at `report-protocol-v1` (2026-07-11).
+  CI). All three were pin-validated at v1 (2026-07-11).
 - **Bump rules:** any consumer-visible change = new tag + STAMP bump; consumers re-pin,
-  never patch their copies. Additive (new type/label) = minor; semantic change = major.
+  never patch their copies. Three levels (`process/contracts.md` §3): additive (new
+  type/label) = minor; semantic change = major; bytes moved with no surface change = patch.

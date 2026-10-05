@@ -9,7 +9,7 @@ READMEs. Layout is the uniform org shape: `contracts/<name>/` owned,
 
 | Contract | Where | Version authority |
 |---|---|---|
-| [`report-protocol`](report-protocol/README.md) | `report-protocol/` (machine core; prose spec: `../process/problem-reports.md`) | `report-protocol/STAMP.json` + tag `report-protocol-v1` |
+| [`report-protocol`](report-protocol/README.md) | `report-protocol/` (machine core; prose spec: `../process/problem-reports.md`) | `report-protocol/STAMP.json` + tag `report-protocol-v1.0.1` |
 | [`core-py`](core-py/README.md) | cross-ref — artifact stays importable at `../packages/core-py/entry_point_loader.py` (vendored RUNTIME code; strict pin + byte-identity test consumer-side) | `core-py/STAMP.json` + tag `core-py-v1.1` (v1 tree predates the STAMP — packaging correction, artifact unchanged) |
 | [`repin`](repin/README.md) | cross-ref — artifact stays runnable at `../packages/repin/repin.py` (HK-12 re-pin + staleness tool; consumers vendor + own `.repin.toml`) | `repin/STAMP.json` + tag `repin-v2.0.0` |
 | [`scope`](scope/README.md) | cross-ref — artifact stays runnable at `../packages/scope-guard/scope_guard.py` (ledger discipline guard; drift-checked); scope tags also ship the pinned blocks (HK-2 single-pin) | `scope/STAMP.json` + tag `scope-v7.2` (v1–v6 pre-stamp history) |
