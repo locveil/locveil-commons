@@ -107,7 +107,7 @@
       "canonical": {
         "invariant": "token values live in packages/ui-kit/tokens/locveil.css; the stylebook is their normative prose (PROD-10 style council 2026-07-14)",
         "stamp": "contracts/ui-kit/STAMP.json",
-        "guard": "none yet — rides ui-kit-v1 (a drift check between tokens.css and .json is the natural first guard)"
+        "guard": "eval/tests/test_ui_kit_tokens.py (tokens.css ↔ tokens.json drift check)"
       },
       "note": "The Locveil design system: blued-steel tokens, usage rules, the split icon ruling, fluid-layout requirement. Executable half: the ui-style skill."
     }

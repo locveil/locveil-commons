@@ -1,6 +1,16 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-16: ui-kit-v1.3.0 — a package-style contract names its guard
+
+The last of the commons surfaces that a tag did not carry a STAMP for. The intake called
+it a patch; reading the diff against `ui-kit-v1.2` showed a new export, so the honest
+level is a minor — the three-level rule doing its job on its first ambiguous case. A
+package-style contract locks no bytes, which under HK-13 means it has to name the test
+that guards it instead, and ui-kit had none: the token drift check the stylebook's
+manifest node had described as "none yet" since July now exists. contracts:
+ui-kit-v1.3.0 cut (minor). docs: contracts-registry, stylebook (manifest metadata).
+
 ## 2026-10-05 — IMPL-15: workbench-v1.3.0 — the plugin contract gets its machine half
 
 The debt HK-12 recorded and bridge asked the HK-13 council not to rank below the WS

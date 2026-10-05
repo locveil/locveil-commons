@@ -1563,6 +1563,19 @@ assertions.
       first pin owed: bridge (`workbench-plugin`, the family its `.repin.toml` was waiting
       to declare) and voice (`config-ui`) — until now both consumed this contract with no
       pin at all.
+- [x] **IMPL-16 — `ui-kit-v1.3.0`: package-style declaration** (PROD-28 commons surfaces;
+      filed at intake as `ui-kit-v1.2.1` and done 2026-10-05). **Narrowed at task start:**
+      the intake assumed a bytes-only patch, but the package gained an export since
+      `ui-kit-v1.2` (the logo component, +187 lines in `src/`) — an additive surface
+      change, so the cut is the MINOR `ui-kit-v1.3.0`. The STAMP declares `artifacts: []`
+      (the surface is the package at the tag; HEAD advances between tags by design) with a
+      resolving `guard`, and that guard is new: `eval/tests/test_ui_kit_tokens.py` — the
+      token drift check PROD-10 named as "the natural first guard" (CSS ↔ JSON mirror per
+      theme; both themes declare the same variables). The tag carries its STAMP for the
+      first time. docs: contracts-registry — row moved to the new tag; stylebook —
+      manifest node's guard pointer now names the real test (metadata only). contracts:
+      ui-kit-v1.3.0 cut (minor); no pins exist — consumers ride the workbench import-map
+      singleton or co-development `file:` links by design.
 
 ## HK — council topics
 

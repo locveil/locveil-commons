@@ -1,11 +1,13 @@
 {
   "contract": "ui-kit",
-  "version": "1.2",
-  "tag": "ui-kit-v1.2",
-  "date": "2026-07-18",
+  "version": "1.3.0",
+  "tag": "ui-kit-v1.3.0",
+  "date": "2026-10-05",
   "owner_repo": "locveil-commons",
-  "artifact": "packages/ui-kit/",
+  "artifacts": [],
+  "guard": "eval/tests/test_ui_kit_tokens.py",
+  "package": "packages/ui-kit/",
   "design": "docs/design/ui/stylebook.md",
-  "distribution": "locveil-ui-kit (npm-style package, consumed via file: links and workbench import map)",
-  "note": "Package-style contract (HK-12 sweep): the surface is THE PACKAGE AT THE TAG — components, tokens, exports. Deliberately NO artifacts list: HEAD advances between tags by design (regime 2 co-development; consumers pin tags or ride the workbench import-map singleton). Stamp registered at the existing ui-kit-v1.2; bumps follow normal tag+STAMP-together discipline from here."
+  "distribution": "locveil-ui-kit (npm-style package, consumed via file: links and the workbench import-map singleton)",
+  "note": "Package-style contract (HK-12 sweep), declared under HK-13 (IMPL-16): the surface is THE PACKAGE AT THE TAG — components, tokens, exports — so `artifacts` is deliberately EMPTY (HEAD advances between tags by design; nothing is byte-locked) and the `guard` names the test that holds the token values to their machine mirror. v1.3.0 is a MINOR, not the patch the intake assumed: the package gained an export since ui-kit-v1.2 (the logo component), and this tag is the first to carry the STAMP."
 }
