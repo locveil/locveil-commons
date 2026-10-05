@@ -1770,3 +1770,71 @@ assertions.
       normative change landed in `process/contracts.md` §5 (process file, not a manifest
       node); the dossier is ephemeral by convention. contracts: none — decision entry;
       §5 is process text, no versioned surface moved (execution surfaces ride PROD-26).
+- [x] **HK-13 — Single-source the contract graph and close the enforcement gaps**
+      (thirteenth council topic; seeded free-text by the owner 2026-10-05 after a
+      commons-session analysis of how contracts work and are enforced across the four
+      repos, and the owner's question whether make-style direct dependencies would enforce
+      them better. Decided 2026-10-05, two rounds, all three keepers + commons; execution:
+      **PROD-28**). **Diagnosis, confirmed by the keepers with file:line in every repo:**
+      the convention already is a dependency graph, but each edge is hand-declared in
+      several places (owner STAMP `artifacts`, consumer `.repin.toml` `files`, `PIN.json`,
+      registry README, CI path filters) and the copies disagree while every guard is
+      green. Found live: voice's `websocket-api.md` and its ws-protocol STAMP both moved
+      after `ws-protocol-v1` with satellite's pin reported current; bridge's "verbatim"
+      docs-manifest schema copy drifted from commons, the edge declared nowhere (three
+      repos consume that schema three different ways); catalog pins omit the
+      owner-enumerated README (recorded deliberate — the pin's own README holds the name);
+      layer-2 suites path-gated out of CI in voice and absent from CI in commons; layer-1
+      jobs gated away from the artifacts they guard; the HK-12 staleness ladder mostly
+      unwired (touch-the-family and the deploy gate in no repo); three rotted
+      `irene/tests/…` pointers. **Make ruled out as the cross-repo engine, uncontested**
+      (CI sees one repo, git drops mtimes, the convention forbids auto-fetch — the pin
+      model is a lockfile, not a build); no repo wants a root Makefile; runtime derivation
+      of version constants refused by voice and bridge (images carry no `contracts/`).
+      **Decisions:** **(1) Two sources, everything else derived or checked:** the owner's
+      STAMP says what the contract is, the consumer's `.repin.toml` says who consumes it
+      and which test proves it; repin derives the pin file set from the owner's STAMP at
+      the tag (pins stay flat), contract-guard gains pin completeness. **(2) Every STAMP
+      declares `artifacts`** (replacing both "opt-in" and the proposed "byte-lock
+      everything"): the list is what consumers pin and what the drift rule locks; empty
+      only with a resolving guard pointer (sidecar packs, repo-internal generated,
+      package-style); legacy STAMPs and pins warn until their next cut — re-vendor day
+      never blocks commits. **(3) Three-level versions (q2):** major = breaking, minor =
+      surface changed, patch = bytes only; runtime-served versions carry the major only
+      (this dissolved the satellite-wants-lock / voice-refuses-version-churn /
+      bridge-minor-means-nothing conflict); **tags always three-part from now on** (owner
+      pick in round 2 over the recommended shortest form; old tags frozen). **(4)
+      Doc-canonical contracts lock the whole file (q3)**, an edit cuts a patch; no
+      marked-region mechanism; voice's DOC-14 refusal to enumerate trace-format is thereby
+      remediated. **(5) Reserved names (q4, detailed in round 2 at the owner's ask):**
+      `README.md` + `PIN.json` belong to the consumer inside a pin folder; an owner never
+      enumerates a README or two same-named files; normative prose moves to a named guide
+      file — only bridge changes (`catalog-contract.md`, `convention.md`); voice and
+      satellite withdrew their alternative proposals; all pin READMEs kept, manual re-pin
+      recipes deleted. **(6) docs-manifest (q5), partially reversing HK-6:** per-repo
+      manifests are instance data per `contracts.md` §1; commons owns the schema as family
+      `docs-manifest-schema`, products pin it, the per-repo internal STAMPs retire. **(7)
+      Release/deploy severity (q6), superseding HK-12's "hard-fail on any":** families
+      fail on a minor or major gap, patch and vendored-tool gaps warn. **(8) Guards run on
+      every push with no path gate; layer 2 must run when contracts move; touch-the-family
+      is implemented once inside repin.** **(9) WS machine core (q7, owner amendment "not
+      just design, should be implemented right away"):** voice-owned, hand-written,
+      subordinate to the document — fixtures, transcripts, schema, all slices now in
+      order, never gating FW-1a; the `ws-protocol-doc-canonical` amendment wording
+      approved verbatim (text in PROD-28). **(10) Riders, all ticked:** STAMP-equals-tag,
+      pointers resolve, registry versions checked, vendored tools recorded with path +
+      hash, satellite's touch-the-family hard from FW-1a start, commons pins ws-protocol
+      when the core lands, a generated org-wide graph page in commons. **(11) Tagging
+      (q8): every HK-13 task is `[release]`** — owner pick over the recommended split;
+      re-confirmed in round 2. **Dissents on record (engineering grounds, ruling
+      accepted):** bridge — its docs-manifest remodel and report-protocol re-pin only wait
+      on commons cuts; voice — raised against machine-core slices waiting on FW-1a, mooted
+      by the all-slices-now ruling; satellite — the DES-4 pin belongs to later deck
+      devices, and for a pre-first-release repo `[release]` means "before FW first light".
+      Corrections to the coordinator's own brief, recorded: `catalog-v1.9` was not
+      prose-only (a real 503-was-500 behaviour change), and `docs-manifest-v1` exists as a
+      tag in bridge and satellite despite their READMEs. Delegations + write-backs:
+      **PROD-28**. docs: none — normative change landed in `process/contracts.md` (process
+      file, not a manifest node); the dossier is ephemeral by convention. contracts: none
+      — decision entry; the amended text is process prose, no versioned surface moved
+      (every cut rides PROD-28).

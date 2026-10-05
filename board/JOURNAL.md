@@ -1,6 +1,31 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — HK-13: the graph was already there — single-sourcing it (council, two rounds)
+
+Seeded by the owner after a morning analysis of how contracts work across the four repos
+and the question whether make-style dependencies would enforce them better. Answer on
+record: make fits derivations inside one repo and cannot be the cross-repo engine (CI
+sees one repo, git drops mtimes, the convention forbids auto-fetch) — the pin model is a
+lockfile. What make teaches is "declare each edge once": every gap found was one edge
+hand-written in several places with the copies disagreeing under green guards. The
+keepers confirmed it with live drift — voice's WS doc and STAMP both moved after
+`ws-protocol-v1` while satellite's pin read current; bridge's "verbatim" docs-manifest
+schema copy had drifted; voice's conformance tests never ran on a contracts-only commit;
+commons ran no layer-2 suite in CI at all. Round 1 turned on one conflict: satellite
+wanted the WS doc byte-locked, voice refused a lock that makes a typo a served-version
+event, bridge reported "minor" meaning nothing after five catalog cuts in seven days —
+all three dissolved by the third version level (patch = bytes only, served versions
+carry the major). Owner picks against the recommendation: tags always three-part, every
+task `[release]`, the WS machine core implemented now rather than designed only, and the
+generated graph page ticked in. Round 2 was the small round the owner asked for: the
+README collision spelled out (only bridge changes — two named guide files), voice and
+satellite withdrawing their alternatives, DES-4 waiting for bridge's split cut. Landed:
+`process/contracts.md` §1–§5 amended, HK-13 filed born-decided, execution + delegations
+in PROD-28 (commons builds first — it is on every repo's `[release]` path). contracts:
+none — decision landing, process prose only. docs: none — process file, not a manifest
+node.
+
 ## 2026-07-18 — IMPL-9: the rotation that refused — scope-guard v7.2
 
 The owner-ordered journal rotation refused with "fewer than 2 dated sections" on a
