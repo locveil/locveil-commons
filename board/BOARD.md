@@ -234,15 +234,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 
 ## IMPL — commons implementation
 
-- [ ] **IMPL-11 — repin v2: the pin set derived from the owner's STAMP**
-      (`packages/repin`; PROD-28 commons build item 2, filed at intake 2026-10-05). File
-      set from the owner STAMP's `artifacts` at the tag (STAMP always included; config
-      `files` only as fallback for pre-enumeration tags); absent cross-repo destination
-      skipped; `--touched <base>` touch-the-family from `dest` paths + a structured
-      `conformance` path; `--fail-on minor` with patch gaps as their own class (families
-      fail on minor+, patch and `[[tool]]` gaps warn); `[[tool]]` entries carry `path` +
-      `sha256`, verified locally, and a `tool` subcommand re-vendors from the owner's tag.
-      Tag `repin-v2.0.0`, STAMP in the same change.
 - [ ] **IMPL-12 — commons adopts HK-13: CI wave 0 + config migration** (PROD-28, filed at
       intake 2026-10-05; after IMPL-10/11). `contract-guard` CI job loses its path gate; a
       pytest job runs `eval/tests` (layer 2 — never in CI before); `repin --check` step

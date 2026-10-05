@@ -1,12 +1,14 @@
 {
   "contract": "repin",
-  "version": "1",
-  "tag": "repin-v1",
-  "date": "2026-07-18",
+  "version": "2.0.0",
+  "tag": "repin-v2.0.0",
+  "date": "2026-10-05",
   "owner_repo": "locveil-commons",
-  "artifact": "packages/repin/repin.py",
-  "artifacts": ["packages/repin/repin.py"],
-  "design": "HK-12 council decision (board/BOARD_DONE.md) + process/contracts.md §5 severity ladder",
-  "distribution": "locveil-repin 1.0.0",
-  "note": "Cross-reference stamp (PROD-26): the tool stays runnable in packages/repin/ per the stays-in-home rule. Pinned set = repin.py only; each consumer's .repin.toml is repo-owned config and never travels. Consumers vendor at repin-vN (scope-guard model) and list the tool in their own [[tool]] manifest so the vendored copy watches its own staleness."
+  "artifacts": [
+    "packages/repin/repin.py"
+  ],
+  "guard": "packages/repin/tests/test_repin.py",
+  "design": "HK-12 + HK-13 council decisions (board/BOARD_DONE.md) + process/contracts.md §2/§5",
+  "distribution": "locveil-repin 2.0.0",
+  "note": "v2 = the HK-13 single-source cut (IMPL-11, PROD-28): the pin file set is the owner STAMP's `artifacts` at the tag plus the STAMP (config `files` only as fallback for pre-enumeration tags); reserved/duplicate names refuse to pin; dropped files are removed; conformance pointers must resolve; absent cross-repo dests are skipped by --check; three-level classification with --fail-on minor (release gates); --touched BASE = touch-the-family; [[tool]] entries carry path + sha256 and `repin.py tool <name>` re-vendors. BREAKING for consumers: vendored-tool version gaps no longer fail under --fail-on major, and an unresolvable conformance pointer refuses to pin. Pinned set = repin.py only; each consumer's .repin.toml is repo-owned config and never travels."
 }

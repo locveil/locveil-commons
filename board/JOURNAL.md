@@ -1,6 +1,17 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-11: repin v2 — the consumer stops declaring what it pins
+
+The other half of "declare each edge once". A consumer no longer writes down which files
+it pins — repin reads the owner's STAMP at the tag and takes exactly that set, so the
+catalog-README class of gap cannot recur and the guard's completeness rule has something
+to hold the pin to. Touch-the-family finally exists, once, driven by the config the repo
+already has. The tools manifest grew a hash, so "is the vendored copy really the tag's
+bytes" stops being a by-hand check (the satellite keeper did it by hand in round 1). One
+call made in the build: tool version gaps fail only under `any`. contracts: repin-v2.0.0
+cut; re-pin owed: voice, bridge, satellite. docs: contracts-registry.
+
 ## 2026-10-05 — IMPL-10: contract-guard v4 — one declaration, checked from both ends
 
 The first PROD-28 build item. The guard used to check that what exists is coherent; v4

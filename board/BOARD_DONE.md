@@ -1498,6 +1498,26 @@ assertions.
       (the STAMP now names its own `guard`). docs: contracts-registry — row moved to the
       new tag. contracts: contract-guard-v4.0.0 cut (major: new failing rules); re-pin
       owed: voice, bridge, satellite (their PROD-28 sweeps).
+- [x] **IMPL-11 — repin v2: the pin set derived from the owner's STAMP**
+      (`packages/repin`; PROD-28 commons build item 2; filed at intake and done
+      2026-10-05). The pin file set is now the owner STAMP's `artifacts` at the tag plus
+      the STAMP itself, flat — a consumer `files` list survives only as the fallback for
+      pre-enumeration tags; reserved names (`README.md`, `PIN.json`) and duplicate file
+      names refuse to pin; files the owner dropped are removed from the pin; a
+      `conformance` pointer must resolve in the repo that holds the pin (omit it when no
+      test exists yet — the guard then warns `PIN-NO-CONFORMANCE`). Check side: an absent
+      cross-repo destination is skipped, not never-pinned (voice's CI blocker);
+      three-level classification with `--fail-on minor` for release / image-dispatch
+      gates; `--touched BASE` implements touch-the-family once, from `dest` paths + the
+      conformance path; `[[tool]]` entries carry `path` + `sha256` (a locally edited
+      vendored tool fails at every level but `none`) and `repin.py tool <name>` re-vendors
+      from the owner's tag, rewriting only that block. Decided in the build and recorded
+      here: vendored-tool VERSION gaps fail only under `any` — it would be incoherent for
+      ordinary push CI to be stricter on tools than the release gate HK-13 q6 relaxed.
+      Suite 13 → 25 behaviors. Script 2.0.0, tag **`repin-v2.0.0`**, STAMP in the same
+      change. docs: contracts-registry — row moved to the new tag. contracts: repin-v2.0.0
+      cut (major: config and severity semantics change); re-pin owed: voice, bridge,
+      satellite (their PROD-28 sweeps).
 
 ## HK — council topics
 
