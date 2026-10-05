@@ -1,6 +1,14 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-26: ws-protocol re-pinned at v1.2.0 — serialized bursts, typed handshakes, the audio guarantee restored
+
+The machine core earned its keep within a day: the two defects its fixtures exposed are
+fixed at voice, and the question the satellite raised at its re-pin — the reply-audio
+guarantee the corrected guide had withdrawn — went to the owner, who restored it
+server-side. All three ride one minor, and this is its commons re-pin. contracts:
+ws-protocol re-pinned at v1.2.0. docs: none.
+
 ## 2026-10-05 — IMPL-25: plugin authors compile against the pin — the docs say so
 
 The limit PROD-28's close had to record — "the pin states what was verified, not what

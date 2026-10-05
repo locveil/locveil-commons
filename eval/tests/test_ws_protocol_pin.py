@@ -25,7 +25,10 @@ JSON_TYPES = {"string": str, "integer": int, "boolean": bool, "array": list, "ob
 
 
 def _cases(frame: str, verdict: str) -> list[dict]:
-    return [c for c in FRAMES[frame]["cases"] if c["verdict"] == verdict and "json" in c]
+    """Live cases only: a RETIRED case states nothing (the guide's harness rule) — the
+    server no longer sends such a frame and a receiver owes it nothing."""
+    return [c for c in FRAMES[frame]["cases"]
+            if c["verdict"] == verdict and "json" in c and not c.get("retired")]
 
 
 def _transcript(name: str) -> list[dict]:
@@ -77,6 +80,16 @@ def test_register_frame_is_none_of_the_rejected_shapes():
     sent = provider.build_register({})
     for case in _cases("audio.register", "invalid"):
         assert sent != case["json"], f"provider sends the rejected shape {case['id']}"
+
+
+def test_the_core_carries_wrong_type_cases_the_register_frame_avoids():
+    """From v1.2.0 the server type-checks opening frames. The pinned core must carry the
+    wrong-JSON-type cases for the keys this provider sends, and `_assert_conforms` above
+    is what keeps the provider on the right side of each."""
+    wrong_type = {c["id"] for c in _cases("audio.register", "invalid")
+                  if c.get("violation") == "wrong-json-type"}
+    assert {"audio.register/client-id-not-string", "audio.register/sample-rate-not-integer",
+            "audio.register/wants-audio-not-boolean", "audio.register/mode-not-string"} <= wrong_type
 
 
 # ---------------------------------------------------------------- what the provider receives

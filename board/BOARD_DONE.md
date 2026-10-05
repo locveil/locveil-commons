@@ -1884,6 +1884,20 @@ assertions.
       docs: none — package and per-contract READMEs are not manifest nodes. contracts:
       none — prose only; neither file is an enumerated artifact of `workbench-v1.3.0` (the
       surface is `contract.ts` + the two schemas).
+- [x] **IMPL-26 — re-pin `ws-protocol` at `v1.2.0`** (re-pin owed by voice's ARCH-66 cut;
+      filed and done 2026-10-05). The cut batches three fixes the owner ordered after
+      PROD-28: reply deliveries on one connection are serialized (voice BUG-47; new
+      transcript rule T-9), opening frames are type-checked against the guide's frame
+      reference (BUG-48; 18 new client-side wrong-JSON-type cases), and — by owner
+      decision — the reply-audio guarantee is restored server-side (BUG-50): reply audio
+      always arrives in the registered rate and channel count, the guide again says "play
+      it as it comes", and `reply.speak_begin/lower-rate-than-registered` is retired.
+      Re-pinned with repin (`contracts/pins/ws-protocol/`, twelve artifacts + STAMP;
+      served major still 1). The provider conformance test now skips retired cases (the
+      guide's harness rule) and asserts the pinned core carries the wrong-type cases for
+      the keys the provider sends; suite 90 passed. Graph view regenerated. docs: none —
+      pin + test. contracts: ws-protocol re-pinned v1.1.0 → v1.2.0 (the re-pin owed to
+      commons by ARCH-66 is discharged).
 
 ## HK — council topics
 
