@@ -243,9 +243,3 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       **IMPL-21** (it has no ledger of its own; the task lives here).
 
 ## IMPL — commons implementation
-
-- [ ] **IMPL-19 — commons pins `ws-protocol` for the eval WS provider** (PROD-28 commons
-      build item 6, filed at intake 2026-10-05; GATED on voice's `ws-protocol-v1.1.0`
-      machine-core cut). Pin + a hermetic conformance test against the golden frames;
-      `CLAUDE.md`'s WS source-of-truth rule gains the machine-core sentence; ends the
-      HK-12 eval deferral for this one edge.

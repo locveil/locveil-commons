@@ -1,6 +1,18 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-19: commons pins the WS protocol — the eval provider answers to golden frames
+
+The last commons build item, and the edge the morning analysis had called undeclared:
+commons has always implemented voice's WebSocket protocol in its eval provider by
+reading the sibling's document, with no pin and no test. With the machine core cut, a
+hermetic test became possible, so the edge is now declared like any other — pinned, and
+the provider is checked against golden frames and recorded exchanges rather than against
+a running server. Writing the test corrected one assumption of mine on the way: in
+streaming mode the server may end an utterance from the audio itself, so responses are
+not one-per-`end`. The document said so; the transcript showed it. contracts:
+ws-protocol first consumed (pin @ v1.1.0). docs: contracts-registry.
+
 ## 2026-10-05 — IMPL-21: the fifth repo — locveil-reports pins like everyone else
 
 The owner extended the goal mid-run: the reports repo, which the HK-13 delegation never

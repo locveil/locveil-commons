@@ -23,8 +23,9 @@ sha256 rule in each consumer's `.scope-guard.toml` — `../process/contracts.md`
 HK-12 the guard SCRIPTS themselves are stamped owned surfaces (rows above), and consumers
 additionally track their vendored tags via their `.repin.toml` `[[tool]]` manifest.
 
-Deliberately NOT contracts (HK-12 sweep, on record): the **eval framework** (live sibling
-co-development is the designed asymmetry — revisit at its first hermetic gate), **brand**
+Deliberately NOT contracts (HK-12 sweep, on record): the **eval framework** as an OWNED
+surface (live sibling co-development is the designed asymmetry — revisit at its first
+hermetic gate; what eval CONSUMES is pinned — `ws-protocol` since IMPL-19), **brand**
 (no second external consumer yet), the bridge's raw MQTT topic tree, pymotivaxmc2
 (PyPI-pinned), `meta/locveil` (inside device-integration), satellite's internal
 components.
@@ -34,7 +35,8 @@ components.
 | Pin | Owner | Stamped by | Notes |
 |---|---|---|---|
 | [`catalog`](pins/catalog/README.md) | locveil-bridge | **locveil-voice** (regime 1 — voice re-pin tasks stamp `PIN.json`; never hand-edit) | golden catalog + openapi + bridge STAMP |
+| [`ws-protocol`](pins/ws-protocol/) | locveil-voice | commons (repin) | the WS wire protocol — the document + its machine core (golden frames, transcripts, schema); the eval WS provider implements it |
 | [`crossover-fixtures`](pins/crossover-fixtures/README.md) | co-owned voice/bridge | voice fixture tasks | `{utterance → canonical command}` fixtures bound to the pinned catalog; strict `PIN.json` arrives with the next fixtures task |
 
-Guards: `../eval/tests/test_contracts_pin.py` + `../eval/tests/test_crossover_fixtures.py`
-(layer-2 conformance) and the vendored contract-guard (layer-1 coherence, pre-commit + CI).
+Guards: `../eval/tests/test_contracts_pin.py` + `../eval/tests/test_crossover_fixtures.py` +
+`../eval/tests/test_ws_protocol_pin.py` (layer-2 conformance) and the vendored contract-guard (layer-1 coherence, pre-commit + CI).

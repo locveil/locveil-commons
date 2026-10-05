@@ -59,6 +59,11 @@ own `pyproject.toml`/`package.json`. **Never publish a bare `locveil` package â€
   `wants_trace`, default `false`), this repo needs no change unless a test wants the new
   capability. Never reverse-engineer the protocol from server code or from this repo's own
   providers; read the document.
+  This repo PINS the protocol at `contracts/pins/ws-protocol/` â€” the document plus voice's
+  hand-written machine core (golden frames, transcripts, schema; subordinate to the
+  document: on disagreement the document wins and voice fixes the core). The provider is
+  held to the pinned definitions by `eval/tests/test_ws_protocol_pin.py`; the pin moves
+  only by `repin.py ws-protocol`.
 - **`contracts/pins/catalog/` is a one-way inward pin owned by locveil-voice** (its re-pin
   tasks stamp `PIN.json`): a version-stamped copy of `../locveil-bridge`'s committed
   contract artifacts (catalog golden, STAMP, openapi). `contracts/pins/crossover-fixtures/`

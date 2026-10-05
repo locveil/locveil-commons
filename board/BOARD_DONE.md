@@ -1622,6 +1622,26 @@ assertions.
       trailing, 7 pins trailing); the page is regenerated at PROD-28's close. docs: none —
       `process/` is not a manifest root; the page is listed in `process/README.md`.
       contracts: none — a derived view; no versioned surface moved.
+- [x] **IMPL-19 — commons pins `ws-protocol` for the eval WS provider** (PROD-28 commons
+      build item 6; filed at intake, gated on voice's machine-core cut, done 2026-10-05).
+      First pin of the family here, at `ws-protocol-v1.1.0` (`contracts/pins/ws-protocol/`
+      — the document, `frames.golden.json`, nine transcripts, the schema, voice's STAMP;
+      taken with repin v2 from voice's enumerated set). Conformance:
+      `eval/tests/test_ws_protocol_pin.py` (24 cases, hermetic) holds `ws_audio_provider`
+      to the pinned definitions from both directions — the `register` and `end` frames it
+      sends are valid `audio` client frames (keys, required set, JSON types, none of the
+      rejected shapes); every valid ack is accepted; `error` is terminal, also in place of
+      the ack; partials accumulate; every valid `response` ends the utterance; `trace` and
+      unknown-type frames are ignored (the "growing without breaking" rule); and three
+      recorded exchanges replay to a final response (streaming: the server may end an
+      utterance itself). The provider's frame construction and receive loop were factored
+      into pure functions for this (behaviour-preserving) and its docstring no longer
+      points at server code — which the commons source-of-truth rule forbade.
+      `CLAUDE.md`'s WS rule gains the pin + machine-core sentence. This ends the HK-12
+      eval deferral for this one edge: what eval consumes is pinned; eval as an owned
+      surface stays deferred. docs: contracts-registry — consumed row + guards line.
+      contracts: ws-protocol FIRST CONSUMED under a pin (@ v1.1.0) — the re-pin owed to
+      commons by voice's ARCH-61 cut is discharged.
 - [x] **IMPL-20 — new-repo template refresh** (`process/new-repo-template/`; discovered
       staleness filed by IMPL-17 and done 2026-10-05). The bootstrap template now seeds
       the current discipline instead of the pre-HK-12 one: `CLAUDE.md` carries the third

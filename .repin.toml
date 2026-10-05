@@ -25,3 +25,15 @@ managed_by = "locveil-voice"
 [[family.dest]]
 path = "contracts/pins/catalog"
 conformance = "eval/tests/test_contracts_pin.py"
+
+# The WS wire protocol (document + machine core: golden frames, transcripts, schema).
+# eval's WS provider IMPLEMENTS it; the conformance test holds the provider to the pinned
+# definitions hermetically (IMPL-19 — ends the HK-12 eval deferral for this one edge).
+[[family]]
+name = "ws-protocol"
+owner_repo = "locveil-voice"
+owner_dir = "../locveil-voice"
+owner_url = "https://github.com/locveil/locveil-voice.git"
+[[family.dest]]
+path = "contracts/pins/ws-protocol"
+conformance = "eval/tests/test_ws_protocol_pin.py"

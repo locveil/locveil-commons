@@ -1,6 +1,9 @@
 """promptfoo Python provider: drive a stateful streaming-ASR WebSocket endpoint.
 
-Speaks the locveil-voice `/ws/audio` protocol (see irene/runners/webapi_router.py):
+Speaks the locveil-voice `/ws/audio` protocol. The protocol is DEFINED by voice's
+`docs/guides/websocket-api.md` — this repo holds a pinned copy with its machine core at
+`contracts/pins/ws-protocol/` (`ws-protocol` major 1) and `eval/tests/test_ws_protocol_pin.py`
+holds this provider to it. Never read the protocol off server code. In short:
 
     client → TEXT  {"type":"register","client_id":..,"room_name":..,"sample_rate":16000,
                     "wants_audio":false,"mode":"streaming"}
@@ -47,6 +50,43 @@ from typing import Any, Dict, List
 
 from eval_commons.audio import wav_to_pcm16_frames
 
+PROTOCOL_MAJOR = 1  # the ws-protocol major this provider implements (pinned: contracts/pins/ws-protocol)
+END_FRAME: Dict[str, Any] = {"type": "end"}
+
+
+def build_register(config: Dict[str, Any]) -> Dict[str, Any]:
+    """The opening frame this provider sends on /ws/audio (pure — the conformance test
+    checks it against the pinned definition of `audio.register`)."""
+    return {
+        "type": "register",
+        "client_id": config.get("client_id", "eval_node"),
+        "room_name": config.get("room_name", "Тест"),
+        "sample_rate": int(config.get("sample_rate", 16000)),
+        "wants_audio": False,
+        "mode": config.get("mode", "streaming"),
+    }
+
+
+def expect_registered(msg: Dict[str, Any]) -> None:
+    """The ack that must answer the opening frame; anything else ends the run."""
+    if msg.get("type") != "registered":
+        raise RuntimeError(f"expected 'registered', got {msg!r}")
+
+
+def handle_server_frame(msg: Dict[str, Any], partials: List[str]) -> Dict[str, Any] | None:
+    """One server text frame after the ack. Returns the final `response` frame when it
+    arrives, else None. `partial` texts accumulate; an `error` frame is terminal; every
+    other frame type — `trace`, and any type this provider does not know — is IGNORED,
+    as the protocol requires of receivers ("growing without breaking")."""
+    mtype = msg.get("type")
+    if mtype == "partial":
+        partials.append(msg.get("text", ""))
+    elif mtype == "response":
+        return msg
+    elif mtype == "error":
+        raise RuntimeError(f"server error: {msg.get('error')}")
+    return None
+
 
 def call_api(prompt: str, options: Dict[str, Any], context: Dict[str, Any]) -> Dict[str, Any]:
     config = (options or {}).get("config", {}) or {}
@@ -71,18 +111,10 @@ async def _run(prompt: str, config: Dict[str, Any]) -> Dict[str, Any]:
 
     ws_url = config.get("ws_url", "ws://localhost:6000/ws/audio")
     sample_rate = int(config.get("sample_rate", 16000))
-    mode = config.get("mode", "streaming")
     frame_ms = int(config.get("frame_ms", 32))
     response_timeout = float(config.get("response_timeout_s", 30))
 
-    register = {
-        "type": "register",
-        "client_id": config.get("client_id", "eval_node"),
-        "room_name": config.get("room_name", "Тест"),
-        "sample_rate": sample_rate,
-        "wants_audio": False,
-        "mode": mode,
-    }
+    register = build_register(config)
 
     partials: List[str] = []
     final: Dict[str, Any] = {}
@@ -90,27 +122,20 @@ async def _run(prompt: str, config: Dict[str, Any]) -> Dict[str, Any]:
 
     async with websockets.connect(ws_url, open_timeout=float(config.get("connect_timeout_s", 5))) as ws:
         await ws.send(json.dumps(register))
-        registered = json.loads(await asyncio.wait_for(ws.recv(), timeout=response_timeout))
-        if registered.get("type") != "registered":
-            raise RuntimeError(f"expected 'registered', got {registered!r}")
+        expect_registered(json.loads(await asyncio.wait_for(ws.recv(), timeout=response_timeout)))
 
         # Stream the fixture as PCM16 frames. config.text would be an alternative injection
         # path for backends that accept text instead of audio (left for the consuming project).
         for frame in wav_to_pcm16_frames(prompt, sample_rate=sample_rate, frame_ms=frame_ms):
             await ws.send(frame)
-        await ws.send(json.dumps({"type": "end"}))
+        await ws.send(json.dumps(END_FRAME))
 
         while True:
             msg = json.loads(await asyncio.wait_for(ws.recv(), timeout=response_timeout))
-            mtype = msg.get("type")
-            if mtype == "partial":
-                partials.append(msg.get("text", ""))
-            elif mtype == "response":
-                final = msg
+            done = handle_server_frame(msg, partials)
+            if done is not None:
+                final = done
                 break
-            elif mtype == "error":
-                raise RuntimeError(f"server error: {msg.get('error')}")
-            # ignore any other control frames
 
     metadata = final.get("metadata", {}) or {}
     # Recognized transcript, in priority order:
