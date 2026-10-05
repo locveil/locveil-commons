@@ -29,7 +29,16 @@ Editing any of the three is a contract cut; the rest of the shell moves freely.
 ## For plugin authors (voice UI-17, bridge UI-18)
 
 - Types only: `import type { WorkbenchPlugin, PageProps } from "locveil-workbench/contract"`
-  (dev dependency — never import shell runtime modules).
+  — never import shell runtime modules. **A product repo resolves that specifier to its
+  PINNED copy, not to this package:** pin the `workbench` family
+  (`contracts/pins/workbench/contract.ts`) and map it in the plugin's `tsconfig.json` —
+  `"paths": { "locveil-workbench/contract": ["../contracts/pins/workbench/contract.ts"],
+  "react": ["./node_modules/@types/react"] }` (the second entry lets the pinned file's own
+  React type import resolve). No `file:` dependency on `locveil-workbench`: with a live
+  link, a change to the contract types here would reach a plugin's type-check without a
+  re-pin. The imports are type-only and erased at build, so the bundle is unaffected.
+  Reference: bridge UI-23 (`workbench-plugin/`), with a test and a CI step that fail if
+  the types stop resolving to the pin.
 - Build an ESM bundle with the six singleton names EXTERNAL (see
   `scripts/build-demo.mjs` for the exact shape), emit `manifest.json`
   `{id, version, entry, styles[], peers{}}` into your dist, disable Tailwind preflight

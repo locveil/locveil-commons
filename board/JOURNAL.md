@@ -1,6 +1,13 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-25: plugin authors compile against the pin — the docs say so
+
+The limit PROD-28's close had to record — "the pin states what was verified, not what
+`tsc` reads" — is gone at bridge (UI-23) and being closed at voice. The fix is one
+tsconfig mapping and the removal of a live link; the commons docs now tell a plugin
+author to do it that way from the start. contracts: none. docs: none.
+
 ## 2026-10-05 — IMPL-24: ui-kit + workbench npm locks — every non-major fix, the router singleton included
 
 The npm half of the commons sweep. Everything `npm audit fix` could do without a major

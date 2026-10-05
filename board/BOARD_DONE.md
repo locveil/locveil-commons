@@ -1869,6 +1869,21 @@ assertions.
       react-router-dom at major 6; both plugins would move with it). docs: none —
       lockfiles only. contracts: none — no enumerated artifact moved (`ui-kit` enumerates
       nothing; the workbench surface is `contract.ts` + the two schemas, untouched).
+- [x] **IMPL-25 — workbench plugin-author docs: types come from the pin** (owner request
+      2026-10-05 — close the known limit PROD-28 recorded: both product plugins compiled
+      against the workbench contract types through a live `file:` link, so the pin stated
+      what was verified but was not what `tsc` read; filed and done the same day). Commons
+      side of the fix: `packages/workbench/README.md` ("For plugin authors") and
+      `contracts/workbench/README.md` now give the recipe bridge's UI-23 proved — pin the
+      family, map `locveil-workbench/contract` to `contracts/pins/workbench/contract.ts`
+      in the plugin's `tsconfig.json` (plus a `react` types entry so the pinned file's own
+      import resolves), no `file:` dependency on the shell package, a test + CI step that
+      fail if the types stop resolving to the pin. The imports are type-only, so bundles
+      are unchanged (bridge: `dist/` byte-identical). `locveil-ui-kit` is stated as the
+      different case (package-style, live link at build, shell singleton at runtime).
+      docs: none — package and per-contract READMEs are not manifest nodes. contracts:
+      none — prose only; neither file is an enumerated artifact of `workbench-v1.3.0` (the
+      surface is `contract.ts` + the two schemas).
 
 ## HK — council topics
 

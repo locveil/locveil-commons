@@ -14,9 +14,13 @@ refuse-and-surface, the build-emitted manifest fragment
 - **Owner guard**: `../../eval/tests/test_workbench_schemas.py` — the fragment schema is
   field-identical to `ManifestFragment`, the runtime schema accepts what the dev server
   generates from the shell config, both reject what the loader refuses.
-- **Consumption**: plugins build against `locveil-workbench/contract` and the demo-plugin
-  shape; product repos PIN this family (`contracts/pins/workbench/`) and validate their
-  build-emitted `manifest.json` against the pinned fragment schema. Live `file:` links
-  during the Workbench arc are co-development, not pins.
+- **Consumption**: product repos PIN this family (`contracts/pins/workbench/`), validate
+  their build-emitted `manifest.json` against the pinned fragment schema, and COMPILE
+  against the pinned `contract.ts` — the plugin's `tsconfig.json` maps
+  `locveil-workbench/contract` to the pin, and there is no `file:` dependency on the
+  shell package (recipe: `../../packages/workbench/README.md`, "For plugin authors").
+  The pin is therefore what is verified AND what is compiled. `locveil-ui-kit` is the
+  different case: package-style, no pinned bytes, a live link at build time and the
+  shell's import-map singleton at runtime.
 - **Version authority**: `STAMP.json` + tag (first stamped at v1.2; v1/v1.1 predate the
   stamp and are frozen history; the tag carries its STAMP from v1.3.0).
