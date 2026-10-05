@@ -228,7 +228,69 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       once. Keeper and coordinator estimates, not measured: about 12 owner sessions across
       the four repos (voice ~5, bridge ~3.25, satellite ~0.5, commons ~3). The board lists
       delegated IDs but never asserts their status — per-repo ledgers own it. Closes when
-      the commons build is done and all three lead IDs are written back.
+      the commons build is done and all three lead IDs are written back. **Commons intake
+      (2026-10-05):** the build is filed as **IMPL-10 … IMPL-19** under `## IMPL` (one task =
+      one commit).
 
 ## IMPL — commons implementation
 
+- [ ] **IMPL-10 — contract-guard v4: the HK-13 rule set** (`packages/contract-guard`;
+      PROD-28 commons build item 1, filed at intake 2026-10-05). `artifacts` key mandatory
+      (STAMPs dated before 2026-10-05 WARN as legacy; an empty list needs a `guard`
+      pointer that resolves); three-part version form for STAMPs dated from 2026-10-05;
+      reserved names (`README.md`, `PIN.json`, `STAMP.json` never enumerated; no duplicate
+      file names in one family); STAMP at HEAD equals STAMP at its tag (absent-at-tag
+      WARNs); pin completeness against the carried owner STAMP; an unlisted file in a
+      strict pin FAILS; pointer fields resolve (`guard`, `code_constant`, PIN /
+      `.repin.toml` `conformance`); registry `<family>-vX` strings equal the STAMP / PIN /
+      `[[tool]]` tag. Tag `contract-guard-v4.0.0`, STAMP in the same change. Dry-run
+      against all four repos before tagging.
+- [ ] **IMPL-11 — repin v2: the pin set derived from the owner's STAMP**
+      (`packages/repin`; PROD-28 commons build item 2, filed at intake 2026-10-05). File
+      set from the owner STAMP's `artifacts` at the tag (STAMP always included; config
+      `files` only as fallback for pre-enumeration tags); absent cross-repo destination
+      skipped; `--touched <base>` touch-the-family from `dest` paths + a structured
+      `conformance` path; `--fail-on minor` with patch gaps as their own class (families
+      fail on minor+, patch and `[[tool]]` gaps warn); `[[tool]]` entries carry `path` +
+      `sha256`, verified locally, and a `tool` subcommand re-vendors from the owner's tag.
+      Tag `repin-v2.0.0`, STAMP in the same change.
+- [ ] **IMPL-12 — commons adopts HK-13: CI wave 0 + config migration** (PROD-28, filed at
+      intake 2026-10-05; after IMPL-10/11). `contract-guard` CI job loses its path gate; a
+      pytest job runs `eval/tests` (layer 2 — never in CI before); `repin --check` step
+      with touch-the-family; `.repin.toml` migrated to the v2 shape; hook updated.
+- [ ] **IMPL-13 — `report-protocol-v1.0.1`: the STAMP declares its artifact** (PROD-28
+      commons surfaces, filed at intake 2026-10-05). Bytes-only cut: `artifacts`
+      enumerates `contracts/report-protocol/report-protocol.json`; the tag finally carries
+      its STAMP (`report-protocol-v1` predates the file's path). Re-pin owed: voice,
+      bridge.
+- [ ] **IMPL-14 — `docs-manifest-schema-v1.0.0`: the schema becomes the contract**
+      (PROD-28 commons surfaces; HK-13 q5, filed at intake 2026-10-05). New owned family
+      `contracts/docs-manifest-schema/` enumerating
+      `process/user-docs/manifest.schema.json`; commons' internal
+      `contracts/docs-manifest/` STAMP retired as instance data (tag `docs-manifest-v1`
+      stays as history); registry + `process/user-docs.md` updated. First pin owed: voice,
+      bridge, satellite.
+- [ ] **IMPL-15 — workbench machine schemas, `workbench-v1.3.0`** (PROD-28 commons
+      surfaces; owed since HK-12/PROD-26, filed at intake 2026-10-05). The
+      manifest-fragment and runtime-config JSON Schemas land as enumerated artifacts with
+      an owner-side guard validating the shell's real build output; the tag carries its
+      STAMP for the first time.
+- [ ] **IMPL-16 — `ui-kit-v1.2.1`: package-style declaration** (PROD-28 commons surfaces,
+      filed at intake 2026-10-05). The STAMP declares `artifacts: []` with a resolving
+      `guard` pointer; the tag carries its STAMP for the first time.
+- [ ] **IMPL-17 — contract-triad block re-worded to HK-13, scope cut** (PROD-28 commons
+      build item 3, filed at intake 2026-10-05). `process/claude-blocks/contract-triad.md`
+      digests the new rules (declared artifacts, three-part tags + three levels, reserved
+      names, release severity); ships as a block-only scope release (script bytes
+      unchanged); commons' `CLAUDE.md` re-pinned in the same change. Re-pin owed: voice,
+      bridge, satellite.
+- [ ] **IMPL-18 — generated org-wide contract graph page** (PROD-28 commons build item 5;
+      owner-ticked HK-13 rider, filed at intake 2026-10-05). A generator reads the four
+      repos' STAMPs and `.repin.toml` files and writes the owner → consumer graph as a
+      view — never a source; regenerated on demand, checked for freshness where the
+      siblings are on disk.
+- [ ] **IMPL-19 — commons pins `ws-protocol` for the eval WS provider** (PROD-28 commons
+      build item 6, filed at intake 2026-10-05; GATED on voice's `ws-protocol-v1.1.0`
+      machine-core cut). Pin + a hermetic conformance test against the golden frames;
+      `CLAUDE.md`'s WS source-of-truth rule gains the machine-core sentence; ends the
+      HK-12 eval deferral for this one edge.
