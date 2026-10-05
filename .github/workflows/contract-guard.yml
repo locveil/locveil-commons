@@ -22,9 +22,9 @@ jobs:
       # PROD-25: never rely on fetch-tags (actions/checkout#1467) — fetch them explicitly.
       - name: Fetch tags
         run: git fetch --tags --force origin
-      - name: contract-guard --check (layer 1, strict)
+      - name: "contract-guard --check (layer 1, strict)"
         run: python3 packages/contract-guard/contract_guard.py --check
-      - name: repin --check (staleness: major gap + touch-the-family)
+      - name: "repin --check (staleness — major gap + touch-the-family)"
         env:
           BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before }}
         run: python3 packages/repin/repin.py --check --fail-on major --touched "$BASE"
@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
-      - name: eval suite (pin conformance, docs-manifest, workbench + ui-kit guards)
+      - name: "eval suite (pin conformance, docs-manifest, workbench + ui-kit guards)"
         working-directory: eval
         run: uv run --extra record --extra dev pytest tests/ -q
       - name: contract-guard behavior suite
