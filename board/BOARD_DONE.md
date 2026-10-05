@@ -1838,6 +1838,17 @@ assertions.
       contracts: scope-v7.3.1 cut (patch — block bytes only); re-pin owed: satellite
       (block + tool, rides its OPS-20 run), voice and bridge (their sweeps, not yet
       pinned).
+- [x] **IMPL-23 — eval Python lock: security bumps** (owner request 2026-10-05 — check
+      every locveil repo for Dependabot reports and fix them; filed and done the same
+      day). Commons has Dependabot alerts disabled, so the lockfiles were audited locally
+      with `pip-audit`: `eval/uv.lock` carried 12 known vulnerabilities in three packages
+      — the same ones voice and bridge are alerted for. Targeted `uv lock
+      --upgrade-package` only: aiohttp 3.14.1 → 3.14.3, anyio 4.14.1 → 4.15.1 (one
+      advisory critical), urllib3 2.7.0 → 2.8.0; nothing else moved. Re-audit: no known
+      vulnerabilities; eval suite 89 passed. `packages/core-py` and `packages/repin` locks
+      audit clean (no third-party runtime deps). Seen, not a vulnerability, left alone:
+      the lock resolves `grpcio==1.82.0`, which upstream has yanked. docs: none — lockfile
+      only. contracts: none — no versioned surface moved.
 
 ## HK — council topics
 

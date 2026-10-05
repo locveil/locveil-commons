@@ -123,13 +123,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       (satellite firmware logging is NOT one — different runtime). No delegations until
       activated; design-then-implement applies (ARCH-43 un-parks as the design task).
 ## IMPL — commons implementation
-- [ ] **IMPL-23 — eval Python lock: security bumps** (owner request 2026-10-05: check
-      every locveil repo for Dependabot reports and fix them; commons has Dependabot
-      alerts DISABLED, so this is a local `pip-audit` of the committed lockfiles).
-      `eval/uv.lock` carries the same three vulnerable packages the product repos are
-      alerted for: aiohttp 3.14.1 (needs 3.14.3), anyio 4.14.1 (needs 4.14.2 — one
-      advisory is critical), urllib3 2.7.0 (needs 2.8.0). Targeted `--upgrade-package`
-      only; `packages/core-py` and `packages/repin` locks audit clean.
 - [ ] **IMPL-24 — ui-kit + workbench npm locks: security bumps** (owner request
       2026-10-05, same sweep as IMPL-23; local `npm audit`, Dependabot being disabled
       here). Non-major fixes only: postcss, js-yaml, brace-expansion, browserslist,

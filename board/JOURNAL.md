@@ -1,6 +1,13 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-23: the eval lock — three security bumps, audited by hand because Dependabot is off here
+
+The owner asked for a Dependabot sweep across the repos. Commons shows no alerts only
+because the feature is off here, so the check was done by hand: the eval lock had the
+same aiohttp / anyio / urllib3 advisories the product repos are alerted for. Three
+targeted bumps, re-audit clean. contracts: none. docs: none.
+
 ## 2026-10-05 — PROD-28 CLOSED: two sources, five repos, one day
 
 Decided in the morning, closed by evening. HK-13 said the contract graph should have two
