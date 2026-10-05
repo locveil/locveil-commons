@@ -1634,6 +1634,26 @@ assertions.
       un-gated `contract-guard.yml` are included; the docs manifest is described as
       instance data validated against the pinned schema. docs: none — `process/` is not a
       manifest root. contracts: none — template text; no versioned surface moved.
+- [x] **IMPL-21 — locveil-reports joins the contract convention** (owner directive
+      2026-10-05, extending the PROD-28 goal to the fifth repo; filed at intake and done
+      the same day). The private intake repo — the report protocol's third consumer, with
+      no ledger of its own — now follows the uniform layout (locveil-reports commit
+      `5f4e180`): the hand-made root copy `report-protocol.pin.json` (not verbatim: a
+      `$comment` key had been added) is gone; `contracts/pins/report-protocol/` holds the
+      owner's bytes + owner STAMP + a strict `PIN.json`, taken with repin v2 at
+      `report-protocol-v1.0.1`; `contracts/README.md` registry; contract-guard v4 and
+      repin v2 vendored through `repin.py tool …` with tag + sha256 in `.repin.toml`;
+      pre-commit hook; an un-gated `contract-guard` CI job (guard strict + repin with
+      touch-the-family; tokenless against the public owner); `bootstrap.sh` and
+      `protocol-check.yml` read the pin, and that workflow — live labels vs the pin — is
+      named as the conformance test. Verified: guard 0 warnings, `repin --check --fail-on
+      any` all current, both workflows green on the push. This was also the first
+      end-to-end use of `repin.py tool` and of a v2 first pin outside the test suite. Not
+      introduced there, by scope: a ledger, scope-guard, pinned CLAUDE.md blocks. Commons
+      side: the graph generator reads the fifth repo; the report-protocol README names the
+      three strict pins. docs: none — the commons edits are a per-contract README and a
+      generated view. contracts: report-protocol first pinned under the convention by
+      locveil-reports (@ v1.0.1) — the owed re-pin recorded by IMPL-13 is discharged.
 - [x] **IMPL-22 — `scope-v7.3.1`: contract-triad block wording patch** (review finding
       from satellite's OPS-17 sweep; filed and done 2026-10-05). The IMPL-17 block said
       "both guards run in the hook and on EVERY push, no path gate"; satellite's sweep

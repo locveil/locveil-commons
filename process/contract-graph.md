@@ -14,11 +14,15 @@ graph LR
   voice[voice]
   bridge[bridge]
   satellite[satellite]
+  reports[reports]
   bridge -- catalog --> commons
-  bridge -- device-integration --> satellite
   bridge -- catalog --> voice
   commons -- core-py --> bridge
+  commons -- docs-manifest-schema --> bridge
   commons -- report-protocol --> bridge
+  commons -- workbench --> bridge
+  commons -- report-protocol --> reports
+  commons -- docs-manifest-schema --> satellite
   commons -- core-py --> voice
   commons -- report-protocol --> voice
   satellite -- esp32-site --> voice
@@ -35,7 +39,7 @@ graph LR
 | commons | `docs-manifest-schema` | `docs-manifest-schema-v1.0.0` | `process/user-docs/manifest.schema.json` | `eval/tests/test_docs_manifest.py` |
 | commons | `repin` | `repin-v2.0.0` | `packages/repin/repin.py` | `packages/repin/tests/test_repin.py` |
 | commons | `report-protocol` | `report-protocol-v1.0.1` | `contracts/report-protocol/report-protocol.json` | — |
-| commons | `scope` | `scope-v7.3.0` | `packages/scope-guard/scope_guard.py` | — |
+| commons | `scope` | `scope-v7.3.1` | `packages/scope-guard/scope_guard.py` | — |
 | commons | `ui-kit` | `ui-kit-v1.3.0` | _none (empty by declaration)_ | `eval/tests/test_ui_kit_tokens.py` |
 | commons | `workbench` | `workbench-v1.3.0` | `packages/workbench/src/contract.ts`<br>`packages/workbench/schemas/manifest-fragment.schema.json`<br>`packages/workbench/schemas/runtime-config.schema.json` | `eval/tests/test_workbench_schemas.py` |
 | voice | `docs-manifest` | `docs-manifest-v1` | _undeclared (legacy STAMP)_ | — |
@@ -45,8 +49,6 @@ graph LR
 | voice | `ws-protocol` | `ws-protocol-v1.0.1` | `docs/guides/websocket-api.md` | — |
 | bridge | `catalog` | `catalog-v1.10.0` | `contracts/catalog/catalog.golden.json`<br>`contracts/catalog/openapi.json`<br>`contracts/catalog/catalog-contract.md` | — |
 | bridge | `device-integration` | `device-integration-v1.2.0` | `contracts/device-integration/convention.md`<br>`contracts/device-integration/device-descriptor.schema.json`<br>`contracts/device-integration/example.descriptor.json` | — |
-| bridge | `docs-manifest` | `docs-manifest-v1` | _undeclared (legacy STAMP)_ | — |
-| satellite | `docs-manifest` | `docs-manifest-v1` | _undeclared (legacy STAMP)_ | — |
 | satellite | `esp32-site` | `esp32-site-v1.1.0` | `provisioning/ansible/templates/esp32-site.conf.j2` | — |
 
 ## Consumption edges
@@ -54,12 +56,15 @@ graph LR
 | Consumer | Family | Owner | Pinned | Owner's current | State | Conformance |
 |---|---|---|---|---|---|---|
 | bridge | `core-py` | commons | `core-py-v1.1` | `core-py-v1.1` | current | `backend/tests/unit/test_core_py_pin_identity.py` |
-| bridge | `report-protocol` | commons | `report-protocol-v1` | `report-protocol-v1.0.1` | trails (patch) | `backend/tests/unit/test_report_protocol_pin.py` |
+| bridge | `docs-manifest-schema` | commons | `docs-manifest-schema-v1.0.0` | `docs-manifest-schema-v1.0.0` | current | `backend/tests/unit/test_docs_manifest.py` |
+| bridge | `report-protocol` | commons | `report-protocol-v1.0.1` | `report-protocol-v1.0.1` | current | `backend/tests/unit/test_report_protocol_pin.py` |
+| bridge | `workbench` | commons | `workbench-v1.3.0` | `workbench-v1.3.0` | current | `backend/tests/unit/test_workbench_pin.py` |
 | commons | `catalog` | bridge | `catalog-v1.9` | `catalog-v1.10.0` | trails (minor); stamped by voice | `locveil-commons eval/tests/test_contracts_pin.py` |
 | commons | `crossover-fixtures` | co-owned | `—` | `—` | legacy pin — no PIN.json | _none yet_ |
-| satellite | `device-integration` | bridge | `—` | `device-integration-v1.2.0` | never pinned | `descriptor CI conformance check (DES-4 wires it)` |
-| satellite | `wake-pack` | voice | `wake-pack-v1` | `wake-pack-v1.0.1` | trails (patch) | `flash-time hash verification (FW-1) + publish-time hash check (OPS-1) — the pack binaries never enter this tree (third-party HF artifact, sidecar-stamped); sha256s in the pinned STAMP.json are what both checks verify against` |
-| satellite | `ws-protocol` | voice | `ws-protocol-v1` | `ws-protocol-v1.0.1` | trails (patch) | `FW-1 (the firmware WS conformance test lands with the first firmware build; phase-gates: FW opens after DES-3 — until then the pinned doc IS the build contract and no consuming code exists)` |
+| reports | `report-protocol` | commons | `report-protocol-v1.0.1` | `report-protocol-v1.0.1` | current | `.github/workflows/protocol-check.yml` |
+| satellite | `docs-manifest-schema` | commons | `docs-manifest-schema-v1.0.0` | `docs-manifest-schema-v1.0.0` | current | `scripts/check_docs_manifest.py` |
+| satellite | `wake-pack` | voice | `wake-pack-v1.0.1` | `wake-pack-v1.0.1` | current | `scripts/publish_model_pack.py` |
+| satellite | `ws-protocol` | voice | `ws-protocol-v1.0.1` | `ws-protocol-v1.0.1` | current | _none yet_ |
 | voice | `catalog` | bridge | `catalog-v1.9` | `catalog-v1.10.0` | trails (minor) | `backend/tests/test_catalog_contract_conformance.py` |
 | voice | `core-py` | commons | `core-py-v1.1` | `core-py-v1.1` | current | `backend/tests/test_core_py_pin_identity.py` |
 | voice | `esp32-site` | satellite | `esp32-site-v1` | `esp32-site-v1.1.0` | trails (minor) | `irene/tests/test_arch36_tls_e2e.py` |
@@ -69,12 +74,14 @@ graph LR
 
 | Repo | Tool | Pinned | Owner's current | State | Bytes hashed |
 |---|---|---|---|---|---|
-| bridge | `contract-guard` | `contract-guard-v3.1` | `contract-guard-v4.0.0` | TRAILS (major) | NO |
-| bridge | `repin` | `repin-v1` | `repin-v2.0.0` | TRAILS (major) | NO |
-| bridge | `scope-guard` | `scope-v7.2` | `scope-v7.3.0` | trails (minor) | NO |
-| satellite | `contract-guard` | `contract-guard-v3` | `contract-guard-v4.0.0` | TRAILS (major) | NO |
-| satellite | `repin` | `repin-v1` | `repin-v2.0.0` | TRAILS (major) | NO |
-| satellite | `scope-guard` | `scope-v7.1` | `scope-v7.3.0` | trails (minor) | NO |
+| bridge | `contract-guard` | `contract-guard-v4.0.0` | `contract-guard-v4.0.0` | current | yes |
+| bridge | `repin` | `repin-v2.0.0` | `repin-v2.0.0` | current | yes |
+| bridge | `scope-guard` | `scope-v7.3.0` | `scope-v7.3.1` | trails (patch) | yes |
+| reports | `contract-guard` | `contract-guard-v4.0.0` | `contract-guard-v4.0.0` | current | yes |
+| reports | `repin` | `repin-v2.0.0` | `repin-v2.0.0` | current | yes |
+| satellite | `contract-guard` | `contract-guard-v4.0.0` | `contract-guard-v4.0.0` | current | yes |
+| satellite | `repin` | `repin-v2.0.0` | `repin-v2.0.0` | current | yes |
+| satellite | `scope-guard` | `scope-v7.3.0` | `scope-v7.3.1` | trails (patch) | yes |
 | voice | `contract-guard` | `contract-guard-v3.1` | `contract-guard-v4.0.0` | TRAILS (major) | NO |
 | voice | `repin` | `repin-v1` | `repin-v2.0.0` | TRAILS (major) | NO |
-| voice | `scope-guard` | `scope-v7.2` | `scope-v7.3.0` | trails (minor) | NO |
+| voice | `scope-guard` | `scope-v7.2` | `scope-v7.3.1` | trails (minor) | NO |

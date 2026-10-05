@@ -26,7 +26,8 @@ import sys
 import tomllib
 from pathlib import Path
 
-REPOS = ("locveil-commons", "locveil-voice", "locveil-bridge", "locveil-satellite")
+REPOS = ("locveil-commons", "locveil-voice", "locveil-bridge", "locveil-satellite",
+         "locveil-reports")  # the private intake repo joined at IMPL-21
 OUT = "process/contract-graph.md"
 
 

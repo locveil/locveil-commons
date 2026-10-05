@@ -15,7 +15,7 @@ Here now:
 - **[`problem-reports.md`](problem-reports.md)** — the inbox story (HK-3/PROD-6/PROD-14):
   choreography semantics, leak fence, retention/privacy policy, consumption rules, lens
   co-ownership. Machine core: [`../contracts/report-protocol/`](../contracts/report-protocol/README.md)
-  (tags `report-protocol-vN`; pinned + test-validated by voice, bridge, and locveil-reports).
+  (tags `report-protocol-vX.Y.Z`; pinned + test-validated by voice, bridge, and locveil-reports).
 - **[`contracts.md`](contracts.md)** — the general contract convention (HK-5/PROD-16):
   contract classes, the uniform `contracts/` layout (owned + `pins/` + registry README),
   STAMP/PIN cores, family tags, two-layer enforcement (contract-guard + conformance

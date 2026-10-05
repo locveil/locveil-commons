@@ -1,6 +1,14 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-21: the fifth repo — locveil-reports pins like everyone else
+
+The owner extended the goal mid-run: the reports repo, which the HK-13 delegation never
+named, was the one consumer still holding a contract as a hand-edited copy at the repo
+root. It now pins like everyone else, and it doubled as the first field test of the new
+tools on a repo that had none of the scaffolding — two commands to vendor, one to pin.
+contracts: report-protocol pinned by locveil-reports @ v1.0.1. docs: none.
+
 ## 2026-10-05 — IMPL-22: scope-v7.3.1 — the digest names its guards
 
 Review-then-remediate, a few hours after the block shipped. The first consumer to pin
