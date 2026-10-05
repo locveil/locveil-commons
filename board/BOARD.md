@@ -238,11 +238,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       intake 2026-10-05; after IMPL-10/11). `contract-guard` CI job loses its path gate; a
       pytest job runs `eval/tests` (layer 2 — never in CI before); `repin --check` step
       with touch-the-family; `.repin.toml` migrated to the v2 shape; hook updated.
-- [ ] **IMPL-15 — workbench machine schemas, `workbench-v1.3.0`** (PROD-28 commons
-      surfaces; owed since HK-12/PROD-26, filed at intake 2026-10-05). The
-      manifest-fragment and runtime-config JSON Schemas land as enumerated artifacts with
-      an owner-side guard validating the shell's real build output; the tag carries its
-      STAMP for the first time.
 - [ ] **IMPL-16 — `ui-kit-v1.2.1`: package-style declaration** (PROD-28 commons surfaces,
       filed at intake 2026-10-05). The STAMP declares `artifacts: []` with a resolving
       `guard` pointer; the tag carries its STAMP for the first time.

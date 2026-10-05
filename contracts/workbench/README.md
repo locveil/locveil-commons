@@ -7,12 +7,16 @@ react/jsx-runtime / react-router-dom@6 / locveil-ui-kit), strict-major `peers`
 refuse-and-surface, the build-emitted manifest fragment
 (`{id, version, entry, styles[], peers{}, backendCompat?}`), and `runtime-config.json`.
 
-- **Surface = the package + contract types at a `workbench-vX` tag.** No `artifacts`
-  byte-enumeration yet — the machine-readable schemas (manifest fragment +
-  runtime-config) are OWED at the next bump (recorded in the STAMP note, PROD-26);
-  from then on they drift-check.
+- **Surface = three enumerated files at a `workbench-vX.Y.Z` tag** (STAMP `artifacts`,
+  byte-locked): the contract types `packages/workbench/src/contract.ts` and the two
+  machine schemas `packages/workbench/schemas/manifest-fragment.schema.json` +
+  `runtime-config.schema.json`. The shell around them advances between tags.
+- **Owner guard**: `../../eval/tests/test_workbench_schemas.py` — the fragment schema is
+  field-identical to `ManifestFragment`, the runtime schema accepts what the dev server
+  generates from the shell config, both reject what the loader refuses.
 - **Consumption**: plugins build against `locveil-workbench/contract` and the demo-plugin
-  shape; product repos pin via repin once the schema artifacts exist. Live `file:` links
+  shape; product repos PIN this family (`contracts/pins/workbench/`) and validate their
+  build-emitted `manifest.json` against the pinned fragment schema. Live `file:` links
   during the Workbench arc are co-development, not pins.
-- **Version authority**: `STAMP.json` + tag (first stamped at `workbench-v1.2`;
-  v1/v1.1 predate the stamp and are frozen history).
+- **Version authority**: `STAMP.json` + tag (first stamped at v1.2; v1/v1.1 predate the
+  stamp and are frozen history; the tag carries its STAMP from v1.3.0).

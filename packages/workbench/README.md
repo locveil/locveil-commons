@@ -2,8 +2,11 @@
 
 The **Locveil Workbench** shell (IMPL-1): chrome + the plug-in contract as code +
 HK-11 runtime assembly. Normative design: `../../docs/design/workbench.md` (§3 shell,
-§4 contract as amended by HK-11). Tags: `workbench-vX` — the manifest-fragment schema
-and the contract types version with this package.
+§4 contract as amended by HK-11). Tags: `workbench-vX.Y.Z` — the consumed surface is three
+byte-locked files (`contracts/workbench/STAMP.json`): the contract types `src/contract.ts`
+and the machine schemas `schemas/manifest-fragment.schema.json` +
+`schemas/runtime-config.schema.json` (owner guard: `eval/tests/test_workbench_schemas.py`).
+Editing any of the three is a contract cut; the rest of the shell moves freely.
 
 ## What the shell provides
 

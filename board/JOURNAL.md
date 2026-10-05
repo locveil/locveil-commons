@@ -1,6 +1,17 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-15: workbench-v1.3.0 — the plugin contract gets its machine half
+
+The debt HK-12 recorded and bridge asked the HK-13 council not to rank below the WS
+machine core. A plugin's build-emitted manifest and the shell's runtime config now have
+schemas, and those two files plus the contract types are an enumerated, byte-locked
+surface — so the two product plugins, which build against this contract through a live
+file link with no pin, finally have something to pin and test against. The guard reads
+the TypeScript interface and holds the schema to it field for field, which is the
+single-source idea applied inside one repo. contracts: workbench-v1.3.0 cut; first pin
+owed: bridge, voice. docs: contracts-registry.
+
 ## 2026-10-05 — IMPL-14: docs-manifest-schema-v1.0.0 — the schema is the contract, the manifest is data
 
 HK-13 q5 executed on the owner side. The schema — the one vocabulary all four manifests

@@ -1,11 +1,16 @@
 {
   "contract": "workbench",
-  "version": "1.2",
-  "tag": "workbench-v1.2",
-  "date": "2026-07-18",
+  "version": "1.3.0",
+  "tag": "workbench-v1.3.0",
+  "date": "2026-10-05",
   "owner_repo": "locveil-commons",
-  "artifact": "packages/workbench/",
+  "artifacts": [
+    "packages/workbench/src/contract.ts",
+    "packages/workbench/schemas/manifest-fragment.schema.json",
+    "packages/workbench/schemas/runtime-config.schema.json"
+  ],
+  "guard": "eval/tests/test_workbench_schemas.py",
   "design": "docs/design/workbench.md",
   "distribution": "locveil-workbench (shell package; the PLUGIN CONTRACT is the consumed surface)",
-  "note": "Package-style contract (HK-12 sweep — the council's unanimous top ask): the consumed surface is the plugin contract — import-map singleton set + strict-major peers semantics, the build-emitted manifest-fragment shape {id, version, entry, styles[], peers{}, backendCompat?}, runtime-config.json, and the contract types under packages/workbench/. Normative prose: docs/design/workbench.md §4 + the package README. Registered at the existing workbench-v1.2; the machine-readable schema files (manifest-fragment + runtime-config JSON Schemas) land as enumerated artifacts AT THE NEXT BUMP per the HK-5 forward requirement — recorded owed work, PROD-26."
+  "note": "v1.3.0 = the machine half of the plugin contract (IMPL-15; owed since HK-12/PROD-26, executed under HK-13/PROD-28): the manifest-fragment and runtime-config JSON Schemas join the contract-as-code types as ENUMERATED artifacts — these three files are the consumed surface and are byte-locked to the tag; the shell around them (chrome, loader, build scripts) keeps advancing between tags. Minor: the surface gains files, nothing a plugin builds against changed (contract.ts is byte-identical to workbench-v1.2). The tag carries its STAMP for the first time. Semantics that a schema cannot say (import-map singleton set, strict-major refuse-and-surface, dormant = zero activity) stay normative prose: docs/design/workbench.md §4 + the package README."
 }

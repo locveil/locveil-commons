@@ -1545,6 +1545,24 @@ assertions.
       row; stylebook — manifest node gains its `stamp` pointer (metadata only). contracts:
       docs-manifest-schema-v1.0.0 cut (new family); internal docs-manifest stamp retired;
       first pin owed: voice, bridge, satellite (their PROD-28 sweeps).
+- [x] **IMPL-15 — workbench machine schemas, `workbench-v1.3.0`** (PROD-28 commons
+      surfaces; owed since HK-12/PROD-26; filed at intake and done 2026-10-05). The plugin
+      contract gets its machine half:
+      `packages/workbench/schemas/manifest-fragment.schema.json` (the build-emitted
+      `manifest.json`) and `runtime-config.schema.json` (active url+backends entry vs
+      dormant gate slot), enumerated in the STAMP together with the contract-as-code types
+      `src/contract.ts` — three byte-locked files are now the consumed surface; the shell
+      around them keeps advancing between tags, so the "package-style, no enumeration"
+      posture ends for workbench. Owner guard `eval/tests/test_workbench_schemas.py` (15
+      cases): the fragment schema is field-identical to `ManifestFragment` (parsed from
+      the TS source), the runtime schema accepts what `serve.mjs` generates from the real
+      `workbench.config.json`, both reject the shapes the loader refuses. Minor cut:
+      `contract.ts` is byte-identical to `workbench-v1.2`; the tag carries its STAMP for
+      the first time. docs: contracts-registry — row re-worded to the enumerated surface
+      and the new tag. contracts: workbench-v1.3.0 cut (minor — the surface gains files);
+      first pin owed: bridge (`workbench-plugin`, the family its `.repin.toml` was waiting
+      to declare) and voice (`config-ui`) — until now both consumed this contract with no
+      pin at all.
 
 ## HK — council topics
 
