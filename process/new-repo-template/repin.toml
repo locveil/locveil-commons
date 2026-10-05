@@ -1,0 +1,47 @@
+# Starter .repin.toml for a new Locveil repo (tool: scripts/repin.py, vendored from
+# locveil-commons packages/repin; severity ladder: process/contracts.md §5).
+# Families this repo CONSUMES + the vendored-tools manifest. No `files` lists — the
+# owner's STAMP enumerates each pin set (repin v2, HK-13).
+
+[repin]
+pinned_by = "{{REPO_NAME}} scripts/repin.py ({{BOOTSTRAP_TASK}})"
+default_fail_on = "major"   # a pre-first-release repo may record "none" (advisory)
+
+# Every repo consumes the docs-manifest vocabulary (process/user-docs.md §4).
+[[family]]
+name = "docs-manifest-schema"
+owner_repo = "locveil-commons"
+owner_dir = "../locveil-commons"
+owner_url = "https://github.com/locveil/locveil-commons.git"
+[[family.dest]]
+path = "contracts/pins/docs-manifest-schema"
+conformance = "{{PATH TO THE MANIFEST COHERENCE TEST — it validates against the PINNED schema}}"
+
+# Vendored tools: `repin.py tool <name>` writes the file at `path` and records
+# pinned_tag + sha256 here. Never edit a vendored file — re-vendor to move.
+[[tool]]
+name = "scope-guard"
+family = "scope"
+owner_repo = "locveil-commons"
+owner_dir = "../locveil-commons"
+owner_url = "https://github.com/locveil/locveil-commons.git"
+path = "scripts/scope_guard.py"
+pinned_tag = ""
+
+[[tool]]
+name = "contract-guard"
+family = "contract-guard"
+owner_repo = "locveil-commons"
+owner_dir = "../locveil-commons"
+owner_url = "https://github.com/locveil/locveil-commons.git"
+path = "scripts/contract_guard.py"
+pinned_tag = ""
+
+[[tool]]
+name = "repin"
+family = "repin"
+owner_repo = "locveil-commons"
+owner_dir = "../locveil-commons"
+owner_url = "https://github.com/locveil/locveil-commons.git"
+path = "scripts/repin.py"
+pinned_tag = ""

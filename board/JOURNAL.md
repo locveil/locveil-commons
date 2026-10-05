@@ -1,6 +1,13 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-20: the new-repo template catches up with the conventions it seeds
+
+A small debt found while re-pinning commons' own block: the template a new Locveil repo
+is instantiated from still taught hand-vendoring at scope-v4 and knew nothing of
+contracts, pins or repin. Refreshed so discipline is seeded, not retrofitted — the
+template's own stated purpose. contracts: none. docs: none — process file.
+
 ## 2026-10-05 — IMPL-18: the contract graph, drawn — a view with two sources and no authority
 
 The rider the owner ticked in round 1. Until today the only way to see who consumes what

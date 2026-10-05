@@ -1622,6 +1622,18 @@ assertions.
       trailing, 7 pins trailing); the page is regenerated at PROD-28's close. docs: none —
       `process/` is not a manifest root; the page is listed in `process/README.md`.
       contracts: none — a derived view; no versioned surface moved.
+- [x] **IMPL-20 — new-repo template refresh** (`process/new-repo-template/`; discovered
+      staleness filed by IMPL-17 and done 2026-10-05). The bootstrap template now seeds
+      the current discipline instead of the pre-HK-12 one: `CLAUDE.md` carries the third
+      marker block (contract-triad, `scope-v7.3.0`) and `scope-guard.toml` its hash slot
+      plus `contracts_verdict_since`; a starter `repin.toml` declares the
+      `docs-manifest-schema` family and the three vendored tools with `path` entries; the
+      instantiation checklist vendors through `repin.py tool <name>` (bootstrapped from
+      the commons copy) instead of a manual `git show >` — the recipe HK-13 deleted from
+      three pin READMEs; a `contracts/` registry skeleton, a three-stage hook and an
+      un-gated `contract-guard.yml` are included; the docs manifest is described as
+      instance data validated against the pinned schema. docs: none — `process/` is not a
+      manifest root. contracts: none — template text; no versioned surface moved.
 
 ## HK — council topics
 

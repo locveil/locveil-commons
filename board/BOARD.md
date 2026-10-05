@@ -241,11 +241,3 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       machine-core cut). Pin + a hermetic conformance test against the golden frames;
       `CLAUDE.md`'s WS source-of-truth rule gains the machine-core sentence; ends the
       HK-12 eval deferral for this one edge.
-- [ ] **IMPL-20 — new-repo template refresh** (`process/new-repo-template/`; discovered
-      staleness filed by IMPL-17, 2026-10-05). The bootstrap template trails the
-      conventions it is supposed to seed: blocks pinned at scope-v4/v5 with no
-      contract-triad block, a manual `git show > scripts/scope_guard.py` vendoring recipe,
-      no contract-guard / repin / `.repin.toml` / `contracts/` skeleton, and a hook and CI
-      job that predate HK-12 and HK-13. Bring it to the current tool set (repin-managed
-      `[[tool]]` manifest, all three blocks, un-gated contract-guard job, schema pin for
-      the docs manifest).

@@ -1,4 +1,11 @@
 #!/bin/sh
-# Locveil pre-commit hook (process/ledger-discipline.md §4): scope-guard --check only —
-# hooks never mutate the tree. Install once:  git config core.hooksPath hooks
-exec python3 scripts/scope_guard.py --config .scope-guard.toml --check
+# Locveil pre-commit hook: --check only — hooks never mutate the tree.
+# scope-guard: process/ledger-discipline.md §4 · contract-guard + repin: process/contracts.md §4–§5.
+# Install once:  git config core.hooksPath hooks
+python3 scripts/scope_guard.py --config .scope-guard.toml --check || exit 1
+# --relax-tags: a bump commit cannot carry its own tag, so TAG-MISSING/ORPHAN-TAG warn
+# locally; CI runs strict and the pushed tag satisfies it.
+python3 scripts/contract_guard.py --check --relax-tags || exit 1
+# Staleness WARNS here, never blocks (never network-required-to-commit).
+python3 scripts/repin.py --check --fail-on none || true
+exit 0

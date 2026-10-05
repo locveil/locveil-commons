@@ -1,0 +1,27 @@
+# Copy to .github/workflows/contract-guard.yml.
+# Convention: process/contracts.md §4–§5 — runs on EVERY push and PR, NO path gate
+# (HK-13). Layer 1 here; wire the repo's layer-2 tests (owner guards + pin conformance)
+# into the normal test job and make sure it also runs when contracts/** or an
+# enumerated artifact changes.
+name: contract-guard
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  contract-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # tag trees for the drift rules + the --touched diff base
+      # never rely on fetch-tags (actions/checkout#1467) — fetch them explicitly
+      - name: Fetch tags
+        run: git fetch --tags --force origin
+      - name: "contract-guard --check (strict)"
+        run: python3 scripts/contract_guard.py --check
+      - name: "repin --check (major gap + touch-the-family)"
+        env:
+          BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before }}
+        run: python3 scripts/repin.py --check --touched "$BASE"

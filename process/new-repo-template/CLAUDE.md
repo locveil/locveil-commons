@@ -24,3 +24,7 @@ watermarks — is the shared discipline below; mechanics live in
 <!-- locveil:begin cross-repo-board scope-v4 -->
 {{PASTE process/claude-blocks/cross-repo-board.md VERBATIM, then hash into .scope-guard.toml}}
 <!-- locveil:end cross-repo-board -->
+
+<!-- locveil:begin contract-triad scope-v7.3.0 -->
+{{PASTE process/claude-blocks/contract-triad.md VERBATIM, then hash into .scope-guard.toml}}
+<!-- locveil:end contract-triad -->
