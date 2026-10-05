@@ -232,7 +232,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       delegated IDs but never asserts their status — per-repo ledgers own it. Closes when
       the commons build is done and all three lead IDs are written back. **Commons intake
       (2026-10-05):** the build is filed as **IMPL-10 … IMPL-19** under `## IMPL` (one task =
-      one commit).
+      one commit). **Owner directive 2026-10-05 (during execution):** `locveil-reports`,
+      the report protocol's third consumer, is brought under the same discipline —
+      **IMPL-21** (it has no ledger of its own; the task lives here).
 
 ## IMPL — commons implementation
 
@@ -241,3 +243,17 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       machine-core cut). Pin + a hermetic conformance test against the golden frames;
       `CLAUDE.md`'s WS source-of-truth rule gains the machine-core sentence; ends the
       HK-12 eval deferral for this one edge.
+- [ ] **IMPL-21 — locveil-reports joins the contract convention** (owner directive
+      2026-10-05, extending the PROD-28 goal to the fifth repo; filed at intake). The
+      private intake repo is the report protocol's third consumer and holds it as a
+      hand-made root copy (`report-protocol.pin.json` — NOT verbatim: a `$comment` key was
+      added) with no registry, no `PIN.json`, no guards and no staleness check; it has no
+      ledger of its own (its work has always been filed from the commons board and the
+      product ledgers), so the task lives here. Scope: `contracts/README.md` registry +
+      `contracts/pins/report-protocol/` taken with repin v2 at `report-protocol-v1.0.1`
+      (verbatim artifact + owner STAMP + strict PIN); vendored contract-guard + repin with
+      a `.repin.toml` tools manifest; hook; an un-gated `contract-guard` CI job;
+      `bootstrap.sh`, `protocol-check.yml` and the README re-pointed at the pin (the
+      live-labels check is the conformance test); the root copy removed. No ledger or
+      scope-guard is introduced there — out of scope. Commons side: the graph generator
+      learns the fifth repo; the report-protocol README names the pin path.
