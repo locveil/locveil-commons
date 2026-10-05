@@ -1,5 +1,5 @@
 {
-  "$comment": "Skeleton docs manifest (HK-6; schema: locveil-commons process/user-docs/manifest.schema.json). Fill at bootstrap: STAMP + README go to contracts/docs-manifest/ (docs-manifest-v1); wire the coherence test into the normal suite.",
+  "$comment": "Skeleton docs manifest (HK-6; schema: locveil-commons process/user-docs/manifest.schema.json). Fill at bootstrap: pin the schema family docs-manifest-schema into contracts/pins/docs-manifest-schema/ (repin) and wire the coherence test, validating against the PINNED schema, into the normal suite. The manifest itself is instance data — no STAMP (HK-13).",
   "repo": "{{REPO}}",
   "roots": ["README.md", "docs/guides", "docs/architecture", "CONTRIBUTING.md"],
   "surfaces": {},

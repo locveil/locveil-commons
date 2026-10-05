@@ -238,13 +238,6 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       intake 2026-10-05; after IMPL-10/11). `contract-guard` CI job loses its path gate; a
       pytest job runs `eval/tests` (layer 2 — never in CI before); `repin --check` step
       with touch-the-family; `.repin.toml` migrated to the v2 shape; hook updated.
-- [ ] **IMPL-14 — `docs-manifest-schema-v1.0.0`: the schema becomes the contract**
-      (PROD-28 commons surfaces; HK-13 q5, filed at intake 2026-10-05). New owned family
-      `contracts/docs-manifest-schema/` enumerating
-      `process/user-docs/manifest.schema.json`; commons' internal
-      `contracts/docs-manifest/` STAMP retired as instance data (tag `docs-manifest-v1`
-      stays as history); registry + `process/user-docs.md` updated. First pin owed: voice,
-      bridge, satellite.
 - [ ] **IMPL-15 — workbench machine schemas, `workbench-v1.3.0`** (PROD-28 commons
       surfaces; owed since HK-12/PROD-26, filed at intake 2026-10-05). The
       manifest-fragment and runtime-config JSON Schemas land as enumerated artifacts with

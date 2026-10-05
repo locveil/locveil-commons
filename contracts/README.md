@@ -16,8 +16,7 @@ READMEs. Layout is the uniform org shape: `contracts/<name>/` owned,
 | [`contract-guard`](contract-guard/README.md) | cross-ref — artifact stays runnable at `../packages/contract-guard/contract_guard.py` (this very checker; drift-checked) | `contract-guard/STAMP.json` + tag `contract-guard-v4.0.0` (v1/v2 pre-stamp history) |
 | [`ui-kit`](ui-kit/README.md) | package-style — the kit at `../packages/ui-kit/` at a tag (no byte-enumeration; HEAD advances between tags by design) | `ui-kit/STAMP.json` + tag `ui-kit-v1.2` |
 | [`workbench`](workbench/README.md) | package-style — THE plugin contract (import-map singletons, peers, manifest fragment, runtime-config); machine schemas owed at next bump | `workbench/STAMP.json` + tag `workbench-v1.2` |
-
-| [`docs-manifest`](docs-manifest/README.md) — INTERNAL: the user-facing docs tree, machine-readable (artifact `docs/manifest.json`) | `docs-manifest/STAMP.json` + `docs-manifest-v1`; coherence: `eval/tests/test_docs_manifest.py` |
+| [`docs-manifest-schema`](docs-manifest-schema/README.md) | cross-ref — artifact stays at `../process/user-docs/manifest.schema.json` (the org-wide docs-manifest vocabulary; per-repo `docs/manifest.json` files are instance data, not contracts — HK-13) | `docs-manifest-schema/STAMP.json` + tag `docs-manifest-schema-v1.0.0`; guard `eval/tests/test_docs_manifest.py` |
 
 The pinned CLAUDE.md blocks stay on the **block-pin lane** (`../process/claude-blocks/`,
 sha256 rule in each consumer's `.scope-guard.toml` — `../process/contracts.md` §1); since

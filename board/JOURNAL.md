@@ -1,6 +1,16 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-14: docs-manifest-schema-v1.0.0 — the schema is the contract, the manifest is data
+
+HK-13 q5 executed on the owner side. The schema — the one vocabulary all four manifests
+answer to — is now a stamped family consumers can pin, and commons' own internal
+docs-manifest stamp is gone: a manifest is instance data validated against a contract,
+which is what `contracts.md` §1 said all along. The cut also proved the council's point
+about commons: the manifest test, named as this contract's guard, had been red since
+July with no CI to say so. contracts: docs-manifest-schema-v1.0.0 cut; first pin owed:
+voice, bridge, satellite. docs: contracts-registry, stylebook (manifest metadata).
+
 ## 2026-10-05 — IMPL-13: report-protocol-v1.0.1 — the first patch cut
 
 The first patch cut. Nothing a consumer reads changed — the machine core is

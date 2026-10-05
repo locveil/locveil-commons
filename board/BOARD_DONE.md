@@ -1528,6 +1528,23 @@ assertions.
       the new tag. contracts: report-protocol-v1.0.1 cut (patch); re-pin owed: voice,
       bridge (their PROD-28 sweeps) and locveil-reports (the third writer — a patch gap,
       advisory; not one of the four repos PROD-28 delegates to).
+- [x] **IMPL-14 — `docs-manifest-schema-v1.0.0`: the schema becomes the contract**
+      (PROD-28 commons surfaces; HK-13 q5; filed at intake and done 2026-10-05). New owned
+      family `contracts/docs-manifest-schema/` enumerating
+      `process/user-docs/manifest.schema.json` (stays-in-home), guard
+      `eval/tests/test_docs_manifest.py`; commons' internal `contracts/docs-manifest/`
+      STAMP retired — `docs/manifest.json` is instance data (`contracts.md` §1), the tag
+      `docs-manifest-v1` stays as frozen history; `process/user-docs.md` §4 and the
+      new-repo template re-worded (the manifest carries no STAMP; products pin the schema
+      and validate against the PINNED copy). **Found live, fixed here because the failing
+      test is this contract's guard:** commons' own manifest has failed schema validation
+      since 2026-07-14 — the `stylebook` node's `canonical` block had no `stamp` (PROD-10
+      predates the ui-kit STAMP) — and nobody saw it, because commons runs no layer-2
+      suite in CI (the HK-13 finding, demonstrated on commons itself; the CI job lands
+      with IMPL-12). docs: contracts-registry — INTERNAL row replaced by the owned schema
+      row; stylebook — manifest node gains its `stamp` pointer (metadata only). contracts:
+      docs-manifest-schema-v1.0.0 cut (new family); internal docs-manifest stamp retired;
+      first pin owed: voice, bridge, satellite (their PROD-28 sweeps).
 
 ## HK — council topics
 

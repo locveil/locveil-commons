@@ -82,14 +82,18 @@ docs: none — <one clause>                 # explicit dismissal
   filed in the COMMONS ledger fans out as a board-as-outbox delegation to every repo**
   (HK-6 round-2 ruling) — each repo files a local DOC task and writes it back.
 
-## 4. The docs manifest (repo-internal contract)
+## 4. The docs manifest (instance data; the schema is the contract)
 
 Every repo carries a machine-readable manifest of its user-facing tree:
 
-- **Artifact:** `docs/manifest.json` (hand-written, lives with what it describes).
-  **Stamp:** `contracts/docs-manifest/` — STAMP.json (`docs-manifest-vN`, bumped only on
-  schema reshape) + pointer README; registry row labeled INTERNAL. The established
-  ui-openapi/ws-protocol pointer pattern.
+- **Artifact:** `docs/manifest.json` (hand-written, lives with what it describes). It is
+  **instance data, not a contract** (HK-13 q5, reversing the HK-6 per-repo internal
+  `docs-manifest` stamps): it carries no STAMP and moves freely with the docs it
+  describes; the coherence test is its guard.
+- **The contract is the schema:** commons owns it as family **`docs-manifest-schema`**
+  (`contracts/docs-manifest-schema/`, tag `docs-manifest-schema-vX.Y.Z`); every product
+  repo pins it at `contracts/pins/docs-manifest-schema/` and validates its manifest
+  against the PINNED copy — hermetic, no sibling read, no hand-mirrored vocabulary.
 - **Schema:** commons-owned, ONE vocabulary — `process/user-docs/manifest.schema.json`
   (testable; prose here). Node: `{path, class, audience, covers: [surface…],
   status: ok|banner|pending-gate, phase?, hw_gated?, gate?, derives_from?, diagram?,

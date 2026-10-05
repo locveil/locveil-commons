@@ -52,8 +52,10 @@ def test_covers_reference_declared_surfaces():
             assert s in surfaces, f"node '{n['id']}' covers undeclared surface '{s}'"
 
 
-def test_stamp_coheres():
-    stamp = json.loads((REPO / "contracts/docs-manifest/STAMP.json").read_text())
-    assert stamp["contract"] == "docs-manifest"
-    assert stamp["tag"] == f"docs-manifest-v{stamp['version']}"
-    assert (REPO / stamp["artifact"]).is_file()
+def test_schema_stamp_coheres():
+    """The SCHEMA is the contract (HK-13 q5); the manifest is instance data."""
+    stamp = json.loads((REPO / "contracts/docs-manifest-schema/STAMP.json").read_text())
+    assert stamp["contract"] == "docs-manifest-schema"
+    assert stamp["tag"] == f"docs-manifest-schema-v{stamp['version']}"
+    assert stamp["artifacts"] == ["process/user-docs/manifest.schema.json"]
+    jsonschema.Draft202012Validator.check_schema(SCHEMA)
