@@ -211,8 +211,9 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       "`contracts/ws-protocol/` additionally holds the protocol's hand-written machine
       core (golden frames, transcripts, schema). It is subordinate to the document: on
       disagreement the document wins and the core is fixed. Never generated from code; a
-      wire change updates document and core in the same change." Voice ID: _pending
-      write-back_. **satellite** — (a) `esp32-site-v1.1.0` as a standalone cut (STAMP
+      wire change updates document and core in the same change." Voice ID: **BUILD-47** (lead; written back 2026-10-05 —
+      sub-IDs BUILD-48 … BUILD-52, ARCH-60 design, ARCH-61 implementation; status lives
+      in the voice ledger). **satellite** — (a) `esp32-site-v1.1.0` as a standalone cut (STAMP
       enumerates the template only; not riding DES-5); re-pin owed: voice; (b) ONE sweep
       after the commons tag set: re-vendor scope-guard + contract-guard + repin (it trails
       on two today, unfiled), un-gate the CI workflow, drop `files`, trim both pin READMEs
