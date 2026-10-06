@@ -140,6 +140,28 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       Started on the round-1 decisions without waiting: bridge VWB-33 + VWB-34 designs,
       voice QUAL-82, commons prose (IMPL-27). **Commons ID:** IMPL-27 (the ownership-split
       prose).
+      **Round 2 DECIDED (owner paste 2026-10-06) — the council is complete; execution runs
+      under this entry:** (8) **timeout policy = acknowledge, then confirm**: when a
+      capability's `confirm_timeout_ms` exceeds ~3 s voice speaks an immediate
+      «включаю»-class acknowledgement that claims nothing, then the honest confirmation or
+      failure at the echo; requests are sized from the field (× 1.25 + 2 s), the config
+      value becomes the fallback; no optimistic success speech. **Owner amendment,
+      verbatim: "OK, but make acknowledgements configurable (might become annoying over
+      time). I guess, one flag is enough"** — ONE config flag, default on, turns the
+      acknowledgement off. (9) **tier 3 = build now, as its own arc**: bridge job-API
+      design → voice durable-job design (both reviewed) → implementation on both sides →
+      the WB7 sitting (which also measures the real switch and stop times — today's
+      figures are ceilings) → `catalog-v1.12.0` → the second voice re-pin; the one-cut
+      condition is waived for tier 3 only (bridge's own waiver); CORE-12 shifts to 1.13.0
+      if later. (10) Tier-3 shape riders, all accepted: one job per room with a 409 on a
+      second request (the in-flight lock missing today); no cancel in the minimum — «stop»
+      is a new job; device-level long actions stay synchronous under tier 1; voice
+      consumes the step events over SSE (new adapter), a `GET /scenario/jobs/{id}` exists
+      for pollers and the UI; the UI progress stepper is a later task. **Execution
+      order:** bridge VWB-33/VWB-34 designs (running) → bridge implementation +
+      `catalog-v1.11.0` → voice re-pin + tier-1 sizing + the acknowledgement flag + how-to
+      (DOC) → tier-3 arc → 1.12.0 → re-pin; QUAL-82 (running) and IMPL-27 (done) in
+      parallel. Dossier: ephemeral by convention.
 - [ ] **PROD-20 — Satellite first-light chain (visibility entry, HW-GATED)** (HK-7 q6,
       owner ruling: light PROD). The coupled multi-repo burst that fires when the
       satellite's first conforming descriptor reaches the bridge: satellite descriptor
