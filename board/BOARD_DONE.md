@@ -765,6 +765,35 @@ assertions.
       normal re-pin cadence, description-only delta. All four repos now run manifest +
       verdict discipline. docs: contributing, contracts-registry — created/extended by
       the commons execution; readme untouched (no behavior it describes changed).
+- [x] **PROD-19 — Intake consolidation: one door, locveil-reports** (HK-7 cluster C):
+      retire the last pre-board public-issue intake channel; all problem/feature intake
+      flows through the locveil-reports pipeline (`report-protocol-v1`). Delegations:
+      voice — **BUILD-14**, RECONCILE at intake (the uncommitted-filing mechanism is
+      retired; `wb-user-reports` is now `locveil/locveil-reports`). Voice ID:
+      **BUILD-14**. Bridge — file the twin AT intake (HK-7 finding: BUILD-14's "the
+      bridge repo has the same question" claim had no bridge task behind it). Bridge
+      ID: **OPS-28** (written back 2026-07-14; reconciled — no pre-board machinery on
+      the bridge side, but the public Issues tab is enabled bare; posture decided
+      jointly with BUILD-14).
+      **CLOSED 2026-10-06 — owner directive "Disable the Issues tabs on all four repos and
+      execute PROD-19".** Posture (c) of the three the member tasks offered: the public
+      GitHub Issues tab is DISABLED on voice, bridge, satellite and commons (repository
+      setting, applied 2026-10-06; zero public issues had ever been filed on any of them);
+      the private locveil-reports repo keeps its Issues — it IS the one door. Scope grew
+      since filing: HK-7 named voice + bridge, but satellite and commons are public with
+      the same bare tab, so the decision covers all four; neither needed a repo change (no
+      templates, no workflows, no docs pointing at issues). Executed: voice **BUILD-14**
+      DONE (`issue-triage.yml` + `ISSUE_TEMPLATE/` removed; the stale "stays separate"
+      sentence in its build/release design re-truthed) and bridge **OPS-28** DONE (posture
+      recorded as decision B-12 in `problem_reports_bridge.md`; the `pyproject` `Issues`
+      URL that pointed at the disabled tab removed). The normative inbox story
+      (`process/problem-reports.md` §4) gains the one-door policy line. Prerequisite
+      discharged the day before: the pipeline's own protocol copy became a proper pin
+      (IMPL-21). The workbench council's "PROD-19 owns the fallback" (reporter pipeline
+      deferred out of v1, button stays) is answered by the same posture: the fallback is
+      the report button into locveil-reports; there is no public-issue fallback. docs:
+      none — process file, not a manifest node; the user-facing report path is unchanged
+      in both products. contracts: none — no versioned surface moved.
 - [x] **PROD-21 — Python backend layout & naming: the org convention + both migrations**
       (decided by council **HK-8**, 2026-07-13, three measured rounds — arc in
       `BOARD_DONE.md` HK-8; **normative: `process/python-layout.md`**, which satisfies

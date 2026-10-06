@@ -1,6 +1,16 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-06 — PROD-19 CLOSED: one door, and the side doors are shut
+
+A July question answered in an afternoon. PROD-19 asked what to do with the public-issue
+intake that predates the reports pipeline; the entry's own options were forward,
+redirect or disable, and the owner took disable — for all four public repos, two more
+than HK-7 named, since satellite and commons have the same bare tab. Voice lost a
+keyword labeller and two issue forms nobody had ever used; bridge lost a URL; the
+inbox-story spec gained one line. The reports repo is the one door, and now the only
+one. contracts: none. docs: none — process file.
+
 ## 2026-10-05 — IMPL-26: ws-protocol re-pinned at v1.2.0 — serialized bursts, typed handshakes, the audio guarantee restored
 
 The machine core earned its keep within a day: the two defects its fixtures exposed are

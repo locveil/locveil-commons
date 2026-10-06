@@ -72,6 +72,12 @@ Consumers PIN a copy of the machine core at a tagged version and VALIDATE agains
   on delivery failure — never drop, never flood). Delivery failures spool durably and
   retry; a stalled spool is a defect to surface, not a silent state.
 - **Model policy:** triage pins one strong model in ONE place (the workflow env — D-11).
+- **One door (PROD-19, owner decision 2026-10-06):** every problem or feature report enters
+  through the collectors into locveil-reports; the public repos (voice, bridge, satellite,
+  commons) have their GitHub Issues tab DISABLED and carry no issue templates or issue
+  workflows — a public visitor has no filing path by design (the private reports repo keeps
+  its Issues: it IS the door). Voice's pre-ARCH-30 public-issue triage was retired with this
+  (BUILD-14); bridge records the posture as B-12 (OPS-28).
 
 ## 5. Governance
 
