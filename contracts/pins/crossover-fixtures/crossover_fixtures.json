@@ -808,6 +808,106 @@
       }
     },
     {
+      "id": "F82",
+      "tier": 1,
+      "utterance": {
+        "ru": "заслонка в положение три"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bedroom_hvac",
+        "capability": "vane",
+        "action": "set",
+        "params": {
+          "value": "pos_3"
+        }
+      },
+      "note": "QUAL-82 (board PROD-18 round 1): the louver noun is «заслонка»; vertical/positional axis. Number words are normalized before extraction, so «положение три» meets the ru label «положение 3» → canonical pos_3"
+    },
+    {
+      "id": "F83",
+      "tier": 1,
+      "utterance": {
+        "ru": "заслонка на авто"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bedroom_hvac",
+        "capability": "vane",
+        "action": "set",
+        "params": {
+          "value": "auto"
+        }
+      },
+      "note": "QUAL-82: vane auto — label «авто» → canonical auto; noun-led «заслонка на …» shape"
+    },
+    {
+      "id": "F84",
+      "tier": 1,
+      "utterance": {
+        "ru": "качай заслонку"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bedroom_hvac",
+        "capability": "vane",
+        "action": "set",
+        "params": {
+          "value": "swing"
+        }
+      },
+      "note": "QUAL-82: verb-led shape; `swing` exists on BOTH louver axes under the same label «качание» — the INTENT (hvac_vane) picks the capability, never the word; «качай заслонку по горизонтали» is the widevane twin"
+    },
+    {
+      "id": "F85",
+      "tier": 1,
+      "utterance": {
+        "ru": "направь заслонку влево"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bedroom_hvac",
+        "capability": "widevane",
+        "action": "set",
+        "params": {
+          "value": "left"
+        }
+      },
+      "note": "QUAL-82: horizontal/directional axis (hvac_widevane), verb-led «направь …»; label «влево» → canonical left"
+    },
+    {
+      "id": "F86",
+      "tier": 1,
+      "utterance": {
+        "ru": "заслонка в центр"
+      },
+      "context": {
+        "room": "bedroom"
+      },
+      "expect": {
+        "kind": "actuate",
+        "device_id": "bedroom_hvac",
+        "capability": "widevane",
+        "action": "set",
+        "params": {
+          "value": "center"
+        }
+      },
+      "note": "QUAL-82: «в центр» is a VALUE, not a room — the donation's room pattern excludes the direction words; label «центр» → canonical center"
+    },
+    {
       "id": "F90",
       "tier": 2,
       "utterance": {
