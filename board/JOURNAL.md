@@ -1,6 +1,25 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-06 — PROD-18 CLOSED: the catalog learns to say how long, and in which language
+
+Filed in July off two bridge designs that had declared themselves board-bound, decided
+this morning in two council rounds, implemented by evening in two cuts. The arc's shape
+held: the catalog now says which words it carries and in which languages (ru + en,
+guarded), and how long the bridge will wait for a device and for a scenario — numbers
+derived from the planners, not typed. Voice reads them, sizes every request from them,
+and says «включаю» before a slow one instead of nothing. The louvers answer to
+«заслонка», chosen by the owner after the resolver ruled out the two natural words.
+
+Tier 3 was the owner's call against the keepers' first instinct, and the keepers were
+right to be won over: the bridge had no lock on a scenario switch, so a voice retry
+after its 20 s timeout ran a second chain against the same devices. The job API closes
+that, and the one-cut condition bent for it because a schema test made the cut and the
+code inseparable — put to the owner, decided in a minute. Four timeouts were found where
+the council had counted three. What remains is a rack sitting the owner has to run, and
+one ownership question about the fixtures nobody has ever owned. contracts: none here.
+docs: none.
+
 ## 2026-10-05 — IMPL-27: language data — who contributes which words
 
 The commons third of VWB-33: one page that says who owns which words, and pointedly not

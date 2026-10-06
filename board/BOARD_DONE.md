@@ -765,6 +765,130 @@ assertions.
       normal re-pin cadence, description-only delta. All four repos now run manifest +
       verdict discipline. docs: contributing, contracts-registry — created/extended by
       the commons execution; readme untouched (no behavior it describes changed).
+- [x] **PROD-18 — Catalog contract evolution, round 1** (HK-7 cluster B — the two
+      designs that self-declared board-bound before the board existed). Members: bridge
+      **VWB-33** (language-data contribution convention — catalog nouns/aliases vs voice
+      donation verbs; convention prose may land in commons `process/`; binds voice's
+      donation schema, a config-ui surface) + **VWB-34** (confirmation-timing published
+      in the contract; the tier-3 async-job pattern is a real API redesign touching
+      voice + UI). Voice seat/first consumer: **QUAL-82** (AC louver control, gated on
+      VWB-33). **Binding condition (bridge):** one design arc, ONE batched golden/openapi
+      cut, ONE voice re-pin — never two. Delegations: bridge — VWB-33 + VWB-34 intake
+      reconciliation (their pre-board "once the board lands" wording converts to this
+      entry's reference). Bridge write-back — lead ID: **VWB-33** + VWB-34. Voice —
+      QUAL-82 gains the PROD-18 gate reference. Voice ID: **QUAL-82**.
+      **Council round 1 (2026-10-06, owner order "implement PROD-18 completely"; voice +
+      bridge + satellite keepers) — intake reconciliation, decisions pending on the
+      dossier:** the July texts are narrowed before any design starts. STALE: "some fleet
+      fields carry no labels" (all 122 fields are labelled at catalog-v1.10.0: 101 ru/en,
+      21 ru/en/de; the real gaps are 9 enum values on two IR by-value inputs whose model
+      has no label slot, plus 78 bare `power` on/off values); "progress narration uses the
+      SSE stream" (the scenarios channel carries only switched/shutdown events — no step
+      stream exists, so tier 3 would need one); "golden/openapi cut" (since HK-13: three
+      enumerated artifacts + STAMP, a MINOR cut, voice's pin and the commons copy move in
+      one `repin.py catalog` run). TRUE AND LOAD-BEARING: a machine floor already exists —
+      the bridge's `LocalizedName` requires ru+en and allows more, and device-integration
+      D3 fixes ru+en required / de optional for satellite descriptors; German is on 66/79
+      device names and absent from the whole AV fleet; the product UI switches RU/EN only.
+      Tier 2 is derivable today (a worst-case plan ETA helper exists; execution is
+      sequential, so the sum is a true ceiling, ~30 s for the cold movie scenario). Tier
+      1's shape is per capability, equal to the gate's poll timeout (HVAC 15 s, streamer
+      power 25 s, TV power 8 s, inputs 3 s; absent = 500 ms). The «жалюзи» collision is
+      bridge-authored (HVAC `vane` field label AND the cabinet rollers' alias). Voice
+      sizes every bridge request with one 20 s number in three places, never sends `wait`,
+      never speaks before confirmation. QUAL-82 is gated on the NOUN ruling, not on the
+      re-pin, and needs no catalog change (two donation-side intents). Sequencing: the cut
+      is `catalog-v1.11.0` (CORE-12, gated on PROD-4 auth, takes the next). Owner
+      decisions open on the round-1 dossier: locale floor, value-label rule + guard, the
+      convention's home, the louver noun, voice's timeout policy, tier 3 deferral,
+      tagging, riders.
+      **Round 1 DECIDED (owner paste 2026-10-06; round 2 open on q6/q7 only):** (1) label
+      floor = ru + en REQUIRED, de optional, a consumer may fall back to ru (the floor
+      `LocalizedName` and device-integration D3 already enforce); (2) every enum value
+      carries labels EXCEPT the bare `power` on/off pair; the 9 real gaps (two IR by-value
+      inputs) close in this arc via a label slot on by-value selects; a check-style test
+      over the committed golden is the guard; (3) the machine rule lives in bridge's
+      `catalog-contract.md` (new "Localization" + "Timing" sections, byte-locked, pinned),
+      a SHORT pointer-only commons `process/` file carries the ownership split (nouns in
+      the catalog, verbs in voice donations, group tokens unlocalized, donations may quote
+      value labels as phrases), voice's how-to cites both; (4) **the louver noun is
+      «заслонка»** — the donation's spoken noun AND the renamed HVAC `vane` field label
+      (today «жалюзи», which collides with the cabinet rollers' alias); voice verified it
+      clean in the resolver; (5) tier 1 `confirm_timeout_ms` per capability = the gate's
+      poll timeout, tier 2 `max_duration_ms` on scenario values from the cold plan — both
+      in `catalog-v1.11.0` (CORE-12 takes the next); (6) QUAL-82 = two donation-side
+      intents (`hvac_vane`, `hvac_widevane`), no catalog change, gated on the noun ruling
+      only — starts now; (7) every PROD-18 task `[release]`; riders: `description` stays
+      developer English, `unit` a symbol; aliases an authoring-checklist item, ru-first,
+      no minimum; no German cosmetics in this arc; HvacPanel progress and the
+      vane/widevane crossover fixtures as separate tasks. **Round 2 (open):** the timeout
+      policy voice implements (q6: acknowledge-then-confirm recommended) and tier 3
+      sequencing (owner: build now; both keepers: own design + own cut `catalog-v1.12.0`
+      after 1.11.0, one-cut condition waived for tier 3 only; bridge found the missing
+      in-flight scenario lock — a retry after voice's 20 s timeout double-runs plans).
+      Started on the round-1 decisions without waiting: bridge VWB-33 + VWB-34 designs,
+      voice QUAL-82, commons prose (IMPL-27). **Commons ID:** IMPL-27 (the ownership-split
+      prose).
+      **Round 2 DECIDED (owner paste 2026-10-06) — the council is complete; execution runs
+      under this entry:** (8) **timeout policy = acknowledge, then confirm**: when a
+      capability's `confirm_timeout_ms` exceeds ~3 s voice speaks an immediate
+      «включаю»-class acknowledgement that claims nothing, then the honest confirmation or
+      failure at the echo; requests are sized from the field (× 1.25 + 2 s), the config
+      value becomes the fallback; no optimistic success speech. **Owner amendment,
+      verbatim: "OK, but make acknowledgements configurable (might become annoying over
+      time). I guess, one flag is enough"** — ONE config flag, default on, turns the
+      acknowledgement off. (9) **tier 3 = build now, as its own arc**: bridge job-API
+      design → voice durable-job design (both reviewed) → implementation on both sides →
+      the WB7 sitting (which also measures the real switch and stop times — today's
+      figures are ceilings) → `catalog-v1.12.0` → the second voice re-pin; the one-cut
+      condition is waived for tier 3 only (bridge's own waiver); CORE-12 shifts to 1.13.0
+      if later. (10) Tier-3 shape riders, all accepted: one job per room with a 409 on a
+      second request (the in-flight lock missing today); no cancel in the minimum — «stop»
+      is a new job; device-level long actions stay synchronous under tier 1; voice
+      consumes the step events over SSE (new adapter), a `GET /scenario/jobs/{id}` exists
+      for pollers and the UI; the UI progress stepper is a later task. **Execution
+      order:** bridge VWB-33/VWB-34 designs (running) → bridge implementation +
+      `catalog-v1.11.0` → voice re-pin + tier-1 sizing + the acknowledgement flag + how-to
+      (DOC) → tier-3 arc → 1.12.0 → re-pin; QUAL-82 (running) and IMPL-27 (done) in
+      parallel. Dossier: ephemeral by convention.
+      **CLOSED 2026-10-06 — decided and implemented in one day (council, two rounds; owner
+      order "implement PROD-18 completely").** Bridge IDs: VWB-33 + VWB-34 (designs:
+      bridge design docs `language_data_convention.md`, `confirmation_timing.md`), **VWB-46**
+      (`catalog-v1.11.0`: localization floor + golden guard, the 9 by-value labels,
+      «заслонка», `confirm_timeout_ms` on 27 capabilities, `max_duration_ms` on every
+      scenario value — both derived by the planners, never typed; a bug found in the cut:
+      the offline catalog builder never loaded the signal topology), VWB-47 (tier-3 design
+      bridge `scenarios/scenario_jobs.md`, consumer-reviewed), **SCN-19**
+      (`catalog-v1.12.0` cut WITH the implementation by owner ruling: one job per room +
+      409, 202 + job_id + max_duration_ms, `/scenario/jobs`, job events on the existing
+      SSE channel; golden byte-identical), VWB-48 `[deferred]` (zone-form power missing
+      from the catalog, pre-existing), UI-24 (the stepper, later). Voice IDs: **QUAL-82**
+      (the louvers: `hvac_vane` + `hvac_widevane`, donation-side, «заслонка» proven clean
+      against every curtain surface), TEST-24 (crossover fixtures F82–F86, cross-suite
+      53/53), BUILD-58 + BUILD-59 (re-pins at 1.11.0 and 1.12.0, both copies each time),
+      **ARCH-67** (requests sized from the published fields, config value the fallback;
+      acknowledge-then-confirm behind `acknowledge_slow_actions = true` — the owner's one
+      flag; `ui-openapi-v1.2.0` cut; a FOURTH timeout found and fixed — the dispatcher's 7
+      s cap in front of the 20 s client timeout), DOC-15 (the donation-side how-to),
+      ARCH-68 (voice design `scenario_jobs_voice.md`), **ARCH-69** (the durable
+      scenario job + the `/events/scenarios` SSE adapter: acceptance «Запускаю сценарий,
+      около минуты», terminal facts, mid-job refusal/adoption, bridge-restart → the room's
+      actual state; 49 tests). Commons: IMPL-27 (`process/language-data.md`). **Verified
+      at close (coordinator, five repos, same minute):** trees clean and in sync;
+      contract-guard strict 0 failures everywhere; every pin and vendored tool at its
+      owner's newest tag (catalog 1.12.0 in voice and commons); CI green on every last
+      push; commons eval 90, voice 2116, bridge 811 tests. **Owed to the owner — the WB7
+      sitting** (bridge `scenario_jobs.md` §10 is the checklist: cold starts, warm
+      switches and stops per scenario against the published ceilings; the eMotiva under
+      the lock; the live event cadence into voice; voice and bridge restarts mid-switch);
+      a measured ceiling breach becomes `catalog-v1.12.1`, not a block (owner ruling).
+      **Open owner decision, recorded in the pin README:** the crossover fixtures are the
+      last pin without a strict PIN.json because they have no owner — voice owning a
+      `crossover-fixtures-vX.Y.Z` family that commons and bridge pin (natural: every move
+      is voice-authored; cost: one extra hop after each catalog re-pin), or the fixtures
+      riding in the catalog family. docs: none — board entry; every docs change rode its
+      repo task. contracts: none here — the cuts are recorded by their tasks (bridge
+      VWB-46, SCN-19; voice ARCH-67); every owed re-pin is discharged.
 - [x] **PROD-19 — Intake consolidation: one door, locveil-reports** (HK-7 cluster C):
       retire the last pre-board public-issue intake channel; all problem/feature intake
       flows through the locveil-reports pipeline (`report-protocol-v1`). Delegations:

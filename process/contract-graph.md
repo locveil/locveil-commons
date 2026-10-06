@@ -49,7 +49,7 @@ graph LR
 | voice | `ui-openapi` | `ui-openapi-v1.2.0` | _none (empty by declaration)_ | `backend/tests/test_openapi_drift.py` |
 | voice | `wake-pack` | `wake-pack-v1.0.1` | _none (empty by declaration)_ | `backend/tests/test_ws_protocol_version.py::test_wake_pack_stamp_mirrors_released_catalog` |
 | voice | `ws-protocol` | `ws-protocol-v1.2.0` | `docs/guides/websocket-api.md`<br>`contracts/ws-protocol/frames.golden.json`<br>`contracts/ws-protocol/transcript.audio-batch.jsonl`<br>`contracts/ws-protocol/transcript.audio-streaming.jsonl`<br>`contracts/ws-protocol/transcript.audio-trace.jsonl`<br>`contracts/ws-protocol/transcript.audio-rejected.jsonl`<br>`contracts/ws-protocol/transcript.reply-burst.jsonl`<br>`contracts/ws-protocol/transcript.satellite-pair.jsonl`<br>`contracts/ws-protocol/transcript.reconnect.jsonl`<br>`contracts/ws-protocol/transcript.output-push.jsonl`<br>`contracts/ws-protocol/transcript.observe-tap.jsonl`<br>`contracts/ws-protocol/ws-protocol.schema.json` | `backend/tests/test_ws_machine_core.py` |
-| bridge | `catalog` | `catalog-v1.11.0` | `contracts/catalog/catalog.golden.json`<br>`contracts/catalog/openapi.json`<br>`contracts/catalog/catalog-contract.md` | — |
+| bridge | `catalog` | `catalog-v1.12.0` | `contracts/catalog/catalog.golden.json`<br>`contracts/catalog/openapi.json`<br>`contracts/catalog/catalog-contract.md` | — |
 | bridge | `device-integration` | `device-integration-v1.2.0` | `contracts/device-integration/convention.md`<br>`contracts/device-integration/device-descriptor.schema.json`<br>`contracts/device-integration/example.descriptor.json` | — |
 | satellite | `esp32-site` | `esp32-site-v1.1.0` | `provisioning/ansible/templates/esp32-site.conf.j2` | — |
 
@@ -61,14 +61,14 @@ graph LR
 | bridge | `docs-manifest-schema` | commons | `docs-manifest-schema-v1.0.0` | `docs-manifest-schema-v1.0.0` | current | `backend/tests/unit/test_docs_manifest.py` |
 | bridge | `report-protocol` | commons | `report-protocol-v1.0.1` | `report-protocol-v1.0.1` | current | `backend/tests/unit/test_report_protocol_pin.py` |
 | bridge | `workbench` | commons | `workbench-v1.3.0` | `workbench-v1.3.0` | current | `backend/tests/unit/test_workbench_pin.py` |
-| commons | `catalog` | bridge | `catalog-v1.11.0` | `catalog-v1.11.0` | current; stamped by voice | `eval/tests/test_contracts_pin.py` |
+| commons | `catalog` | bridge | `catalog-v1.12.0` | `catalog-v1.12.0` | current; stamped by voice | `eval/tests/test_contracts_pin.py` |
 | commons | `crossover-fixtures` | co-owned | `—` | `—` | legacy pin — no PIN.json | _none yet_ |
 | commons | `ws-protocol` | voice | `ws-protocol-v1.2.0` | `ws-protocol-v1.2.0` | current | `eval/tests/test_ws_protocol_pin.py` |
 | reports | `report-protocol` | commons | `report-protocol-v1.0.1` | `report-protocol-v1.0.1` | current | `.github/workflows/protocol-check.yml` |
 | satellite | `docs-manifest-schema` | commons | `docs-manifest-schema-v1.0.0` | `docs-manifest-schema-v1.0.0` | current | `scripts/check_docs_manifest.py` |
 | satellite | `wake-pack` | voice | `wake-pack-v1.0.1` | `wake-pack-v1.0.1` | current | `scripts/publish_model_pack.py` |
 | satellite | `ws-protocol` | voice | `ws-protocol-v1.2.0` | `ws-protocol-v1.2.0` | current | _none yet_ |
-| voice | `catalog` | bridge | `catalog-v1.11.0` | `catalog-v1.11.0` | current | `backend/tests/test_catalog_contract_conformance.py` |
+| voice | `catalog` | bridge | `catalog-v1.12.0` | `catalog-v1.12.0` | current | `backend/tests/test_catalog_contract_conformance.py` |
 | voice | `core-py` | commons | `core-py-v1.1` | `core-py-v1.1` | current | `backend/tests/test_core_py_pin_identity.py` |
 | voice | `docs-manifest-schema` | commons | `docs-manifest-schema-v1.0.0` | `docs-manifest-schema-v1.0.0` | current | `backend/tests/test_docs_manifest.py` |
 | voice | `esp32-site` | satellite | `esp32-site-v1.1.0` | `esp32-site-v1.1.0` | current | `backend/tests/test_arch36_tls_e2e.py` |
