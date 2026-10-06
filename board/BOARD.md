@@ -113,6 +113,33 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       decisions open on the round-1 dossier: locale floor, value-label rule + guard, the
       convention's home, the louver noun, voice's timeout policy, tier 3 deferral,
       tagging, riders.
+      **Round 1 DECIDED (owner paste 2026-10-06; round 2 open on q6/q7 only):** (1) label
+      floor = ru + en REQUIRED, de optional, a consumer may fall back to ru (the floor
+      `LocalizedName` and device-integration D3 already enforce); (2) every enum value
+      carries labels EXCEPT the bare `power` on/off pair; the 9 real gaps (two IR by-value
+      inputs) close in this arc via a label slot on by-value selects; a check-style test
+      over the committed golden is the guard; (3) the machine rule lives in bridge's
+      `catalog-contract.md` (new "Localization" + "Timing" sections, byte-locked, pinned),
+      a SHORT pointer-only commons `process/` file carries the ownership split (nouns in
+      the catalog, verbs in voice donations, group tokens unlocalized, donations may quote
+      value labels as phrases), voice's how-to cites both; (4) **the louver noun is
+      «заслонка»** — the donation's spoken noun AND the renamed HVAC `vane` field label
+      (today «жалюзи», which collides with the cabinet rollers' alias); voice verified it
+      clean in the resolver; (5) tier 1 `confirm_timeout_ms` per capability = the gate's
+      poll timeout, tier 2 `max_duration_ms` on scenario values from the cold plan — both
+      in `catalog-v1.11.0` (CORE-12 takes the next); (6) QUAL-82 = two donation-side
+      intents (`hvac_vane`, `hvac_widevane`), no catalog change, gated on the noun ruling
+      only — starts now; (7) every PROD-18 task `[release]`; riders: `description` stays
+      developer English, `unit` a symbol; aliases an authoring-checklist item, ru-first,
+      no minimum; no German cosmetics in this arc; HvacPanel progress and the
+      vane/widevane crossover fixtures as separate tasks. **Round 2 (open):** the timeout
+      policy voice implements (q6: acknowledge-then-confirm recommended) and tier 3
+      sequencing (owner: build now; both keepers: own design + own cut `catalog-v1.12.0`
+      after 1.11.0, one-cut condition waived for tier 3 only; bridge found the missing
+      in-flight scenario lock — a retry after voice's 20 s timeout double-runs plans).
+      Started on the round-1 decisions without waiting: bridge VWB-33 + VWB-34 designs,
+      voice QUAL-82, commons prose (IMPL-27). **Commons ID:** IMPL-27 (the ownership-split
+      prose).
 - [ ] **PROD-20 — Satellite first-light chain (visibility entry, HW-GATED)** (HK-7 q6,
       owner ruling: light PROD). The coupled multi-repo burst that fires when the
       satellite's first conforming descriptor reaches the bridge: satellite descriptor
@@ -138,3 +165,13 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       (satellite firmware logging is NOT one — different runtime). No delegations until
       activated; design-then-implement applies (ARCH-43 un-parks as the design task).
 ## IMPL — commons implementation
+- [ ] **IMPL-27 — language-data ownership prose** (PROD-18 round-1 decision q4,
+      2026-10-06). A short, pointer-only `process/language-data.md`: the catalog
+      contributes the nouns (names, aliases, field and value labels), voice donations
+      contribute the verbs (phrases/lemmas per handler method; the catalog never carries
+      action labels), group tokens stay unlocalized identifiers whose spoken words live in
+      donation choice surfaces, donations may quote catalog value labels as classification
+      phrases while the catalog `values` table is the only vocabulary at match time; the
+      MACHINE rule (required locales, exemptions, the guard) lives in bridge's pinned
+      `catalog-contract.md` and is never restated here. Binds three authors: bridge
+      config, voice donations, satellite descriptors.
