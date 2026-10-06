@@ -76,7 +76,7 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
 - [ ] **PROD-11 — FUTURE design: Home Assistant in parallel to Wirenboard** (D-4's stress
       test): if the canonical DeviceCommand contract survives HA unchanged, voice gets zero
       tasks; if voice needs changes, the contract leaked WB-specifics. Waits until wanted.
-- [ ] **PROD-18 — Catalog contract evolution, round 1** (HK-7 cluster B — the two
+- [>] **PROD-18 — Catalog contract evolution, round 1** (HK-7 cluster B — the two
       designs that self-declared board-bound before the board existed). Members: bridge
       **VWB-33** (language-data contribution convention — catalog nouns/aliases vs voice
       donation verbs; convention prose may land in commons `process/`; binds voice's
@@ -88,6 +88,31 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       reconciliation (their pre-board "once the board lands" wording converts to this
       entry's reference). Bridge write-back — lead ID: **VWB-33** + VWB-34. Voice —
       QUAL-82 gains the PROD-18 gate reference. Voice ID: **QUAL-82**.
+      **Council round 1 (2026-10-06, owner order "implement PROD-18 completely"; voice +
+      bridge + satellite keepers) — intake reconciliation, decisions pending on the
+      dossier:** the July texts are narrowed before any design starts. STALE: "some fleet
+      fields carry no labels" (all 122 fields are labelled at catalog-v1.10.0: 101 ru/en,
+      21 ru/en/de; the real gaps are 9 enum values on two IR by-value inputs whose model
+      has no label slot, plus 78 bare `power` on/off values); "progress narration uses the
+      SSE stream" (the scenarios channel carries only switched/shutdown events — no step
+      stream exists, so tier 3 would need one); "golden/openapi cut" (since HK-13: three
+      enumerated artifacts + STAMP, a MINOR cut, voice's pin and the commons copy move in
+      one `repin.py catalog` run). TRUE AND LOAD-BEARING: a machine floor already exists —
+      the bridge's `LocalizedName` requires ru+en and allows more, and device-integration
+      D3 fixes ru+en required / de optional for satellite descriptors; German is on 66/79
+      device names and absent from the whole AV fleet; the product UI switches RU/EN only.
+      Tier 2 is derivable today (a worst-case plan ETA helper exists; execution is
+      sequential, so the sum is a true ceiling, ~30 s for the cold movie scenario). Tier
+      1's shape is per capability, equal to the gate's poll timeout (HVAC 15 s, streamer
+      power 25 s, TV power 8 s, inputs 3 s; absent = 500 ms). The «жалюзи» collision is
+      bridge-authored (HVAC `vane` field label AND the cabinet rollers' alias). Voice
+      sizes every bridge request with one 20 s number in three places, never sends `wait`,
+      never speaks before confirmation. QUAL-82 is gated on the NOUN ruling, not on the
+      re-pin, and needs no catalog change (two donation-side intents). Sequencing: the cut
+      is `catalog-v1.11.0` (CORE-12, gated on PROD-4 auth, takes the next). Owner
+      decisions open on the round-1 dossier: locale floor, value-label rule + guard, the
+      convention's home, the louver noun, voice's timeout policy, tier 3 deferral,
+      tagging, riders.
 - [ ] **PROD-20 — Satellite first-light chain (visibility entry, HW-GATED)** (HK-7 q6,
       owner ruling: light PROD). The coupled multi-repo burst that fires when the
       satellite's first conforming descriptor reaches the bridge: satellite descriptor
