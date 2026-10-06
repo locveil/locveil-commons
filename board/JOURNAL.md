@@ -1,6 +1,13 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-27: language data — who contributes which words
+
+The commons third of VWB-33: one page that says who owns which words, and pointedly not
+what the words must be — that is the bridge's guide, pinned and byte-locked. Written
+while the owner's round 2 on tier 3 is still open, because nothing in it depends on
+that. contracts: none. docs: none.
+
 ## 2026-10-06 — PROD-19 CLOSED: one door, and the side doors are shut
 
 A July question answered in an afternoon. PROD-19 asked what to do with the public-issue

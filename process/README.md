@@ -27,6 +27,10 @@ Here now:
   Never a source, never edited — regenerate with
   `python3 packages/contract-graph/contract_graph.py` (`--check` reports staleness).
 
+- **[`language-data.md`](language-data.md)** — who contributes which words (PROD-18 /
+  VWB-33): nouns in the bridge catalog, verbs in voice donations, group tokens unlocalized,
+  donations may quote value labels. Ownership only — the machine rule lives in the bridge's
+  pinned `catalog-contract.md`.
 - **[`python-layout.md`](python-layout.md)** — Python backend layout & naming (HK-8):
   component/src layout, tests outside the package, config/ + docker/ at repo root,
   locveil_* import rule with the shared-library carve-out, migration principles.

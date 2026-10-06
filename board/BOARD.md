@@ -165,13 +165,3 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       (satellite firmware logging is NOT one — different runtime). No delegations until
       activated; design-then-implement applies (ARCH-43 un-parks as the design task).
 ## IMPL — commons implementation
-- [ ] **IMPL-27 — language-data ownership prose** (PROD-18 round-1 decision q4,
-      2026-10-06). A short, pointer-only `process/language-data.md`: the catalog
-      contributes the nouns (names, aliases, field and value labels), voice donations
-      contribute the verbs (phrases/lemmas per handler method; the catalog never carries
-      action labels), group tokens stay unlocalized identifiers whose spoken words live in
-      donation choice surfaces, donations may quote catalog value labels as classification
-      phrases while the catalog `values` table is the only vocabulary at match time; the
-      MACHINE rule (required locales, exemptions, the guard) lives in bridge's pinned
-      `catalog-contract.md` and is never restated here. Binds three authors: bridge
-      config, voice donations, satellite descriptors.

@@ -1927,6 +1927,21 @@ assertions.
       the keys the provider sends; suite 90 passed. Graph view regenerated. docs: none —
       pin + test. contracts: ws-protocol re-pinned v1.1.0 → v1.2.0 (the re-pin owed to
       commons by ARCH-66 is discharged).
+- [x] **IMPL-27 — language-data ownership prose** (PROD-18 round-1 decision q4; filed and
+      done 2026-10-06). `process/language-data.md`: the ownership split the council
+      decided — the catalog contributes the nouns (names, aliases, field and value labels;
+      descriptors author the same for satellite-built devices under D3, which agrees with
+      the catalog floor by construction), voice donations contribute the verbs and the
+      spoken capability noun («режим», «вентилятор», «заслонка» — the catalog never
+      carries action labels; field labels are display text, value labels are match
+      vocabulary), group tokens stay unlocalized with their spoken words in donation
+      choice surfaces, and donations may quote value labels as phrases while the `values`
+      table is the only vocabulary at match time. Pointer-only for the machine rule —
+      required locales, exemptions, the guard live in the bridge's pinned
+      `catalog-contract.md` and are never restated here (bridge's condition; drift).
+      Listed in `process/README.md`. docs: none — process file, not a manifest node.
+      contracts: none — prose; the machine rule is the bridge's enumerated guide, cut by
+      its v1.11 task.
 
 ## HK — council topics
 
