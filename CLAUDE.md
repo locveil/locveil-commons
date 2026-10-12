@@ -67,9 +67,10 @@ own `pyproject.toml`/`package.json`. **Never publish a bare `locveil` package �
 - **`contracts/pins/catalog/` is a one-way inward pin owned by locveil-voice** (its re-pin
   tasks stamp `PIN.json`): a version-stamped copy of `../locveil-bridge`'s committed
   contract artifacts (catalog golden, STAMP, openapi). `contracts/pins/crossover-fixtures/`
-  is the co-owned fixtures pin. Never hand-edit any pin contents and never treat them as a
-  source — they move via voice re-pin / fixture tasks; old repo names inside them are
-  expected until the next re-pin. Owned surface `contracts/report-protocol/` moves ONLY by
+  is the strict pin of the voice-OWNED `crossover-fixtures` family (PROD-29) — moved only
+  by `repin.py crossover-fixtures`. Never hand-edit any pin contents and never treat them as
+  a source — they move via re-pin tasks; old repo names inside them are expected until the
+  next re-pin. Owned surface `contracts/report-protocol/` moves ONLY by
   protocol-bump tasks (tag + STAMP together). The registry `contracts/README.md` and the
   per-contract READMEs are this repo's own documentation.
 

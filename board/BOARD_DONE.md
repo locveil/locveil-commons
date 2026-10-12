@@ -2066,6 +2066,19 @@ assertions.
       Listed in `process/README.md`. docs: none — process file, not a manifest node.
       contracts: none — prose; the machine rule is the bridge's enumerated guide, cut by
       its v1.11 task.
+- [x] **IMPL-28 — pin the voice-owned `crossover-fixtures` family** (PROD-29; filed and
+      done 2026-10-12). `.repin.toml` gains the family (owner locveil-voice, `mirror` of
+      `catalog_tag` + `catalog_version`, conformance
+      `eval/tests/test_crossover_fixtures.py`); first pin via `repin.py
+      crossover-fixtures` at `crossover-fixtures-v1.0.0` (voice BUILD-60, commit fd2eabf):
+      `crossover_fixtures.json` byte-identical to what this folder held (sha 5b5adbe6…),
+      plus the owner STAMP and a strict PIN.json. The eval generator, assertions and the
+      layer-2 guard read the same path, so nothing moved for them (90 tests green). The
+      legacy co-owned README is replaced by a consumer note; registry row from "co-owned"
+      to voice-owned; `CLAUDE.md`'s source-of-truth sentence re-truthed. **The estate's
+      last `PIN-PENDING` warning ends — contract-guard runs clean in all five repos.**
+      docs: contracts-registry — pin row re-labelled. contracts: crossover-fixtures FIRST
+      CONSUMED under a pin (@ v1.0.0) — the re-pin owed by voice's cut is discharged.
 
 ## HK — council topics
 

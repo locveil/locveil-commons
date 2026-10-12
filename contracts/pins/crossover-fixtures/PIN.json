@@ -1,0 +1,16 @@
+{
+  "contract": "crossover-fixtures",
+  "version": "1.0.0",
+  "tag": "crossover-fixtures-v1.0.0",
+  "owner_repo": "locveil-voice",
+  "owner_commit": "fd2eabf4940ad68619a7b620f188584e721debb7",
+  "pinned_by": "locveil-commons packages/repin (PROD-26)",
+  "pin_date": "2026-10-12",
+  "catalog_tag": "catalog-v1.12.0",
+  "catalog_version": "4deb84ae88da6caa",
+  "files": {
+    "crossover_fixtures.json": "5b5adbe6188088219dba342d98fd30d2f4ed5885a476ab29492fd8950267e105",
+    "STAMP.json": "b5202d6ff2e769c05f5617e7f7db03ff606e8ecabec22748c5d784f419ab0fff"
+  },
+  "conformance": "eval/tests/test_crossover_fixtures.py"
+}

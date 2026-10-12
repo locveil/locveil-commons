@@ -3,8 +3,6 @@
 # CONSUMES. No `files` lists: the owner's STAMP enumerates the pin set (repin v2).
 #
 # NOT listed (deliberately):
-# - crossover-fixtures: co-owned legacy pin, no tag family and no PIN.json yet — the
-#   strict PIN arrives with the next fixtures task, which also adds the family here.
 # - [[tool]] entries: commons OWNS the shared tools (scope-guard, contract-guard, repin);
 #   the vendored-tools manifest is a consumer-repo concern.
 
@@ -37,3 +35,16 @@ owner_url = "https://github.com/locveil/locveil-voice.git"
 [[family.dest]]
 path = "contracts/pins/ws-protocol"
 conformance = "eval/tests/test_ws_protocol_pin.py"
+
+# The crossover fixtures — voice-OWNED since PROD-29 (2026-10-12): {utterance → expected
+# canonical command}, bound to the bridge catalog by content hash. Commons pins them for the
+# eval generator and assertions; the layer-2 test is the conformance pointer.
+[[family]]
+name = "crossover-fixtures"
+owner_repo = "locveil-voice"
+owner_dir = "../locveil-voice"
+owner_url = "https://github.com/locveil/locveil-voice.git"
+mirror = ["catalog_tag", "catalog_version"]
+[[family.dest]]
+path = "contracts/pins/crossover-fixtures"
+conformance = "eval/tests/test_crossover_fixtures.py"

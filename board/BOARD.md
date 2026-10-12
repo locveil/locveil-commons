@@ -125,11 +125,3 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       voice's cut and the commons pin are in and the warning is gone.
 
 ## IMPL — commons implementation
-- [ ] **IMPL-28 — pin the voice-owned `crossover-fixtures` family** (PROD-29, 2026-10-12).
-      `.repin.toml` family (owner locveil-voice, dest `contracts/pins/crossover-fixtures`,
-      conformance `eval/tests/test_crossover_fixtures.py`); first pin via repin at
-      `crossover-fixtures-v1.0.0`; `eval_commons/fixtures_to_tests.py`,
-      `assertions/device_command_assert.py` and the tests read the pinned copy (same
-      path); pin README replaced (consumer note); registry row from "co-owned" to
-      "voice-owned, consumed"; `CLAUDE.md` source-of-truth sentence re-truthed; the
-      standing `PIN-PENDING` warning ends.

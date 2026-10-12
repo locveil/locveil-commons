@@ -36,7 +36,7 @@ components.
 |---|---|---|---|
 | [`catalog`](pins/catalog/README.md) | locveil-bridge | **locveil-voice** (regime 1 — voice re-pin tasks stamp `PIN.json`; never hand-edit) | golden catalog + openapi + bridge STAMP |
 | [`ws-protocol`](pins/ws-protocol/) | locveil-voice | commons (repin) | the WS wire protocol — the document + its machine core (golden frames, transcripts, schema); the eval WS provider implements it |
-| [`crossover-fixtures`](pins/crossover-fixtures/README.md) | co-owned voice/bridge | voice fixture tasks | `{utterance → canonical command}` fixtures bound to the pinned catalog; strict `PIN.json` arrives with the next fixtures task |
+| [`crossover-fixtures`](pins/crossover-fixtures/README.md) | locveil-voice (since PROD-29; was co-owned) | commons (repin) | `{utterance → canonical command}` fixtures bound to the catalog by content hash; strict pin, moved by `repin.py crossover-fixtures` |
 
 Guards: `../eval/tests/test_contracts_pin.py` + `../eval/tests/test_crossover_fixtures.py` +
 `../eval/tests/test_ws_protocol_pin.py` (layer-2 conformance) and the vendored contract-guard (layer-1 coherence, pre-commit + CI).

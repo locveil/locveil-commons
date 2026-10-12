@@ -28,6 +28,7 @@ graph LR
   commons -- report-protocol --> voice
   commons -- workbench --> voice
   satellite -- esp32-site --> voice
+  voice -- crossover-fixtures --> commons
   voice -- ws-protocol --> commons
   voice -- wake-pack --> satellite
   voice -- ws-protocol --> satellite
@@ -45,6 +46,7 @@ graph LR
 | commons | `scope` | `scope-v7.3.1` | `packages/scope-guard/scope_guard.py` | — |
 | commons | `ui-kit` | `ui-kit-v1.3.0` | _none (empty by declaration)_ | `eval/tests/test_ui_kit_tokens.py` |
 | commons | `workbench` | `workbench-v1.3.0` | `packages/workbench/src/contract.ts`<br>`packages/workbench/schemas/manifest-fragment.schema.json`<br>`packages/workbench/schemas/runtime-config.schema.json` | `eval/tests/test_workbench_schemas.py` |
+| voice | `crossover-fixtures` | `crossover-fixtures-v1.0.0` | `contracts/crossover-fixtures/crossover_fixtures.json` | `backend/tests/test_crossover_fixtures_contract.py` |
 | voice | `trace-format` | `trace-format-v1.0.1` | `docs/guides/tracing.md` | — |
 | voice | `ui-openapi` | `ui-openapi-v1.2.0` | _none (empty by declaration)_ | `backend/tests/test_openapi_drift.py` |
 | voice | `wake-pack` | `wake-pack-v1.0.1` | _none (empty by declaration)_ | `backend/tests/test_ws_protocol_version.py::test_wake_pack_stamp_mirrors_released_catalog` |
@@ -62,7 +64,7 @@ graph LR
 | bridge | `report-protocol` | commons | `report-protocol-v1.0.1` | `report-protocol-v1.0.1` | current | `backend/tests/unit/test_report_protocol_pin.py` |
 | bridge | `workbench` | commons | `workbench-v1.3.0` | `workbench-v1.3.0` | current | `backend/tests/unit/test_workbench_pin.py` |
 | commons | `catalog` | bridge | `catalog-v1.12.0` | `catalog-v1.12.0` | current; stamped by voice | `eval/tests/test_contracts_pin.py` |
-| commons | `crossover-fixtures` | co-owned | `—` | `—` | legacy pin — no PIN.json | _none yet_ |
+| commons | `crossover-fixtures` | voice | `crossover-fixtures-v1.0.0` | `crossover-fixtures-v1.0.0` | current | `eval/tests/test_crossover_fixtures.py` |
 | commons | `ws-protocol` | voice | `ws-protocol-v1.2.0` | `ws-protocol-v1.2.0` | current | `eval/tests/test_ws_protocol_pin.py` |
 | reports | `report-protocol` | commons | `report-protocol-v1.0.1` | `report-protocol-v1.0.1` | current | `.github/workflows/protocol-check.yml` |
 | satellite | `docs-manifest-schema` | commons | `docs-manifest-schema-v1.0.0` | `docs-manifest-schema-v1.0.0` | current | `scripts/check_docs_manifest.py` |

@@ -1,6 +1,13 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-05 — IMPL-28: the fixtures nobody owned are now a pin
+
+The co-owned file that nobody owned is now a pin like every other: voice cut it this
+morning, commons pinned it an hour later, and the one warning the guard has carried
+since HK-5 is gone. The bytes did not move; the accountability did. contracts:
+crossover-fixtures first consumed under a pin. docs: contracts-registry.
+
 ## 2026-10-06 — PROD-18 CLOSED: the catalog learns to say how long, and in which language
 
 Filed in July off two bridge designs that had declared themselves board-bound, decided
