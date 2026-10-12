@@ -99,29 +99,5 @@ Completed entries live in `BOARD_DONE.md` (moved on close; `process/ledger-disci
       two consumers) — this entry is OPTIONAL and trigger-driven, not queued: activate on
       owner interest, the next logging-shape pain in either repo, or a third consumer
       (satellite firmware logging is NOT one — different runtime). No delegations until
-      activated; design-then-implement applies (ARCH-43 un-parks as the design task).- [ ] **PROD-29 — Crossover fixtures become a voice-owned contract** (owner decision
-      2026-10-12 on the question PROD-18's close left open — "Agree with Option 1"; the
-      last pin in the estate without a strict PIN.json, because it never had an owner).
-      **Decision:** voice OWNS the family `crossover-fixtures`
-      (`locveil-voice/contracts/crossover-fixtures/`: `crossover_fixtures.json` enumerated
-      in a STAMP whose extras record the catalog tag and content hash the fixtures bind
-      to; tag `crossover-fixtures-vX.Y.Z` — minor = fixtures added or re-bound, patch =
-      notes only, major = a shape change of the expect kinds; owner guard = voice's own
-      binding test + the cross-suite reading the OWNED file); commons CONSUMES it as an
-      ordinary pin (`contracts/pins/crossover-fixtures/` with strict PIN.json derived from
-      voice's STAMP by repin; the eval generator and assertions read the pinned copy; the
-      legacy "co-owned" posture, the HK-5 wording and the `PIN-PENDING` warning end);
-      bridge pins it when VWB-16 (its consumer contract test, `[deferred]`) lands — first
-      consumption, not before (the satellite lesson: no `.repin.toml` declaration ahead of
-      the pin). Accepted cost: after a catalog re-pin at voice, a fixtures minor + a
-      commons re-pin follow (one extra hop). **Delegations (board-as-outbox):** voice —
-      the owned surface + first cut `crossover-fixtures-v1.0.0` (the file moves from
-      commons to voice; voice's eval Makefile, tests and `make device-tests` read the
-      owned file; registry row; the catalog binding in the STAMP). Voice ID: _pending
-      write-back_. Commons — **IMPL-28** (repin family + first pin, tests and generator on
-      the pin, README/registry/CLAUDE.md re-truthed). Bridge — VWB-16 gains the intake
-      note "pin `crossover-fixtures` at the voice tag, never read the commons copy"; no
-      bridge task now. Bridge ID: VWB-16 (existing; note at its intake). Closes when
-      voice's cut and the commons pin are in and the warning is gone.
-
+      activated; design-then-implement applies (ARCH-43 un-parks as the design task).
 ## IMPL — commons implementation

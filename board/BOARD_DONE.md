@@ -1543,6 +1543,43 @@ assertions.
       cut is recorded by the task that made it (IMPL-10/11/13/14/15/16/17/22; bridge
       VWB-44/45; voice BUILD-48/49/50 + ARCH-61; satellite OPS-15); all re-pins owed by
       those cuts are discharged.
+- [x] **PROD-29 — Crossover fixtures become a voice-owned contract** (owner decision
+      2026-10-12 on the question PROD-18's close left open — "Agree with Option 1"; the
+      last pin in the estate without a strict PIN.json, because it never had an owner).
+      **Decision:** voice OWNS the family `crossover-fixtures`
+      (`locveil-voice/contracts/crossover-fixtures/`: `crossover_fixtures.json` enumerated
+      in a STAMP whose extras record the catalog tag and content hash the fixtures bind
+      to; tag `crossover-fixtures-vX.Y.Z` — minor = fixtures added or re-bound, patch =
+      notes only, major = a shape change of the expect kinds; owner guard = voice's own
+      binding test + the cross-suite reading the OWNED file); commons CONSUMES it as an
+      ordinary pin (`contracts/pins/crossover-fixtures/` with strict PIN.json derived from
+      voice's STAMP by repin; the eval generator and assertions read the pinned copy; the
+      legacy "co-owned" posture, the HK-5 wording and the `PIN-PENDING` warning end);
+      bridge pins it when VWB-16 (its consumer contract test, `[deferred]`) lands — first
+      consumption, not before (the satellite lesson: no `.repin.toml` declaration ahead of
+      the pin). Accepted cost: after a catalog re-pin at voice, a fixtures minor + a
+      commons re-pin follow (one extra hop). **Delegations (board-as-outbox):** voice —
+      the owned surface + first cut `crossover-fixtures-v1.0.0` (the file moves from
+      commons to voice; voice's eval Makefile, tests and `make device-tests` read the
+      owned file; registry row; the catalog binding in the STAMP). Voice ID: **BUILD-60** (cut
+      `crossover-fixtures-v1.0.0` @ fd2eabf, 2026-10-12; a 13-test owner guard binds the
+      fixtures to the catalog pin's hash). Commons — **IMPL-28** (repin family + first pin, tests and generator on
+      the pin, README/registry/CLAUDE.md re-truthed). Bridge — VWB-16 gains the intake
+      note "pin `crossover-fixtures` at the voice tag, never read the commons copy"; no
+      bridge task now. Bridge ID: VWB-16 (existing; note at its intake). Closes when
+      voice's cut and the commons pin are in and the warning is gone.
+      **CLOSED 2026-10-12 — the same day.** Voice BUILD-60: owned surface
+      `contracts/crossover-fixtures/` (README + STAMP enumerating the file, `catalog_tag`
+      + `catalog_version` extras, guard
+      `backend/tests/test_crossover_fixtures_contract.py`), tag
+      `crossover-fixtures-v1.0.0`; voice's Makefile, eval config and tests read the owned
+      file; `device.tests.yaml` regenerates byte-identical. Commons IMPL-28: the strict
+      pin at the same tag, consumer note, registry, `CLAUDE.md`. Verified at close:
+      contract-guard 0 failures AND 0 warnings in commons — the last legacy pin in the
+      estate is strict; `repin --check --fail-on any` exit 0 in commons and voice; eval
+      90, voice 2129 tests; CI green on both. Bridge: VWB-16 carries the pin as its intake
+      note (board-as-outbox; no bridge task until the consumer test lands). docs: none —
+      board entry. contracts: none here — the cut is BUILD-60's, the first pin IMPL-28's.
 
 ## IMPL — commons implementation
 

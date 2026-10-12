@@ -1,6 +1,14 @@
 # Board journal — newest on top
 > Older sections: board/archive/journal/2026-07-11_2026-07-12.md
 
+## 2026-10-12 — PROD-29 CLOSED: the fixtures have an owner
+
+The question PROD-18 left on the table, answered by the owner in three words and
+executed before lunch: the crossover fixtures have an owner. Voice cut the family,
+commons pinned it, and the guard that has warned about this folder since the contract
+convention was born finally has nothing to say. Bridge joins when its consumer test
+lands — pinning, not reading a sibling's folder. contracts: none here. docs: none.
+
 ## 2026-10-05 — IMPL-28: the fixtures nobody owned are now a pin
 
 The co-owned file that nobody owned is now a pin like every other: voice cut it this
